@@ -1,0 +1,97 @@
+Lenguajes de marcas más comunes:
+XML
+XMPP
+WSDL
+SOAP
+HTML
+WML
+RSS
+X3D
+RTF
+LaTeX
+Nroff
+CSS
+XHTML
+
+Características comunes de todos los lenguajes de marcas:
+-Texto plano
+-Independencia
+-Flexible(se pueden convinar con otros lenguajes)
+
+Historia:
+1955 GML(Generalized Markup Language) --> IBM
+1985 SGML(Copia a IBM) 
+1990 HTML + XML
+1995 CSS + XHTML
+
+Actividad 1.0
+En los videos que hemos visto hemos visto diferentes aplicaciones para editar o programar un archivo html, como por ejemplo el editor mismo de texto, o el notepad. También nos enseñó las diferentes partes de una página como el head o el body
+
+INDEXV2.HTML
+-Debe incluir un .css externo
+·colores
+·tipos de letras
+·margin-padding,etc
+·border
+-Debe incluir comentarios explicativos tanto en el html como en el css.
+
+
+
+
+30/10/2025
+
+Html:
+
+<head>
+  <title> NavBar </title>
+<h1>Hola mamon</h1>
+  <hr>
+<h2>te gustan las salchichas?</h2>
+</head>
+<hr>
+<body>
+  
+  <h3> Top personas más gays</h3>
+  <ol>
+    <li>Javier</li>
+    <li>Julio</li>
+  </ol>
+  
+  <nav>
+    <ul> 
+      <a href = "#">Consulta</a>
+      <a href = "#">Insertar</a>
+      <a href = "#">Borrar</a>
+    </ul>
+  </nav>
+</body>
+
+Css:
+{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Times New Roman;
+  text-align: center;
+}
+nav ul{
+  padding:10px;
+  list-style:none;
+  display:flex;
+}
+nav ul a{
+  flex:auto;
+  margin:20px;
+  padding:10px;
+  background-color:black;
+  font-size:20px;
+  border:2px solid green2;
+  text-align:center;
+  color:white;
+  text-decoration:none;
+}
+nav ul a:hover{
+  color: white;
+  border:1px solid yellow;
+  background-color:blue;
+}

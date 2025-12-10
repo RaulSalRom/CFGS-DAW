@@ -1,0 +1,68 @@
+Base de datos:
+
+Ejercicio1.-
+
+Nación(id_Nación, nombre)
+PK:(id_Nación)
+
+Grupo(id_Grupo, nivel, id_Profesor)
+PK(id_Grupo)
+FK(id_Profesor)
+
+Profesor(id_Profesor, nombre, nacionalidad)
+PK(id_Profesor)
+
+Alumno(id_Alumno, nombre, id_Grupo)
+PK(id_Alumno)
+FK(id_Grupo)
+Ejercicio2.-
+
+  Centro de Salud • 
+MEDICO: (dniMedico PK, nombre, apellido, telefonoMedico, anoGraduado) 
+• PACIENTE: (dniPaciente PK, nombre, apellido, telefonoPaciente, dniMedico FK → MEDICO) 
+• SALA: (idSala PK, ubicacion) 
+• HORARIO: (dniMedico FK → MEDICO, idSala FK → SALA, horario, PK(dniMedico, idSala, horario)) 
+
+Ejercicio3.-
+
+Sucursal(num_Sucursal, ciudad, activo)
+PK(num_Sucursal)
+
+Cliente(num_Cuenta, saldo, num_Sucursal)
+PK(num_Cuenta)
+FK(num_Sucursal)
+
+Transacción(num_Transacción,tipo,cantidad,fecha,num_Cuenta)
+PK(num_Transacción)
+FK(num_Cuenta)
+
+Mer 2:
+
+Ejercicio1.-
+
+Profesor(id_Profesor, nombre, dirección, telefono)
+PK(id_Profesor)
+
+Modulo(id_Módulo, nombre, id_Profesor, id_Grupo)
+PK(id_Módulo)
+FK(id_Profesor,id_Clase)
+
+Alumno(id_Alumno, nombre, fecha de nacimiento, id_Grupo)
+PK(id_Alumno)
+FK(id_Grupo)
+
+Grupo(id_Grupo, id_Alumno, nombre, nivel)
+PK(id_Grupo)
+FK(id_Alumno)
+
+Ejercicio2.-
+
+Coches (id_Coche, matricula, marca, modelo, precio)
+PK(id_Coche)
+
+Cliente(id_Cliente, nombre, dirección, ciudad, numeroTelefono)
+PK(id_Cliente)
+
+Revisiones(id_Revisión, cambioFiltro, cambioAceite, cambioFrenos, id_Coche, id_Cliente)
+PK(id_Revisión)
+FK(id_Coche)
