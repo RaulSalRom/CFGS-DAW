@@ -12,6 +12,12 @@ import java.util*;
 public class ejercicio4{
     private static Scanner teclado = new Scanner (System.in);
     public static void main (String[]args){
-
+        String entrada = entrada();
     }
+    private static String entrada(){
+        System.out.println("Introduce una cadena de caracteres:");
+        String entrada = teclado.nextLine();
+        return entrada;
+    }
+    private static
 }
