@@ -1,4 +1,5 @@
-package examen2025;
+package tema3PosibleExamen;
+
 import java.util.Scanner;
 
 public class ejercicio1Examen {
