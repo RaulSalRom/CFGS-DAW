@@ -1,0 +1,204 @@
+2.-Fluid diagrams
+·It´s the graphic representation of a algorhytm. It helps to understand the beggining of programming with the visual form.
+·It shows the order in which actions are ejecuting.
+·It´s form by:
+-Start symbol
+-Operations
+-Input/Output instructions
+- Processing instructions.
+-Finish symbol
+-Fluid lines.
+
+3.-Pseudocoding
+It´s an "informal" programming lenguage, and it´s used for learning the basics of programming.
+
+4.- Data
+A data is the minimum unit of storage inside a system. It has:
+-ID: It´s the name used at the program to refer the data.
+-Type: It´s the range of the values that the data can take. It is going to be determinant with the amount of space reserved for the data.
+-Value: It´s the information asocited to the data.
+
+It could be variable or constant.
+
+Constant:
+-Their value doesn´t change during the program.
+-Their ID always in capital letters
+·ID_CTE = value
+
+Variable:
+-Their value would change during the program.
+-Their ID must start with casual letters.
+·id_var: TIPO
+
+
+5.- Type of basic data
+Integers: This is the whole number section. Positives, negatives and 0. ( Without decimals)
+Real: All the real numbers, including decimals.
+
+6.-Expresions and operations
+-: negative sign
+(): Parenthesis, for the operations
++,-,*,/,%,^,\: Arithmetics-->sum, substraction, multiplication, division, module, power.
+<,>, <=,=>,=,<>: Relations: greater, minus, grater than, minus than, equal, diferent.
+NOT, AND, OR: Logical--> is not, and, or.
+
+·Priority order of the opreations and expressions.
+1. Parenthesis ()
+2. Negative sign -
+3.- Power and root ^
+4.- Multiplication, division and module --> *,/,%
+5.- sum and sustraction--> +,-
+6.- greater, minus, grater than, minus than, equal, diferent --> <,>, <=,=>,=,<>
+7.-Negation NOT
+8.- conjunction AND
+9.- Disjuntion Or
+
+·OR operation
+A OR B is true if one of them are true
+A--> False B--> False  A OR B--> False
+A--> True B --> False  A OR B--> True
+A--> False B -->True   A OR B--> True
+A--> True B--> False   A OR B--> True
+
+·AND opreation
+A AND B is true if both of them are true.
+A--> False B--> False  A AND B--> False
+A--> True  B--> False  A AND B--> False
+A--> False B--> True   A AND B--> False
+A--> True  B--> True   A AND B--> True
+
+· NOT operator
+NOT A is true if A is false
+
+A--> True  NOT A--> False
+A--> False NOT A --> True
+
+Expression type
+·Arythmetic: it´s operand are numbers and their result is a numeric result
+Examples: 5+2
+·Relational: it´s operand are numbers and has a logical result
+Example: 5>2
+·Logical: it´s operand are logicals and has a logical result
+Examples: 2<3 AND 10>5	
+
+7.- Types of instructions
+Instructions to define a data:
+-Definition of a constant:
+ID_CTE = VALOR
+-Definition of a variable:
+idVar1, idVar2: TIPO
+
+
+
+Tema 2 --> Java
+
+1.- Determine which assignments are valid without using casting and explain why.
+
+1. int i = 50; long
+l = i;
+valid
+
+float f = 15.0f;
+double d = f;
+valid
+
+short s = 5; int
+i = s;
+valid
+
+char c = 'Z';
+int i = c;
+valid
+
+byte b = 10;
+short s = b;
+valid
+
+double d = 25.5;
+float f = d;
+invalid cz no enter
+
+2. Use explicit casting to fix compilation errors and predict the potential loss of information.
+Instruction: Correct the code in the "Initial Code" column so that it compiles successfully.
+Then, in the "Prediction" column, indicate what value will be lost or what data will be
+truncated.
+
+1.double d =3.14159; 
+int newType = d;
+----
+int newType = (int) d;
+----
+System.out.println(newType); 3
+----
+Decimals are lost (,14159).
+
+2. long l = 1000L;
+int newType = l;
+----
+long 1 = 100L; int newType = (int) l;
+----
+System.out.println(newType); 1000
+
+3.int i = 67;
+char newType = i;
+----
+int i = 67; char newType = (char) i;
+----
+System.out.println(newType); c
+
+4.int i =300; 
+byte newType = i;
+----
+int i = 300; byte newType = (byte) i;
+----
+System.out.println(newType);  44
+
+5.float f = 123.456f;
+long newType = f;
+----
+float f = 1223.456f; long newType = (long) f;
+----
+System.out.println(newType); 123
+
+3. Apply the rules of implicit promotion in arithmetic operations and the need for casting
+when assigning the result.
+Instruction: Indicate the final data type of the result variable and whether explicit casting is
+needed to store the value.
+
+12 int x = 5; double y = 2.0; double result = x / y;
+No, the int is promoted to double before the division, since one operand is a double.
+
+13 short a = 10; short b = 2; short result = a * b;
+Yes, in arithmetic operations with types smaller than int (byte, short, char), both operands are 
+promoted to int. The result is int, so casting to short is required.
+
+14 long l = 100L; int i = 50; int result = l + i;
+Yes,when combining long and int, the int is promoted to long. The result is long, and explicit casting 
+is needed to store it in an int.
+
+
+15 char c = 'a'; int i = 1; int result = c + i;
+No, the char is promoted to int before the addition. The result is already int, so no casting is needed.
+
+
+16 byte b1 = 5; byte b2 = 10; byte result = b1 + b2;
+Yes, just like with short, both byte values are promoted to int in arithmetic operations, so casting 
+to byte is required to store the result.
+
+
+
+
+18/11/2025
+Enunciado (versión corta)
+Escribe un programa en Java que:
+1. Lea una línea de texto del teclado.
+2. A partir de esa línea, haga y muestre tres resultados:
+1. Número de palabras que tiene la frase.
+■ Considera palabra = secuencia de caracteres no blancos separados
+por uno o más espacios.
+■ Ignora espacios al principio, al final y múltiples espacios seguidos.
+2. La misma frase pero:
+■ Sin espacios al principio ni al final.
+■ Con todos los grupos de varios espacios reducidos a un único
+espacio.
+3. La frase invertida (caracter a caracter).
