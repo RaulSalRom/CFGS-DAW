@@ -1,3 +1,5 @@
+package tema3String;
+
 import java.util.*;
 
 public class ejercicio9 {
@@ -16,7 +18,7 @@ public class ejercicio9 {
 
     private static int contador(String entrada) {
         int sumaTotal = 0;
-        int numeroActual = 0; 
+        int numeroActual = 0;
 
         for (int i = 0; i < entrada.length(); i++) {
             char c = entrada.charAt(i);
@@ -24,12 +26,12 @@ public class ejercicio9 {
             if (c >= '0' && c <= '9') {
 
                 int valorDigito = c - '0';
-                
+
                 numeroActual = (numeroActual * 10) + valorDigito;
-            } 
+            }
 
             else {
-                
+
                 sumaTotal += numeroActual;
 
                 numeroActual = 0;

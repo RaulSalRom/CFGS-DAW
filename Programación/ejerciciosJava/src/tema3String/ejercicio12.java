@@ -1,7 +1,8 @@
 package tema3String;
+
 import java.util.Scanner;
 
-public class ValidacionEmail {
+public class ejercicio12 {
     private static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -29,11 +30,16 @@ public class ValidacionEmail {
                 posPunto = i;
             }
         }
-        if (contadorArrobas != 1) return false;
-        if (posArroba == -1 || posPunto == -1) return false;
-        if (posPunto < posArroba) return false;
-        if (posArroba == 0) return false;
-        if (!esLetra(email.charAt(0))) return false;
+        if (contadorArrobas != 1)
+            return false;
+        if (posArroba == -1 || posPunto == -1)
+            return false;
+        if (posPunto < posArroba)
+            return false;
+        if (posArroba == 0)
+            return false;
+        if (!esLetra(email.charAt(0)))
+            return false;
         for (int i = 0; i < posArroba; i++) {
             char c = email.charAt(i);
             // Permitido: Letras, números o punto
@@ -42,9 +48,11 @@ public class ValidacionEmail {
             }
         }
         int inicioOrg = posArroba + 1;
-        int finOrg = posPunto; 
-        if (finOrg <= inicioOrg) return false;
-        if (!esLetra(email.charAt(inicioOrg))) return false;
+        int finOrg = posPunto;
+        if (finOrg <= inicioOrg)
+            return false;
+        if (!esLetra(email.charAt(inicioOrg)))
+            return false;
         for (int i = inicioOrg; i < finOrg; i++) {
             char c = email.charAt(i);
             if (!esLetra(c) && !esNumero(c)) {

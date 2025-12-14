@@ -1,4 +1,4 @@
-package examen2025;
+
 import java.util.Scanner;
 
 public class ejercicio1Examen {

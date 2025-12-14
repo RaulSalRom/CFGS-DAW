@@ -1,14 +1,42 @@
-/*Realizar un programa que cree el diminutivo de un nombre que se solicitará por teclado.
-Si el nombre termina en O, se sustituye esta letra final por el sufijo “ITO” .
-Si termina en “A” , IDEM con el sufijo “ITA”.
-Si el nombre termina en E,I, o U se preguntará si es masculino o femenino y se procederá de la misma
-forma.
-Si el nombre termina en consonante se preguntará si es masculino o femenino y se procederá
-añadiendo ITO o ITA.
-Si no cumple ninguna de las anteriores condiciones, se mostrará por pantalla con “Nombre
-incorrecto”
-NOTAS:
-• El diminutivo se devolverá siempre en mayúsculas.
-• Si el dato del sexo es incorrecto se volverá a solicitar.
-• Debe usarse un método para crear el diminutivo.*/
 package tema3StringExtension;
+
+import java.util.*;
+
+public class ejercicio5 {
+    private static Scanner teclado = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        String entrada = entrada();
+        String diminutivo = diminutivo(entrada);
+        System.out.println("Hola " + diminutivo);
+    }
+
+    private static String entrada() {
+        System.out.println("Introduce un nombre:");
+        String entrada = teclado.nextLine();
+        return entrada;
+    }
+
+    private static String diminutivo(String entrada) {
+        String ito = "ITO";
+        String ita = "ITA";
+        char c = entrada.toLowerCase().charAt(entrada.length() - 1);
+        if (c == 'a') {
+            return entrada + ita;
+        } else if (c == 'o') {
+            return entrada + ito;
+        } else {
+            System.out.println("¿El nombre es masculino(m) o femenino(f)?");
+            char comprobacion = teclado.next().toLowerCase().charAt(0);
+            while (comprobacion != 'm' && comprobacion != 'f') {
+                System.out.println("Introduce las letras señaladas (m o f)");
+                comprobacion = teclado.next().toLowerCase().charAt(0);
+            }
+            if (comprobacion == 'm') {
+                return entrada + ito;
+            } else {
+                return entrada + ita;
+            }
+        }
+    }
+}
