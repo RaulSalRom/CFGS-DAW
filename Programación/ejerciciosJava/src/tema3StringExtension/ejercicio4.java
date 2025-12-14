@@ -8,7 +8,9 @@ Ejemplos de frases “Guay del Paraguay””:
 NOTA: La longitud de la cadena para que sea “Guay del Paraguay” será de
 al menos 4* 2 caracteres. El método lo controlará.*/
 package tema3StringExtension;
-import java.util*;
+
+import java.util.*;
+
 public class ejercicio4{
     private static Scanner teclado = new Scanner (System.in);
     public static void main (String[]args){
