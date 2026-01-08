@@ -95,3 +95,18 @@ nav ul a:hover{
   border:1px solid yellow;
   background-color:blue;
 }
+
+
+
+
+8/01/2026
+css pseudo-clases
+:NOT()
+:IS()
+:HAS()
+
+Jerarquía 
+#ID
+·Clases
+:Pseudo-clases
+::Pseudo-elementos
