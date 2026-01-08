@@ -1,0 +1,68 @@
+=========================================================
+RESUMEN: TEMA 4 - CONSULTAS EN BASES DE DATOS (SQL)
+=========================================================
+
+1. SENTENCIA SELECT BASICA
+---------------------------------------------------------
+La consulta mas basica para seleccionar columnas de una tabla.
+
+- Sintaxis para columnas especificas:
+  SELECT campo1, campo2 FROM tabla;
+
+- Sintaxis para seleccionar todo (todos los campos):
+  SELECT * FROM tabla;
+
+
+2. SELECT CON WHERE (FILTRADO)
+---------------------------------------------------------
+La clausula WHERE se utiliza para extraer solo aquellos registros que cumplen una condicion especificada. Se combina con AND, OR y NOT.
+
+2.1. Operadores Logicos y de Comparacion
+- >  >=          : Mayor que, Mayor o igual que
+- <  <=          : Menor que, Menor o igual que
+- =              : Igual
+- <> !=          : Distinto
+- IS NULL        : Comprueba si el campo es nulo (vacio)
+- IS NOT NULL    : Comprueba si el campo NO es nulo
+- BETWEEN...AND  : Comprueba si el valor esta en un rango
+- LIKE           : Comprueba si cumple con un patron de texto
+- IN (...)       : Comprueba si el valor esta en una lista
+
+2.2. LIKE y NOT LIKE (Patrones)
+Se usan caracteres comodin:
+- % -> Coincide con cualquier numero de caracteres (incluso cero).
+- _ -> Coincide solo con UN caracter.
+
+Ejemplos:
+- Nombre empieza por A: LIKE 'A%'
+- Nombre termina por a: LIKE '%a'
+- 'a' es la segunda letra: LIKE '_a%'
+
+2.3. IN y NOT IN (Listas)
+Comprueba si un campo esta dentro de un conjunto de valores especifico.
+Ejemplo: WHERE color IN ('Rojo', 'Blanco', 'Negro')
+
+
+3. SELECT DISTINCT
+---------------------------------------------------------
+Se usa para descartar filas duplicadas en el resultado.
+Ejemplo: SELECT DISTINCT anio FROM peliculas;
+
+
+4. SELECT CON ORDER BY
+---------------------------------------------------------
+Ordena los resultados por una columna.
+- ASC  : Ascendente (por defecto)
+- DESC : Descendente
+
+4.1. Limitar resultados
+- LIMIT: Reduce la cantidad de filas a devolver.
+- OFFSET: Especifica desde donde empezar a contar (saltar filas).
+
+
+5. SELECT CON JOINS (COMBINAR TABLAS)
+---------------------------------------------------------
+Combina filas de dos o mas tablas usando una clave comun (PK y FK).
+
+5.1. INNER JOIN
+Combina filas SOLO si hay coincidencia en ambas tablas. Si un registro no tiene pareja en la otra tabla
