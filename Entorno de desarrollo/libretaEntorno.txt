@@ -1,0 +1,15 @@
+9/1/2026
+Versiones en fases de desarrollo/codificacion y pruebas
+pre-alfa
+alfa
+beta
+gamma
+delta...
+Version fase de producción/despliegue
+produccion
+--------------------
+plan->analis->diseñ->cod->prue->despl->mant
+
+pruebas -> cajablanca/caja negra -> encargadas de las pruebas -> varios departamentos (QA & QC)
+Garantía de calidad se encarga de la fase de pruebas y el control de calidad son los encargados del
+mantenimiento.
