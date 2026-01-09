@@ -1,16 +1,3 @@
-/*Realizar un programa que cree el diminutivo de un nombre que se solicitará por teclado.
-Si el nombre termina en O, se sustituye esta letra final por el sufijo “ITO” .
-Si termina en “A” , IDEM con el sufijo “ITA”.
-Si el nombre termina en E,I, o U se preguntará si es masculino o femenino y se procederá de la misma
-forma.
-Si el nombre termina en consonante se preguntará si es masculino o femenino y se procederá
-añadiendo ITO o ITA.
-Si no cumple ninguna de las anteriores condiciones, se mostrará por pantalla con “Nombre
-incorrecto”
-NOTAS:
-• El diminutivo se devolverá siempre en mayúsculas.
-• Si el dato del sexo es incorrecto se volverá a solicitar.
-• Debe usarse un método para crear el diminutivo.*/
 package tema3StringExtension;
 
 import java.util.*;
@@ -19,6 +6,44 @@ public class ejercicio5 {
     private static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args) {
+        String entrada = entrada();
+        String nombre = nombre(entrada);
+        System.out.println(nombre);
+    }
 
+    private static String entrada() {
+        System.out.println("Introduce un nombre");
+        String entrada = teclado.nextLine();
+        return entrada;
+    }
+
+    private static String nombre(String entrada) {
+        String nombre = "";
+        for (int i = 0; i < entrada.length() - 1; i++) {
+            char nom = entrada.charAt(i);
+            nombre += nom;
+        }
+        char c = entrada.charAt(entrada.length() - 1);
+        switch (c) {
+            case 'a':
+                nombre += "ITA";
+                break;
+            case 'o':
+                nombre += "ITO";
+                break;
+            default:
+                System.out.println("¿El nombre es masculino(m) o femenino(f)?");
+                char gen = teclado.next().charAt(0);
+                if (gen == 'm') {
+                    nombre += "ITO";
+                    System.out.println(nombre);
+                } else if (gen == 'f') {
+                    nombre += "ITA";
+                    System.out.println(nombre);
+                } else {
+                    System.out.println("Nombre incorrecto.");
+                }
+        }
+        return nombre;
     }
 }
