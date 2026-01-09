@@ -1,6 +1,8 @@
+package tema3StringExamen;
+
 import java.util.*;
 
-public class ejercicio2Examen {
+public class ejercicio2 {
     public static void main(String[] args) {
         // Generación de una clave random (aleatoria)
         String clave = generacionclaverandom();
