@@ -12,3 +12,13 @@ NOTAS:
 • Si el dato del sexo es incorrecto se volverá a solicitar.
 • Debe usarse un método para crear el diminutivo.*/
 package tema3StringExtension;
+
+import java.util.*;
+
+public class ejercicio5 {
+    private static Scanner teclado = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+    }
+}

@@ -1,4 +1,5 @@
-package tema2Ampliacion;
+package tema2Ampliation;
+
 import java.util.*;
 
 public class ejercicio04 {
@@ -37,8 +38,10 @@ public class ejercicio04 {
 
             suma += valor;
 
-            if (valor > mayor) mayor = valor;
-            if (valor < menor) menor = valor;
+            if (valor > mayor)
+                mayor = valor;
+            if (valor < menor)
+                menor = valor;
         }
 
         // calculamos la media
