@@ -24,3 +24,9 @@ pruebas de caja negra:
 -De clases de equivalencia de datos
 -De valores límites
 -De interfaces
+
+-----------
+Criterios para evaluar la calidad de sw(benchmark):
+-Pruebas de carga.
+-Pruebas de estrés.
+-Pruebas de estabilidad.
