@@ -66,3 +66,162 @@ Combina filas de dos o mas tablas usando una clave comun (PK y FK).
 
 5.1. INNER JOIN
 Combina filas SOLO si hay coincidencia en ambas tablas. Si un registro no tiene pareja en la otra tabla
+
+Aquí tienes el texto limpio, formateado y organizado para que lo copies y pegues directamente en un archivo .txt.
+
+He eliminado los números de página, los encabezados repetidos y unido las líneas cortadas para facilitar la lectura.
+
+
+5.3.- RIGHT JOIN
+----------------
+La combinación RIGHT JOIN es una combinación que especifica que todos los registros se obtendrán de la tabla del lado derecho de la declaración de combinación, incluso si la tabla de la izquierda no tiene ningún registro coincidente. En este caso, las columnas de la tabla de la izquierda devuelven valores NULL.
+
+
+6.- SELECT CON EXPRESIONES
+--------------------------
+Dentro de la declaración SELECT puedes crear una expresión con un número y un valor de campo usando operadores aritméticos. Un ejemplo en la tabla Empleados (dni, nombre, salario).
+
+6.1.- Funciones
+También puedes usar funciones en una expresión. Una función es una fórmula predefinida que toma uno o más argumentos como entrada, luego procesa los argumentos y devuelve un resultado.
+
+Hay diferentes tipos de funciones, como funciones matemáticas, funciones de cadena o funciones de fecha.
+
+> Funciones Matemáticas:
+Ejecutan una operación matemática generalmente basada en valores de entrada que se proporcionan como argumentos y devuelve un valor numérico como resultado de la operación. Operan con datos numéricos como decimales, enteros, float, reales, smallint y tinyint.
+
+Algunas funciones aritméticas son:
+• abs(number)
+• ceil(number)
+• floor(number)
+• mod(number1, number2)
+• power(number1, number2)
+• sqrt(number)
+
+> Funciones de Cadena (String):
+Es una función que toma uno o más caracteres o números como parámetros y devuelve un valor de carácter.
+
+Algunas funciones sobre String son:
+• lower(cadena) -> devuelve la cadena en minúscula.
+• upper(cadena) -> devuelve la cadena en mayúsculas.
+• trim(cadena) -> devuelve la cadena eliminando los espacios al principio y al final.
+• length(cadena) -> devuelve la longitud de la cadena, su número de carácteres.
+
+Enlaces de consulta MySQL:
+• Funciones numéricas.
+• Funciones con cadenas.
+• Funciones de fecha y hora.
+
+Ejemplos prácticos:
+• Mostrar el nombre de los empleados en mayúsculas.
+• Mostrar el nombre y el número de carácteres que tiene el nombre de cada empleado.
+• Mostrar el nombre y el año de nacimiento de los empleados.
+
+
+7.- SELECT CON AGREGADOS
+------------------------
+Además de las expresiones simples, SQL admite expresiones agregadas (o funciones) que permiten resumir información sobre un grupo de filas de datos.
+
+7.1.- Funciones de agregación comunes
+
+[FUNCION]         [DESCRIPCIÓN]
+COUNT(*)          Cuenta la cantidad de filas en el grupo si no se especifica columna.
+COUNT(columna)    Cuenta la cantidad de filas con valores distintos de NULL en la columna.
+MIN(columna)      Encuentra el valor numérico más pequeño en la columna especificada.
+MAX(columna)      Encuentra el valor numérico más grande en la columna especificada.
+AVG(columna)      Encuentra el valor numérico promedio en la columna especificada.
+SUM(columna)      Encuentra la suma de todos los valores numéricos en la columna.
+
+Consideremos la siguiente base de datos para ejemplos:
+• Propietarios (dni, nombre, dirección, fechaNacimiento)
+  - PK (dni)
+• Coches (matrícula, marca, color, precio, dniPropietario)
+  - PK (matricula) FK (dniPropietario -> Propietarios)
+
+Ejemplos de consultas (devuelven un único valor):
+• Muestra el número de coches Rojos de la base de datos.
+• Muestra el total de propietarios de coches.
+• Muestra el total de colores distintos de todos los coches.
+• Muestra el precio del coche más caro.
+• Muestra el precio del BMW más barato.
+• Muestra el precio medio de los coches rojos.
+
+
+8.- SELECT CON AGREGADOS AGRUPADOS (GROUP BY)
+---------------------------------------------
+La sentencia GROUP BY en SQL se utiliza para organizar datos idénticos en grupos. La agrupación es una de las tareas más importantes al trabajar con datos.
+
+Características:
+• Combina filas en grupos según los valores coincidentes en las columnas especificadas.
+• Se devuelve una fila para cada grupo.
+• Se utiliza junto con funciones de agregación (MIN, MAX, AVG, SUM, COUNT) para calcular una medida por grupo.
+• No es obligatorio incluir una función de agregación, pero si se usa, calculará el valor resumen para cada grupo.
+• Para ordenar los grupos, agregue la cláusula ORDER BY después de GROUP BY.
+
+Filtrado (WHERE vs HAVING):
+• WHERE: Se aplica antes de agrupar las filas (filtra filas).
+• HAVING: Se aplica después de agrupar las filas (filtra grupos).
+
+Considerando la siguiente base de datos:
+• Departamento (id, nombre)
+  - PK (id)
+• Empleados (dni, nombre, apellidos, salario, idDepartamento)
+  - PK (dni) FK (idDepartamento / Departamento)
+
+Podemos realizar las siguientes consultas:
+• Encontrar la cantidad de empleados de cada departamento (agrupar por departmentID y aplicar COUNT).
+• Obtener el nombre del departamento (unir tabla Empleados con Departamentos).
+• Mostrar los departamentos cuyo número de empleados es mayor a 3 (utilizar cláusula HAVING).
+• Encontrar el promedio del salario de los empleados de cada departamento (agrupar por idDepartamento y aplicar AVG).
+
+
+9.- SUBCONSULTAS
+----------------
+Una subconsulta MySQL es una consulta anidada dentro de otra consulta (SELECT, INSERT, UPDATE o DELETE) o dentro de otra subconsulta.
+• Consulta interna: La subconsulta.
+• Consulta externa: La consulta que la contiene.
+• Debe estar cerrada entre paréntesis.
+
+Ejemplo conceptual (VentasBD): Devolver empleados que trabajan en oficinas de Canadá.
+1. La subconsulta devuelve los códigos de oficina en Canadá.
+2. La consulta externa selecciona empleados cuyos códigos de oficina están en ese resultado.
+(Nota: Esto también se puede realizar mediante INNER JOIN).
+
+9.1.- Subconsultas con comparadores
+Puede utilizar operadores de comparación (=, >, <, >=, <=) para comparar un único valor devuelto por la subconsulta con la expresión en la cláusula WHERE.
+Ejemplo: Buscar clientes cuyos pagos sean mayores que el pago promedio (primero se obtiene el promedio, luego se compara).
+
+9.2.- Subconsultas con IN y NOT IN
+Si una subconsulta devuelve más de un valor, se utilizan operadores como IN o NOT IN.
+Ejemplo:
+1. Recuperar DNIs sin repetir de los pedidos (clientes que han pedido).
+2. Seleccionar nombres de clientes que NO están en esa lista (clientes sin pedidos).
+
+9.3.- Subconsultas en FROM
+El conjunto de resultados devuelto por una subconsulta se utiliza como una tabla temporal (tabla derivada). Es obligatorio crear un alias para esta tabla temporal.
+
+9.4.- Subconsultas relacionadas (Correlacionadas)
+A diferencia de una subconsulta independiente, una subconsulta correlacionada utiliza datos de la consulta externa y depende de ella. Se evalúa una vez por cada fila de la consulta externa.
+Ejemplo: Seleccionar productos cuyo precio sea mayor al promedio de su línea de productos específica.
+
+9.5.- Subconsultas con EXISTS
+Devuelve un valor booleano (VERDADERO o FALSO). Si la subconsulta devuelve alguna fila, EXISTS es verdadero. Se usa a menudo en subconsultas correlacionadas.
+
+
+10.- OTROS USOS DE SUBCONSULTAS
+-------------------------------
+
+10.1.- INSERT INTO SELECT
+Permite utilizar el resultado de una instrucción SELECT como fuente de datos para una instrucción INSERT, en lugar de usar VALUES.
+• Útil para copiar datos de otras tablas o resumir datos de varias tablas en una nueva.
+
+10.2.- DELETE o UPDATE con subconsultas
+Se puede utilizar una subconsulta para filtrar los datos que se desean eliminar o actualizar.
+
+
+11.- VISTAS
+-----------
+Una vista es una consulta con nombre almacenada en el catálogo de la base de datos (una tabla virtual).
+
+• Creación: CREATE VIEW nombre_vista AS ...
+• Uso: Una vez creada, se puede hacer referencia a ella como si fuera una tabla en instrucciones SQL (ej. SELECT * FROM nombre_vista).
+• Nota importante: Una vista no almacena físicamente los datos. Al consultarla, MySQL ejecuta la consulta subyacente y devuelve el resultado.
