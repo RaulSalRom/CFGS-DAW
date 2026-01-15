@@ -110,11 +110,8 @@ Jerarquía
 ·Clases
 :Pseudo-clases
 ::Pseudo-elementos
-
-
-
-
----------------------
+-------------------
+-------------------
 ::Pseudo-elementos
 @Reglas
 
