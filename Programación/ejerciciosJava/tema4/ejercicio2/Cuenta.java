@@ -34,7 +34,7 @@ public class Cuenta {
     }
 
     public void setNum(double num) {
-        this.num = saldo;
+        this.num = 0;
     }
 
     public double getNum() {
@@ -44,13 +44,14 @@ public class Cuenta {
     public double ingresoCuenta() {
         this.num++;
         this.ingreso = saldo + ingreso;
+        this.saldo = this.ingreso;
         return this.ingreso;
     }
 
     public double retiroCuenta() {
         this.num++;
-        this.retiro = saldo - retiro;
-        return this.retiro;
+        this.saldo = this.saldo - this.retiro;
+        return this.saldo;
     }
 
     public void consulta() {
