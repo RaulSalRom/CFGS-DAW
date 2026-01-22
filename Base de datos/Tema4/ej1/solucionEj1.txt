@@ -51,139 +51,46 @@ AND A.CIUDAD IN ('SEVILLA', 'MADRID');
 FROM ENVIOS 
 WHERE T IN (SELECT T FROM ARTICULOS WHERE CIUDAD = 'SEVILLA')
 AND P IN (SELECT P FROM PROVEEDORES WHERE CIUDAD = 'SEVILLA');
----------------------------------------------------------------
--- Obtener los valores de T# para los artículos que usan al menos 
---un componente que se puede obtener con el proveedor P1.
--- con subconsultas
 
--- Paso 1
-select c from envios 
-where p IN (select p from proveedores where ciudad = 'SEVILLA')
-AND t IN (select t from articulos where ciudad = 'SEVILLA');
 
--- Paso 2
-select c from envios
-where p IN ('P1', 'P3', 'P4')
-AND t IN ('T5', 'T7');
-
--- Paso 3 muestra el resultado
-
-12.-SELECT DISTINCT T 
-FROM ENVIOS 
-WHERE C IN (SELECT DISTINCT C FROM ENVIOS WHERE P = 'P1');
-. Consultas Básicas y Filtrado (WHERE, DISTINCT)
-Ejercicio 1: Detalles de artículos en CACERES.
-
-
-Solución: SELECT * FROM ARTICULOS WHERE CIUDAD = 'CACERES'; 
-
-
-Explicación: El asterisco (*) indica que se deben mostrar todas las columnas de la tabla. La cláusula WHERE filtra las 
-filas para que solo aparezcan aquellas donde la ciudad sea exactamente 'CACERES'.
-
-
-Ejercicio 2: Proveedores (P#) que abastecen el artículo T1.
-
-
-Solución: SELECT DISTINCT P FROM ENVIOS WHERE T = 'T1'; 
-
-
-Explicación: Se busca en la tabla ENVIOS, que es la que relaciona proveedores con artículos. Se usa DISTINCT para eliminar
- números de proveedores duplicados en el resultado, ya que un proveedor puede haber hecho varios envíos para el mismo artículo.
-
-
-Ejercicio 3: Pares únicos de (COLOR, CIUDAD) en componentes.
-
-
-Solución: SELECT DISTINCT COLOR, CIUDAD FROM COMPONENTES; 
-
-
-Explicación: DISTINCT se aplica a la combinación de ambos campos, asegurando que cada par de color y ciudad sea único
- en la lista final.
-
-2. Uso de Patrones y Lógica (LIKE, OR)
-Ejercicio 4: Artículos cuya ciudad acaba en 'D' o contiene una 'E'.
-
-
-Solución: SELECT T, CIUDAD FROM ARTICULOS WHERE CIUDAD LIKE '%D' OR CIUDAD LIKE '%E%'; 
-
-
-Explicación: Se utiliza el operador LIKE con el comodín %.
-
-
-%D: Significa que puede haber cualquier texto antes, pero debe terminar en 'D'.
-
-
-%E%: Significa que la 'E' puede estar en cualquier posición.
-
-
-OR: Basta con que se cumpla una de las dos condiciones para que el registro sea seleccionado.
-
-3. Relación entre Tablas (JOIN, ORDER BY)
-Ejercicio 6: Nombres de artículos (en orden alfabético) abastecidos por P1.
-
-
-Solución: SELECT DISTINCT A.TNOMBRE FROM ARTICULOS A JOIN ENVIOS E ON A.T = E.T WHERE E.P = 'P1' ORDER BY A.TNOMBRE ASC; 
-
-
-Explicación: * JOIN: Se necesita unir ARTICULOS (donde está el nombre) con ENVIOS (donde está el dato del proveedor)
- usando el campo común T#.
-
-
-
-Alias: Se usan A y E como nombres cortos para las tablas.
-
-
-
-ORDER BY: Organiza los resultados alfabéticamente de la A a la Z (ASC).
-
-
-Ejercicio 7: Componentes suministrados para cualquier artículo de MADRID.
-
-
-Solución: SELECT DISTINCT E.C FROM ENVIOS E JOIN ARTICULOS A ON E.T = A.T WHERE A.CIUDAD = 'MADRID'; 
-
-
-Explicación: Similar al anterior, vincula el envío con la ciudad del artículo para filtrar solo los de 'MADRID'.
-
-4. Subconsultas y Agregados (MIN, IN)
-Ejercicio 8: Componentes con el peso mínimo.
-
-
-Solución: SELECT C FROM COMPONENTES WHERE PESO = (SELECT MIN(PESO) FROM COMPONENTES); 
-
-
-Explicación: Es una subconsulta. La consulta interna (SELECT MIN(PESO)...) encuentra el valor numérico más pequeño de la
- columna peso. La consulta externa selecciona los componentes que tengan exactamente ese peso.
-
-
-
-
-Ejercicio 9: Proveedores que suministran los artículos T1 Y T2.
-
-
-Solución: SELECT DISTINCT P FROM ENVIOS WHERE T = 'T1' AND P IN (SELECT P FROM ENVIOS WHERE T = 'T2'); 
-
-Explicación: Primero busca los proveedores que envían el artículo 'T1'. Luego, con IN, verifica que esos mismos 
-proveedores también aparezcan en la lista de los que envían el artículo 'T2'.
-
-5. Consultas Complejas (Múltiples Joins y Filtros)
-Ejercicio 10: Proveedores que envían componentes ROJOS para artículos de SEVILLA o MADRID.
-
-
-Solución: SELECT DISTINCT E.P FROM ENVIOS E JOIN ARTICULOS A ON E.T = A.T JOIN COMPONENTES C ON E.C = C.C WHERE C.COLOR = 'ROJO' AND A.CIUDAD IN ('SEVILLA', 'MADRID'); 
-
-
-Explicación: Aquí se conectan tres tablas: ENVIOS, ARTICULOS (para la ciudad) y COMPONENTES (para el color). 
-El operador IN permite filtrar por varios valores a la vez ('SEVILLA' o 'MADRID').
-
-
-
-Ejercicio 11: Componentes de artículos de SEVILLA enviados por proveedores de SEVILLA (usando subconsultas).
-
-
-Solución: SELECT DISTINCT C FROM ENVIOS WHERE T IN (SELECT T FROM ARTICULOS WHERE CIUDAD = 'SEVILLA') AND P IN (SELECT P FROM PROVEEDORES WHERE CIUDAD = 'SEVILLA'); 
-
-
-Explicación: En lugar de usar JOIN, utiliza dos subconsultas para crear listas de códigos de artículos y proveedores 
-que pertenecen a 'SEVILLA', filtrando la tabla de envíos por ambos criterios simultáneamente.
+25.-
+select distinct c.COLOR from componentes c, envios e
+where e.c = c.C
+and e.p='P1';
+--
+select c.color from componentes c
+where c.c IN(select distinct c from envios where p='P1');
+
+26.-
+select e.*, p.ciudad, c.CIUDAD, a.CIUDAD from articulos a,
+proveedores p, envios e, componentes c
+where a.t=e.T
+and e.p=p.P
+and c.c =e.c
+and p.Ciudad = a.CIUDAD
+and c.CIUDAD = p.CIUDAD;
+
+27.-
+select c, SYM(cantidad) from envios
+group by c;
+--
+select c.c, c.NOMBRE from componentes c where c IN(
+    select c from envios 
+    group by c
+    HAVING SUM(cantidad) > 1000);
+
+29.-
+SELELCT e.t from envios e INNER JOIN componentes c ON e.c = c.C
+group by t
+having count(distinct ciudad) = 1;
+
+30.-
+select t from envios
+group by T
+having count(distinct c) = (selectcount(*)from componentes);
+
+31.-
+select p, t from envios e NATURAL JOIN componentes c 
+where c.COLOR = 'ROJO'
+group by p, t
+having count(*) > 1;
