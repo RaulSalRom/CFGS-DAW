@@ -122,3 +122,10 @@ Jerarquía
 ::marker
 ::before
 ::after
+
+-----------------
+IMB.  GML =>   SGML
+              /     \
+          HTML      XML
+                  /  |  \
+            XHTML   SVG    DBML
