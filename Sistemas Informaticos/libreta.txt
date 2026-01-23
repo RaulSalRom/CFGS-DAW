@@ -85,3 +85,7 @@
 
 28. Mostrar cuantos usuarios tiene registrados el sistema (el registro de usuarios está en el archivo /etc/passwd).
     cut -d: -f1 /etc/passwd | wc -l
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------   
