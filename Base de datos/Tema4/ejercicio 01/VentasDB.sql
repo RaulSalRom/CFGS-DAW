@@ -1656,7 +1656,7 @@ CREATE TABLE `Productos` (
   PRIMARY KEY (`idProducto`),
   KEY `lineasProducto` (`lineasProducto`),
   CONSTRAINT `Productos_ibfk_1` FOREIGN KEY (`lineasProducto`) REFERENCES `lineasProductos` (`lineasProducto`)
-) 
+) ;
 
 /*Data for the table `Productos` */
 
