@@ -1,9 +1,4 @@
 
-
-/*Table structure for table `Oficinas` */
-
-DROP TABLE IF EXISTS `Oficinas`;
-
 CREATE TABLE `Oficinas` (
   `idOficina` varchar(10) NOT NULL,
   `ciudad` varchar(50) NOT NULL,
@@ -15,7 +10,7 @@ CREATE TABLE `Oficinas` (
   `codPostal` varchar(15) NOT NULL,
   `territorio` varchar(10) NOT NULL,
   PRIMARY KEY (`idOficina`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ;
 
 /*Data for the table `Oficinas` */
 
@@ -35,9 +30,6 @@ insert  into `Oficinas`(`idOficina`,`ciudad`,`telefono`,`direccion1`,`direccion2
 
 ('7','London','+44 20 7877 2041','25 Old Broad Street','Level 7',NULL,'UK','EC2N 1HN','EMEA');
 
-
-/*Table structure for table `Empleados` */
-
 DROP TABLE IF EXISTS `Empleados`;
 
 CREATE TABLE `Empleados` (
@@ -54,9 +46,7 @@ CREATE TABLE `Empleados` (
   KEY `idOficina` (`idOficina`),
   CONSTRAINT `Empleados_ibfk_1` FOREIGN KEY (`encargado`) REFERENCES `Empleados` (`idEmpleado`),
   CONSTRAINT `Empleados_ibfk_2` FOREIGN KEY (`idOficina`) REFERENCES `Oficinas` (`idOficina`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `Empleados` */
+);
 
 insert  into `Empleados`(`idEmpleado`,`apellido`,`nombre`,`extension`,`email`,`idOficina`,`encargado`,`cargo`) values 
 
@@ -392,7 +382,7 @@ CREATE TABLE `Pedidos` (
   PRIMARY KEY (`idPedido`),
   KEY `idCliente` (`idCliente`),
   CONSTRAINT `Pedidos_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `Clientes` (`idCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 /*Data for the table `Pedidos` */
 
@@ -1067,7 +1057,7 @@ CREATE TABLE `Pagos` (
   `cantidad` decimal(10,2) NOT NULL,
   PRIMARY KEY (`idCliente`,`checkNumber`),
   CONSTRAINT `Pagos_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `Clientes` (`idCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 /*Data for the table `Pagos` */
 
@@ -1629,7 +1619,7 @@ CREATE TABLE `lineasProductos` (
   `htmlDescripcion` mediumtext,
   `imagen` mediumblob,
   PRIMARY KEY (`lineasProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 /*Data for the table `lineasProductos` */
 
@@ -1666,7 +1656,7 @@ CREATE TABLE `Productos` (
   PRIMARY KEY (`idProducto`),
   KEY `lineasProducto` (`lineasProducto`),
   CONSTRAINT `Productos_ibfk_1` FOREIGN KEY (`lineasProducto`) REFERENCES `lineasProductos` (`lineasProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) 
 
 /*Data for the table `Productos` */
 
@@ -1906,7 +1896,7 @@ CREATE TABLE `DetallesPedidos` (
   KEY `idProducto` (`idProducto`),
   CONSTRAINT `DetallesPedidos_ibfk_1` FOREIGN KEY (`idPedido`) REFERENCES `Pedidos` (`idPedido`),
   CONSTRAINT `DetallesPedidos_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `Productos` (`idProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 /*Data for the table `DetallesPedidos` */
 
@@ -7903,6 +7893,3 @@ insert  into `DetallesPedidos`(`idPedido`,`idProducto`,`cantidadPedida`,`PrecioU
 (10425,'S32_2509',11,'50.32',6),
 
 (10425,'S50_1392',18,'94.92',2);
-
-
-
