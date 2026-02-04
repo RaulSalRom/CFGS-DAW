@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "Hola Mundo"
-nombre="MiApp"
-saludo="Hola"
-echo $saludo $nombre
+if [[ -z $1 ]]
+then
+	read -p "¿Cuál es tu nombre? " nombre
+fi
