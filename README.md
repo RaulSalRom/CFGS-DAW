@@ -1,2 +1,2 @@
-Este es le repositorio en el que voy a subir todo el contenido que se den en las clases de CFGS de DAW, y https://github.com/RaulSalRom/Programacion-.git es donde tengo subido todo mi contenido que estoy aprendiendo el las clases de progrmación.
-This is my repository in which i´m going to upload all the content of my web aplication developer course, and here: https://github.com/RaulSalRom/Programacion-.git is where i hold all my exercise and mi notes from programming subject.
+Este es le repositorio en el que voy a subir todo el contenido que se den en las clases de CFGS de DAW.
+This is my repository in which i´m going to upload all the content of my web aplication developer course.
