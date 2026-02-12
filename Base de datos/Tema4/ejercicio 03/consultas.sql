@@ -78,7 +78,7 @@ ti.email_tecnico where ti.estado='Resuelto' group by te.email having count(ti.id
   select count(*) numTicketRes from ticket ti inner join tecnico te on ti.email_tecnico = te.email where 
   ti.estado='Resuelto' group by te.email order by numTicketRes asc) as subconsulta);
 -- 19. 
-select * from ticket order by fecha_creacion desc limit 1;
+select * from ticket where fecha_creacion = (select max(fecha_creacion) from ticket);
 
 -- 20. 
 select ht.estado, t.descripcion, tec.nombre as nombre_tecnico, u.nombre as nombre_usuario, ht.fecha
