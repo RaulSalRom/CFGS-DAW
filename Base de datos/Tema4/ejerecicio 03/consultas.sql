@@ -73,16 +73,15 @@ order by num_tickets desc
 limit 5;
 
 -- 18. 
-select t.descripcion, t.fecha_creacion, t.estado from ticket t
-where t.email_tecnico = (
-  select tec.email from tecnico tec
-  left join ticket ti on tec.email = ti.email_tecnico and ti.estado = 'Resuelto'
-  group by tec.email
-  having count(ti.idTicket) > 0
-  order by count(ti.idTicket) asc
-  limit 1
-);
-
+select ti.email_tecnico, ti.descripcion, ti.fecha_creacion, ti.estado from ticket ti inner join tecnico te on te.email =
+ti.email_tecnico where ti.estado='Resuelto' group by te.email having count(ti.idTicket) = ( select min(numTicketRes) from (
+  select count(*) numTicketRes from ticket ti inner join tecnico te on ti.email_tecnico = te.email where 
+  ti.estado='Resuelto' group by te.email order by numTicketRes asc) as subconsulta)
+union
+select ti.email_tecnico, ti.descripcion, ti.fecha_creacion, ti.estado 
+from ticket ti 
+where ti.email_tecnico IN ('t1.email', 't2.email')
+order by fecha_creacion desc;
 -- 19. 
 select * from ticket order by fecha_creacion desc limit 1;
 
