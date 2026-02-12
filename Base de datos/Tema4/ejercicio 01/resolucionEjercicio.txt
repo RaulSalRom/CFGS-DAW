@@ -1,0 +1,82 @@
+Ejercicio 1. Base de datos Ventas
+
+-Mostrar los empleados (idEmpleado, nombre, apellido) cuyo trabajo es 'Sales Rep'.
+
+SELECT idEmpleado, nombre, apellido1 FROM Empleados WHERE puesto = 'Sales Rep';
+
+-Mostrar los empleados (idEmpleado, nombre, apellidos) que trabajan en la oficina con código 4 y cuyo trabajo es ‘Sales Rep’.
+
+select idEmpleado, nombre, apellido1 from Empleados where idOficina = 4 and puesto = 'Sales Rep';
+
+-Mostrar los empleados (idEmpleado, nombre, apellidos) que trabajan en la oficina 2 o 4 en orden descendente por idEmpleado.
+
+select idEmpleado, nombre, apellido1 from Empleados where idOficina = 4 or idOficina = 2 ORDER BY idEmpleado DESC;
+
+-Mostrar el nombre y la cantidad de 'Motorcycles' cuya cantidad en stock es de 5000 a 7000 en orden ascendente por cantidad.
+
+SELECT nombre, cantidadStock FROM Productos WHERE gama = 'Motorcycles' AND cantidadStock BETWEEN 5000 AND 7000 ORDER BY cantidadStock ASC;
+
+-Mostrar el nombre de los automóviles ('Classic Cars', 'Trucks and Buses', 'Vintage Cars') cuya cantidad en stock es mayor a 6000 y con precio de compra es menor o igual a 90 dólares.
+
+SELECT nombre FROM Productos WHERE gama in('Classic cars', 'Trucks and Buses', 'Vintage Cars') AND cantidadStock < 6000 and precioVenta <= 90; 
+
+-Mostrar los 3 primeros productos (nombre, escala y precio de compra) con escala 1:10 o 1:18 en orden ascendente por precio.
+
+SELECT nombre, dimensiones, precioVenta FROM Productos WHERE dimensiones in('1:10', '1:18') order by precioVenta asc;
+
+-Mostrar el código de oficina y la ciudad de aquellas oficinas con un provincia desconocido (NULL).
+
+SELECT idOficina, ciudad FROM Oficinas WHERE provincia IS NULL;
+
+-Mostrar el id de oficina, ciudad y provincia de aquellas oficinas que no están en 'USA'. ni en 'Australia'.
+
+select idOficina, ciudad, provincia from Oficinas where ciudad not in ('USA', 'Australia');
+
+-Mostrar el campo ‘idPedido’ de los pedidos entregados en abril de 2005.
+
+select idPedido from Pedidos where fechaEntrega in('abril','2005');
+
+-Mostrar todos los datos de los clientes cuyo país sea uno de estos: 'USA', 'France', 'Poland' o 'Spain' y cuyos códigos postales comiencen con ‘4’.
+
+select * from Clientes where pais in ('USA', 'France', 'Poland', 'Spain') and codPostal like '4%';
+
+-Mostrar todos los datos de los clientes cuyo país no sea uno de estos: 'USA', 'France' o 'Poland'.
+
+select * from Clientes where pais not in ('USA', 'France', 'Poland', 'Spain');
+
+-Mostrar el código y el nombre de los productos cuyos nombres contengan la palabra "Ford" en orden ascendente por cantidad en stock.
+
+select idProducto, nombreProducto from Productos where nombreProducto in ('Ford') order by cantidadEnStock ASC;
+
+-Mostrar el número y el nombre de los clientes cuyos nombres terminen en "co."
+
+select telefono, nombreCliente from Clientes where nombreCliente like '%co.';
+
+-Mostrar el apellido, el nombre y la ciudad de los empleados de las oficinas en 'USA' donde trabajan.
+
+SELECT e.apellido, e.nombre, o.ciudad FROM Empleados e JOIN Oficinas o ON e.idOficina = o.idOficina WHERE o.pais = 'USA';
+
+-Mostrar la dirección de correo electrónico de los empleados y el número de teléfono de la oficina donde trabajan.
+
+select email, telefono from Empleados join Oficinas;
+
+-Mostrar el nombre y el apellido de los clientes y el nombre y el apellido del empleado de ventas relacionado con ellos.
+
+select nombreCliente, apellidoContacto, nombre, apellido from Clientes join Empleados;
+
+-Mostrar todos los pagos (número de cheque, importe y nombre del cliente) en orden descendente por importe.
+
+SELECT p.checkNumber, p.cantidad, c.nombreCliente FROM Pagos p JOIN Clientes c ON p.idCliente = c.idCliente ORDER BY p.cantidad DESC;
+
+-Mostrar el id y nombre de los productos así como la descripción textual de su línea de productos; solo de los productos con precios de venta menores a '80' dólares.
+
+SELECT p.idProducto, p.nombreProducto, l.textoDescripcion FROM Productos p JOIN lineasProductos l ON p.lineasProducto = l.lineasProducto WHERE p.precioDeVenta < 80;
+
+-Mostrar el nombre y la cantidad de productos que incluye el pedido '10100'.
+
+SELECT p.nombreProducto, dp.cantidadPedida FROM Productos p JOIN DetallesPedidos dp ON p.idProducto = dp.idProducto WHERE dp.idPedido = 10100;
+
+-Incluir la fecha y el estado de los pedidos en la consulta anterior.
+
+SELECT p.nombreProducto, dp.cantidadPedida, pe.fechaPedido, pe.estado FROM Productos p JOIN DetallesPedidos dp ON p.idProducto = dp.idProducto JOIN Pedidos pe ON dp.idPedido = pe.idPedido WHERE pe.idPedido = 10100;
+

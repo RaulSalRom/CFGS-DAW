@@ -1,0 +1,23 @@
+1. Crea una vista llamada V_CLIENTES_VALENCIA que muestre el nombre, apellidos y ciudad de todos los clientes que viven en 'Valencia'.
+
+create view V_CLIENTES_VALENCIA as select nombreCliente, apellidoContacto, ciudad from Clientes where ciudad = 'Valencia';
+
+2. Crea una vista llamada V_PEDIDOS_DETALLADOS. Debe mostrar el ID del pedido, la fecha, el total, y el nombre completo del cliente (nombre + apellidos) y el nombre completo del comercial.
+
+create view V_PEDIDOS_DETALLADOS as select idPedido, fechaPedido, cantidad, nombreCliente, apellidoContacto, nombre from Pedidos natural join Empleados natural join Clientes natural join Pagos;
+
+3. Crea una vista llamada V_ESTADISTICAS_COMERCIAL. Debe mostrar el nombre del comercial y la suma total de todos sus pedidos realizados, pero solo para aquellos comerciales que hayan vendido más de 1000 euros en total.
+
+CREATE VIEW V_ESTADISTICAS_COMERCIAL AS SELECT CONCAT(e.nombre, ' ', e.apellido) AS nombreComercial, SUM(dp.cantidadPedida * dp.PrecioUnidad) AS totalVendido FROM Empleados e JOIN Clientes c ON e.idEmpleado = c.idEmpleadoResponsable JOIN Pedidos p ON c.idCliente = p.idCliente JOIN DetallesPedidos dp ON p.idPedido = dp.idPedido GROUP BY e.idEmpleado, e.nombre, e.apellido HAVING totalVendido > 1000;
+
+4. Una vez creada la vista V_CLIENTES_VALENCIA, ¿cómo consultarías solo a los clientes cuyo apellido sea 'García' usando esa vista?
+
+SELECT * FROM V_CLIENTES_VALENCIA WHERE apellidoContacto = 'García';
+
+5. Cambia la vista V_CLIENTES_VALENCIA para que ahora también incluya la columna categoría
+
+CREATE OR REPLACE VIEW V_CLIENTES_VALENCIA AS SELECT idCliente, nombreCliente, ciudad, telefono, limiteCredito, CASE WHEN limiteCredito > 100000 THEN 'VIP' WHEN limiteCredito > 50000 THEN 'Preferente' ELSE 'Estándar' END AS categoria FROM Clientes WHERE ciudad = 'Valencia';
+
+6. Elimina la vista V_PEDIDOS_DETALLADOS de la base de datos 
+
+DROP VIEW V_PEDIDOS_DETALLADOS;
