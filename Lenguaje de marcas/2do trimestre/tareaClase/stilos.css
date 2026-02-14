@@ -1,0 +1,262 @@
+/* --- ESTÉTICA GENERAL --- */
+body {
+  background-color: #f5f5f5;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.carousel-container {
+  width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 1. IMPLEMENTACIÓN DEL ARTÍCULO DE CHROME --- */
+.scroll-snap-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  /* La clave del tutorial: */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  /* Ocultar barra scroll */
+  scrollbar-width: none;
+  padding-bottom: 20px;
+}
+
+.scroll-snap-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  /* Alineación magnética */
+  position: relative;
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
+}
+
+.info {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* --- 2. BOTONERA EXTERNA --- */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+  background: #111;
+  border-radius: 50px;
+}
+
+.btn {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #333;
+}
+
+.btn.disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Grupo dinámico: apilamos los botones en el mismo sitio */
+.dynamic-group {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.dynamic-group .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px 14px;
+  display: none;
+  /* Ocultos por defecto */
+}
+
+.default-start {
+  display: block !important;
+}
+
+/* Botón inicial visible */
+.placeholder {
+  display: block !important;
+}
+
+/* Placeholder inicial visible */
+
+/* --- 3. LÓGICA DE VISIBILIDAD (CORREGIDO) --- */
+
+/* Si estamos en el Slide 1 (#n1) */
+/* Solo activamos el botón NEXT que va al n2 */
+body:has(#n1:target) .controls .next.to-n2 {
+  display: block !important;
+}
+
+body:has(#n1:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 2 (#n2) */
+body:has(#n2:target) .controls .prev.to-n1 {
+  display: block !important;
+}
+
+/* Anterior va al 1 */
+body:has(#n2:target) .controls .next.to-n3 {
+  display: block !important;
+}
+
+/* Siguiente va al 3 */
+body:has(#n2:target) .controls .placeholder,
+body:has(#n2:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 3 (#n3) */
+body:has(#n3:target) .controls .prev.to-n2 {
+  display: block !important;
+}
+
+body:has(#n3:target) .controls .next.to-n4 {
+  display: block !important;
+}
+
+body:has(#n3:target) .controls .placeholder,
+body:has(#n3:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 4 (#n4) */
+body:has(#n4:target) .controls .prev.to-n3 {
+  display: block !important;
+}
+
+body:has(#n4:target) .controls .next.to-n5 {
+  display: block !important;
+}
+
+body:has(#n4:target) .controls .placeholder,
+body:has(#n4:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 5 (#n5) */
+body:has(#n5:target) .controls .prev.to-n4 {
+  display: block !important;
+}
+
+body:has(#n5:target) .controls .next.to-n6 {
+  display: block !important;
+}
+
+body:has(#n5:target) .controls .placeholder,
+body:has(#n5:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 6 (#n6) */
+body:has(#n6:target) .controls .prev.to-n5 {
+  display: block !important;
+}
+
+body:has(#n6:target) .controls .next.to-n7 {
+  display: block !important;
+}
+
+body:has(#n6:target) .controls .placeholder,
+body:has(#n6:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 7 (#n7) */
+body:has(#n7:target) .controls .prev.to-n6 {
+  display: block !important;
+}
+
+body:has(#n7:target) .controls .next.to-n8 {
+  display: block !important;
+}
+
+body:has(#n7:target) .controls .placeholder,
+body:has(#n7:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 8 (#n8) */
+body:has(#n8:target) .controls .prev.to-n7 {
+  display: block !important;
+}
+
+body:has(#n8:target) .controls .next.to-n9 {
+  display: block !important;
+}
+
+body:has(#n8:target) .controls .placeholder,
+body:has(#n8:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 9 (#n9) */
+body:has(#n9:target) .controls .prev.to-n8 {
+  display: block !important;
+}
+
+body:has(#n9:target) .controls .next.to-n10 {
+  display: block !important;
+}
+
+body:has(#n9:target) .controls .placeholder,
+body:has(#n9:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 10 (#n10) */
+body:has(#n10:target) .controls .prev.to-n9 {
+  display: block !important;
+}
+
+body:has(#n10:target) .controls .placeholder,
+body:has(#n10:target) .controls .default-start {
+  display: none !important;
+}
+
+/* Si estamos en el Slide 10 (Final) */
+body:has(#n10:target) .controls .to-n9 {
+  display: block !important;
+}
+
+body:has(#n10:target) .controls .placeholder,
+body:has(#n10:target) .controls .default-start {
+  display: none !important;
+}
