@@ -91,7 +91,6 @@
       pointer-events: none;
     }
 
-    /* Grupo dinámico: apilamos los botones en el mismo sitio */
     .dynamic-group {
       position: relative;
       width: 40px;
@@ -112,17 +111,10 @@
       display: block !important;
     }
 
-    /* Botón inicial visible */
     .placeholder {
       display: block !important;
     }
 
-    /* Placeholder inicial visible */
-
-    /* --- 3. LÓGICA DE VISIBILIDAD (CORREGIDO) --- */
-
-    /* Si estamos en el Slide 1 (#n1) */
-    /* Solo activamos el botón NEXT que va al n2 */
     body:has(#n1:target) .controls .next.to-n2 {
       display: block !important;
     }
@@ -172,7 +164,6 @@
       display: none !important;
     }
 
-    /* Si estamos en el Slide 5 (#n5) */
     body:has(#n5:target) .controls .prev.to-n4 {
       display: block !important;
     }
@@ -213,7 +204,6 @@
       display: none !important;
     }
 
-    /* Si estamos en el Slide 8 (#n8) */
     body:has(#n8:target) .controls .prev.to-n7 {
       display: block !important;
     }
@@ -227,7 +217,7 @@
       display: none !important;
     }
 
-    /* Si estamos en el Slide 9 (#n9) */
+
     body:has(#n9:target) .controls .prev.to-n8 {
       display: block !important;
     }
