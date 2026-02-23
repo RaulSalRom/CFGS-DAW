@@ -1,78 +1,90 @@
--- 9 consultas SQL más complejas para GestionGimnasio
--- 1) Contar membresías activas por tipo
-SELECT tipo, COUNT(*) AS num_membresias
-FROM Membresia
-WHERE estado = 'Activa'
-GROUP BY tipo;
+--Obtiene los entrenadores que imparten más de 2 clases, mostrando su nombre completo y especialidad 
+select u.nombre_completo, e.especialidad, COUNT(c.id_clase) as total_clases
+from Usuario u
+inner join Entrenador e on u.id_usuario = e.id_entrenador
+inner join Clase c on e.id_entrenador = c.id_entrenador
+group by u.id_usuario
+having total_clases >= 2;
 
--- 2) Entrenadores: nº de clases impartidas y total de asistencias
-SELECT u.nombre_completo AS entrenador, e.especialidad,
-       COUNT(DISTINCT c.id_clase) AS num_clases,
-       COUNT(a.id_asistencia) AS total_asistencias
-FROM Entrenador e
-JOIN Usuario u ON e.id_entrenador = u.id_usuario
-LEFT JOIN Clase c ON c.id_entrenador = e.id_entrenador
-LEFT JOIN Asistencia a ON a.id_clase = c.id_clase
-GROUP BY e.id_entrenador, u.nombre_completo, e.especialidad
-ORDER BY total_asistencias DESC;
+-- Muestra todos los socios y el total de clases a las que han asistido, incluyendo los que no han ido a ninguna 
+select u.nombre_completo, COUNT(a.id_clase) as asistencias_totales
+from Socio s
+inner join Usuario u on s.id_socio = u.id_usuario
+left join Asistencia a on s.id_socio = a.id_socio
+group by u.id_usuario;
 
--- 3) Socios con >= 2 asistencias en el último mes
-SELECT u.nombre_completo, COUNT(a.id_asistencia) AS asistencias_ultimo_mes
-FROM Asistencia a
-JOIN Socio s ON a.id_socio = s.id_socio
-JOIN Usuario u ON s.id_socio = u.id_usuario
-WHERE a.fecha_asistencia >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
-GROUP BY u.nombre_completo
-HAVING asistencias_ultimo_mes >= 2
-ORDER BY asistencias_ultimo_mes DESC;
+--Lista todos los tipos de equipamiento y cuántas clases los utilizan actualmente, 
+--asegurando que aparezcan incluso los equipos que no se usan en ninguna clase 
+select eq.nombre_equipo, COUNT(ce.id_clase) as veces_usado
+from Clase_Equipamiento ce
+right join  Equipamiento eq on ce.id_equipamiento = eq.id_equipamiento
+group by eq.nombre_equipo;
 
--- 4) Ingresos mensuales por método de pago
-SELECT DATE_FORMAT(fecha_pago, '%Y-%m') AS mes, metodo_pago, SUM(cantidad) AS total_ingresos
-FROM Pago
-GROUP BY mes, metodo_pago
-ORDER BY mes DESC, total_ingresos DESC;
+--Creamos una tabla histórica para auditoría y movemos las membresías vencidas mediante un SELECT 
+insert into Historico_Membresias_Vencidas (id_socio, tipo_membresia, fecha_fin_real)
+select id_socio, tipo, fecha_fin
+from Membresia
+where estado = 'Vencida';
 
--- 5) Equipamiento más utilizado por clases
-SELECT eq.nombre_equipo, COUNT(*) AS veces_utilizado
-FROM Clase_Equipamiento ce
-JOIN Equipamiento eq ON ce.id_equipamiento = eq.id_equipamiento
-GROUP BY eq.id_equipamiento, eq.nombre_equipo
-ORDER BY veces_utilizado DESC;
+--Cambiamos el estado a 'Inactivo' de todos los socios que tienen su membresía vencida 
+--y no han renovado (no tienen ninguna membresía 'Activa') 
+update Socio
+set estado = 'Inactivo'
+where id_socio IN (
+    select id_socio 
+    from Membresia 
+    where estado = 'Vencida' 
+    and id_socio not in (select id_socio from Membresia where estado = 'Activa')
+);
 
--- 6) Plazas disponibles por clase (cupo - inscritos)
-SELECT c.id_clase, c.nombre_clase, c.fecha, c.hora, c.cupo_maximo,
-       COALESCE(COUNT(a.id_asistencia), 0) AS inscritos,
-       (c.cupo_maximo - COALESCE(COUNT(a.id_asistencia), 0)) AS plazas_disponibles
-FROM Clase c
-LEFT JOIN Asistencia a ON c.id_clase = a.id_clase
-GROUP BY c.id_clase, c.nombre_clase, c.fecha, c.hora, c.cupo_maximo
-ORDER BY plazas_disponibles ASC;
+--Borramos los registros de asistencia de las clases que no tuvieron ningún cupo lleno 
+--(clases donde el cupo máximo es muy alto pero la asistencia fue menor al 10%) 
 
--- 7) Membresías que caducan en los próximos 30 días
-SELECT u.nombre_completo, m.tipo, m.fecha_fin
-FROM Membresia m
-JOIN Socio s ON m.id_socio = s.id_socio
-JOIN Usuario u ON s.id_socio = u.id_usuario
-WHERE m.fecha_fin BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 30 DAY)
-ORDER BY m.fecha_fin;
+delete from Asistencia
+where id_clase in (
+    select id_clase 
+    from Clase 
+    where cupo_maximo > 15 
+    and id_clase not in (select id_clase from Asistencia group by id_clase HAVING COUNT(*) > 2)
+);
 
--- 8) Entrenador con mayor media de asistencias por clase
-SELECT u.nombre_completo AS entrenador, ROUND(AVG(t.cnt),2) AS media_asistencias
-FROM (
-    SELECT c.id_entrenador, c.id_clase, COUNT(a.id_asistencia) AS cnt
-    FROM Clase c
-    LEFT JOIN Asistencia a ON c.id_clase = a.id_clase
-    GROUP BY c.id_clase, c.id_entrenador
-) AS t
-JOIN Entrenador e ON t.id_entrenador = e.id_entrenador
-JOIN Usuario u ON e.id_entrenador = u.id_usuario
-GROUP BY u.nombre_completo
-ORDER BY media_asistencias DESC
-LIMIT 1;
+--Vista que genera el "Dashboard de Gimnasio": une Usuario, Socio, Membresia y Entrenador 
+--para ver quién entrena a quién y qué membresía tiene cada uno 
 
--- 9) Socios activos sin pagos en los últimos 6 meses
-SELECT u.nombre_completo, s.id_socio
-FROM Socio s
-JOIN Usuario u ON s.id_socio = u.id_usuario
-LEFT JOIN Pago p ON s.id_socio = p.id_socio AND p.fecha_pago >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
-WHERE p.id_pago IS NULL AND s.estado = 'Activo';
+create view Vista_Dashboard_Gimnasio as
+select 
+    u_socio.nombre_completo as Socio,
+    m.tipo as Tipo_Membresia,
+    m.estado as Estado_Pago,
+    c.nombre_clase as Clase_Frecuente,
+    u_entrenador.nombre_completo as Instructor
+from Socio s
+join Usuario u_socio on s.id_socio = u_socio.id_usuario
+join Membresia m on s.id_socio = m.id_socio
+left join Asistencia a on s.id_socio = a.id_socio
+left join Clase c on a.id_clase = c.id_clase
+left join Entrenador e on c.id_entrenador = e.id_entrenador
+left join Usuario u_entrenador on e.id_entrenador = u_entrenador.id_usuario;
+
+/* Consulta para verificar el Dashboard */
+select * from Vista_Dashboard_Gimnasio;
+
+
+--  Contar membresías activas por tipo
+select tipo, COUNT(*) as num_membresias
+from Membresia
+where estado = 'Activa'
+group by tipo;
+
+--  Equipamiento más utilizado por clases
+select eq.nombre_equipo, COUNT(*) as veces_utilizado
+from Clase_Equipamiento ce
+join Equipamiento eq on ce.id_equipamiento = eq.id_equipamiento
+group by eq.id_equipamiento, eq.nombre_equipo
+order by veces_utilizado desc;
+
+
+--  indicame el nombre del usuario y la fecha en la que empezó en el gimnasio
+select u.nombre, m.fecha_inicio from Membresia m join Socio s 
+on m.id_socio = s.id_socio join Usuario u on s.id_socio = u.id_usuario 
+order by m.fecha_inicio desc;
