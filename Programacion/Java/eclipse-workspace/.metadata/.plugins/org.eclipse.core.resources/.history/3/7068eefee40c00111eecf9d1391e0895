@@ -1,0 +1,31 @@
+package ActividadesArray;
+
+public class ejercicio07 {
+
+    public static void main(String[] args) {
+    
+        int[] numeros = {1, 2, 3, 4, 5};
+        
+        int[] numerosInvertidos = new int[numeros.length];
+        
+        int j = 0;
+        
+        for (int i = numeros.length - 1; i >= 0; i--) {
+            
+            numerosInvertidos[j] = numeros[i];
+            
+            j++; 
+        }
+        
+        
+        System.out.println("Resultado esperado:");
+        
+        for (int i = 0; i < numerosInvertidos.length; i++) {
+        
+        	System.out.print(numerosInvertidos[i] + " ");
+        
+        }
+    
+    }
+
+}

@@ -1,0 +1,22 @@
+package ActividadesArray;
+
+public class ejercicio07 {
+
+	public static void main(String[]args) {
+	
+		int[] numeros = {1,2,3,4,5};
+		
+		int[] numerosInvertidos = {numeros.length};
+		
+		for(int i = numeros.length; i > 0; i-- ) {
+		
+			for(int j = 0; j < numeros.length; j++) {
+				
+				numeros[i] = numerosInvertidos[j];
+				
+			}
+		}
+		System.out.println(numerosInvertidos);
+		
+}
+}

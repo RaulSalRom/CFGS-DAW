@@ -1,0 +1,25 @@
+package ActividadesArray;
+
+public class ejercicio05 {
+		
+		public static void main(String[]args) {
+
+		int[] numeros = { 11, 2, 3, 44, 5, 6, 7, 28, 9, 10};	
+		
+		int mayor = Integer.MIN_VALUE;
+		
+		for (int i = 0; i < numeros.length; i++) {	
+			
+			if(mayor < numeros[i]) {
+
+				mayor = numeros[i];
+			
+			}
+		
+		}
+		
+		System.out.println("El número más grande es: "+ mayor);
+
+		}
+}
+

@@ -1,0 +1,27 @@
+package ActividadesArray;
+
+import java.util.Arrays;
+
+public class ejercicio08 {
+
+	public static void main (String[]args) {
+		
+		int[] numeros = {1, 2, 3, 4, 5};
+		
+		int[] numerosClonados = new int[numeros.length];
+        
+        int j = 0;
+        
+        for(int i = 0; i < numeros.length; i++) {
+        	
+        	 numerosClonados[j] = numeros[i];
+             
+             j++; 
+        	
+        }
+        
+        System.out.println(Arrays.toString(numeros));
+        
+        System.out.println(Arrays.toString(numerosClonados));
+        }
+}
