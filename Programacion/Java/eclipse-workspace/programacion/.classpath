@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="OOP Activities"/>
 	<classpathentry kind="src" path="Activities"/>
+	<classpathentry kind="src" path="SimulacroExamenTema4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

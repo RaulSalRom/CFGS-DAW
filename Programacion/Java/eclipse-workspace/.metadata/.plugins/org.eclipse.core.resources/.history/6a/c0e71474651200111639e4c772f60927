@@ -1,0 +1,21 @@
+package OrdenacionAlumnosClase;
+
+
+
+public class Alumno {
+	
+	private String nombre;
+	
+	private double nota;
+	
+	
+	public void setterNota(double nota) throw new NotaInvalidaExcepcion{
+		
+		if(nota < 0) {
+			throw new NotaInvalidaExcepcion();
+		}
+	}
+	
+}
+
+
