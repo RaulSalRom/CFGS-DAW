@@ -1,4 +1,4 @@
-package Programación.ejerciciosJava.tema4.ejercicio2;
+package ejercicio02;
 
 public class Cuenta {
     private double saldo;

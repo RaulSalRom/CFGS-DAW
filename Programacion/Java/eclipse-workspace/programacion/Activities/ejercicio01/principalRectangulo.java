@@ -1,4 +1,4 @@
-package tema4;
+package ejercicio01;
 
 import java.util.*;
 

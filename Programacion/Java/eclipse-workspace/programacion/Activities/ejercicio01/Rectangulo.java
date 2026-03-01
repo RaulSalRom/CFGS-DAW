@@ -1,4 +1,4 @@
-package Programación.ejerciciosJava.tema4.ejercicio1;
+package ejercicio01;
 
 public class Rectangulo {
     private double longitud = 1;

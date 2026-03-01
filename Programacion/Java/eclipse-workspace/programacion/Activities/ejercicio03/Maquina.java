@@ -1,3 +1,4 @@
+package ejercicio03;
 public class Maquina {
     private int depositoCafe;
     private int depositoLeche;
