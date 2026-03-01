@@ -9,13 +9,12 @@ public class ejercicio09 {
 		int[] numeros = {1, 2, 3, 4, 5};
 		
 		int[] numerosVariable = {1, 2, 3, 4, 5};
-		//aquí miramos si ocupan el mismo espacio de memoria
+		
 		if(numeros.equals(numerosVariable)) {
 			System.out.println("Los arrays son iguales");
 		}else {
 			System.out.println("Los arrays no solo los mismos");
 		}
-		//aquí miramos si el contenido del array es el mismo
 		if(Arrays.equals(numeros, numerosVariable)) {
 			System.out.println("El contenido de los arrays son el mismo");
 		}else {
