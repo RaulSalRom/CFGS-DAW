@@ -1,0 +1,14 @@
+package ActividadesArray;
+
+public class alumno {
+	double nota;
+	String nombre;
+
+
+public alumno(double nota, String nombre) {
+	
+	this.nota = nota;
+	
+	this.nombre = nombre;
+}
+}

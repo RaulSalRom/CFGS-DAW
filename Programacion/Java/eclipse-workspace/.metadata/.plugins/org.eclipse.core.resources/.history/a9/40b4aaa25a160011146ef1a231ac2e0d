@@ -1,0 +1,11 @@
+package ActividadesArray;
+
+import java.util.*;
+
+public class ejercicio14 {
+ 
+	public static void main (String[]args) {
+		
+		Alumno[] clase = new Alumno[3];
+	}
+}

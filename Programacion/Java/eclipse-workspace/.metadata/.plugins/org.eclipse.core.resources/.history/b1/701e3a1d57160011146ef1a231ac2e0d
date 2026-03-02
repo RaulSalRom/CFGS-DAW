@@ -1,0 +1,24 @@
+package ActividadesArray;
+
+import java.util.*;
+
+public class ejercicio12 {
+
+	public static void main(String[]args) {
+		
+		int[] arrays = {1, 2, 3, 4, 5};
+		
+		System.out.println(Arrays.toString(arrays));
+		
+		multiplicarPorDos(arrays);
+		
+		System.out.println(Arrays.toString(arrays));
+	}
+	public static void multiplicarPorDos(int[] arrays) {
+		
+		for(int i  : arrays) {
+			
+			i *= 2;
+		}
+	}
+}

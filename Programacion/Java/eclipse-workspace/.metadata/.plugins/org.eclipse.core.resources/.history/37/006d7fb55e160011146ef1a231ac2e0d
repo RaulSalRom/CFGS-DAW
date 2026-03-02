@@ -1,0 +1,22 @@
+package ActividadesArray;
+
+public class Alumno implements Comparable<Alumno> {
+
+    double nota;
+    String nombre;
+
+    public Alumno(double nota, String nombre) {
+        this.nota = nota;
+        this.nombre = nombre;
+    }
+    
+    @Override
+    public int compareTo(Alumno otro) {
+        // Comparamos notas (Tema 4.3, pág 22)
+        if (this.nota < otro.nota) return -1;
+        
+        if (this.nota > otro.nota) return 1;
+        
+        return 0;
+    }
+}

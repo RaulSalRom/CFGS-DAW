@@ -1,0 +1,61 @@
+package ActividadesArray;
+
+import java.util.*;
+
+public class ejercicio14 {
+ 
+	public static void main (String[]args) {
+		//creamos un array que almacena objetos
+		Alumno[] clase = new Alumno[3];
+		//objeto 1
+		clase[0] = new Alumno(3.2 , "JC");
+		//objeto 2
+		clase[1] = new Alumno(4.9 , "Alvaro");
+		//objeto 3
+		clase[2] = new Alumno(0.2 , "Alfonso");
+		//for each para imprimir todos los alumnos
+		for(Alumno a : clase) {
+			
+				 System.out.println("Nombre: "+a.nombre+", nota: "+a.nota);
+				 System.out.println();
+		}
+		Arrays.sort(clase); 
+
+	    // 2. Imprimimos para ver el resultado
+		Alumno mejorAlumno = clase[0];
+		
+		for (int i = 1; i < clase.length; i++) {
+			
+	        if (clase[i].nota > mejorAlumno.nota) {
+	        	
+	            mejorAlumno = clase[i]; // Actualizamos el mejor
+	            
+	        }
+	    }
+
+	    // 3. Mostrar el resultado
+	    
+		System.out.println("El alumno con mejor nota es: " + mejorAlumno.nombre + " con un " + mejorAlumno.nota);
+	    
+	    for(int i = 0; i < clase.length; i++) {
+	    	
+	    	clase[i].nota += 1;
+	    
+	    }
+	    
+	    System.out.println("Tras subirle un punto a cada alumno se queda:");
+	    
+	    System.out.println();
+	    
+	    for(Alumno a : clase) {
+			
+			 System.out.println("Nombre: "+a.nombre+", nota: "+a.nota);
+			
+			 System.out.println();
+			 	 
+	    }
+	    
+	    
+	}
+}
+

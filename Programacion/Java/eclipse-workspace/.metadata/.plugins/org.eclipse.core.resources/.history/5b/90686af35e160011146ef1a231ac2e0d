@@ -1,0 +1,48 @@
+package ActividadesArray;
+
+import java.util.Arrays;
+
+public class ejercicio14 {
+
+    public static void main(String[] args) {
+        // 1. Crear y rellenar el array (Tema 4.3)
+        Alumno[] clase = new Alumno[3];
+        clase[0] = new Alumno(3.2, "JC");
+        clase[1] = new Alumno(4.9, "Alvaro");
+        clase[2] = new Alumno(0.2, "Alfonso");
+
+        System.out.println("--- Alumnos originales ---");
+        for (Alumno a : clase) {
+            System.out.println(a); // Usa el método toString() de Alumno
+        }
+
+        // 2. ORDENAR el array (Ejercicio 16 / Tema 4.3, pág 21)
+        // Gracias a compareTo, Arrays.sort sabe cómo ordenarlos
+        Arrays.sort(clase);
+        
+        System.out.println("\n--- Alumnos ordenados por nota (ascendente) ---");
+        for (Alumno a : clase) {
+            System.out.println(a);
+        }
+
+        // 3. BUSCAR el mejor (Ejercicio 14 / Tema 4.3, pág 16)
+        Alumno mejorAlumno = clase[0];
+        for (int i = 1; i < clase.length; i++) {
+            if (clase[i].nota > mejorAlumno.nota) {
+                mejorAlumno = clase[i];
+            }
+        }
+        System.out.println("\nEl alumno con mejor nota es: " + mejorAlumno.nombre + " con un " + mejorAlumno.nota);
+
+        // 4. SUBIR NOTA (Ejercicio 15)
+        // Usamos un for clásico para modificar los valores internos
+        for (int i = 0; i < clase.length; i++) {
+            clase[i].nota += 1;
+        }
+
+        System.out.println("\n--- Tras subirle 1 punto a cada uno ---");
+        for (Alumno a : clase) {
+            System.out.println("Nombre: " + a.nombre + ", nota: " + a.nota);
+        }
+    }
+}

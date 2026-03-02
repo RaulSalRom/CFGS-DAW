@@ -1,0 +1,16 @@
+public class Alumno implements Comparable<Alumno> {
+    double nota; // SIN @Override
+    String nombre;
+
+    public Alumno(double nota, String nombre) {
+        this.nota = nota;
+        this.nombre = nombre;
+    }
+
+    // Obligatorio para que Arrays.sort funcione (Tema 4.3)
+    @Override
+    public int compareTo(Alumno otro) {
+        // Comparamos por nota: si queremos de menor a mayor
+        return Double.compare(this.nota, otro.nota);
+    }
+}
