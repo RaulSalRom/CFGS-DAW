@@ -1792,3 +1792,16 @@ Contains: /home/draken/CFGS-DAW/Programacion overlaps the workspace location: /h
 !MESSAGE OK
 !SUBENTRY 2 org.eclipse.core.resources 4 77 2026-03-04 12:28:52.534
 !MESSAGE /home/draken/CFGS-DAW/Programacion overlaps the workspace location: /home/draken/CFGS-DAW/Programacion/Java/eclipse-workspace
+
+!ENTRY org.eclipse.debug.core 4 125 2026-03-04 12:48:18.336
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: Stream closed
+	at java.base/java.io.BufferedInputStream.getBufIfOpen(BufferedInputStream.java:188)
+	at java.base/java.io.BufferedInputStream.read1(BufferedInputStream.java:343)
+	at java.base/java.io.BufferedInputStream.implRead(BufferedInputStream.java:420)
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:405)
+	at java.base/java.io.FilterInputStream.read(FilterInputStream.java:95)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor.internalRead(OutputStreamMonitor.java:235)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor.read(OutputStreamMonitor.java:211)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
