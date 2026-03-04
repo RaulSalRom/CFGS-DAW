@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="Ejemplos excepciones/calculadora"/>
 	<classpathentry kind="src" path="Ejercicios arrays"/>
 	<classpathentry kind="src" path="OOP Activities/ejercicio3"/>
+	<classpathentry kind="src" path="SimulacroExamenTema4"/>
+	<classpathentry kind="src" path="examen"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
