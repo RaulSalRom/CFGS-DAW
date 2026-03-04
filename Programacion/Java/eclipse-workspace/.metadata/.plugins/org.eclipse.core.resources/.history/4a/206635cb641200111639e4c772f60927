@@ -1,9 +1,0 @@
-package OrdenacionAlumnosClase;
-import java.util.*;
-
-public class MenorQueCeroExcepcion extends Exception{
-	
-	public MenorQueCeroExcepcion() {
-		super("No puedes poner una nota negativa");
-	}
-}
