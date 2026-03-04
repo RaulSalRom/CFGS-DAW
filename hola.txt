@@ -1,0 +1,12 @@
+GRANT SELECT, INSERT, DELETE ON ayuntamiento.usuario TO 'ac901local'@'localhost';
+SHOW GRANTS FOR 'ac901local'@'localhost';
+INSERT INTO ayuntamiento.usuario (columna1, columna2) VALUES ('valor1', 'valor2');
+UPDATE ayuntamiento.usuario SET columna1 = 'nuevo_valor' WHERE id = X;
+DELETE FROM ayuntamiento.usuario WHERE id = X;  
+CREATE USER 'ac902lectura'@'localhost' IDENTIFIED BY 's8a';
+GRANT SELECT ON nombre_tu_bd.* TO 'ac902lectura'@'localhost';
+CREATE USER 'ac903todo'@'localhost' IDENTIFIED BY 's8a';
+GRANT ALL PRIVILEGES ON *.* TO 'ac903todo'@'localhost' WITH GRANT OPTION;
+DROP USER 'ac901local'@'localhost';
+DROP USER 'ac902lectura'@'localhost';
+SELECT user, host FROM mysql.user;
