@@ -1,5 +1,5 @@
 GRANT SELECT, INSERT, DELETE ON ayuntamiento.usuario TO 'ac901local'@'localhost';
-SHOW GRANTS FOR 'ac901local'@'localhost';
+GRANT SELECT, INSERT, DELETE ON ayuntamiento.usuario TO 'ac903todo'@'localhost';
 INSERT INTO ayuntamiento.usuario (columna1, columna2) VALUES ('valor1', 'valor2');
 UPDATE ayuntamiento.usuario SET columna1 = 'nuevo_valor' WHERE id = X;
 DELETE FROM ayuntamiento.usuario WHERE id = X;  
