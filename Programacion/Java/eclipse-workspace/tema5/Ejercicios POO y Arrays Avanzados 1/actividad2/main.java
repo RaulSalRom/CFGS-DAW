@@ -6,6 +6,7 @@ public class main {
 	
 	public static void main (String[]args) {
 		
+		double[][] tablero = new double[10][10];
 		
 	}
 }
