@@ -1,0 +1,174 @@
+ESTRUCTURA DE UN SITIO WEB CON CSS
+1. SECCIONES PRINCIPALES:
+
+---
+
+• Header: Parte superior (título/logo).
+
+• Navigation Bar: Menú de enlaces.
+
+• Content: Área central (Main + Sidebars).
+
+• Footer: Parte inferior (info legal/contacto).
+
+2. MÉTODOS DE DISEÑO:
+
+---
+
+• Flexbox: Ideal para alinear elementos en una dirección (fila o columna).
+
+• CSS Grid: El mejor para estructuras complejas de filas y columnas simultáneas.
+
+• Floats: Técnica antigua para posicionar elementos a los lados.
+
+3. DISEÑO RESPONSIVO:
+
+---
+
+• Objetivo: Que la web se vea bien en móviles y PC.
+
+• Herramienta: Media Queries (@media) para ajustar anchos y columnas según la pantalla.
+
+
+___________________________________
+
+NOVEDADES CSS Y HTML 2025 (CHROME 135 & SAFARI)
+================================================
+
+1. CARRUSELES 100% CSS (Chrome 135)
+-----------------------------------
+- Adiós a JavaScript para sliders básicos.
+- Scroll Buttons: Nuevos pseudo-elementos que permiten crear botones de "Siguiente" 
+  y "Anterior" de forma nativa.
+- Funcionalidad Nativa: El navegador detecta automáticamente si es el primer o 
+  último elemento para activar/desactivar botones. 
+- Dot Navigation: Posibilidad de crear los típicos puntos de navegación también con CSS.
+- Ventaja: Mejor rendimiento y accesibilidad (soporte nativo para Tab e Inert). 
+
+2. PERSONALIZACIÓN DE <SELECT> (Appearance: base-select)
+-------------------------------------------------------
+- Histórico: Por fin se pueden estilar los elementos <select> nativos sin hacks. 
+- Estructura Flexible: Ahora se puede meter HTML (imágenes, divs, spans) dentro 
+  de las etiquetas <option>. 
+- Retrocompatibilidad: Si un navegador no lo soporta, simplemente muestra el 
+  select estándar, pero sigue funcionando. 
+
+3. ATRIBUTO 'COMMANDFOR' (HTML Nativo)
+--------------------------------------
+- Permite abrir elementos como <dialog> (modales) o popovers sin escribir 
+  un solo .addEventListener en JavaScript. 
+- Uso: <button commandfor="mi-modal" command="show-modal">. 
+- Valores de retorno: Se puede saber qué botón se pulsó dentro de la modal 
+  recuperando un simple valor al cerrar. 
+
+4. DECLARATIVE WEB PUSH (Safari/iOS)
+------------------------------------
+- Safari propone una nueva API para notificaciones push que no requiere 
+  Service Workers (que suelen ser complejos y problemáticos).
+
+
+___________________________________
+
+CSS: TRANSICIONES Y ANIMACIONES
+================================
+
+1. TRANSICIONES (Cambios de estado)
+-----------------------------------
+- Concepto: Permiten que los cambios en las propiedades CSS sean fluidos y no instantáneos.
+- Propiedad 'transition':
+  * transition-property: Qué propiedad animar (ej: transform, background-color o 'all'). [00:01:33]
+  * transition-duration: Tiempo que tarda (ej: 0.5s). [00:01:41]
+  * transition-timing-function: Controla la velocidad (linear, ease-in, ease-out). [00:03:00]
+- Uso común: Se activan mediante pseudoclases como :hover. [00:00:47]
+
+2. ANIMACIONES (Movimientos complejos)
+--------------------------------------
+- Concepto: No dependen del usuario, pueden ser infinitas y tener múltiples pasos. [00:05:41]
+- @keyframes: Define los pasos de la animación usando porcentajes (0% a 100%) o 'from'/'to'. [00:06:20]
+- Propiedad 'animation':
+  * animation-name: El nombre dado en @keyframes. [00:07:41]
+  * animation-duration: Duración del ciclo. [00:07:48]
+  * animation-iteration-count: Cuántas veces se repite (ej: 'infinite'). [00:08:07]
+  * animation-direction: 'alternate' para que rebote (va y vuelve). [00:08:53]
+
+3. EJEMPLOS PRÁCTICOS
+---------------------
+- Spinner de carga: Círculo con borde superior de distinto color que rota 360 grados infinitamente. [00:10:43]
+- Botón pulsante: Usa 'scale' para crecer y decrecer (1 a 1.1) llamando la atención. [00:15:22]
+
+4. CONSEJOS
+-----------
+- Se pueden mezclar ambas, pero con cuidado para no romper la experiencia de usuario. [00:08:21]
+- Herramientas del navegador: El inspector de Chrome permite ajustar curvas 'cubic-bezier' visualmente. [00:03:25]
+
+___________________________________
+
+EL DÍA QUE NACIÓ LA WORLD WIDE WEB (WWW)
+========================================
+
+1. INTERNET VS. WEB (Diferencia clave)
+--------------------------------------
+- Internet: Es la infraestructura física y global de redes de computadoras. [00:03:44]
+- World Wide Web (WWW): Es un servicio de páginas y enlaces que corre sobre Internet. [00:03:51]
+
+2. LOS PROTAGONISTAS
+--------------------
+- Tim Berners-Lee: El visionario principal, ingeniero y físico en el CERN. [00:05:13]
+- Robert Cailliau: Ingeniero industrial que se unió como socio clave para impulsar el proyecto. [00:12:42]
+- Nicola Pellow: Estudiante que creó el primer navegador capaz de funcionar en cualquier ordenador. [00:15:29]
+
+3. HITOS TEMPORALES
+-------------------
+- 20 de dic. 1990: Primera prueba exitosa de la web dentro de las instalaciones del CERN. [00:00:00]
+- 6 de agosto 1991: Nacimiento oficial. La web se abre al mundo fuera del CERN. [00:16:05]
+- 30 de abril 1993: El CERN libera la tecnología al dominio público de forma gratuita. [00:17:25]
+
+4. LOS TRES PILARES TECNOLÓGICOS [00:13:45]
+-----------------------------------------
+- HTML: Lenguaje para estructurar documentos (etiquetas).
+- HTTP: Protocolo para la transferencia de los datos.
+- URL: El identificador único o dirección de cada recurso.
+
+5. LEGADO Y FILOSOFÍA
+---------------------
+- "Let's share what we know" (Compartamos lo que sabemos): Eslogan de Berners-Lee. [00:10:17]
+- Gratuidad: El autor decidió NO patentar la web para que fuera libre y abierta para todos. [00:19:41]
+- Preocupaciones actuales: Berners-Lee ahora lucha contra las fake news y el control de datos personales. [00:20:21]
+
+___________________________________
+
+HISTORIA DE INTERNET: ORIGEN Y EVOLUCIÓN
+========================================
+
+1. CONTEXTO Y ORIGEN MILITAR
+----------------------------
+- Guerra Fría (1947): Tensión entre EE. UU. y la URSS. [00:01:03]
+- Sputnik (1957): La URSS lanza el primer satélite, impulsando a EE. UU. a crear ARPA (Agencia de Proyectos de Investigación Avanzada). [00:02:27]
+- El objetivo inicial era crear una red de comunicaciones descentralizada inmune a ataques nucleares. [00:03:03]
+
+2. HITOS TECNOLÓGICOS CLAVE
+---------------------------
+- Conmutación de paquetes (1961): Leonard Kleinrock teoriza sobre trocear información en bloques para su envío. [00:03:26]
+- ARPANET (1969): Primera red interconectada entre 4 universidades americanas (UCLA fue la primera). [00:04:33]
+- Correo Electrónico (1971): Ray Tomlinson establece las bases del e-mail para coordinar a los desarrolladores. [00:05:05]
+
+3. EL NACIMIENTO DE "INTERNET" (1983)
+------------------------------------
+- Protocolo TCP/IP: El 1 de enero de 1983, el Departamento de Defensa adopta este protocolo, unificando las redes existentes. [00:06:13]
+- Nombre: "Internet" es la abreviatura de "Interconnected Networks" (Redes Interconectadas). [00:07:20]
+
+4. LA REVOLUCIÓN DE LA WWW (AÑOS 90)
+------------------------------------
+- Tim Berners-Lee (1989): Escribe el protocolo HTTP y crea el lenguaje HTML y el primer navegador en el CERN. [00:06:29]
+- Apertura mundial (1991): La web deja de ser exclusiva de científicos y se abre al público general. [00:06:51]
+- Crecimiento exponencial: De 100 sitios web en 1993 a más de 200,000 en 1997. [00:07:04]
+
+5. IMPACTO SOCIAL Y REDES SOCIALES
+----------------------------------
+- Población conectada: Para 2021, casi el 60% de la población mundial (4,660 millones de personas) usa Internet. [00:08:20]
+- Primeras Redes Sociales:
+  * SixDegrees.com (1997): Considerada la primera red social moderna. [00:09:18]
+  * Evolución: Friendster (2002), MySpace/LinkedIn (2003) y Facebook (2004). [00:09:48]
+
+___________________________________
+
