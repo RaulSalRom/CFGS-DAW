@@ -2,7 +2,7 @@ package actividad1;
 
 public class main {
 	
-	public static void main (String[]args) {
+	public static void main(String[] args) {
 		
 		double[][] notas = new double [30][5];
 		

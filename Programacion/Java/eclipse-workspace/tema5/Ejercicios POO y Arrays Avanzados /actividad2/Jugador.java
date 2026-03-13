@@ -4,21 +4,36 @@ public class Jugador {
 
 	private String nombre;
 	
+	private String color;
+	
 	Jugador(){
 		
-		this.nombre = nombre;
+		nombre = "";
 		
+		color = "";
 	}
 	
-	public void setNombre() {
+	public void setNombre(String temp1) {
 		
-		this.nombre = nombre;
+		this.nombre = temp1;
 		
 	}
 	
 	public String getNombre() {
 		
 		return this.nombre;
+		
+	}
+	
+	public void setColor(String temp2) {
+		
+		this.color = temp2;
+		
+	}
+	
+	public String getColor() {
+		
+		return this.color;
 		
 	}
 }
