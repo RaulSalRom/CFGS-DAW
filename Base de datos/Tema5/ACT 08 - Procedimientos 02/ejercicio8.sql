@@ -22,7 +22,7 @@ DELIMITER ;
 CALL ac08listDepartamentosPlus(NULL);
 --
 DELIMITER $$
-CREATE PROCEDURE ac08updSalarioEmpleadosParam(IN incremento DECIMAL(10,2))
+CREATE PROCEDURE ac08updSalarioEmpleadosParam(IN incremento DECIMAL(12,2))
 BEGIN
     UPDATE empleado SET SalEmp = SalEmp + incremento;
 END $$
