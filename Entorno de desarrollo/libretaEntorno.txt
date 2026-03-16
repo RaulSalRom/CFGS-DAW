@@ -30,3 +30,157 @@ Criterios para evaluar la calidad de sw(benchmark):
 -Pruebas de carga.
 -Pruebas de estrés.
 -Pruebas de estabilidad.
+
+
+
+APUNTES 
+--------------------------------------------------------------------------------
+1. FASES DE LIBERACIÓN DE UN SOFTWARE (RELEASE PERIODS)
+--------------------------------------------------------------------------------
+Cualquier desarrollo de software pasa por varias etapas antes de llegar al cliente final, fomentando las metodologías ágiles y recibiendo feedback.
+Las fases son:
+- Pre-alpha: Versiones de desarrollo iniciales o "nightly builds".
+
+- Alpha: Fase interna de pruebas (pre beta).
+
+- Beta: Puede considerarse un Producto Mínimo Viable (PMV). Intervienen usuarios finales para probarlo y detectar errores, lo cual es más fácil y barato.
+
+- Release Candidate (RC): También llamada gamma o delta, es la versión candidata a ser la definitiva.
+
+- RTM (Release to Manufacturing / Marketing): Versión lista para producción o marketing.
+
+- GA (General Availability): Disponibilidad general.
+
+- Production / Gold (Live Release): Lanzamiento final en producción.
+
+
+--------------------------------------------------------------------------------
+2. ROLES DE CALIDAD: QA, QC Y QE
+--------------------------------------------------------------------------------
+- QA (Quality Assurance - Aseguramiento de la Calidad): Está presente desde la fase de diseño y durante todo el desarrollo. Está orientado a mejorar los "procesos" para prevenir que surjan defectos. Diseñan y definen los parámetros de aceptación (Pruebas de Caja Blanca).
+
+- QC (Quality Control - Control de Calidad): Interviene al final del proyecto, cuando el producto está terminado. Está orientado al "producto". Controlan el comportamiento final ejecutando pruebas para detectar defectos existentes (Pruebas de Caja Negra).
+
+- QE (Quality Engineering - Ingeniería de Calidad): Se enfoca en integrar la calidad en todo el ciclo de vida del software, automatizando procesos y pruebas para garantizar la Integración y Entrega Continua (CI/CD).
+
+
+--------------------------------------------------------------------------------
+3. INTRODUCCIÓN AL TESTING Y CASOS DE PRUEBA
+--------------------------------------------------------------------------------
+El objetivo de las pruebas es detectar errores, comprobar el rendimiento y visualizar la interfaz. Que un software pase todas las pruebas o haya "ausencia de errores" no garantiza al 100% que funcione perfectamente en todos los escenarios.
+
+CASOS DE PRUEBA:
+- Se crean con el objetivo de detectar fallos únicos.
+
+- Los programadores no deben probar su propio código, ya que "vician" el proceso.
+
+- Los sets de datos en la codificación de pruebas deben incluir: Datos válidos, inválidos, fuera de rango y disparatados.
+
+- En la ejecución, si se detecta un error se documenta. Existen errores "no reproducibles" (aleatorios, no se replican siempre con los mismos datos).
+
+
+--------------------------------------------------------------------------------
+4. TIPOS DE PRUEBAS DE SOFTWARE
+--------------------------------------------------------------------------------
+A) PRUEBAS DE CAJA BLANCA (White Box)
+Analizan el código fuente y "el cómo se hace". Las hace el desarrollador con conocimiento completo del código. Se dividen en:
+
+  1. De cubrimiento: Ejecutar, al menos una vez, todas las líneas y caminos del código.
+
+  2. De condiciones: Probar todas las condiciones posibles (if/else, booleanos) y comprobar los resultados.
+
+  3. De bucles: Probar un bucle un número específico de veces (máximo, máximo+1, máximo-1, repetir 0, repetir 1, repetir N veces).
+
+
+B) PRUEBAS DE CAJA NEGRA (Black Box)
+No evalúan cómo está hecho el código interno, solo "lo que hace" (su funcionalidad). Se prueba como lo haría un usuario final. Se dividen en:
+  1. Clases de equivalencia de datos: Probar todas las clases de datos (ej. contraseñas válidas vs. contraseñas inválidas).
+
+  2. Valores límite: Centrarse en generar valores en los extremos permitidos (en rango, fuera de rango).
+
+  3. De interfaces: Probar la GUI comprobando dos ramas principales:
+     - Usabilidad (UX): Que sea fácil, eficiente e intuitivo (autocompletar, atajos).
+     - Accesibilidad: Diseñado para usuarios con discapacidad o sin ratón/pantalla.
+
+
+C) PRUEBAS REGRESIVAS
+Al hacer un cambio o actualizar el código, comprobar que no se ha estropeado nada de lo que antes funcionaba correctamente.
+
+
+--------------------------------------------------------------------------------
+5. PLANIFICACIÓN Y NIVELES DE PRUEBAS
+--------------------------------------------------------------------------------
+1. Pruebas Unitarias: Se realizan en las primeras fases aislando partes "indivisibles" de código (a nivel de objeto en POO). Son caja blanca hechas por desarrolladores. Una herramienta clave en 
+Java es JUnit.
+
+2. Pruebas de Integración: Comprueban la comunicación entre los distintos componentes (verificar que las piezas encajan).
+
+3. Pruebas de Aceptación o Validación: Verifican todos los requisitos del programa (caja negra, hechas por testers). El proyecto suele estar en alfa o beta.
+
+* Calidad del Software (Pruebas de rendimiento):
+
+  - Pruebas de Carga (tiempos de respuesta).
+
+  - Pruebas de Estrés (encontrar el límite máximo de trabajo).
+
+  - Pruebas de Estabilidad (alternar picos de carga).
+
+
+--------------------------------------------------------------------------------
+6. UX vs UI (DISEÑO DE INTERFACES)
+--------------------------------------------------------------------------------
+- UX (User Experience - Experiencia de Usuario): Es el proceso general de cómo el usuario interactúa y "siente" el producto. Su objetivo es que la navegación sea lógica, eficiente, fluida y 
+resuelva las necesidades del cliente (usabilidad pura).
+
+- UI (User Interface - Interfaz de Usuario): Es la capa visual e interactiva. Se encarga de la tipografía, los colores, los botones y la disposición estética (layout). Es lo que hace que un 
+producto se vea atractivo.
+
+
+--------------------------------------------------------------------------------
+7. METODOLOGÍAS ÁGILES: SCRUM
+--------------------------------------------------------------------------------
+Scrum es un marco de trabajo ágil ideal para proyectos complejos. Se centra en la entrega continua de valor, la autogestión del equipo y la flexibilidad ante los cambios.
+
+ROLES EN SCRUM:
+- Product Owner (PO): Es la cara del cliente. Su enfoque es táctico a corto plazo ("el qué" y "el ahora"). Gestiona el Product Backlog y define las prioridades de desarrollo.
+
+- Scrum Master: Es el líder facilitador o moderador. Elimina bloqueos y asegura que las reglas de Scrum y los eventos se cumplan correctamente.
+
+- Development Team (Equipo de Desarrollo): Profesionales (programadores, testers, etc.) que construyen la solución y se autogestionan.
+
+DIFERENCIA CLAVE: PRODUCT OWNER vs PRODUCT MANAGER
+- Product Owner: Táctico, enfocado en Sprints semanales, gestiona el equipo interno y el Backlog. Es un rol puramente Scrum.
+
+- Product Manager: Estratégico, enfocado en trimestres/años, analiza el mercado, la visión a futuro y los competidores.
+
+ARTEFACTOS (DOCUMENTOS) DE SCRUM:
+- Product Backlog: La lista completa de todos los requisitos, funcionalidades y necesidades del cliente.
+
+- Sprint Backlog: La lista de tareas específicas extraídas del Product Backlog que el equipo se compromete a realizar en el Sprint actual.
+
+EVENTOS O ETAPAS DE SCRUM:
+
+- Sprint: Es el corazón de Scrum. Un ciclo de trabajo de entre 1 y 4 semanas que produce un incremento funcional del producto.
+
+- Sprint Planning: Reunión para planificar qué tareas del Product Backlog pasarán al Sprint Backlog (se suele usar la serie de Fibonacci para estimar la dificultad).
+
+- Daily Scrum (Daily Meeting): Reunión diaria de máximo 15 minutos. Cada miembro dice: ¿Qué hice ayer? ¿Qué haré hoy? ¿Tengo algún impedimento?
+
+- Sprint Review: Al final del Sprint, se muestra el software funcionando al Product Owner/Cliente para su validación.
+
+- Sprint Retrospective: El equipo analiza internamente qué salió bien, qué salió mal y cómo mejorar los procesos para el próximo Sprint.
+
+
+--------------------------------------------------------------------------------
+8. DIAGRAMAS DE BASES DE DATOS: DBDIAGRAM.IO Y DBML
+--------------------------------------------------------------------------------
+- dbdiagram.io: Es una herramienta web que permite diseñar y modelar bases de datos relacionales a través de código en lugar de usar interfaces gráficas de arrastrar y soltar.
+
+- DBML (Database Markup Language): Es el lenguaje utilizado en la plataforma.
+  * Permite crear tablas rápidamente: `Table usuarios { id int [pk], nombre varchar }`.
+  * Define restricciones: Claves primarias (`[pk]`), únicos (`[unique]`), nulos (`[not null]`).
+  * Relaciones entre tablas (Refs): 
+      - `1 a 1` se hace con un guion (`-`).
+      - `1 a muchos` o `muchos a 1` se hace con los símbolos de mayor o menor (`> ` o `<`).
+  * Exportación: Los diagramas en DBML se pueden exportar a código SQL real (como PostgreSQL o MySQL), a PDF, o compartirse mediante un enlace para colaborar.
+================================================================================
