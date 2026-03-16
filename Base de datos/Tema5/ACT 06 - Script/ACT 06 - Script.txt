@@ -1,0 +1,5 @@
+Utilizando la base de datos empresa y en un archivo nombrado como ac06empleados.sql, se pide:
+
+Crea una tabla dashboard_dpto que muestre para cada departamento, además de su código y nombre y presupuesto anual, cuantos empleados y su gasto en salarios.
+Crea una tabla dashboard_centro que muestre para cada centro, además de su código y nombre, cuantos departamentos contiene y el presupuesto anual (entendido como la suma de los presupuestos de sus departamentos).
+Lanza el script ac06empleados.sql para que ejecute ambas operaciones (cada vez que lo hagas, debe borrar las tablas y volver a crearlas)
