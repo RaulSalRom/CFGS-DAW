@@ -176,4 +176,153 @@ o añade contenido (primera letra, antes/después).
 * Sintaxis moderna: Un colon (:) para clases, dos colones (::) para elementos.
 * root se refiere al elemento raíz (normalmente <html>) y es muy usado para variables.
 
-============================================================
+DISEÑO DE SITIOS WEB CON CSS (LAYOUT)
+=====================================
+
+1. ESTRUCTURA TÍPICA DE UNA WEB
+-------------------------------
+Un diseño estándar suele incluir las siguientes secciones:
+- Header (Cabecera): Parte superior con el título o logo.
+- Navigation Bar (Barra de menú): Enlaces para navegar por el sitio.
+- Content (Contenido): La zona principal, a menudo dividida en:
+    * Columna principal (Main content).
+    * Columnas laterales (Sidebars) para info extra o anuncios.
+- Footer (Pie de página): Al final, con créditos, contacto o redes.
+
+2. MÉTODOS DE DISEÑO (LAYOUT METHODS)
+-------------------------------------
+Existen cuatro formas principales de crear estas estructuras:
+- CSS Frameworks: Uso de librerías externas (Bootstrap, W3.CSS).
+- CSS Flexbox: Excelente para alinear elementos en una sola dirección (fila o columna).
+- CSS Grid: El método más potente para diseños complejos de dos dimensiones (filas y columnas).
+- CSS Float: Técnica antigua; todavía funciona pero se prefiere Flexbox o Grid hoy en día.
+
+3. DISEÑO RESPONSIVO (RESPONSIVE DESIGN)
+----------------------------------------
+- Objetivo: Que la web se vea bien en todos los dispositivos (móvil, tablet, PC).
+- Media Queries: Se usan para cambiar el diseño según el ancho de la pantalla.
+  Ejemplo: En PC mostrar 3 columnas, en móvil apilarlas una debajo de otra.
+
+4. ELEMENTOS CLAVE EN CÓDIGO
+----------------------------
+- Propiedad 'width': Define el ancho (ej. 100%, 25%).
+- Propiedad 'padding' y 'margin': Para dar aire y separación entre secciones.
+- Propiedad 'box-sizing: border-box': Asegura que el relleno no aumente el ancho total del elemento.
+
+
+
+
+
+NOVEDADES CSS Y HTML: ADIÓS A JAVASCRIPT INNECESARIO
+===================================================
+
+1. CARRUSELES 100% CSS (Chrome 135) 
+----------------------------------------------
+- Los botones de "siguiente" y "anterior" ahora pueden ser pseudo-elementos nativos: ::scroll-button. 
+- El navegador detecta automáticamente si es el primer o último elemento para desactivar los botones.
+- Dot Navigation: Se puede crear la navegación por puntos de forma nativa sin JS.
+- Ventaja: Menos peso en la página y mejor rendimiento al no cargar scripts externos.
+
+2. PERSONALIZACIÓN DE <SELECT> (Base Select) 
+-----------------------------------------------------
+- Histórico: Ahora se pueden estilar los select nativos sin recurrir a hacks complejos. 
+- HTML dentro de Option: Es posible incluir imágenes, <div> y otros elementos dentro de las opciones. 
+- Retrocompatibilidad: Si el navegador no lo soporta (ej. Safari antiguo), simplemente muestra el select estándar.
+
+3. ATRIBUTO 'COMMANDFOR' (HTML Nativo) 
+------------------------------------------------
+- Permite abrir elementos como <dialog> (modales) o popovers sin .addEventListener en JS.
+- Uso: <button commandfor="id-del-dialog" command="show-modal">. 
+- Retorno de valores: Se puede saber qué botón se pulsó dentro del modal con una sola escucha al cerrar. 
+
+4. DECLARATIVE WEB PUSH (Safari/iOS) 
+----------------------------------------------
+- Nueva API de notificaciones push que no requiere Service Workers. 
+- Simplificación: Se gestiona con una promesa de forma mucho más sencilla y menos propensa a errores.
+- Disponible ya para Progressive Web Apps (PWA) en iOS y iPadOS. 
+
+
+
+
+
+
+GUÍA DE CSS: TRANSICIONES Y ANIMACIONES
+========================================
+
+1. TRANSICIONES (Suavizado de cambios) 
+------------------------------------------------
+- Concepto: Evitan que los cambios de estilo (color, tamaño, etc.) sean instantáneos.
+- Propiedad 'transition':
+  * Propiedad a animar: Se puede especificar una (ej. transform) o usar 'all' para todas. 
+  * Duración: Tiempo que tarda el cambio (ej. 0.5s). 
+  * Timing function: Controla la velocidad (linear, ease-in, ease-out, etc.). 
+- Personalización: Con el inspector del navegador se pueden crear curvas 'cubic-bezier' a medida.
+
+2. ANIMACIONES (Movimientos automáticos)
+---------------------------------------------------
+- Diferencia: No requieren interacción del usuario y pueden ser infinitas.
+- @keyframes: Define los pasos de la animación. Se pueden usar porcentajes (0% a 100%) o 'from/to'. [00:06:20]
+- Propiedad 'animation':
+  * Name: El nombre definido en @keyframes.
+  * Duration: Duración de cada ciclo.
+  * Iteration Count: 'infinite' para que no pare nunca.
+  * Direction: 'alternate' hace que la animación vaya y vuelva (efecto rebote).
+
+3. EJEMPLOS PRÁCTICOS 
+-------------------------------
+- Spinner de carga: Un círculo con 'border-radius: 50%' y un borde superior de distinto color que rota 360 grados indefinidamente.
+- Botón pulsante: Animación que cambia la escala ('scale') de 1 a 1.1 de forma alterna para llamar la atención.
+
+4. CONSEJOS FINALES 
+-----------------------------
+- Las transiciones y animaciones suelen ser el toque final de un proyecto, pero requieren tiempo para que se sientan fluidas y profesionales.
+- Es posible mezclar ambas en un mismo elemento, pero hay que probar que no entren en conflicto.
+
+
+
+
+
+CSS AVANZADO: MOVIMIENTO Y FORMA
+================================
+
+1. TRANSFORMACIONES 2D (2D Transforms)
+--------------------------------------
+Permiten modificar la forma y posición de los elementos.
+Propiedad clave: 'transform'
+- translate(x, y): Mueve el elemento de su posición actual.
+- rotate(angle): Gira el elemento (ej: 45deg).
+- scale(w, h): Cambia el tamaño (ej: 2 es el doble, 0.5 es la mitad).
+- skew(x-angle, y-angle): Inclina el elemento sobre sus ejes.
+- matrix(): Combina todas las anteriores en una sola función.
+
+2. TRANSICIONES (Transitions)
+-----------------------------
+Permiten que el cambio de una propiedad ocurra de forma fluida en un tiempo dado.
+Propiedad clave: 'transition'
+- transition-property: Qué quieres animar (color, width, transform).
+- transition-duration: Cuánto tarda (ej: 0.3s).
+- transition-timing-function: Curva de velocidad (linear, ease, ease-in-out).
+- transition-delay: Tiempo de espera antes de empezar.
+* Atajo: transition: [property] [duration] [timing] [delay];
+
+3. ANIMACIONES (Animations)
+---------------------------
+Para movimientos más complejos que no dependen solo de un cambio de estado (como hover).
+A. Definición con @keyframes:
+   @keyframes nombre-animacion {
+      from { background-color: red; }
+      to { background-color: yellow; }
+   }
+   (También se pueden usar porcentajes: 0%, 25%, 50%, 100%)
+
+B. Aplicación con 'animation':
+- animation-name: El nombre que pusiste en @keyframes.
+- animation-duration: Duración del ciclo.
+- animation-iteration-count: Cuántas veces (ej: 3, infinite).
+- animation-direction: normal, reverse, alternate (va y viene).
+
+4. DIFERENCIAS CLAVE
+--------------------
+- Transform: Cambia la apariencia visual (estático si no se combina con lo demás).
+- Transition: Suaviza el paso de Punto A a Punto B (requiere un disparador como :hover).
+- Animation: Puede tener múltiples pasos (A -> B -> C) y ejecutarse sola al cargar.
