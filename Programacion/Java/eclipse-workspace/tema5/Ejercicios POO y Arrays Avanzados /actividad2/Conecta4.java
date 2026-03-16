@@ -1,4 +1,4 @@
-package actividad1;
+package actividad2;
 import java.util.Scanner;
 
 public class Conecta4 {
