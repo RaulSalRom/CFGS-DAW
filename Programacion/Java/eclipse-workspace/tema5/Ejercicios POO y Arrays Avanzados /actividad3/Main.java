@@ -8,10 +8,13 @@ public class Main {
 	
 	public static void main (String[]args) {
 		
+		int i = 0;
 		System.out.println("¿Cuantos alumnos tiene la clase?");
 		
-		int i = teclado.nextInt();
+		 i = teclado.nextInt();
 		
 		String[] asignaturas = {"Prog", "BD", "Sost", "HTML", "Siste"};
+		
+		asignarMatriz(i, asignaturas);
 	}
 }
