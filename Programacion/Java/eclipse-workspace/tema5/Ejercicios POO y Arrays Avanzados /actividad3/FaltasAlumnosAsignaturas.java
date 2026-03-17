@@ -12,7 +12,7 @@ public class FaltasAlumnosAsignaturas {
 		this.asignaturas = asignaturas;
 		
 		
-		Falta [][] alumnos = new Falta[i][asignaturas.length];
+		this.alumnos = new Falta[i][asignaturas.length];
 		
 	}
 	
@@ -22,11 +22,7 @@ public class FaltasAlumnosAsignaturas {
 			
 			for (int y = 0; y < asignaturas.length; y++) {
 				
-				alumnos[x][y].getInjustificada();
-				
-				alumnos[x][y].getJustificada();
-				
-				alumnos[x][y].getRetraso();
+				this.alumnos[x][y] = new Falta();
 				
 			}
 			
@@ -66,12 +62,12 @@ public class FaltasAlumnosAsignaturas {
 		
 		int contador = 0;
 		
-		for (int x = 0; x < i; x ++) {
+		for (int y = 0; y < i; y ++) {
 			
-			for (int y = 0; y < asignaturas.length; y++) {
+			for (int x = 0; x < asignaturas.length; x++) {
 				
 				
-				suma += alumnos[x][y].getRetraso();
+				suma += alumnos[y][x].getRetraso();
 				
 				contador ++;
 				
@@ -79,15 +75,18 @@ public class FaltasAlumnosAsignaturas {
 			
 		}
 		
-		double media = suma/contador;
+		double media =(double) suma/contador;
 		
-		for (int x = 0; x < this.asignaturas.length; x++) {
+		System.out.println("Media global de retrasos: " + media);
+		
+		
+		for (int y = 0; y < this.alumnos.length; y++) {
 		    
 			double sumaAlumno = 0;
 		   
-		    for (int y = 0; y < this.alumnos.length; y++) {
+		    for (int x = 0; x < this.asignaturas.length; x++) {
 		       
-		        sumaAlumno = this.alumnos[y][x].getRetraso();
+		        sumaAlumno += this.alumnos[x][y].getRetraso();
 
 		        if (sumaAlumno > media) {
 		           
@@ -100,6 +99,13 @@ public class FaltasAlumnosAsignaturas {
 		    
 
 		}
+	}
+	
+	
+	public void retrasoMenor(int i , String[] asignaturas) {
+		
+		
+		
 	}
 	
 }

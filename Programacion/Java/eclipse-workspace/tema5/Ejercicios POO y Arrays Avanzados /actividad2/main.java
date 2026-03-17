@@ -2,7 +2,7 @@ package actividad2;
 
 import java.util.*;
 
-public class main {
+public class Main {
 	
 	private static Scanner teclado = new Scanner(System.in);
 	
