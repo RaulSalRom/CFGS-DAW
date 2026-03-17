@@ -9,5 +9,6 @@
 	<classpathentry kind="src" path="Ejercicios POO y Arrays Avanzados "/>
 	<classpathentry kind="src" path="Ejemplo 1 Enum"/>
 	<classpathentry kind="src" path="Ejemplo 2 Enum"/>
+	<classpathentry kind="src" path="Advanced OOP Exercises"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
