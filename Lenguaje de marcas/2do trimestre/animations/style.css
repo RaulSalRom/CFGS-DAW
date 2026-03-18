@@ -1,0 +1,65 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    transition: all 1s ease-in-out;
+    animation: move 2s infinite alternate;
+}
+
+
+.box:hover{
+    background-color: red;
+}
+
+@keyframes move {
+    
+    0%{
+        transform: translateX(0);
+    }
+    50%{
+        background-color: green;
+    }
+    100%{
+        transform: translate(200px);
+    }
+}
+
+.spinner{
+     width: 50px;
+    height: 50px;
+    border: 5px solid pink;
+    border-top: 5px solid black;
+    border-radius: 50%;
+    animation: spin 2s infinite;
+}
+
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.button{
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    transition: all 0.3s;
+    animation: pulse 1.5s infinite alternate;
+}
+
+.button:hover{
+    background-color: red;
+    border-color: red;
+}
+
+@keyframes pulse {
+    from{
+        trnasform: scale(1)
+    }
+    to{
+        transform: scale(1.5)
+    }
+}
