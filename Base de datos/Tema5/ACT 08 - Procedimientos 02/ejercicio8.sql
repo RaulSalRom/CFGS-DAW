@@ -1,4 +1,4 @@
---
+--El procedimiento ac08listDepartamentos que liste los departamentos de un determinado centro.
 DELIMITER $$
 CREATE PROCEDURE ac08listDepartamentos(IN centro_id CHAR(4))
 BEGIN
@@ -7,7 +7,10 @@ END $$
 DELIMITER ;
 
 CALL ac08listDepartamentos('C1'); 
---
+
+
+--El procedimiento ac08listDepartamentosPlus que liste los departamentos de un centro, y en el caso de recibir como argumento un valor nulo, 
+-- devuelva todos los departamentos.
 DELIMITER $$
 CREATE PROCEDURE ac08listDepartamentosPlus(IN centro_id CHAR(4))
 BEGIN
@@ -20,7 +23,9 @@ END $$
 DELIMITER ;
 
 CALL ac08listDepartamentosPlus(NULL);
---
+
+
+--El procedimiento ac08updSalarioEmpleadosParam que incremente el salario de los empleados una determinada cantidad a partir de un parámetro de entrada.
 DELIMITER $$
 CREATE PROCEDURE ac08updSalarioEmpleadosParam(IN incremento DECIMAL(12,2))
 BEGIN
@@ -29,7 +34,9 @@ END $$
 DELIMITER ;
 
 CALL ac08updSalarioEmpleadosParam(500);
---
+
+
+--El procedimiento ac08contarEmpleados que devuelva la cantidad de empleados en un parámetro de salida.
 DELIMITER $$
 CREATE PROCEDURE ac08contarEmpleados(OUT total INT)
 BEGIN
@@ -39,7 +46,10 @@ DELIMITER ;
 
 CALL ac08contarEmpleados(@resultado);
 SELECT @resultado AS Total_Empleados;
--- 
+
+
+-- El procedimiento ac08contarEmpleadosDpto que devuelva la cantidad de empleados de un determinado departamento 
+--(introducido vía un parámetro de entrada) en un parámetro de salida.
 DELIMITER $$
 CREATE PROCEDURE ac08contarEmpleadosDpto(IN dpto_id CHAR(5), OUT total INT)
 BEGIN
@@ -49,7 +59,9 @@ DELIMITER ;
 
 CALL ac08contarEmpleadosDpto('ADMZS', @total_dpto);
 SELECT @total_dpto AS Empleados_En_Dpto;
---
+
+
+--El procedimiento ac08sueldosSet que devuelva el sueldo menor, el mayor y el promedio de todos los empleados (usando SET).
 DELIMITER $$
 CREATE PROCEDURE ac08sueldosSet(OUT min_s DECIMAL(12,2), OUT max_s DECIMAL(12,2), OUT avg_s DECIMAL(12,2))
 BEGIN
@@ -61,7 +73,9 @@ DELIMITER ;
 
 CALL ac08sueldosSet(@min, @max, @avg);
 SELECT @min AS Minimo, @max AS Maximo, @avg AS Promedio;
---
+
+
+--El procedimiento ac08sueldosSelectInto que devuelva el sueldo menor, el mayor y el promedio de todos los empleados (usando SELECT INTO).
 DELIMITER $$
 CREATE PROCEDURE ac08sueldosSelectInto(OUT min_s DECIMAL(12,2), OUT max_s DECIMAL(12,2), OUT avg_s DECIMAL(12,2))
 BEGIN

@@ -1,8 +1,0 @@
-En la base de datos empresa, crea:
-
-El procedimiento ac07listEmpleadosConHijos que muestre los empleados que tienen hijos.
-El procedimiento ac07contarEmpleados que muestre la cantidad de empleados.
-El procedimiento ac07updSalarioEmpleados que incremente el salario de los empleados un 10%.
-Recupera los procedimientos existentes.
-Elimina el procedimiento ac07updSalarioEmpleados.
-Debes adjuntar, para cada apartado, tanto las sentencias necesarias para su creación como para su prueba y una captura de pantalla con su ejecución.

@@ -1,6 +1,0 @@
-Comprueba los usuarios existentes en nuestro SGBD.
-Crea un usuario ac901local con contraseña s8a que sólo pueda conectarse desde localhost. Comprueba que puedes acceder con el nuevo usuario.
-Crea un usuario ac901remoto con contraseña s8a que pueda conectarse desde cualquier lugar. Comprueba que puedes acceder con el nuevo usuario.
-Modifica la contraseña del usuario ac901remoto para que sea severo. Comprueba que puedes acceder con la nueva contraseña.
-Vuelve a comprobar los usuarios existentes en nuestro SGBD.
-Elimina el usuario ac901remoto.
