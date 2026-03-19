@@ -14,4 +14,4 @@ alter user ac901remoto identified by 'holaFosela';
 select * from mysql.user;
 
 --6.Elimina el usuario ac901remoto.
-drop user 'ac901local'@'localhost';
+drop user 'ac901remoto'@'%';
