@@ -369,15 +369,19 @@ select precioConIVA(100)
 
 
 --ejercicio ayuntamiento Db
+
 delimeter $$
 
-create or replace function cantidadUsuariosDepartamento(numeroDepartamento int returns int)
+create or replace function cantidadUsuarios(numeroDepartamento int returns int)
 
 begin 
 
-  declare cantidadUsuarios int;
-  set cantidadUsuarios = (select count(*) from empleado where codDep = CodDepar);
-  return cantidadUsuarios
+  declare total int;
+  select count(*) into total
+  from usuario
+  where departamento = codigo;
+
+  return total;
 
 end$$
 
