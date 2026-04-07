@@ -232,6 +232,8 @@ Una vista es una consulta con nombre almacenada en el catálogo de la base de da
 
 -----
 Nuevo trimestre
+-----
+
 1.-procedimiento que categorice a las personas en diferentes rangos
  de edad: menor 18 junior, menor de 45 senior y mayor de 45 veterano 
 
@@ -289,7 +291,7 @@ call rangoEdadCase(15);
 call rangoEdadCase(39);
 call rangoEdadCase(70);
 ---
-Para hcer usos de los parametros de salida se utiliza @
+Para hacer usos de los parametros de salida se utiliza @
 
 call categoriaEdadCase(12, @resultado1);
 call categoriaEdadCase(39, @resultado2);

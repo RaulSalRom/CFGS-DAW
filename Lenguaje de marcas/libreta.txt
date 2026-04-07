@@ -326,3 +326,19 @@ B. Aplicación con 'animation':
 - Transform: Cambia la apariencia visual (estático si no se combina con lo demás).
 - Transition: Suaviza el paso de Punto A a Punto B (requiere un disparador como :hover).
 - Animation: Puede tener múltiples pasos (A -> B -> C) y ejecutarse sola al cargar.
+
+
+
+
+
+
+
+
+
+
+------
+------
+
+------
+------
+NUEVO trimestre
