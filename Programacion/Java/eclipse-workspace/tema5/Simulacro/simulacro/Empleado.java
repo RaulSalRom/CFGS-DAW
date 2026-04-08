@@ -16,7 +16,7 @@ public abstract class Empleado implements Reconocible {
 		
 		this.departamento = departamento;
 		
-		this.horasTrabajadas = new double[5][2];
+		this.horasTrabajadas = horasTrabajadas;
 		
 	}
 	

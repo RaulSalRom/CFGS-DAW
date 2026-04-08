@@ -4,7 +4,7 @@ public class Administrativo extends Empleado {
 
 	private int documentosTramitados;
 	
-	public Administrativo(String id, String nombre, Departamento departamento, double[][] horasTrabajadas) {
+	public Administrativo(String id, String nombre, Departamento departamento, double[][] horasTrabajadas, int documentosTramitados) {
 		super(id, nombre, departamento, horasTrabajadas);
 		this.documentosTramitados = documentosTramitados;
 	}
