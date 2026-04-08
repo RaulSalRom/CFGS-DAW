@@ -1,0 +1,6 @@
+comandos:
+
+sudo /opt/lampp/lampp start
+sudo /opt/lampp/lampp stop
+java -jar /home/draken/Descargas/SKlauncher-3.2.18.jar &
+nvidia-smi
