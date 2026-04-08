@@ -1,0 +1,22 @@
+El procedimiento ac09semanaIf que reciba como entrada un entero que represente un día de la semana y 
+que devuelva una cadena con el nombre del día de la semana correspondiente (utilizando IF). Por ejemplo, para 
+la entrada 1 debería devolver Lunes.
+delimeter $$
+
+create or replace procedure ac09semanaIf(in dia, out diaSemana)
+
+begin 
+
+  declare total int;
+  select count(*) into total
+  from usuario
+  where departamento = codigo;
+
+  return total;
+
+end$$
+
+delimiter;
+
+
+select cantidadUsuarios(2);
