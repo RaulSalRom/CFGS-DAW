@@ -11,5 +11,6 @@
 	<classpathentry kind="src" path="Ejemplo 2 Enum"/>
 	<classpathentry kind="src" path="Advanced OOP Exercises"/>
 	<classpathentry kind="src" path="AdvancedOOPExercises"/>
+	<classpathentry kind="src" path="Simulacro"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
