@@ -4,3 +4,15 @@ sudo /opt/lampp/lampp start
 sudo /opt/lampp/lampp stop
 java -jar /home/draken/Descargas/SKlauncher-3.2.18.jar &
 nvidia-smi
+
+Configuración básica y comandos esenciales
+Tras la instalación inicial, puedes gestionar la red y 
+los dispositivos utilizando la consola de administración 
+en línea o la interfaz de línea de comandos (CLI). 
+Los comandos más útiles para operar la red incluyen:
+
+tailscale status: Verifica el estado de la conexión y lista los dispositivos conectados.
+tailscale ip: Muestra la dirección IP de Tailscale asignada a tu dispositivo actual.
+tailscale ping <nombre-dispositivo>: Prueba la conectividad con otro equipo de la red.
+tailscale file cp <origen> <destino>: Transfiere archivos directamente entre dispositivos del tailnet.
+tailscale up --advertise-routes=...: Permite que un dispositivo actúe como router de subred para acceder a otros equipos locales (como impresoras o NAS). 
