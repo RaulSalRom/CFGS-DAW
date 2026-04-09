@@ -48,7 +48,7 @@ public abstract class Empleado implements Reconocible {
 		this.horasTrabajadas = horasTrabajadas;
 	}
 	
-	public double[][] getHorasTrabjadas(){
+	public double[][] getHorasTrabajadas(){
 		return this.horasTrabajadas;
 	}
 	
