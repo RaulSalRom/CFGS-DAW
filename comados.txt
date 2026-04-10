@@ -1,18 +1,199 @@
-comandos:
+# Comandos básicos para Fedora
 
-sudo /opt/lampp/lampp start
-sudo /opt/lampp/lampp stop
-java -jar /home/draken/Descargas/SKlauncher-3.2.18.jar &
-nvidia-smi
+## 📦 Sistema y Paquetes (DNF)
 
-Configuración básica y comandos esenciales
-Tras la instalación inicial, puedes gestionar la red y 
-los dispositivos utilizando la consola de administración 
-en línea o la interfaz de línea de comandos (CLI). 
-Los comandos más útiles para operar la red incluyen:
+```bash
+sudo dnf update              # Actualizar todo el sistema
+sudo dnf install <paquete>  # Instalar un paquete
+sudo dnf remove <paquete>    # Eliminar un paquete
+dnf search <término>         # Buscar paquetes
+dnf list installed           # Listar paquetes instalados
+sudo dnf upgrade             # Actualizar paquetes
+```
 
-tailscale status: Verifica el estado de la conexión y lista los dispositivos conectados.
-tailscale ip: Muestra la dirección IP de Tailscale asignada a tu dispositivo actual.
-tailscale ping <nombre-dispositivo>: Prueba la conectividad con otro equipo de la red.
-tailscale file cp <origen> <destino>: Transfiere archivos directamente entre dispositivos del tailnet.
-tailscale up --advertise-routes=...: Permite que un dispositivo actúe como router de subred para acceder a otros equipos locales (como impresoras o NAS). 
+## 🔧 Servicios y Procesos
+
+```bash
+sudo systemctl start <servicio>     # Iniciar servicio
+sudo systemctl stop <servicio>     # Detener servicio
+sudo systemctl restart <servicio>  # Reiniciar servicio
+sudo systemctl status <servicio>  # Ver estado
+sudo systemctl enable <servicio>   # Habilitar al inicio
+sudo systemctl disable <servicio>  # Deshabilitar al inicio
+
+ps aux                             # Ver procesos
+ps aux | grep <nombre>            # Buscar proceso
+kill -9 <PID>                     # Matar proceso (fuera)
+pkill -f <nombre>                 # Matar por nombre
+top / htop                        # Monitor de procesos
+```
+
+## 📁 Archivos y Directorios
+
+```bash
+ls -la                 # Listar con detalles
+ls -lh                # Listar tamaño legible
+cd ~                  # Ir a home
+cd -                  # Ir al directorio anterior
+pwd                   # Mostrar ruta actual
+mkdir -p <ruta>       # Crear directorio(s)
+rm -rf <ruta>         # Eliminar directorio(s) forzosamente
+cp -r <origen> <dest> # Copiar recursivo
+mv <origen> <dest>    # Mover/Renombrar
+touch <archivo>       # Crear archivo vacío
+cat <archivo>         # Ver contenido
+less <archivo>        # Ver contenido (paginado)
+tail -f <archivo>    # Ver contenido en tiempo real
+head -n <líneas> <archivo>  # Ver primeras líneas
+
+# Permisos
+chmod +x <archivo>   # Dar permiso de ejecución
+chmod 755 <archivo>  # Permisos estándar
+chown user:group <archivo>  # Cambiar propietario
+```
+
+## 🌐 Red
+
+```bash
+ip a                   # Ver IPs (nueva命令)
+ip addr show           # Ver interfaces de red
+ip route               # Ver tabla de rutas
+ping <host>            # Hacer ping
+curl <url>             # Descargar/Hacer request
+wget <url>             # Descargar archivo
+ssh user@host          # Conexión SSH
+scp archivo user@host:/ruta   # Copiar por SSH
+rsync -av <origen> <dest>     # Sincronizar
+
+# Firewall
+sudo firewall-cmd --list-all           # Ver reglas
+sudo firewall-cmd --add-port=8080/tcp  # Abrir puerto
+sudo firewall-cmd --remove-port=8080/tcp  # Cerrar puerto
+sudo firewall-cmd --reload            # Recargar
+
+# DNS
+nslookup <dominio>     # Consulta DNS
+dig <dominio>          # Consulta DNS detallada
+host <dominio>         # Consulta DNS
+```
+
+## 🔍 Búsqueda
+
+```bash
+find /ruta -name <archivo>      # Buscar por nombre
+find /ruta -type d              # Buscar directorios
+find /ruta -type f -size +100M  # Buscar archivos grandes
+grep -r "<texto>" <directorio> # Buscar texto en archivos
+grep -i "<texto>" <archivo>    # Buscar sin importar mayúsculas
+which <comando>                # Ruta de un comando
+whereis <comando>              # Binarios, fuentes, manpages
+locate <archivo>               # Buscar rápido (requiere updatedb)
+```
+
+## 📦 Compresión
+
+```bash
+# tar
+tar -cvf archivo.tar <directorio>  # Crear
+tar -xvf archivo.tar               # Extraer
+tar -cvzf archivo.tar.gz <dir>    # Crear .tar.gz
+tar -xvzf archivo.tar.gz          # Extraer .tar.gz
+
+# zip
+zip -r archivo.zip <directorio>   # Comprimir
+unzip archivo.zip                 # Extraer
+
+# 7z
+7z a archivo.7z <directorio>      # Comprimir
+7z x archivo.7z                   # Extraer
+```
+
+## 🐳 Docker
+
+```bash
+sudo systemctl start docker    # Iniciar Docker
+docker ps                      # Ver contenedores activos
+docker ps -a                   # Ver todos los contenedores
+docker images                  # Ver imágenes
+docker pull <imagen>          # Descargar imagen
+docker run -it <imagen>       # Ejecutar imagen interactivo
+docker exec -it <container> /bin/bash  # Entrar en contenedor
+docker stop $(docker ps -aq)  # Detener todos
+docker rm $(docker ps -aq)    # Eliminar todos
+docker rmi $(docker images -q) # Eliminar todas las imágenes
+```
+
+## 📝 Git
+
+```bash
+git init                       # Iniciar repositorio
+git clone <url>               # Clonar repositorio
+git status                    # Ver estado
+git add .                     # Añadir todos los cambios
+git add <archivo>             # Añadir archivo específico
+git commit -m "mensaje"       # Hacer commit
+git push origin main          # Subir cambios
+git pull                      # Descargar cambios
+git branch                    # Ver ramas
+git checkout -b <rama>       # Crear y cambiar a rama
+git checkout <rama>           # Cambiar de rama
+git merge <rama>             # Mergear rama
+git log --oneline             # Ver historial
+git diff                      # Ver cambios
+git reset --hard <commit>    # Volver a un commit
+```
+
+## 🖥️ Vim
+
+```bash
+vim <archivo>                 # Abrir archivo
+i                             # Modo insertar
+Esc                           # Salir de modo insertar
+:w                            # Guardar
+:q                            # Cerrar
+:wq / :x                      # Guardar y cerrar
+:q!                           # Cerrar sin guardar
+dd                            # Cortar línea
+yy                            # Copiar línea
+p                             # Pegar
+u                             # Deshacer
+Ctrl+r                        # Rehacer
+/texto                        # Buscar texto
+:n                            # Ir a línea n
+:%s/old/new/g                 # Reemplazar todo
+```
+
+## 🔧 Misceláneo
+
+```bash
+sudo su                       # Cambiar a root
+sudo <comando>               # Ejecutar como root
+clear / Ctrl+L               # Limpiar terminal
+history                      # Ver historial de comandos
+alias <alias>='<comando>'    # Crear alias
+export VAR=valor             # Definir variable
+echo $VAR                    # Ver variable
+date                         # Ver fecha y hora
+whoami                       # Ver usuario actual
+uname -a                     # Info del sistema
+df -h                        # Espacio en disco
+free -h                      # Memoria RAM
+```
+
+## 🟠 XAMPP / LAMPP
+
+```bash
+sudo /opt/lampp/lampp start          # Iniciar XAMPP
+sudo /opt/lampp/lampp stop           # Detener XAMPP
+sudo /opt/lampp/lampp restart        # Reiniciar XAMPP
+sudo /opt/lampp/lampp startapache    # Solo Apache
+sudo /opt/lampp/lampp startmysql     # Solo MySQL
+```
+
+## 🎮 GPU / NVIDIA
+
+```bash
+nvidia-smi                  # Estado de GPU
+nvidia-smi -L               # Listar GPUs
+nvidia-smi --query-gpu=* --format=csv  # Info detallada
+```
