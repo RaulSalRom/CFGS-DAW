@@ -197,3 +197,78 @@ nvidia-smi                  # Estado de GPU
 nvidia-smi -L               # Listar GPUs
 nvidia-smi --query-gpu=* --format=csv  # Info detallada
 ```
+
+---
+
+## 📝 MarkItDown
+
+Convierte archivos (PDF, Word, Excel, PowerPoint, imágenes, etc.) a Markdown.
+
+### Instalación
+
+```bash
+pip install 'markitdown[all]'  # Todas las dependencias
+pip install 'markitdown[pdf,docx,pptx,xlsx]'  # Solo las principales
+```
+
+### Uso CLI
+
+```bash
+markitdown archivo.pdf              # Convertir a stdout
+markitdown archivo.pdf -o salida.md # Guardar en archivo
+cat archivo.pdf | markitdown        # Por tubería
+markitdown archivo.pdf -o salida.md -x pdf  # Forzar extensión
+```
+
+### Uso Python
+
+```python
+from markitdown import MarkItDown
+
+md = MarkItDown()
+result = md.convert("documento.pdf")
+print(result.text_content)
+```
+
+---
+
+## 💎 Obsidian
+
+Notas en Markdown con interlinked. Excelente para crear Second Brain.
+
+### Instalación
+
+```bash
+# Descargar desde https://obsidian.md/download
+# Extraer AppImage
+./Obsidian-*.AppImage --appimage-extract
+ln -s squashfs-root/obsidian ~/.local/bin/obsidian
+
+# Ejecutar
+obsidian --no-sandbox
+```
+
+### Comandos básicos
+
+| Atajo | Acción |
+|-------|--------|
+| `Ctrl+P` | Paleta de comandos |
+| `Ctrl+Shift+F` | Buscar en todos los archivos |
+| `Ctrl+E` | Vista previa/Edición |
+| `Ctrl+Shift+S` | Vista lateral |
+| `Ctrl+O` | Abrir quick switcher |
+| `Ctrl+Shift+H` | Reemplazar en archivos |
+
+### Markdown en Obsidian
+
+```markdown
+# Título         → Encabezado 1
+## Título       → Encabezado 2
+[[enlace]]      → Enlace a otra nota
+[[enlace#sección]] → Enlace a sección
+![[imagen.png]] → Insertar imagen
+![[nota]]       → Incrustar nota
+- [ ] tarea    → Tarea pendiente
+- [x] tarea    → Tarea completada
+> cita         → Blockquote
+```
