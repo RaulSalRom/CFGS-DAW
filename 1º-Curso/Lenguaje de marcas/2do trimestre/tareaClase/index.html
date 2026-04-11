@@ -1,124 +1,203 @@
 <!DOCTYPE html>
+<!-- Definición del tipo de documento HTML5 -->
 <html lang="es">
 
 <head>
+  <!-- Configuración del documento: codificación UTF-8 y viewport para diseño responsivo -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título que aparece en la pestaña del navegador -->
   <title>Raul Sal Romeo</title>
+  
+  <!-- Inicio de la sección de estilos CSS -->
   <style>
+    /* Estilos generales del cuerpo de la página */
     body {
+      /* Color de fondo gris claro por defecto */
       background-color: #f5f5f5;
+      /* Fuente tipográfica Helvetica Neue con alternativas */
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      /* Uso de flexbox para centrar el contenido */
       display: flex;
       justify-content: center;
       align-items: center;
+      /* Altura mínima igual a la viewport para centrar verticalmente */
       min-height: 100vh;
+      /* Eliminar márgenes por defecto */
       margin: 0;
     }
 
+    /* Contenedor principal del carrusel */
     .carousel-container {
+      /* Ancho fijo de 600px */
       width: 600px;
+      /* Fondo blanco */
       background: white;
+      /* Espaciado interno de 20px */
       padding: 20px;
+      /* Bordes redondeados de 20px */
       border-radius: 20px;
+      /* Sombra suave alrededor del contenedor */
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     }
 
+    /* Wrapper que contiene todos los slides - permite scroll horizontal */
     .scroll-snap-wrapper {
+      /* Elementos en línea (horizontal) */
       display: flex;
+      /* Ocultar overflow horizontal pero permitir scroll */
       overflow-x: auto;
+      /* Espacio de 10px entre slides */
       gap: 10px;
+      /* Tipo de scroll-snap: obligatorio en eje horizontal */
       scroll-snap-type: x mandatory;
+      /* Comportamiento de scroll suave */
       scroll-behavior: smooth;
+      /* Ocultar barra de scroll en Firefox */
       scrollbar-width: none;
+      /* Espaciado inferior para el scroll */
       padding-bottom: 20px;
     }
 
+    /* Ocultar barra de scroll en Chrome/Safari/Edge */
     .scroll-snap-wrapper::-webkit-scrollbar {
       display: none;
     }
 
+    /* Estilos para cada slide individual */
     .slide {
+      /* No permitir que el slide se encoja (flex: 0 0 100% = mantener ancho completo) */
       flex: 0 0 100%;
+      /* El snap del scroll se alinea al centro */
       scroll-snap-align: center;
+      /* Posición relativa para posicionamiento interno */
       position: relative;
+      /* Centrar texto dentro del slide */
       text-align: center;
     }
 
+    /* Estilos para las imágenes dentro de cada slide */
     .slide img {
+      /* Ancho completo del contenedor */
       width: 100%;
+      /* Altura fija de 350px */
       height: 350px;
+      /* Mantener proporción sin distorsionar (contain) */
       object-fit: contain;
+      /* Sombra suave tipo drop-shadow */
       filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
     }
 
+    /* Estilos para la información debajo de cada imagen */
     .info {
+      /* Margen superior de 10px */
       margin-top: 10px;
+      /* Texto en negrita */
       font-weight: bold;
+      /* Color de texto gris oscuro */
       color: #333;
     }
 
+    /* Contenedor de los controles de navegación */
     .controls {
+      /* Flexbox para distribuir elementos */
       display: flex;
+      /* Espacio entre elementos */
       justify-content: space-between;
+      /* Centrar verticalmente */
       align-items: center;
+      /* Margen superior de 10px */
       margin-top: 10px;
+      /* Espaciado interno de 10px */
       padding: 10px;
+      /* Fondo negro */
       background: #111;
+      /* Bordes muy redondeados (forma de pastilla) */
       border-radius: 50px;
     }
 
+    /* Estilos base para los botones de navegación */
     .btn {
+      /* Color de texto blanco */
       color: white;
+      /* Eliminar subrayado de enlace */
       text-decoration: none;
+      /* Espaciado interno: 10px vertical, 20px horizontal */
       padding: 10px 20px;
+      /* Bordes redondeados de 20px */
       border-radius: 20px;
+      /* Tamaño de fuente de 14px */
       font-size: 14px;
+      /* Texto en negrita */
       font-weight: bold;
+      /* Transición suave del color de fondo */
       transition: background 0.2s;
     }
 
+    /* Estilos cuando el cursor está sobre un botón */
     .btn:hover {
+      /* Color de fondo gris oscuro al pasar el mouse */
       background: #333;
     }
 
+    /* Clase para botones deshabilitados (opacidad reducida) */
     .btn.disabled {
+      /* Opacidad del 30% */
       opacity: 0.3;
+      /* Cursor por defecto (no pointer) */
       cursor: default;
+      /* Desactivar eventos de puntero (no clickable) */
       pointer-events: none;
     }
 
+    /* Grupo dinámico que contiene múltiples botones superpuestos */
     .dynamic-group {
+      /* Posición relativa para posicionar hijos absolutamente */
       position: relative;
+      /* Ancho de 40px */
       width: 40px;
+      /* Altura de 40px */
       height: 40px;
     }
 
+    /* Botones dentro del grupo dinámico - posicionados absolutamente */
     .dynamic-group .btn {
+      /* Posición absoluta respecto al grupo */
       position: absolute;
+      /* Centrar verticalmente */
       top: 50%;
+      /* Centrar horizontalmente */
       left: 50%;
+      /* Trasladar desde el centro (-50%) */
       transform: translate(-50%, -50%);
+      /* Espaciado interno más pequeño */
       padding: 8px 14px;
+      /* Ocultar por defecto (se mostrarán con :has()) */
       display: none;
     }
 
+    /* Clase que muestra el botón de siguiente por defecto al inicio */
     .default-start {
       display: block !important;
     }
 
+    /* Placeholder que se muestra cuando no hay navegación activa */
     .placeholder {
       display: block !important;
     }
 
+    /* ========== LÓGICA DE NAVEGACIÓN CON SELECTOR :has() ========== */
+    /* Cuando el slide #n1 está activo (target), mostrar botón next a n2 */
     body:has(#n1:target) .controls .next.to-n2 {
       display: block !important;
     }
 
+    /* Ocultar botón default-start cuando n1 está activo */
     body:has(#n1:target) .controls .default-start {
       display: none !important;
     }
 
+    /* Slide #n2: mostrar botón prev hacia n1 Y next hacia n3 */
     body:has(#n2:target) .controls .prev.to-n1 {
       display: block !important;
     }
@@ -132,6 +211,7 @@
       display: none !important;
     }
 
+    /* Slide #n3: mostrar botón prev hacia n2 Y next hacia n4 */
     body:has(#n3:target) .controls .prev.to-n2 {
       display: block !important;
     }
@@ -145,6 +225,7 @@
       display: none !important;
     }
 
+    /* Slide #n4: mostrar botón prev hacia n3 Y next hacia n5 */
     body:has(#n4:target) .controls .prev.to-n3 {
       display: block !important;
     }
@@ -158,6 +239,7 @@
       display: none !important;
     }
 
+    /* Slide #n5: mostrar botón prev hacia n4 Y next hacia n6 */
     body:has(#n5:target) .controls .prev.to-n4 {
       display: block !important;
     }
@@ -171,6 +253,7 @@
       display: none !important;
     }
 
+    /* Slide #n6: mostrar botón prev hacia n5 Y next hacia n7 */
     body:has(#n6:target) .controls .prev.to-n5 {
       display: block !important;
     }
@@ -184,6 +267,7 @@
       display: none !important;
     }
 
+    /* Slide #n7: mostrar botón prev hacia n6 Y next hacia n8 */
     body:has(#n7:target) .controls .prev.to-n6 {
       display: block !important;
     }
@@ -197,6 +281,7 @@
       display: none !important;
     }
 
+    /* Slide #n8: mostrar botón prev hacia n7 Y next hacia n9 */
     body:has(#n8:target) .controls .prev.to-n7 {
       display: block !important;
     }
@@ -210,6 +295,7 @@
       display: none !important;
     }
 
+    /* Slide #n9: mostrar botón prev hacia n8 Y next hacia n10 */
     body:has(#n9:target) .controls .prev.to-n8 {
       display: block !important;
     }
@@ -223,6 +309,7 @@
       display: none !important;
     }
 
+    /* Slide #n10 (último): solo mostrar botón prev hacia n9, no hay next */
     body:has(#n10:target) .controls .prev.to-n9 {
       display: block !important;
     }
@@ -241,148 +328,193 @@
       display: none !important;
     }
 
+    /* ========== CAMBIO DE COLOR DE FONDO SEGÚN SLIDE ACTIVO ========== */
+    /* Transición suave del color de fondo */
     body {
       transition: background-color 0.5s ease;
     }
 
+    /* Slide 1: color durazno */
     body:has(#n1:target) {
       background-color: #FFE5B4;
     }
 
+    /* Slide 2: color verde suave */
     body:has(#n2:target) {
       background-color: #E5F5E5;
     }
 
+    /* Slide 3: color rosa claro */
     body:has(#n3:target) {
       background-color: #FFF0F5;
     }
 
+    /* Slide 4: color azul alice */
     body:has(#n4:target) {
       background-color: #F0F8FF;
     }
 
+    /* Slide 5: color papaya whip */
     body:has(#n5:target) {
       background-color: #FFF5EE;
     }
 
+    /* Slide 6: color lavanda */
     body:has(#n6:target) {
       background-color: #F5F0FF;
     }
 
+    /* Slide 7: color azul claro */
     body:has(#n7:target) {
       background-color: #E0F6FF;
     }
 
+    /* Slide 8: color corn silk */
     body:has(#n8:target) {
       background-color: #FFF8DC;
     }
 
+    /* Slide 9: color azure */
     body:has(#n9:target) {
       background-color: #F0FFFF;
     }
 
+    /* Slide 10: color misty rose */
     body:has(#n10:target) {
       background-color: #FFE4E1;
     }
   </style>
+  <!-- Fin de la sección de estilos CSS -->
 </head>
 
-<body>
-  <div class="carousel-container">
-    <div class="controls">
-      <a href="#n1" class="btn side"> Inicio</a>
+  <!-- Inicio del cuerpo del documento -->
+  <body>
+    <!-- Contenedor principal del carrusel -->
+    <div class="carousel-container">
+      <!-- Controles de navegación del carrusel -->
+      <div class="controls">
+        <!-- Botón fijo de inicio - lleva al slide #n1 -->
+        <a href="#n1" class="btn side"> Inicio</a>
 
-      <div class="dynamic-group">
-        <a href="#n1" class="btn prev to-n1">◀</a>
-        <a href="#n2" class="btn prev to-n2">◀</a>
-        <a href="#n3" class="btn prev to-n3">◀</a>
-        <a href="#n4" class="btn prev to-n4">◀</a>
-        <a href="#n5" class="btn prev to-n5">◀</a>
-        <a href="#n6" class="btn prev to-n6">◀</a>
-        <a href="#n7" class="btn prev to-n7">◀</a>
-        <a href="#n8" class="btn prev to-n8">◀</a>
-        <a href="#n9" class="btn prev to-n9">◀</a>
-        <span class="btn prev disabled placeholder">◀</span>
+        <!-- Grupo de botones Previous (retroceder) - se muestran según el slide actual -->
+        <div class="dynamic-group">
+          <a href="#n1" class="btn prev to-n1">◀</a>
+          <a href="#n2" class="btn prev to-n2">◀</a>
+          <a href="#n3" class="btn prev to-n3">◀</a>
+          <a href="#n4" class="btn prev to-n4">◀</a>
+          <a href="#n5" class="btn prev to-n5">◀</a>
+          <a href="#n6" class="btn prev to-n6">◀</a>
+          <a href="#n7" class="btn prev to-n7">◀</a>
+          <a href="#n8" class="btn prev to-n8">◀</a>
+          <a href="#n9" class="btn prev to-n9">◀</a>
+          <!-- Placeholder que se muestra cuando no hay slide anterior (último slide) -->
+          <span class="btn prev disabled placeholder">◀</span>
+        </div>
+
+        <!-- Grupo de botones Next (avanzar) - se muestran según el slide actual -->
+        <div class="dynamic-group">
+          <a href="#n2" class="btn next to-n2">▶</a>
+          <a href="#n3" class="btn next to-n3">▶</a>
+          <a href="#n4" class="btn next to-n4">▶</a>
+          <a href="#n5" class="btn next to-n5">▶</a>
+          <a href="#n6" class="btn next to-n6">▶</a>
+          <a href="#n7" class="btn next to-n7">▶</a>
+          <a href="#n8" class="btn next to-n8">▶</a>
+          <a href="#n9" class="btn next to-n9">▶</a>
+          <a href="#n10" class="btn next to-n10">▶</a>
+          <!-- Botón por defecto que se muestra al inicio (lleva al slide #n2) -->
+          <a href="#n2" class="btn next default-start">▶</a>
+        </div>
+
+        <!-- Botón fijo de final - lleva al slide #n10 -->
+        <a href="#n10" class="btn side">Final </a>
       </div>
 
-      <div class="dynamic-group">
-        <a href="#n2" class="btn next to-n2">▶</a>
-        <a href="#n3" class="btn next to-n3">▶</a>
-        <a href="#n4" class="btn next to-n4">▶</a>
-        <a href="#n5" class="btn next to-n5">▶</a>
-        <a href="#n6" class="btn next to-n6">▶</a>
-        <a href="#n7" class="btn next to-n7">▶</a>
-        <a href="#n8" class="btn next to-n8">▶</a>
-        <a href="#n9" class="btn next to-n9">▶</a>
-        <a href="#n10" class="btn next to-n10">▶</a>
-        <a href="#n2" class="btn next default-start">▶</a>
-      </div>
+      <!-- Wrapper que contiene todos los slides del carrusel -->
+      <div class="scroll-snap-wrapper">
+        <!-- Slide #1: Nike Air Max clásico -->
+        <div id="n1" class="slide">
+          <img
+            src="https://imgs.search.brave.com/h7QapADRrq_FMaFmXMZB_eqXcBOH1aev-Ev8m5S_jPg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYXNl/Lm5ldC9jZG4vc2hv/cC9maWxlcy8zLW9y/aWdpbmFsXzlmMjMy/ZmI5LTc1YTMtNDYw/OS1iYTlmLWVhN2My/YWFmYjJkMy5qcGc_/dj0xNzU0NzE0NDIy/JndpZHRoPTQ2MA"
+            alt="Nike Air Max clásico en color blanco y negro">
+          <div class="info">1</div>
+        </div>
 
-      <a href="#n10" class="btn side">Final </a>
+        <!-- Slide #2: Nike Blazer Mid -->
+        <div id="n2" class="slide">
+          <img
+            src="https://imgs.search.brave.com/wBHuaqAquI-2AYDqH0E4Z3YdcN1P5oFvwBwvvFee1Xw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pOC5h/bXBsaWVuY2UubmV0/L3QvanBsL3N6X3By/b2R1Y3RfbGlzdD9w/bHU9c3pfNzgwODI0/X2ImcWx0PTkyJnc9/MzYzJmg9MjgxJnY9/MSZmbXQ9YXV0bw"
+            alt="Nike Blazer Mid con diseño retro en tonos neutros">
+          <div class="info">2</div>
+        </div>
+
+        <!-- Slide #3: Nike SB Dunk Low -->
+        <div id="n3" class="slide">
+          <img
+            src="https://imgs.search.brave.com/uztdFRDZayjGYoL2zCMBaWXocPR5PuCtUe9WEvg6fGU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcw/MS56dGF0Lm5ldC9h/cnRpY2xlL3NwcC1t/ZWRpYS1wMS9iYjY5/OTdkZTc3ZjU0NTA0/OWQzYWU4ZDE5MzA2/M2Q2Mi9kZGRhYTFj/ZmVlNjE0NGZkYjQ2/OGM3ZjAwYzg5ZDk2/ZS5qcGc_aW13aWR0/aD0zMDA"
+            alt="Nike SB Dunk Low en color azul marino y blanco">
+          <div class="info">3</div>
+        </div>
+
+        <!-- Slide #4: Nike Promina -->
+        <div id="n4" class="slide">
+          <img
+            src="https://imgs.search.brave.com/BFPlprRC80ONYlFn3TZYIX92S_7a7Pnf9C-PLaoGnPU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmlrZS5jb20v/YS9pbWFnZXMvdF9k/ZWZhdWx0L2I1ZmMx/YWViLTZkYmUtNGFm/MC05MzcxLWVlMTM4/ODQ4OTQzZS9NK05J/S0UrUFJPTUlOQS5w/bmc"
+            alt="Nike Promina en blanco con detalles grises">
+          <div class="info">4</div>
+        </div>
+
+        <!-- Slide #5: Nike Revolution -->
+        <div id="n5" class="slide">
+          <img
+            src="https://imgs.search.brave.com/dYkwGqcdYpcaIivEsAJC4VwV1nD3xF-YbLnWFSgkvEE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNDU4/NzA3NzU3L3Bob3Rv/L25pa2UtcnVubmlu/Zy1zaG9lcy1vbi13/aGl0ZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9eFlQWXl6/NWoxS3h1WTNCLVAy/Q0pKT2d6Z21OWTdf/dGVvWlI4QlZrNTNU/VT0"
+            alt="Nike Revolution para correr en color negro">
+          <div class="info">5</div>
+        </div>
+
+        <!-- Slide #6: Nike Blazer 77 Vintage -->
+        <div id="n6" class="slide">
+          <img
+            src="https://imgs.search.brave.com/poYqVaTIHGuwSTtiRBvmgo3jwqhHVecPyMb-4MYtBQQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYXNl/Lm5ldC9jZG4vc2hv/cC9maWxlcy81LW9y/aWdpbmFsX2FkMDI0/M2FhLWUxODItNDJl/OC1iMzM4LTZiZmIz/NDY5N2ViMS5qcGc_/dj0xNzU0NzE0NDIz/JndpZHRoPTQ2MA"
+            alt="Nike Blazer 77 Vintage en rojo y blanco">
+          <div class="info">6</div>
+        </div>
+
+        <!-- Slide #7: Nike Dunk Panda -->
+        <div id="n7" class="slide">
+          <img
+            src="https://imgs.search.brave.com/MMsEcY7m6sTvbqWNEfKcT-X_-eaHJEZOh74TKMHvhKo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA1LzM2LzY4LzU2/LzM2MF9GXzUzNjY4/NTYyNV9JR0xTTjRG/bTVFR2N4UTRrSDha/MXlmTTlpRmRDaWc1/by5qcGc"
+            alt="Nike Dunk Panda en blanco y negro">
+          <div class="info">7</div>
+        </div>
+
+        <!-- Slide #8: Nike Air Max Plus -->
+        <div id="n8" class="slide">
+          <img
+            src="https://imgs.search.brave.com/hC9qbGJ6R13_DYBdfQnmlFKkRwXXpOmIHVkQUmJykhA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYXNl/Lm5ldC9jZG4vc2hv/cC9maWxlcy8zLW9y/aWdpbmFsXzMyMWMx/MjQ5LWRhZDAtNDYz/Ni1iZmRhLWVkNTE0/MzI1MmNiZS5qcGc_/dj0xNzY0MzgzMjIx/JndpZHRoPTQ2MA"
+            alt="Nike Air Max Plus con diseño accionado">
+          <div class="info">8</div>
+        </div>
+
+        <!-- Slide #9: Nike Pegasus 41 -->
+        <div id="n9" class="slide">
+          <img
+            src="https://imgs.search.brave.com/h36EQKec28anumBQnDAfCDtePgotrTgxmmhxPvxg48E/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvbmlr/ZS1waWN0dXJlcy03/cHgyeHE3dTh6czF3/eW14LmpwZw"
+            alt="Nike Pegasus 41 para entrenamiento en gris">
+          <div class="info">9</div>
+        </div>
+
+        <!-- Slide #10: Nike Air Max Dn (último slide) -->
+        <div id="n10" class="slide">
+          <img
+            src="https://imgs.search.brave.com/55NgqgJjDKLZUfqn3WJeNJhfjf8GuSzRBHHH1_VCY80/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzM0L2Uz/LzA3LzM0ZTMwNzQ4/ODA1ODE2ZTQyM2Fh/ZTQzYzQwNjZjZjhi/LmpwZw"
+            alt="Nike Air Max Dn en tonos oscuros con suela de aire">
+          <div class="info">10</div>
+        </div>
+      </div>
     </div>
-
-    <div class="scroll-snap-wrapper">
-      <div id="n1" class="slide">
-        <img
-          src="https://imgs.search.brave.com/h7QapADRrq_FMaFmXMZB_eqXcBOH1aev-Ev8m5S_jPg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYXNl/Lm5ldC9jZG4vc2hv/cC9maWxlcy8zLW9y/aWdpbmFsXzlmMjMy/ZmI5LTc1YTMtNDYw/OS1iYTlmLWVhN2My/YWFmYjJkMy5qcGc_/dj0xNzU0NzE0NDIy/JndpZHRoPTQ2MA"
-          alt="Nike Air Max clásico en color blanco y negro">
-        <div class="info">1</div>
-      </div>
-      <div id="n2" class="slide">
-        <img
-          src="https://imgs.search.brave.com/wBHuaqAquI-2AYDqH0E4Z3YdcN1P5oFvwBwvvFee1Xw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pOC5h/bXBsaWVuY2UubmV0/L3QvanBsL3N6X3By/b2R1Y3RfbGlzdD9w/bHU9c3pfNzgwODI0/X2ImcWx0PTkyJnc9/MzYzJmg9MjgxJnY9/MSZmbXQ9YXV0bw"
-          alt="Nike Blazer Mid con diseño retro en tonos neutros">
-        <div class="info">2</div>
-      </div>
-      <div id="n3" class="slide">
-        <img
-          src="https://imgs.search.brave.com/uztdFRDZayjGYoL2zCMBaWXocPR5PuCtUe9WEvg6fGU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcw/MS56dGF0Lm5ldC9h/cnRpY2xlL3NwcC1t/ZWRpYS1wMS9iYjY5/OTdkZTc3ZjU0NTA0/OWQzYWU4ZDE5MzA2/M2Q2Mi9kZGRhYTFj/ZmVlNjE0NGZkYjQ2/OGM3ZjAwYzg5ZDk2/ZS5qcGc_aW13aWR0/aD0zMDA"
-          alt="Nike SB Dunk Low en color azul marino y blanco">
-        <div class="info">3</div>
-      </div>
-      <div id="n4" class="slide">
-        <img
-          src="https://imgs.search.brave.com/BFPlprRC80ONYlFn3TZYIX92S_7a7Pnf9C-PLaoGnPU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmlrZS5jb20v/YS9pbWFnZXMvdF9k/ZWZhdWx0L2I1ZmMx/YWViLTZkYmUtNGFm/MC05MzcxLWVlMTM4/ODQ4OTQzZS9NK05J/S0UrUFJPTUlOQS5w/bmc"
-          alt="Nike Promina en blanco con detalles grises">
-        <div class="info">4</div>
-      </div>
-      <div id="n5" class="slide">
-        <img
-          src="https://imgs.search.brave.com/dYkwGqcdYpcaIivEsAJC4VwV1nD3xF-YbLnWFSgkvEE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNDU4/NzA3NzU3L3Bob3Rv/L25pa2UtcnVubmlu/Zy1zaG9lcy1vbi13/aGl0ZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9eFlQWXl6/NWoxS3h1WTNCLVAy/Q0pKT2d6Z21OWTdf/dGVvWlI4QlZrNTNU/VT0"
-          alt="Nike Revolution para correr en color negro">
-        <div class="info">5</div>
-      </div>
-      <div id="n6" class="slide">
-        <img
-          src="https://imgs.search.brave.com/poYqVaTIHGuwSTtiRBvmgo3jwqhHVecPyMb-4MYtBQQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYXNl/Lm5ldC9jZG4vc2hv/cC9maWxlcy81LW9y/aWdpbmFsX2FkMDI0/M2FhLWUxODItNDJl/OC1iMzM4LTZiZmIz/NDY5N2ViMS5qcGc_/dj0xNzU0NzE0NDIz/JndpZHRoPTQ2MA"
-          alt="Nike Blazer 77 Vintage en rojo y blanco">
-        <div class="info">6</div>
-      </div>
-      <div id="n7" class="slide">
-        <img
-          src="https://imgs.search.brave.com/MMsEcY7m6sTvbqWNEfKcT-X_-eaHJEZOh74TKMHvhKo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA1LzM2LzY4LzU2/LzM2MF9GXzUzNjY4/NTYyNV9JR0xTTjRG/bTVFR2N4UTRrSDha/MXlmTTlpRmRDaWc1/by5qcGc"
-          alt="Nike Dunk Panda en blanco y negro">
-        <div class="info">7</div>
-      </div>
-      <div id="n8" class="slide">
-        <img
-          src="https://imgs.search.brave.com/hC9qbGJ6R13_DYBdfQnmlFKkRwXXpOmIHVkQUmJykhA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYXNl/Lm5ldC9jZG4vc2hv/cC9maWxlcy8zLW9y/aWdpbmFsXzMyMWMx/MjQ5LWRhZDAtNDYz/Ni1iZmRhLWVkNTE0/MzI1MmNiZS5qcGc_/dj0xNzY0MzgzMjIx/JndpZHRoPTQ2MA"
-          alt="Nike Air Max Plus con diseño accionado">
-        <div class="info">8</div>
-      </div>
-      <div id="n9" class="slide">
-        <img
-          src="https://imgs.search.brave.com/h36EQKec28anumBQnDAfCDtePgotrTgxmmhxPvxg48E/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvbmlr/ZS1waWN0dXJlcy03/cHgyeHE3dTh6czF3/eW14LmpwZw"
-          alt="Nike Pegasus 41 para entrenamiento en gris">
-        <div class="info">9</div>
-      </div>
-      <div id="n10" class="slide">
-        <img
-          src="https://imgs.search.brave.com/55NgqgJjDKLZUfqn3WJeNJhfjf8GuSzRBHHH1_VCY80/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzM0L2Uz/LzA3LzM0ZTMwNzQ4/ODA1ODE2ZTQyM2Fh/ZTQzYzQwNjZjZjhi/LmpwZw"
-          alt="Nike Air Max Dn en tonos oscuros con suela de aire">
-        <div class="info">10</div>
-      </div>
-    </div>
-</body>
+    <!-- Fin del contenedor del carrusel -->
+  </body>
+  <!-- Fin del cuerpo del documento -->
 
 </html>
