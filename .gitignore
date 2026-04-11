@@ -1,9 +1,27 @@
-Programacion-/
-/bin/
-.bin/
-
-.DS_Store
-.metadata/
-bin/
+# Archivos de compilación Java
 *.class
+bin/
+.classpath
+.project
+
+# Eclipse
+.metadata/
 .recommenders/
+
+# macOS
+.DS_Store
+Thumbs.db
+
+# Obsidian Vault - Config (ignorar, no subir)
+obsidian/ObsidianVault/.obsidian/
+obsidian/ObsidianVault/workspace.json
+obsidian/ObsidianVault/graph.json
+*.md.bak
+
+# Notas personales
+*~
+
+# IDEs
+.idea/
+*.iml
+.vscode/

@@ -1,0 +1,93 @@
+# 🤖 Memoria del Asistente
+
+## Información General
+
+- **Usuario**: Draken
+- **Sistema**: Linux (bash)
+- **Repositorio principal**: /home/draken/CFGS-DAW
+
+---
+
+## Sobre Mí
+
+Soy **opencode**, un asistente de IA especializado en tareas de programación y desarrollo de software. Estoy diseñado para ayudarte con:
+
+- 📝 Programación y código
+- 🗂️ Gestión de archivos
+- 🔧 Comandos de terminal
+- 📚 Estudio y apuntes
+- 🔍 Búsqueda en código
+
+**NOTA**: No tengo memoria persistente entre sesiones. Cada conversación empiezo desde cero. Consulta este archivo para entender el contexto.
+
+---
+
+## Historial de Sesiones
+
+### Sesión Actual (2026-04-11)
+
+**Objetivo**: Crear apuntes organizados para Obsidian
+
+**Tareas realizadas**:
+1. Abrir Obsidian (ya estaba instalado en `/home/draken/.local/bin/obsidian`)
+2. Explorar el repositorio CFGS-DAW
+3. Usar markitdown para convertir PDFs a markdown
+4. Crear apuntes de todas las asignaturas:
+   - Base de datos (SQL, consultas, procedimientos)
+   - Programación (Java, POO)
+   - Entorno de desarrollo (testing, Scrum)
+   - Lenguaje de marcas (HTML, CSS)
+   - IPE (prevención de riesgos)
+   - Sistemas Informáticos (Linux, bash)
+   - Digitalización (ciberseguridad)
+   - Sostenibilidad
+5. Reorganizar en estructura tema a tema con links internos para Obsidian
+6. Mover archivos a `/home/draken/CFGS-DAW/obsidian/ObsidianVault/`
+
+---
+
+## Repositorio CFGS-DAW
+
+```
+/home/draken/CFGS-DAW/
+├── Base de datos/
+├── Digitalizacion/
+├── Entorno de desarrollo/
+├── IPE/
+├── Lenguaje de marcas/
+├── Programacion/
+├── Sistemas Informaticos/
+├── Sostenibilidad/
+└── obsidian/
+    └── ObsidianVault/  ← Vault de Obsidian
+```
+
+---
+
+## Comandos Útiles del Sistema
+
+- **Obsidian**: `obsidian` (en `/home/draken/.local/bin/`)
+- **Markitdown**: `markitdown` (para convertir PDFs)
+- **Git**: disponible en el repositorio
+
+---
+
+## Preferencias del Usuario
+
+- Le gusta crear apuntes organizados
+- Usa Obsidian para estudio
+- Está cursando CFGS-DAW (Desarrollo de Aplicaciones Web)
+- Le gusta tener las cosas ordenadas y bien estructuradas
+
+---
+
+## Notas Importantes
+
+- El usuario tiene un archivo de notas de programación existente: `notas_programacion.md` (19KB)
+- Hay PDFs de teoría en varias carpetas que se pueden convertir con markitdown
+- El usuario trabaja con Java en programación
+
+---
+
+*Última actualización: 2026-04-11*
+*Este archivo se actualiza automáticamente en cada sesión*
