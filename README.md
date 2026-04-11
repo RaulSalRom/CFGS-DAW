@@ -47,34 +47,6 @@ CFGS-DAW/
 
 ---
 
-## 🚀 Comandos Útiles
-
-```bash
-# Ver estructura
-ls -R
-
-# Estado de Git
-git status
-
-# Añadir cambios
-git add .
-git commit -m "mensaje"
-
-# Actualizar desde remoto
-git pull
-```
-
----
-
-## 📖 Cómo Usar Este Repo
-
-1. **Clonar el repo**: `git clone <url>`
-2. **Actualizar**: `git pull` antes de empezar a estudiar
-3. **Hacer cambios**: crear rama (`git checkout -b rama`)
-4. **Subir cambios**: `git push`
-
----
-
 ## 🔗 Recursos
 
 - [Documentación Java](https://docs.oracle.com/javase/)
@@ -83,13 +55,3 @@ git pull
 - [Linux Commands](https://linux.die.net/man/)
 
 ---
-
-## 📝 Notas
-
-- El vault de Obsidian (`obsidian/`) no se sube a Git
-- Los PDFs de teoría pueden convertirse a Markdown con `markitdown`
-- Mantener los apuntes actualizados cada semana
-
----
-
-*Repositorio mantenido por Jeque | CFGS-DAW 2025-2026*
