@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "28ef9202b4ce8f35",
+        "id": "cca9b666851f3898",
         "type": "tabs",
         "children": [
           {
-            "id": "16a9582ec5017e5e",
+            "id": "849d4f66596bbf7a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "MEMORIA.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "MEMORIA"
+              "title": "Nueva pestaña"
             }
           }
         ]
@@ -78,7 +74,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "e01be85424b4ee62",
@@ -180,11 +177,15 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "16a9582ec5017e5e",
+  "active": "849d4f66596bbf7a",
   "lastOpenFiles": [
+    "Programacion/Excepciones.md",
+    "Programacion/📁 Programacion.md",
+    "Base-de-datos/Consultas SQL.md",
+    "MEMORIA.md",
+    "Lenguaje de marcas.md",
     "Base-de-datos/Procedimientos y Funciones.md",
     "Base-de-datos/Mapeo ER y DDL.md",
-    "Base-de-datos/Consultas SQL.md",
     "Base-de-datos/📁 Base de datos.md",
     "Entorno-de-desarrollo/ED-Tema6.md",
     "Entorno-de-desarrollo/ED-Tema5.md",
@@ -199,11 +200,9 @@
     "Programacion/Programación Modular.md",
     "Programacion/Introducción a Java.md",
     "Programacion/Programación Estructurada.md",
-    "Programacion/Excepciones.md",
     "📚 Indice General.md",
     "Sistemas Informaticos.md",
     "Sostenibilidad.md",
-    "Lenguaje de marcas.md",
     "IPE.md",
     "Entorno de desarrollo.md"
   ]
