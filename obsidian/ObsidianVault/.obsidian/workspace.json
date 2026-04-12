@@ -11,10 +11,14 @@
             "id": "849d4f66596bbf7a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Lenguaje de marcas.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "Lenguaje de marcas"
             }
           }
         ]
@@ -74,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "e01be85424b4ee62",
@@ -179,10 +182,10 @@
   },
   "active": "849d4f66596bbf7a",
   "lastOpenFiles": [
+    "MEMORIA.md",
     "Programacion/Excepciones.md",
     "Programacion/📁 Programacion.md",
     "Base-de-datos/Consultas SQL.md",
-    "MEMORIA.md",
     "Lenguaje de marcas.md",
     "Base-de-datos/Procedimientos y Funciones.md",
     "Base-de-datos/Mapeo ER y DDL.md",
