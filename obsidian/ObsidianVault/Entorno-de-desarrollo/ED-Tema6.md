@@ -130,7 +130,7 @@ Table ordenes {
 ---
 
 ## 🔗 Relacionado
-- [[BD-Tema3|Mapeo ER y DDL]]
+- [[Mapeo ER y DDL|Mapeo ER y DDL]]
 
 ---
 

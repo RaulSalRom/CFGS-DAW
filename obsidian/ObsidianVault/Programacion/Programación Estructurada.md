@@ -161,7 +161,7 @@ FIN PARA
 ---
 
 ## 🔗 Relacionado
-- [[Prog-Tema2|Introducción a Java]]
+- [[Introducción a Java|Introducción a Java]]
 
 ---
 

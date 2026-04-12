@@ -4,9 +4,9 @@
 
 ## 📚 Temas
 
-- [[BD-Tema3|Mapeo ER y DDL]] - Del modelo entidad-relación al modelo relacional
-- [[BD-Tema4|Consultas SQL]] - Sentencias SELECT, JOINS, funciones
-- [[BD-Tema5|Procedimientos y Funciones]] - Stored procedures y funciones en MySQL
+- [[Mapeo ER y DDL|Mapeo ER y DDL]] - Del modelo entidad-relación al modelo relacional
+- [[Consultas SQL|Consultas SQL]] - Sentencias SELECT, JOINS, funciones
+- [[Procedimientos y Funciones|Procedimientos y Funciones]] - Stored procedures y funciones en MySQL
 
 ## 🏷️ Tags
 #asignatura #bd #sql #mysql #bases-de-datos

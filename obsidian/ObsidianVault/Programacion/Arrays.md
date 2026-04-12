@@ -160,8 +160,8 @@ for (Persona p : personas) {
 ---
 
 ## 🔗 Relacionado
-- [[Prog-Tema6|Excepciones]]
-- [[Prog-Tema2|Introducción a Java]]
+- [[Excepciones|Excepciones]]
+- [[Introducción a Java|Introducción a Java]]
 
 ---
 

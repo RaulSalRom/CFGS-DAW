@@ -187,8 +187,8 @@ class Coche implements Arrancable, MedibleConsumo {
 ---
 
 ## 🔗 Relacionado
-- [[Prog-Tema4|POO - Clases y Objetos]]
-- [[Prog-Tema6|Excepciones]]
+- [[POO - Clases y Objetos|POO - Clases y Objetos]]
+- [[Excepciones|Excepciones]]
 
 ---
 

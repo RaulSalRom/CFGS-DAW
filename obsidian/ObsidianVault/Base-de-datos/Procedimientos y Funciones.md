@@ -247,8 +247,8 @@ ROLLBACK;  -- Deshacer
 ---
 
 ## 🔗 Relacionado
-- [[BD-Tema3|Mapeo ER y DDL]]
-- [[BD-Tema4|Consultas SQL]]
+- [[Mapeo ER y DDL|Mapeo ER y DDL]]
+- [[Consultas SQL|Consultas SQL]]
 
 ---
 

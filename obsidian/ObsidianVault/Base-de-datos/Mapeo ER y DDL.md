@@ -178,8 +178,8 @@ DELETE FROM tabla WHERE condición;
 ---
 
 ## 🔗 Relacionado
-- [[BD-Tema4|Consultas SQL]]
-- [[BD-Tema5|Procedimientos y Funciones]]
+- [[Consultas SQL|Consultas SQL]]
+- [[Procedimientos y Funciones|Procedimientos y Funciones]]
 
 ---
 

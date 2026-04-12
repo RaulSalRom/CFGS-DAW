@@ -104,8 +104,8 @@ public int factorial(int n) {
 ---
 
 ## 🔗 Relacionado
-- [[Prog-Tema2|Introducción a Java]]
-- [[Prog-Tema4|POO - Clases y Objetos]]
+- [[Introducción a Java|Introducción a Java]]
+- [[POO - Clases y Objetos|POO - Clases y Objetos]]
 
 ---
 

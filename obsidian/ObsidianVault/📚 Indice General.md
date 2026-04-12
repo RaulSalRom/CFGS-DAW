@@ -5,18 +5,18 @@
 ## 📋 Asignaturas
 
 ### [[Base de datos]]
-- [[BD-Tema3|Mapeo ER y DDL]]
-- [[BD-Tema4|Consultas SQL]]
-- [[BD-Tema5|Procedimientos y Funciones]]
+- [[Mapeo ER y DDL|Mapeo ER y DDL]]
+- [[Consultas SQL|Consultas SQL]]
+- [[Procedimientos y Funciones|Procedimientos y Funciones]]
 
 ### [[Programacion|Programación - Java]]
-- [[Prog-Tema1|Programación Estructurada]]
-- [[Prog-Tema2|Introducción a Java]]
-- [[Prog-Tema3|Programación Modular]]
-- [[Prog-Tema4|POO - Clases y Objetos]]
-- [[Prog-Tema5|POO Avanzada - Herencia]]
-- [[Prog-Tema6|Excepciones]]
-- [[Prog-Tema7|Arrays]]
+- [[Programación Estructurada|Programación Estructurada]]
+- [[Introducción a Java|Introducción a Java]]
+- [[Programación Modular|Programación Modular]]
+- [[POO - Clases y Objetos|POO - Clases y Objetos]]
+- [[POO Avanzada|POO Avanzada - Herencia]]
+- [[Excepciones|Excepciones]]
+- [[Arrays|Arrays]]
 
 ### [[Lenguaje de marcas]]
 - [[LM-Tema1|HTML Básico]]

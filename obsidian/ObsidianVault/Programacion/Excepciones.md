@@ -128,8 +128,8 @@ e.printStackTrace() // Imprimir traza
 ---
 
 ## 🔗 Relacionado
-- [[Prog-Tema5|POO Avanzada]]
-- [[Prog-Tema7|Arrays]]
+- [[POO Avanzada|POO Avanzada]]
+- [[Arrays|Arrays]]
 
 ---
 

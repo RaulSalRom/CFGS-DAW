@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "📚 Indice General.md",
+                "file": "MEMORIA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📚 Indice General"
+              "title": "MEMORIA"
             }
           }
         ]
@@ -182,13 +182,26 @@
   },
   "active": "16a9582ec5017e5e",
   "lastOpenFiles": [
-    "Sistemas Informaticos.md",
-    "Programacion/Prog-Tema7.md",
-    "Programacion/Prog-Tema6.md",
-    "Programacion/Prog-Tema2.md",
-    "Programacion/Prog-Tema1.md",
-    "Programacion/notas_programacion.md",
+    "Base-de-datos/Procedimientos y Funciones.md",
+    "Base-de-datos/Mapeo ER y DDL.md",
+    "Base-de-datos/Consultas SQL.md",
+    "Base-de-datos/📁 Base de datos.md",
+    "Entorno-de-desarrollo/ED-Tema6.md",
+    "Entorno-de-desarrollo/ED-Tema5.md",
+    "Entorno-de-desarrollo/ED-Tema4.md",
+    "Entorno-de-desarrollo/ED-Tema3.md",
+    "Entorno-de-desarrollo/ED-Tema2.md",
+    "Entorno-de-desarrollo/ED-Tema1.md",
+    "Programacion/Arrays.md",
+    "Programacion/Resumen.md",
+    "Programacion/POO Avanzada.md",
+    "Programacion/POO - Clases y Objetos.md",
+    "Programacion/Programación Modular.md",
+    "Programacion/Introducción a Java.md",
+    "Programacion/Programación Estructurada.md",
+    "Programacion/Excepciones.md",
     "📚 Indice General.md",
+    "Sistemas Informaticos.md",
     "Sostenibilidad.md",
     "Lenguaje de marcas.md",
     "IPE.md",

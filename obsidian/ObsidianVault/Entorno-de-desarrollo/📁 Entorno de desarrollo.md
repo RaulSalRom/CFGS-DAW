@@ -15,4 +15,4 @@
 #asignatura #entorno #testing #scrum
 
 ## 📌 Apuntes Relacionados
-- [[Prog-Tema6|Excepciones]] - Para testing de errores
+- [[Excepciones|Excepciones]] - Para testing de errores

@@ -196,8 +196,8 @@ final static double PI = 3.141592;  // Constante de clase
 ---
 
 ## 🔗 Relacionado
-- [[Prog-Tema3|Programación Modular]]
-- [[Prog-Tema5|POO Avanzada]]
+- [[Programación Modular|Programación Modular]]
+- [[POO Avanzada|POO Avanzada]]
 
 ---
 

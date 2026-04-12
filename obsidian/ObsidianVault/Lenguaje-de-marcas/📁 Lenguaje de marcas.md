@@ -14,5 +14,5 @@
 #asignatura #html #css #web
 
 ## 📌 Apuntes Relacionados
-- [[Prog-Tema7|Arrays]] - Para manipulación del DOM
+- [[Arrays|Arrays]] - Para manipulación del DOM
 - [[Sistemas Informaticos]] - Para despliegue web

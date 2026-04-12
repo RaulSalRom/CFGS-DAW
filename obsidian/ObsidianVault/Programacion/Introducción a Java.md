@@ -182,8 +182,8 @@ for (tipo elemento : coleccion) {
 ---
 
 ## 🔗 Relacionado
-- [[Prog-Tema1|Programación Estructurada]]
-- [[Prog-Tema3|Programación Modular]]
+- [[Programación Estructurada|Programación Estructurada]]
+- [[Programación Modular|Programación Modular]]
 
 ---
 

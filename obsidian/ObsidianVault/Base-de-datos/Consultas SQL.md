@@ -258,8 +258,8 @@ SELECT * FROM vista_nombre;
 ---
 
 ## 🔗 Relacionado
-- [[BD-Tema3|Mapeo ER y DDL]]
-- [[BD-Tema5|Procedimientos y Funciones]]
+- [[Mapeo ER y DDL|Mapeo ER y DDL]]
+- [[Procedimientos y Funciones|Procedimientos y Funciones]]
 
 ---
 
