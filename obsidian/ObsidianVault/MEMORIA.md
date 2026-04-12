@@ -24,7 +24,14 @@ Soy **opencode**, un asistente de IA especializado en tareas de programación y 
 
 ## Historial de Sesiones
 
-### Sesión Actual (2026-04-11)
+### Sesión 2026-04-13
+
+**Tareas realizadas**:
+1. Unificar archivos de memoria (raíz + Obsidian)
+2. Corregir inconsistencias del proyecto Nike (3er trimestre LM)
+3. Eliminar archivo memoria.md de la raíz
+
+### Sesión 2026-04-11
 
 **Objetivo**: Crear apuntes organizados para Obsidian
 
@@ -89,5 +96,27 @@ Soy **opencode**, un asistente de IA especializado en tareas de programación y 
 
 ---
 
-*Última actualización: 2026-04-11*
+## Próxima Sesión
+
+- Comprender y configurar Docker
+- Alternativas a XAMPP (problemas frecuentes)
+
+## Notas Técnicas
+
+- XAMPP da muchos errores → Docker es la solución recomendada
+
+---
+
+## Proyecto Nike (Lenguaje de Marcas 3er Trimestre)
+
+**Ubicación**: `1º-Curso/Lenguaje de marcas/3er trimestre/proyecto/`
+
+**Estado**: Carrusel funcionando con CSS puro (`:has()`), páginas de categoría creadas pero vacías.
+
+**Reglas**:
+- NO usar JavaScript hasta que el usuario lo indique
+
+---
+
+*Última actualización: 2026-04-13*
 *Este archivo se actualiza automáticamente en cada sesión*
