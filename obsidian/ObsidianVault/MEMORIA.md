@@ -118,5 +118,38 @@ Soy **opencode**, un asistente de IA especializado en tareas de programación y 
 
 ---
 
-*Última actualización: 2026-04-13*
+### Sesión 2026-04-14
+
+**Objetivo**: Resolver relación 10 completa (Unit6)
+
+**Archivo enunciado**: `/1º-Curso/Programacion/Enunciados/Unit6/Relación 10-v2.pdf`
+
+**Tareas realizadas**:
+
+**Ejercicio 1 - CuentaCredito**: Corregido y completado
+- Cuenta.java, CuentaException.java, CuentaCredito.java, MenuCuentaCredito.java, Principal.java
+
+**Ejercicio 2 - Empleado (POO)**: Creado
+- Empleado.java, Operario.java, Informatico.java (con enum Especialidad), Directivo.java, MainEmpleados.java
+
+**Ejercicio 3 - Alquiler vehiculos**: Creado
+- TipoVehiculo.java, Gama.java, TipoCombustible.java
+- Vehiculo.java (abstracta), Coche.java, Microbus.java, Furgoneta.java
+- EmpresaAlquiler.java, MenuAlquiler.java
+
+**Ejercicio 4 - Juego de Rol (apartados 1-4)**: Creado
+- PersonajeException.java, Personaje.java, Mago.java, Clerigo.java, MainJuegoRol.java
+
+**Ejercicio 5 - Menu personajes**: Creado
+- MenuPersonajes.java (menú completo 7 opciones, max 100 personajes)
+
+**Ejercicio 6 - Interfaces (Instalaciones)**: Creado
+- InstalacionDeportiva.java, Edificio.java, Polideportivo.java, EdificioOficinas.java, PrincipalEjercicio6.java
+
+**Ejercicio 7 - Estadisticas**: Creado
+- CreableEstadisticas.java, ArrayPersonajes.java (implementa interfaz), PrincipalEjercicio7.java
+
+**Ubicación archivos**: `tema5/Ejercicios POO y Arrays Avanzados /actividad4/`
+
+*Última actualización: 2026-04-14*
 *Este archivo se actualiza automáticamente en cada sesión*
