@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "4555b95d663e350c",
+        "id": "534313571be9c166",
         "type": "tabs",
         "children": [
           {
-            "id": "a0dd9ba4eb50905b",
+            "id": "2c3608cba84fe97d",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "icon": "lucide-file",
+              "title": "Nueva pestaña"
             }
           }
         ]
@@ -178,8 +178,11 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "75b89bafc72bb8dd",
+  "active": "2c3608cba84fe97d",
   "lastOpenFiles": [
+    "ObsidianVault/Programacion/Resumen.md",
+    "ObsidianVault/📚 Indice General.md",
+    "ObsidianVault/MEMORIA.md",
     "ObsidianVault/Programacion/notas_programacion.md",
     "ObsidianVault/Sostenibilidad.md",
     "ObsidianVault/Sistemas Informaticos.md",
