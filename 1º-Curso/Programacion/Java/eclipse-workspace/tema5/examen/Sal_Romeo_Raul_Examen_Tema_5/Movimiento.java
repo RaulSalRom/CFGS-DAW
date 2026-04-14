@@ -1,7 +1,7 @@
 package Sal_Romeo_Raul_Examen_Tema_5;
 
 public class Movimiento {
-
+	
 	private String nombre;
 	
 	private Tipo tipo;

@@ -52,6 +52,7 @@ public class Principal {
 	
 	
 	
+	
 	public void mostrarInfo(){
 		
 		for(int i = 0; i < pokemons.length; i ++) {

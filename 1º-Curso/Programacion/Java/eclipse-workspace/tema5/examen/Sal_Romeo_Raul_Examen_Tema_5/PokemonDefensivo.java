@@ -1,6 +1,6 @@
 package Sal_Romeo_Raul_Examen_Tema_5;
 
-public class PokemonDefensivo extends Pokemon{
+public class PokemonDefensivo extends Pokemon {
 
 private int resistencia;
 	
