@@ -176,8 +176,9 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "8974512bf0c18382",
+  "active": "89e98baafb784696",
   "lastOpenFiles": [
+    "testingWeb",
     "Docker para Base de Datos.md",
     "Base-de-datos/📁 Base de datos.md",
     "MEMORIA.md",
@@ -202,7 +203,6 @@
     "Programacion/Programación Estructurada.md",
     "📚 Indice General.md",
     "Sistemas Informaticos.md",
-    "Sostenibilidad.md",
-    "IPE.md"
+    "Sostenibilidad.md"
   ]
 }
