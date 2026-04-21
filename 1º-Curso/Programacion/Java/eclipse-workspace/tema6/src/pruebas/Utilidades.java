@@ -1,8 +1,6 @@
 package pruebas;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Arrays;
+import java.util.*;
 
 public class Utilidades {
 	
@@ -62,10 +60,29 @@ public class Utilidades {
         System.out.println("Después de borrar Ana: " + nombres);
         
         
+        // HASH SET
+        HashSet<String> ciudades = new HashSet<String>();
+        //INTRODUCIMOS VALORES
+        ciudades.add("madrid");       
+        ciudades.add("tarifa");
+        ciudades.add("Algeciras");
+        ciudades.add("Pelayo");
+        ciudades.add("madrid"); 
         
+        //CREAMOS EL ITERADOR
+        Iterator<String> iterador = ciudades.iterator();
         
+        System.out.println("Iteradores");
+        //SI TENEMOS SIGUIENTE IMPRIMIMOS 
+        while(iterador.hasNext()) 
+        	System.out.println("Ciudad: "+iterador.next());
+        System.out.println();
         
-        
+        //LO MISMO EN FOR EACH
+        System.out.println("FOR EACH");
+        for(String c : ciudades)
+        	System.out.println("Ciudad: "+ c );
+        System.out.println();
         
         
         
