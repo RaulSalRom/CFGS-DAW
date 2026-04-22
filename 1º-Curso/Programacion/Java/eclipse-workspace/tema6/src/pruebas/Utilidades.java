@@ -86,6 +86,32 @@ public class Utilidades {
         
         
         
+        Stack<Integer> pila = new Stack<>();
+
+        pila.push(10);
+        pila.push(20);
+        pila.push(30);
+
+        System.out.println(pila);       // [10, 20, 30]
+        System.out.println(pila.peek()); // 30
+        System.out.println(pila.pop());  // 30
+        System.out.println(pila);        // [10, 20]
+        
+        
+        System.out.println();
+        
+        Queue<Integer> cola = new LinkedList<>();
+
+        cola.offer(10);
+        cola.offer(20);
+        cola.offer(30);
+
+        System.out.println(cola);         // [10, 20, 30]
+        System.out.println(cola.element()); // 10
+        System.out.println(cola.remove());  // 10
+        System.out.println(cola);           // [20, 30]
+
+        
         
         
 		
