@@ -391,3 +391,35 @@ delimiter;
 
 
 select cantidadUsuarios(2);
+
+
+
+
+
+create table if not EXISTS logCambiosEmail(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    idAlumno INT NOT NULL,
+    fechaHora DATETIME DEFAULT CURRENT_TIMESTAMP,
+    oldEmail VARCHAR(150),
+    newEmail VARCHAR(150)
+   );
+   
+   
+   DELIMITER //
+   
+   	CREATE OR REPLACE TRIGGER logEmail
+    AFTER UPDATE estudiantes
+    FOR EACH ROW
+    BEGIN
+    
+    IF old.email != new.email OR (old.email is null and mew.email) IS NOT NULL
+    
+    INSERT INTO logCambioEmail(idAlumno, oldEmail, newEmail)
+    VALUES(old.id, old.email, new.email);
+    
+    
+    END IF
+  
+  END
+  
+  DELIMITER ;
