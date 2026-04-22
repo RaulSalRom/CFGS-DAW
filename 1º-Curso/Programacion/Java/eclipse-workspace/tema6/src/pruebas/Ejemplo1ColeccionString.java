@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Scanner;
+package pruebas;
 
-public class Ejemplo1ColeccionString {
+import java.util.*;
+
+class Ejemplo1ColeccionString {
 	
 	private static Scanner teclado=new Scanner(System.in);
 	
