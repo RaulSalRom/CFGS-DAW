@@ -4,6 +4,8 @@ import java.util.HashSet;
 
 public class Principal {
 	
+	private static Scanner teclado = new Scanner(System.in);
+	
 	public static void main (String[]args) {
 		
 		HashSet<Alumno> alumnos = new HashSet<Alumno>();
@@ -15,7 +17,7 @@ public class Principal {
 		alumnos.add(new Alumno("12345678A", "Adrian"));
 		
 		System.out.println("Introduce el nombre dni del alumno que quieras insertar(8 digitos y 1 letra");
-		
+		String dni1 = teclado.nextLine();
 	}
 
 }
