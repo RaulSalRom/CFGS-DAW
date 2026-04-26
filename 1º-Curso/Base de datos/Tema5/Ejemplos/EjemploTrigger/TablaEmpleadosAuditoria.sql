@@ -1,0 +1,7 @@
+CREATE TABLE empleados_auditoria (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	idEmpleado INT NOT NULL,
+	apellido VARCHAR(50) NOT NULL,
+	fechaCambio DATETIME DEFAULT NULL,
+	accion VARCHAR(50) DEFAULT NULL
+);
