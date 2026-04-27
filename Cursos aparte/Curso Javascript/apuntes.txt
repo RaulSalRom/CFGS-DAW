@@ -1,0 +1,433 @@
+¿Qué es un tipo de dato y cuáles son los diferentes tipos de datos en JavaScript?
+En JavaScript, un tipo de dato es el tipo de valor que almacenas, como un número o un fragmento de texto.
+
+Una variable es un contenedor nombrado que almacena un valor de un tipo de dato específico, permitiéndote referenciarlo y manipularlo a lo largo de tu código.
+
+Quizás recuerdes en la clase de matemáticas trabajar con variables así:
+
+x = 2
+y = 4
+
+x + y
+Pudiste crear variables como x y y y luego referenciarlas a lo largo de tu programa y hacer operaciones matemáticas como la suma. Es un concepto similar en programación. Puedes crear tus propios nombres de variables y asignarles valores. Estos valores serán de diferentes tipos de datos.
+
+Los tipos de datos ayudan al programa a entender el tipo de datos con los que está trabajando, ya sea un número, texto, o algo más.
+
+JavaScript tiene varios tipos de datos básicos que utilizarás en tus programas. We'll explore each data type in greater detail in future lessons. Por ahora, aquí hay una breve introducción de los diferentes tipos de datos en JavaScript.
+
+El primer tipo de dato que veremos es el tipo Number.
+
+Un Number representa tanto enteros como valores de punto flotante. Ejemplos de números enteros incluyen 7, 19 y 90.
+
+NOTA: console.log() es una función que muestra información en la consola, que es una parte de tu navegador web usada para depurar código. Aprenderás más sobre console.log() en lecciones futuras. Además, los símbolos // se usan para agregar comentarios en tu código. Los comentarios son notas para ti o para otros programadores que se ignoran cuando el código se ejecuta.
+
+Activa el editor interactivo y prueba cambiar algunos de los enteros para ver cómo se actualiza en la consola.
+
+// Examples of integers
+console.log(3);
+console.log(5);
+console.log(-67);
+Un número de punto flotante es un número con un punto decimal. Ejemplos de números de punto flotante incluyen 3.14 y 5.2.
+
+// Examples of floating point numbers
+console.log(3.14);
+console.log(7.2);
+console.log(-14.5);
+El siguiente tipo de dato es un String.
+
+Un String es una secuencia de caracteres, o texto, encerrado entre comillas. Aquí tienes un ejemplo de String usando comillas dobles:
+
+console.log("I love to code!");
+Aquí tienes un ejemplo usando comillas simples:
+
+console.log('I love to code!');
+A menudo usarás cadenas para representar nombres, etiquetas, mensajes de alerta, etc.
+
+Otro tipo de dato utilizado en JavaScript es el tipo Boolean.
+
+Un Boolean representa uno de dos valores: true o false. Por ejemplo, un programa podría verificar si un usuario ha iniciado sesión (true) o no (false) y cambiar la página en función de eso. Si el usuario ha iniciado sesión, probablemente quieras mostrarle la página del panel de control. De lo contrario, querrás mostrarle la página de inicio de sesión.
+
+Los siguientes dos tipos de datos en JavaScript son undefined y null.
+
+undefined significa que una variable ha sido declarada pero aún no se le ha asignado un valor. Aprenderás más sobre esto en la próxima lección.
+
+null significa que la variable ha sido intencionalmente establecida en "nada" y no contiene ningún valor. Exploraremos más sobre cómo funciona esto en lecciones futuras.
+
+Los últimos tres tipos de datos son más complejos por naturaleza. Estos son objetos, símbolos y BigInt.
+
+Un Object es una colección de pares clave-valor.
+
+{
+  name: "Alice",
+  age: 30
+};
+Los objetos son excelentes para agrupar información relacionada. Aprenderás más sobre cómo trabajar con objetos en un módulo futuro.
+
+Un Symbol es un tipo especial de valor en JavaScript que siempre es único y no se puede cambiar. A menudo se utiliza para crear etiquetas o identificadores únicos para propiedades:
+
+Symbol('mySymbol');
+BigInt se utiliza para números muy grandes que exceden el límite del tipo Number:
+
+1234567890123456789012345678901234567890n;
+En este ejemplo, creamos un BigInt agregando n al final de un número muy grande.
+
+Symbol y BigInt son dos tipos que se usan con menos frecuencia, pero que aún es importante conocer.
+
+Entender estos tipos de datos te ayuda a manejar y trabajar con varios tipos de datos en tus programas, ya que cada tipo tiene sus propias características y comportamientos.
+
+¿Qué son las variables y cuáles son las directrices para nombrar variables de JavaScript?
+En JavaScript, las variables actúan como contenedores para almacenar datos que puedes acceder y modificar a lo largo de tu programa.
+
+Puedes pensar en las variables como cajas que contienen valores. Con las variables, puedes llevar un registro de cosas como números o texto y referirte a estos valores cuando los necesites en tu programa.
+
+Una forma de declarar una variable en JavaScript es usar la palabra clave let. Aprenderás más sobre la palabra clave let así como otras formas de declarar variables en lecciones futuras.
+
+Aquí hay un ejemplo de cómo usar let para declarar una variable llamada age:
+
+let age;
+En este momento, la variable age no tiene un valor asignado. Si intentas usarla, devolverá undefined, lo que significa que no tiene valor.
+
+Aquí tienes un ejemplo.
+
+NOTA: console.log() es una función que muestra información en la consola, que es una parte de tu navegador web usada para depurar código. Aprenderás más sobre console.log() en lecciones futuras. Además, los símbolos // se usan para agregar comentarios en tu código. Los comentarios son notas para ti o para otros programadores que se ignoran cuando el código se ejecuta.
+
+let age;
+console.log(age); // undefined
+Para asignar un valor a una variable, necesitarás usar el operador de asignación de esta manera:
+
+let age = 25;
+Ahora, cuando uses la variable age, devolverá el valor de 25.
+
+let age = 25;
+console.log(age); // 25
+El operador de asignación se parece a un signo de igual (=) pero no verifica la igualdad. Aprenderás sobre los operadores correctos para verificar la igualdad en lecciones futuras.
+
+El operador de asignación se usa para asignar un valor a una variable. Este proceso de asignar un valor a una variable se conoce como inicialización.
+
+Una ventaja de usar la palabra clave let para declarar variables es que puedes reasignarles valores. En programación, la reasignación significa dar un nuevo valor a una variable que ya tiene uno.
+
+Aquí tienes un ejemplo de reasignar el valor para la variable age.
+
+let age = 25;
+console.log(age); // 25
+age = 30;
+console.log(age); // 30
+Ahora la variable age tiene el valor de 30. Observa que la palabra clave let no fue necesaria nuevamente porque la variable age ya fue declarada, por lo que no hay necesidad de declararla una segunda vez.
+
+Cuando usas la reasignación, solo necesitas referenciar el nombre de la variable. La reasignación es útil porque te permite actualizar y cambiar el valor almacenado en una variable mientras tu programa se ejecuta. Un buen ejemplo de esto sería actualizar los puntos en un juego.
+
+Nombrar variables puede parecer simple, pero hay algunas reglas y mejores prácticas para asegurar que tu código sea legible y funcional.
+
+Tus nombres de variables deben describir lo que representan los datos. Por ejemplo, en lugar de usar un nombre como x, un nombre más descriptivo como age o points hace que tu código sea más fácil de entender.
+
+// Bad variable names
+let x = 10;
+let y = "John";
+
+// Good variable names
+let age = 10;
+Las variables en JavaScript deben comenzar con una letra, un guión bajo (_) o un signo de dólar ($). No pueden comenzar con un número.
+
+// Valid variable names
+let age;
+let _score;
+let $total;
+
+// Invalid variable names
+let 1stPlace; // starts with a number
+Los nombres de variables son sensibles a mayúsculas, lo que significa que la palabra age en minúsculas y la palabra Age con mayúscula A se consideran variables diferentes.
+
+let age = 25;
+let Age = 30;
+console.log(age); // 25
+console.log(Age); // 30
+Por eso es importante mantener una convención de nombres consistente como camelCase. camelCase es cuando la primera palabra está toda en minúsculas y cada palabra siguiente comienza con una letra mayúscula.
+
+Aquí hay un ejemplo de cómo usar la convención de nombre camelCase para una variable:
+
+let thisIsCamelCase;
+let anotherExampleVariable;
+let freeCodeCampStudents;
+Hay ciertas palabras clave en JavaScript que no puedes usar como nombres de variables, como let, const, function o return, ya que están reservadas para el propio lenguaje.
+
+También deberías evitar usar caracteres especiales como signos de admiración (!) o símbolo arroba (@) en tus nombres de variables. Es mejor mantener los nombres de las variables legibles utilizando letras, números, guiones bajos o signos de dólar.
+
+Siguiendo estas directrices, tu código será más limpio y manejable a medida que aumente en complejidad.
+
+
+¿Cómo funcionan de manera diferente `let` y `const` cuando se trata de declaración, asignación y reasignación de variables?
+Al trabajar con JavaScript, a menudo declararás variables para almacenar datos que planeas usar a lo largo de tu programa.
+
+En JavaScript moderno, let y const son las formas preferidas para declarar variables, pero difieren en cómo manejan la asignación y reasignación de valores.
+
+En esta lección, exploraremos cómo let y const difieren en la declaración, asignación y reasignación de variables.
+
+La palabra clave let te permite declarar variables que pueden ser actualizadas o reasignadas más tarde. Puedes pensar en let como un contenedor flexible: una vez que has almacenado un valor en él, puedes cambiar ese valor según sea necesario en tu programa.
+
+Aquí tienes un ejemplo de declaración y asignación de una variable con let:
+
+let score = 10;
+En este caso, la variable score se declara y se le asigna el valor 10. Si deseas actualizar el valor más tarde, puedes hacerlo fácilmente:
+
+let score = 10;
+console.log(score); // 10
+score = 20;
+console.log(score); // 20
+Ahora, score tiene el valor 20. Esto hace que let sea particularmente útil cuando sabes que el valor de una variable cambiará a medida que tu programa se ejecute.
+
+Por otro lado, const se utiliza para declarar variables que son constantes. Una vez que asignas un valor a una variable declarada con const, no puedes reasignarla.
+
+Esto hace que const sea ideal para valores que no deseas cambiar accidentalmente durante la ejecución de tu programa.
+
+Aquí tienes un ejemplo de declaración y asignación de una variable con const:
+
+const maxScore = 100;
+console.log(maxScore); // 100
+Una vez que maxScore se le asigna el valor 100, no puede ser cambiado:
+
+maxScore = 200; // This will result in an error
+Intentar reasignar un valor a una variable const lanzará un error en tu consola de JavaScript, ya que las variables const son inmutables una vez que son asignadas.
+
+Puedes declarar una variable let sin darle inmediatamente un valor, y puedes asignarle un valor más tarde:
+
+let age;
+console.log(age); // undefined
+age = 25;
+console.log(age); // 25
+Las variables declaradas con const deben recibir un valor en el momento de la declaración. Si intentas declarar una variable const sin asignarle un valor, obtendrás un error:
+
+const age; // Error: Missing initializer in const declaration
+Debes usar let cuando necesites declarar variables que se reasignarán más tarde. Por ejemplo, seguimiento de una puntuación cambiante o actualizando un valor con el tiempo en tu programa.
+
+Usa const cuando desees declarar variables que deben permanecer constantes, como valores de configuración o ajustes que no deben cambiarse accidentalmente.
+
+También puedes usar la palabra clave var, pero ya no se recomienda tanto. var es un poco como let, excepto que tiene un ámbito más amplio, lo que es más probable que cause problemas en tu programa.
+
+
+
+¿Qué es una cadena en JavaScript, y qué es la inmutabilidad de cadena?
+En JavaScript, una cadena es una secuencia de caracteres utilizada para representar datos de texto. Las cadenas son uno de los tipos de datos primitivos en el lenguaje, junto con los números, booleanos, null, y undefined.
+
+Para crear una cadena en JavaScript, puede utilizar comillas simples (') o comillas dobles (").
+
+Aquí hay un ejemplo de cómo crear dos variables que contienen valores de cadena:
+
+let singleQuotes = 'This is a string';
+console.log(singleQuotes);
+let doubleQuotes = "This is also a string";
+console.log(doubleQuotes);
+Aunque puedes usar comillas simples o dobles para crear cadenas, es importante ser consistente. Si una cadena comienza con una comilla simple, también debe terminar con una comilla simple.
+
+Lo mismo se aplica a las comillas dobles. El siguiente ejemplo lanzará un error porque comienza con una comilla doble y termina con una comilla simple:
+
+const improperStr = "Do not do this';
+Otra cosa a tener en cuenta es que las cadenas son inmutables. En programación, la inmutabilidad significa que una vez que algo se crea, no se puede cambiar. Por lo tanto, cuando creas una cadena, no puedes cambiar sus caracteres directamente. En su lugar, deberías crear una nueva cadena si quieres hacer cambios.
+
+Aquí hay un ejemplo de asignación de una nueva cadena a una variable developer:
+
+let developer = "Jessica";
+console.log(developer);
+developer = "Quincy";
+console.log(developer);
+Dado que las cadenas son inmutables, no podemos actualizar la primera cadena directamente. Por eso, estamos asignando una nueva cadena a la variable developer.
+
+Las cadenas son una parte importante de la programación, y en futuras lecciones, aprenderás técnicas avanzadas para manipularlas y aprovechar todo su potencial para crear aplicaciones dinámicas e interactivas.
+
+
+
+¿Qué es la concatenación de cadenas y cómo puedes concatenar cadenas con variables?
+En JavaScript, trabajar con texto es una parte esencial del código, y a menudo, necesitarás combinar o unir fragmentos de texto. Este proceso se llama concatenación de cadenas.
+
+En esta lección, nos enfocaremos en cómo funciona la concatenación de cadenas, específicamente usando el operador +, el operador += y el método concat().
+
+El operador + es uno de los métodos más simples y frecuentemente utilizados para concatenar cadenas. Te permite unir múltiples cadenas o combinar cadenas con variables que contienen texto.
+
+Aquí tienes un ejemplo:
+
+let firstName = "John";
+let lastName = "Doe";
+
+let fullName = firstName + " " + lastName; 
+console.log(fullName); // John Doe
+En este ejemplo, utilizamos el operador + para concatenar las variables firstName y lastName junto con un espacio (" ") para crear el nombre completo.
+
+Una desventaja de usar el operador + para concatenación de cadenas es que puede provocar problemas de espaciado si no gestionas cuidadosamente el espaciado entre las cadenas concatenadas.
+
+Aquí tienes un ejemplo donde falta un espacio:
+
+let firstName = "John";
+let lastName = "Doe";
+
+let fullName = firstName + lastName; 
+console.log(fullName); // "JohnDoe"
+Siempre que uses el operador + para concatenar cadenas, es importante verificar posibles problemas de espaciado.
+
+Si necesitas agregar o anexar a una cadena existente, entonces puedes usar el operador +=. Esto es útil cuando deseas construir una cadena agregando más texto con el tiempo.
+
+Aquí tienes un ejemplo de anexar una cadena a otra usando el operador +=:
+
+let greeting = 'Hello';
+greeting += ', John!';
+
+console.log(greeting); // "Hello, John!"
+Es importante recordar que las cadenas son inmutables, lo que significa que una vez creada una cadena, no puedes alterarla.
+
+En este caso, la cadena original de Hello no se modifica. En cambio, greeting ahora hace referencia a la nueva cadena de Hello, John!
+
+Otra forma de concatenar cadenas es usar el método concat().
+
+Antes de comenzar a aprender sobre el método concat(), es importante comprender primero qué son un método y una función a un nivel más alto.
+
+En programación, una función es un bloque de código reutilizable que realiza una tarea específica y puede ser llamado con varias entradas. Por otro lado, un método es un tipo de función que está asociado con un objeto, lo que significa que opera sobre los datos contenidos en ese objeto.
+
+En futuras lecciones, profundizaremos mucho más en cómo funcionan las funciones, los objetos y los métodos en JavaScript. Pero por ahora, es importante entender que JavaScript tiene docenas de métodos que puedes usar, como el método concat().
+
+Aquí tienes un ejemplo de cómo usar el método concat() para unir dos cadenas de texto:
+
+let str1 = 'Hello';
+let str2 = 'World';
+
+let result = str1.concat(' ', str2); 
+console.log(result); // Hello World
+En este ejemplo, usamos el método concat() para unir str1, un espacio (' ') y str2 en una sola cadena de texto.
+
+Para concluir, el operador + es el mejor para concatenaciones simples, especialmente cuando necesitas combinar algunas cadenas o variables.
+
+El operador += es útil cuando se está construyendo una cadena paso a paso o agregando nuevo contenido a una variable de cadena existente.
+
+Finalmente, el método concat() es beneficioso cuando necesitas concatenar múltiples cadenas juntas.
+
+
+¿Para qué se utiliza console.log y cómo funciona?
+Las lecciones anteriores te introdujeron a console.log(), pero esta lección profundizará más en su propósito y uso.
+
+En JavaScript, console.log() es una herramienta simple pero poderosa usada para mostrar mensajes o información de salida en la consola del navegador. Los desarrolladores la usan principalmente para depurar e inspeccionar el código mientras trabajan en sus programas.
+
+Puedes usar console.log() para registrar texto o variables en la consola y asegurarte de que tu código se está ejecutando correctamente.
+
+Para usar console.log(), llama al método con el valor o mensaje que deseas mostrar dentro de los paréntesis. Aquí hay algunos ejemplos:
+
+console.log("Hello, world!");
+
+let num = 5;
+console.log(num); // 5
+El primer ejemplo imprime Hello, world! en la consola del navegador, mientras que el segundo imprime el valor 5.
+
+Aquí hay otro ejemplo de trabajo con console.log():
+
+let name = "Alice";
+console.log("Hello, " + name + "!"); // Hello, Alice!
+También puedes pasar múltiples valores a console.log() separados por comas. Por ejemplo:
+
+let name = "Alice";
+let age = 25;
+console.log("Name:", name, "Age:", age); // Name: Alice Age: 25
+Esto es útil para registrar múltiples piezas de información a la vez.
+
+El método console.log() te ayuda a monitorizar tu código a medida que se ejecuta, lo que facilita detectar errores y entender cómo se comporta tu programa.
+
+
+¿Cuál es el rol de los puntos y comas en JavaScript y en la programación en general?
+En JavaScript, y en muchos otros lenguajes de programación, los puntos y comas ayudan a delinear sentencias y mejoran la legibilidad del código.
+
+En JavaScript, un punto y coma (;) se utiliza para indicar el final de una sentencia.
+
+Al igual que un punto (.) señala el final de una oración en inglés, un punto y coma indica el final de una línea de código ejecutable. Esto permite que el motor de JavaScript distinga entre comandos separados.
+
+Por ejemplo:
+
+let variableOne = 5;  // Declare a variable and assign a value
+let variableTwo = 10; // Declare another variable and assign a value
+En este código, los puntos y comas al final de cada línea marcan el final de cada sentencia. Sin ellos, el motor de JavaScript podría tener problemas para interpretar dónde termina una sentencia y comienza otra.
+
+Los puntos y comas se usan principalmente para marcar el final de una sentencia. Esto ayuda al motor de JavaScript a entender la separación de instrucciones individuales, lo cual es importante para una ejecución correcta.
+
+let a = 1;   // Statement ends here
+let b = 2;   // Another statement starts here
+Aunque JavaScript tiene de Inserción Automática de Puntos y Comas (ASI) que puede agregar puntos y comas automáticamente, incluirlos explícitamente mejora la claridad del código y ayuda a prevenir errores que puedan surgir por un comportamiento inesperado de la ASI.
+
+Los puntos y comas se utilizan en muchos lenguajes de programación, como C, C++ y Java.
+
+Los puntos y comas marcan el final de sentencias o instrucciones, ayudando al compilador o intérprete a analizar el código correctamente. Un compilador traduce el código de un lenguaje de programación de alto nivel a código legible por máquina, lo que crea un archivo ejecutable.
+
+Al delinear claramente las sentencias, los puntos y comas contribuyen a la legibilidad y mantenibilidad del código. Los puntos y comas ayudan a prevenir ambigüedades en la ejecución del código y aseguran que las sentencias se terminen correctamente.
+
+Los puntos y comas son una parte fundamental de JavaScript y muchos otros lenguajes de programación.
+
+Marcan el final de las sentencias, mejoran la legibilidad del código y ayudan a evitar errores relacionados con la inserción automática de puntos y comas.
+
+Al entender y usar correctamente los puntos y comas, se puede escribir código más confiable y mantenible.
+
+
+
+¿Cuáles son los comentarios en JavaScript y cuándo deberías usarlos?
+Los comentarios en programación se utilizan para proporcionar contexto adicional para el código o dejar notas para ti mismo y otros.
+
+Los comentarios son líneas o bloques de texto que son ignorados por el motor de JavaScript cuando se ejecuta tu código. Están allí únicamente para el beneficio de las personas que leen el código, ya seas tú o alguien más.
+
+JavaScript proporciona dos formas de agregar comentarios a tu código: comentarios de línea única y comentarios de varias líneas.
+
+Los comentarios de línea única se crean usando dos barras diagonales (//). Aquí hay un ejemplo:
+
+// I am a single line comment in JavaScript
+Este tipo de comentario es excelente para explicaciones o aclaraciones breves.
+
+Aquí hay un ejemplo del mundo real de los archivos del proyecto curricular de freeCodeCamp:
+
+// This is to allow English to build without having to download the i18n files.
+// It fails when trying to resolve the i18n-curriculum path if they don't exist.
+const curriculumLocale = process.env.CURRICULUM_LOCALE ?? 'english';
+const I18N_CURRICULUM_DIR = path.resolve(
+  __dirname,
+  curriculumLocale === 'english' ? '.' : 'i18n-curriculum/curriculum'
+);
+No te preocupes por tratar de entender lo que el código realmente hace porque es más avanzado de lo que has aprendido hasta ahora. En su lugar, concéntrate en el comentario dejado por el desarrollador. Este comentario proporciona un contexto importante sobre por qué este código existe.
+
+Comentarios como estos son importantes para quienes trabajan en equipos por dos razones:
+
+Otros desarrolladores que trabajan en el proyecto entenderán el propósito de este código.
+
+Ayuda a prevenir cambios o eliminaciones innecesarias sin consultar al equipo, lo que podría llevar a errores o problemas.
+
+Otro tipo de comentario es el de varias líneas. Esta es la sintáxis básica:
+
+/*
+ I am a multiline comment.
+ This is helpful for longer explanations.
+*/
+Los comentarios de varias líneas son útiles cuando necesitas escribir descripciones, explicaciones o notas más largas en tu código.
+
+Veamos nuevamente los archivos del proyecto curricular de freeCodeCamp para ver cómo se pueden usar los comentarios de varias líneas en el mundo real.
+
+/* Since there can be more than one way to complete a certification (using the
+legacy curriculum or the new one, for instance), we need a certification
+field to track which certification this belongs to. */
+const dupeCertifications = [
+  {
+    certification: 'responsive-web-design',
+    dupe: '2022/responsive-web-design'
+  }
+];
+const hasDupe = dupeCertifications.find(
+  cert => cert.dupe === meta.superBlock
+);
+Como antes, ignora todo el código JavaScript porque utiliza conceptos que no se han enseñado todavía. En su lugar, concéntrate en el comentario dejado por el desarrollador.
+
+Un desarrollador en el equipo, o incluso un nuevo colaborador trabajando en el proyecto, puede entender por qué este fragmento de código está aquí y tener todo el contexto antes de trabajar en esta área del proyecto.
+
+Si bien los comentarios son útiles en programación, es importante evitar el exceso de comentarios. No necesitas comentar cada línea de código, especialmente si el código es claro y autoexplicativo.
+
+Aquí hay un ejemplo de uso de comentarios para explicar lo obvio:
+
+// This code uses the const keyword to create a new variable called price.
+// We are assigning the number 10 to the price variable.
+const price = 10;
+En esta situación, no hay necesidad de agregar comentarios aquí porque el código es autoexplicativo. El objetivo es mejorar la legibilidad, no saturar el código con explicaciones innecesarias.
+
+Si quieres agregar comentarios a tus proyectos personales mientras aprendes a programar, está bien. Pero una vez que comiences a trabajar en proyectos del mundo real con otros desarrolladores, es importante no usar comentarios para código que es autoexplicativo.
+
+También es importante no usar comentarios para justificar un código confuso, demasiado complicado o mal escrito. En esas situaciones, lo mejor es refactorizar o cambiar tu código para que otros desarrolladores entiendan mejor lo que está ocurriendo.
+
+Los comentarios son herramientas poderosas para documentar tu código y hacerlo más comprensible. Debes usar comentarios para proporcionar contexto o dejar notas para ti mismo y otros.
+
+
