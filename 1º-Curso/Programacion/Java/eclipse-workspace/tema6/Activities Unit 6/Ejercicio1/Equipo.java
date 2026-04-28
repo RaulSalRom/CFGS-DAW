@@ -17,7 +17,7 @@ public class Equipo {
 	}
 
 	/**
-	 * A�ade un alumno al equipo. Si ya existe lanza excepci�n.
+	 * Añade un alumno al equipo. Si ya existe lanza excepcion.
 	 */
 	public void anyadirAlumno(Alumno a) throws EquipoException {
 		if (!alumnos.add(a)) {
@@ -26,7 +26,7 @@ public class Equipo {
 	}
 
 	/**
-	 * Borra un alumno del equipo. Si no existe lanza excepci�n.
+	 * Borra un alumno del equipo. Si no existe lanza excepcion.
 	 */
 	public void borrarAlumno(Alumno a) throws EquipoException {
 		if (!alumnos.remove(a)) {
