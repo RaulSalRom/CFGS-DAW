@@ -4,26 +4,42 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Clase abstracta que representa a una persona con un buzón de mensajes.
+ * Proporciona funcionalidad base para enviar, recibir, leer, buscar y borrar mensajes.
+ */
 public abstract class Persona {
 	protected String nombre;
 	protected List<Mensaje> buzón;
 
+	/**
+	 * Constructor de Persona.
+	 * @param nombre Nombre de la persona
+	 */
 	public Persona(String nombre) {
 		this.nombre = nombre;
 		this.buzón = new ArrayList<>();
 	}
 
+	/**
+	 * @return El nombre de la persona
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
-	 * Env�a un mensaje a otra persona.
+	 * Envía un mensaje a otra persona.
+	 * @param destinatario Persona que recibirá el mensaje
+	 * @param texto Contenido del mensaje
+	 * @throws MensajeException Si hay un error al enviar (ej. restricción de edad)
 	 */
 	public abstract void enviarMensaje(Persona destinatario, String texto) throws MensajeException;
 
 	/**
-	 * Lee todos los mensajes del buz�n.
+	 * Lee todos los mensajes del buzón en orden de llegada.
+	 * @return Cadena con todos los mensajes formateados
+	 * @throws MensajeException Si el buzón está vacío
 	 */
 	public String leerMensajes() throws MensajeException {
 		if (buzón.isEmpty()) {
@@ -37,7 +53,9 @@ public abstract class Persona {
 	}
 
 	/**
-	 * Lee los mensajes ordenados por remitente alfab�ticamente.
+	 * Lee los mensajes ordenados alfabéticamente por nombre del remitente.
+	 * @return Cadena con los mensajes ordenados formateados
+	 * @throws MensajeException Si el buzón está vacío
 	 */
 	public String leerMensajesOrdenados() throws MensajeException {
 		if (buzón.isEmpty()) {
@@ -55,17 +73,22 @@ public abstract class Persona {
 	}
 
 	/**
-	 * Borra un mensaje del buz�n por su n�mero.
+	 * Borra un mensaje del buzón por su número (1-based index).
+	 * @param numeroMensaje Número del mensaje a borrar (1 es el primero)
+	 * @throws MensajeException Si el número de mensaje no es válido
 	 */
 	public void borrarMensaje(int numeroMensaje) throws MensajeException {
 		if (numeroMensaje < 1 || numeroMensaje > buzón.size()) {
-			throw new MensajeException("No existe el mensaje n�mero " + numeroMensaje);
+			throw new MensajeException("No existe el mensaje número " + numeroMensaje);
 		}
 		buzón.remove(numeroMensaje - 1);
 	}
 
 	/**
-	 * Busca mensajes que contengan una frase en el texto.
+	 * Busca mensajes que contengan una frase específica en el texto (ignora mayúsculas/minúsculas).
+	 * @param frase Frase a buscar en el contenido de los mensajes
+	 * @return Cadena con los mensajes que contienen la frase
+	 * @throws MensajeException Si no se encuentra ningún mensaje con la frase
 	 */
 	public String buscarMensajesPorFrase(String frase) throws MensajeException {
 		List<Mensaje> encontrados = new ArrayList<>();
@@ -85,7 +108,8 @@ public abstract class Persona {
 	}
 
 	/**
-	 * A�ade un mensaje al buz�n (lo usa el destinatario).
+	 * Añade un mensaje al buzón (método usado por el destinatario al recibir un mensaje).
+	 * @param mensaje Mensaje a añadir al buzón
 	 */
 	public void recibirMensaje(Mensaje mensaje) {
 		buzón.add(mensaje);

@@ -1,7 +1,8 @@
 package Ejercicio2;
 
 /**
- * Programa principal que prueba la clase gen�rica Equipo con Integer.
+ * Programa principal que prueba la clase genérica Equipo con Integer.
+ * Crea equipos de números pares e impares, los muestra y hace la unión de ambos.
  */
 public class PrincipalInteger {
 	public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class PrincipalInteger {
 			System.out.println("\n=== EQUIPO 2 (Integer - Impares) ===");
 			equipo2.mostrar();
 
-			System.out.println("\n=== UNI�N ===");
+			System.out.println("\n=== UNIÓN ===");
 			Equipo<Integer> union = equipo1.union(equipo2);
 			union.mostrar();
 

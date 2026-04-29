@@ -1,5 +1,9 @@
 package Ejercicio8;
 
+/**
+ * Clase principal para probar las clases Receta y Recetario.
+ * Realiza pruebas de gestión de ingredientes, pasos, y consultas en el recetario.
+ */
 public class Principal {
 	public static void main(String[] args) {
 		try {

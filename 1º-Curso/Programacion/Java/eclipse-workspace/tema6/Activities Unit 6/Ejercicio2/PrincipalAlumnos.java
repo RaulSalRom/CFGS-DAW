@@ -1,13 +1,14 @@
 package Ejercicio2;
 
 /**
- * Programa principal que prueba la clase gen�rica Equipo con la clase Alumno.
+ * Programa principal que prueba la clase genérica Equipo con la clase Alumno.
+ * Crea equipos de alumnos, los muestra y hace la unión de ambos.
  */
 public class PrincipalAlumnos {
 	public static void main(String[] args) {
 		try {
 			Equipo<Alumno> equipo1 = new Equipo<>("Baloncesto");
-			Equipo<Alumno> equipo2 = new Equipo<>("F�tbol");
+			Equipo<Alumno> equipo2 = new Equipo<>("Fútbol");
 
 			Alumno a1 = new Alumno("Ana", "11111111A");
 			Alumno a2 = new Alumno("Luis", "22222222B");
@@ -26,7 +27,7 @@ public class PrincipalAlumnos {
 			System.out.println("\n=== EQUIPO 2 (Alumnos) ===");
 			equipo2.mostrar();
 
-			System.out.println("\n=== UNI�N ===");
+			System.out.println("\n=== UNIÓN ===");
 			Equipo<Alumno> union = equipo1.union(equipo2);
 			union.mostrar();
 

@@ -1,14 +1,18 @@
 package Ejercicio4;
 
+/**
+ * Clase principal para probar el sistema de mensajería entre profesores y alumnos.
+ * Incluye casos de prueba para restricciones de edad, lectura, búsqueda y borrado de mensajes.
+ */
 public class Principal {
 	public static void main(String[] args) {
 		try {
 			// Crear personas
 			Profesor prof1 = new Profesor("Prof. García", "Matemáticas");
 			Profesor prof2 = new Profesor("Prof. López", "Programación");
-			Alumno alum1 = new Alumno("Ana Pérez", 17, "1� DAW");  // Menor de edad
-			Alumno alum2 = new Alumno("Luis Martín", 20, "1� DAW"); // Mayor de edad
-			Alumno alum3 = new Alumno("Eva Ruiz", 16, "1� DAW");   // Menor de edad
+			Alumno alum1 = new Alumno("Ana Pérez", 17, "1º DAW");  // Menor de edad
+			Alumno alum2 = new Alumno("Luis Martín", 20, "1º DAW"); // Mayor de edad
+			Alumno alum3 = new Alumno("Eva Ruiz", 16, "1º DAW");   // Menor de edad
 
 			// 1. Profesor envía mensaje a alumno (debe funcionar)
 			System.out.println("=== PROFESOR ENVÍA A ALUMNO ===");

@@ -3,6 +3,10 @@ package Ejercicio3;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Clase principal que implementa un menú interactivo para gestionar el historial de navegación.
+ * Permite añadir páginas, consultar historial completo, consultar por día y borrar historial.
+ */
 public class Principal {
 	public static void main(String[] args) {
 		Historial historial = new Historial();
@@ -10,13 +14,13 @@ public class Principal {
 		int opcion;
 
 		do {
-			System.out.println("\n=== MEN� HISTORIAL ===");
-			System.out.println("1. Nueva p�gina consultada");
+			System.out.println("\n=== MENÚ HISTORIAL ===");
+			System.out.println("1. Nueva página consultada");
 			System.out.println("2. Consultar historial completo");
-			System.out.println("3. Consultar historial de un d�a");
+			System.out.println("3. Consultar historial de un día");
 			System.out.println("4. Borrar historial completo");
 			System.out.println("5. Salir");
-			System.out.print("Elige una opci�n: ");
+			System.out.print("Elige una opción: ");
 
 			opcion = sc.nextInt();
 			sc.nextLine(); // limpiar buffer
@@ -32,7 +36,7 @@ public class Principal {
 						historial.consultarHistorialCompleto();
 						break;
 					case 3:
-						System.out.print("Introduce el d�a (YYYY-MM-DD): ");
+						System.out.print("Introduce el día (YYYY-MM-DD): ");
 						String fechaStr = sc.nextLine();
 						LocalDate dia = LocalDate.parse(fechaStr);
 						historial.consultarHistorialDia(dia);
@@ -44,7 +48,7 @@ public class Principal {
 						System.out.println("Saliendo...");
 						break;
 					default:
-						System.out.println("Opci�n no v�lida");
+						System.out.println("Opción no válida");
 				}
 			} catch (Exception e) {
 				System.out.println("Error: " + e.getMessage());

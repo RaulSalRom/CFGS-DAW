@@ -1,5 +1,9 @@
 package Ejercicio1;
 
+/**
+ * Clase principal para probar el funcionamiento de la clase Equipo y Alumno.
+ * Realiza pruebas de añadir, borrar, buscar, unión e intersección de alumnos.
+ */
 public class Principal {
 	public static void main(String[] args) {
 		try {
@@ -12,24 +16,24 @@ public class Principal {
 
 			// Crear equipos
 			Equipo equipo1 = new Equipo("Baloncesto");
-			Equipo equipo2 = new Equipo("F�tbol");
+			Equipo equipo2 = new Equipo("Fútbol");
 
-			// A�adir alumnos al equipo1
-			System.out.println("=== A�ADIENDO ALUMNOS AL EQUIPO 1 (Baloncesto) ===");
+			// Añadir alumnos al equipo1
+			System.out.println("=== AÑADIENDO ALUMNOS AL EQUIPO 1 (Baloncesto) ===");
 			equipo1.anyadirAlumno(a1);
 			equipo1.anyadirAlumno(a2);
 			equipo1.anyadirAlumno(a3);
 			equipo1.mostrar();
 
-			// A�adir alumnos al equipo2
-			System.out.println("\n=== A�ADIENDO ALUMNOS AL EQUIPO 2 (F�tbol) ===");
+			// Añadir alumnos al equipo2
+			System.out.println("\n=== AÑADIENDO ALUMNOS AL EQUIPO 2 (Fútbol) ===");
 			equipo2.anyadirAlumno(a3);
 			equipo2.anyadirAlumno(a4);
 			equipo2.anyadirAlumno(a5);
 			equipo2.mostrar();
 
-			// Probar a�adir alumno repetido
-			System.out.println("\n=== PROBANDO A�ADIR ALUMNO REPETIDO ===");
+			// Probar añadir alumno repetido
+			System.out.println("\n=== PROBANDO AÑADIR ALUMNO REPETIDO ===");
 			try {
 				equipo1.anyadirAlumno(a1);
 			} catch (EquipoException e) {
@@ -53,17 +57,17 @@ public class Principal {
 			// Probar pertenece
 			System.out.println("\n=== BUSCAR ALUMNO ===");
 			Alumno encontrado = equipo1.pertenece(new Alumno("Ana", "11111111A"));
-			System.out.println("�Ana en equipo1? " + (encontrado != null ? encontrado : "No encontrado"));
+			System.out.println("¿Ana en equipo1? " + (encontrado != null ? encontrado : "No encontrado"));
 			Alumno noEncontrado = equipo1.pertenece(new Alumno("Luis", "22222222B"));
-			System.out.println("�Luis en equipo1? " + (noEncontrado != null ? noEncontrado : "No encontrado"));
+			System.out.println("¿Luis en equipo1? " + (noEncontrado != null ? noEncontrado : "No encontrado"));
 
-			// Probar uni�n
-			System.out.println("\n=== UNI�N DE EQUIPOS ===");
+			// Probar unión
+			System.out.println("\n=== UNIÓN DE EQUIPOS ===");
 			Equipo union = equipo1.union(equipo2);
 			union.mostrar();
 
-			// Probar intersecci�n
-			System.out.println("\n=== INTERSECCI�N DE EQUIPOS ===");
+			// Probar intersección
+			System.out.println("\n=== INTERSECCIÓN DE EQUIPOS ===");
 			Equipo interseccion = equipo1.interseccion(equipo2);
 			interseccion.mostrar();
 
