@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "82050973b6d591a1",
+    "id": "682e7535fc799ebb",
     "type": "split",
     "children": [
       {
-        "id": "534313571be9c166",
+        "id": "96fbd0c300d4cd59",
         "type": "tabs",
         "children": [
           {
-            "id": "2c3608cba84fe97d",
+            "id": "a789235be245bb31",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ObsidianVault/Programacion/📁 Programacion.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "📁 Programacion"
+              "title": "Nueva pestaña"
             }
           }
         ]
@@ -27,28 +23,28 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "eb4afc32e73a0131",
+    "id": "804e0c22e7b2a9fb",
     "type": "split",
     "children": [
       {
-        "id": "e1b8fed179085693",
+        "id": "bf8bb942d191c7c4",
         "type": "tabs",
         "children": [
           {
-            "id": "75b89bafc72bb8dd",
+            "id": "88ec8c9385507ab6",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Explorador de archivos"
             }
           },
           {
-            "id": "c922cd0d11d1c00c",
+            "id": "22532e46596372a5",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +61,7 @@
             }
           },
           {
-            "id": "64457b338f048255",
+            "id": "32cee7a105811a92",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -74,27 +70,28 @@
               "title": "Marcadores"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
-    "id": "5550642da87535b9",
+    "id": "3aa697c58a7b825f",
     "type": "split",
     "children": [
       {
-        "id": "07f4fa00a0fa5c23",
+        "id": "89bea61b1dd2d825",
         "type": "tabs",
         "children": [
           {
-            "id": "a71c2624ad261b8d",
+            "id": "8e7de85b62aff25b",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "1º-Curso/Programacion/Java/eclipse-workspace/Proyecto/PLAN_PROYECTO.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +101,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes"
+              "title": "Enlaces entrantes de PLAN_PROYECTO"
             }
           },
           {
-            "id": "56bb47b91686b7da",
+            "id": "58f381d4e98989f7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Bienvenido.md",
+                "file": "1º-Curso/Programacion/Java/eclipse-workspace/Proyecto/PLAN_PROYECTO.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de Bienvenido"
+              "title": "Enlaces salientes de PLAN_PROYECTO"
             }
           },
           {
-            "id": "0f345f35a8091435",
+            "id": "186daf5d4a6bbc4e",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,7 +134,7 @@
             }
           },
           {
-            "id": "8aee6ae573a3aae7",
+            "id": "00ddbe120c797a69",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -151,18 +148,18 @@
             }
           },
           {
-            "id": "61a0adedd38ef55b",
+            "id": "12f051536de5190b",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Bienvenido.md",
+                "file": "1º-Curso/Programacion/Java/eclipse-workspace/Proyecto/PLAN_PROYECTO.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de Bienvenido"
+              "title": "Esquema de PLAN_PROYECTO"
             }
           }
         ]
@@ -183,27 +180,8 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "2c3608cba84fe97d",
+  "active": "a789235be245bb31",
   "lastOpenFiles": [
-    "ObsidianVault/MEMORIA.md",
-    "ObsidianVault/Programacion/Resumen.md",
-    "ObsidianVault/📚 Indice General.md",
-    "ObsidianVault/Programacion/notas_programacion.md",
-    "ObsidianVault/Sostenibilidad.md",
-    "ObsidianVault/Sistemas Informaticos.md",
-    "ObsidianVault/Programacion",
-    "ObsidianVault/Lenguaje de marcas.md",
-    "ObsidianVault/IPE.md",
-    "ObsidianVault/Entorno de desarrollo.md",
-    "ObsidianVault/Digitalizacion.md",
-    "ObsidianVault/Base de datos.md",
-    "ObsidianVault",
-    "Sin título.md",
-    "2026-04-11.md",
-    "Sin nombre",
-    "notas_programacion.md",
-    "Sin título.canvas",
-    "cree un enlace.md",
-    "Bienvenido.md"
+    "1º-Curso/Programacion/Java/eclipse-workspace/Proyecto/PLAN_PROYECTO.md"
   ]
 }
