@@ -1,4 +1,4 @@
-package Sal_Romeo_Raul_Proyecto_Final.excepciones;
+package Sal_Romeo_Raul_Proyecto_Final;
 
 /**
  * Excepción lanzada cuando se busca un equipo que no existe en la liga.
@@ -10,10 +10,6 @@ package Sal_Romeo_Raul_Proyecto_Final.excepciones;
 public class EquipoNoEncontradoException extends Exception {
 
     private static final long serialVersionUID = 1L;
-
-    public EquipoNoEncontradoException(String mensaje) {
-        super(mensaje);
-    }
 
     public EquipoNoEncontradoException(String nombreEquipo) {
         super(String.format("No se ha encontrado ningún equipo con el nombre %s.", nombreEquipo));

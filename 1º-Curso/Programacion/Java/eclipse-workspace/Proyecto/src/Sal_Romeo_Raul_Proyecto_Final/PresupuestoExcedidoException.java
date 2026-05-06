@@ -1,4 +1,4 @@
-package Sal_Romeo_Raul_Proyecto_Final.excepciones;
+package Sal_Romeo_Raul_Proyecto_Final;
 
 /**
  * Excepción lanzada cuando el precio de un fichaje supera el presupuesto del equipo.

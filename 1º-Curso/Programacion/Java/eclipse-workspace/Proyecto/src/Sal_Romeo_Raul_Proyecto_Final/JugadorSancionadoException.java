@@ -1,4 +1,4 @@
-package Sal_Romeo_Raul_Proyecto_Final.excepciones;
+package Sal_Romeo_Raul_Proyecto_Final;
 
 /**
  * Excepción lanzada cuando se intenta alinear un jugador sancionado.
@@ -10,10 +10,6 @@ package Sal_Romeo_Raul_Proyecto_Final.excepciones;
 public class JugadorSancionadoException extends Exception {
 
     private static final long serialVersionUID = 1L;
-
-    public JugadorSancionadoException(String mensaje) {
-        super(mensaje);
-    }
 
     public JugadorSancionadoException(String nombreJugador) {
         super(String.format("El jugador %s está sancionado y no puede jugar.", nombreJugador));
