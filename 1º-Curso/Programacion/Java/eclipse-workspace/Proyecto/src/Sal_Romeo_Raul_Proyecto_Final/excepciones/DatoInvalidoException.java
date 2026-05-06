@@ -23,3 +23,4 @@ public class DatoInvalidoException extends Exception {
         super(String.format("El campo %s tiene un valor inválido: %s", campo, valor));
     }
 }
+	
