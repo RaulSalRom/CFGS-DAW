@@ -1,6 +1,5 @@
 package Sal_Romeo_Raul_Proyecto_Final;
 
-import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -14,8 +13,6 @@ import java.util.*;
  * Lanza RolNoDisponibleException si se asigna un rol ya ocupado en titulares.
  */
 public class Equipo implements Serializable {
-
-    private static final long serialVersionUID = 1L;
 
     private String nombre;
     private String ciudad;
@@ -220,12 +217,12 @@ public class Equipo implements Serializable {
     }
 
     public void eliminarSuplente(String nickname) {
-        Iterator<Jugador> it = suplentes.iterator();
-        while (it.hasNext()) {
-            Jugador j = it.next();
+        Iterator<Jugador> iterador = suplentes.iterator();
+        while (iterador.hasNext()) {
+            Jugador j = iterador.next();
             if (j.getNickname().equalsIgnoreCase(nickname)) {
                 presupuesto += j.getPrecioFichaje();
-                it.remove();
+                iterador.remove();
                 return;
             }
         }
@@ -450,8 +447,8 @@ public class Equipo implements Serializable {
     @Override
     public String toString() {
         return "Equipo{" +
-                "nombre='" + getNombre() + '\'' +
-                ", ciudad='" + getCiudad() + '\'' +
+                "nombre='" + getNombre() + 
+                ", ciudad='" + getCiudad() + 
                 ", presupuesto=" + getPresupuesto() +
                 ", puntos=" + getPuntos() +
                 ", victorias=" + getVictorias() +

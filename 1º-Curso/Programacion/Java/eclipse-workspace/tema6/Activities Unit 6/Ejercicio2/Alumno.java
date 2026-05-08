@@ -1,18 +1,10 @@
 package Ejercicio2;
 
-/**
- * Clase que representa a un alumno con nombre y DNI.
- * La igualdad y el hash se basan únicamente en el DNI.
- */
 public class Alumno {
 	private String nombre;
 	private String dni;
 
-	/**
-	 * Constructor de la clase Alumno.
-	 * @param nombre Nombre del alumno
-	 * @param dni DNI del alumno (debe ser único)
-	 */
+
 	public Alumno(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
@@ -20,7 +12,7 @@ public class Alumno {
 
 	@Override
 	public String toString() {
-		return nombre + " (DNI: " + dni + ")";
+		return "nombre: " + nombre + " (DNI: " + dni + ")";
 	}
 
 	@Override

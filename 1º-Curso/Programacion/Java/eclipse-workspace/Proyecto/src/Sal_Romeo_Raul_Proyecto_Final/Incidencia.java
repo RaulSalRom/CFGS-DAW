@@ -13,8 +13,6 @@ import java.time.LocalDate;
  */
 public class Incidencia implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     private String identificador;
     private String tipo;
     private String jugadorNickname;
@@ -97,11 +95,11 @@ public class Incidencia implements Serializable {
     @Override
     public String toString() {
         return "Incidencia{" +
-                "id='" + identificador + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", jugador='" + jugadorNickname + '\'' +
-                ", equipo='" + equipoNombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
+                "id='" + identificador + 
+                ", tipo='" + tipo + 
+                ", jugador='" + jugadorNickname + 
+                ", equipo='" + equipoNombre + 
+                ", descripcion='" + descripcion + 
                 ", fecha=" + fecha +
                 '}';
     }

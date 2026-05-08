@@ -1,6 +1,6 @@
 package Sal_Romeo_Raul_Proyecto_Final;
 
-import java.io.Serializable;
+import java.util.*;
 
 /**
  * Clase abstracta base para personas vinculadas a la liga de eSports.

@@ -24,8 +24,6 @@ import java.util.Random;
  */
 public class Jugador extends PersonaLiga implements Entrenable, Comparable<Jugador>, Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     private String rol;
     private int nivelMecanicas;
     private int nivelEstrategia;
@@ -154,13 +152,13 @@ public class Jugador extends PersonaLiga implements Entrenable, Comparable<Jugad
     @Override
     public String toString() {
         return "Jugador{" +
-                "id='" + getIdentificador() + '\'' +
-                ", nombre='" + getNombre() + '\'' +
-                ", nickname='" + getNickname() + '\'' +
-                ", email='" + getEmail() + '\'' +
+                "id='" + getIdentificador() + 
+                ", nombre='" + getNombre() + 
+                ", nickname='" + getNickname() + 
+                ", email='" + getEmail() + 
                 ", edad=" + getEdad() +
                 ", salarioBase=" + getSalarioBase() +
-                ", rol='" + getRol() + '\'' +
+                ", rol='" + getRol() + 
                 ", nivelMecanicas=" + getNivelMecanicas() +
                 ", nivelEstrategia=" + getNivelEstrategia() +
                 ", partidasJugadas=" + getPartidasJugadas() +

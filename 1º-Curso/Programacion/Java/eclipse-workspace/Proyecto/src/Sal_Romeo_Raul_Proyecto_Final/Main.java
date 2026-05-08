@@ -28,7 +28,7 @@ public class Main {
         int opcion;
         do {
             mostrarMenu();
-            opcion = Integer.parseInt(teclado.nextLine());
+            opcion = leerInt("Opción: ");
             procesarOpcion(opcion);
         } while (opcion != 12);
     }
@@ -151,8 +151,7 @@ public class Main {
         System.out.println("1.1 Gestionar personas de la liga");
         System.out.println("1.2 Gestionar equipos");
         System.out.println("1.3 Gestionar fichajes y plantillas");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 11 -> menuPersonas();
@@ -173,8 +172,7 @@ public class Main {
         System.out.println("2.6 Mostrar estadísticas");
         System.out.println("2.7 Mostrar historial de acciones");
         System.out.println("2.8 Deshacer última acción");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 21 -> menuCalendario();
@@ -202,6 +200,29 @@ public class Main {
         }
     }
 
+    // === MÉTODOS AYUDANTES PARA ENTRADA SEGURA ===
+    private static int leerInt(String mensaje) {
+        while (true) {
+            try {
+                System.out.print(mensaje);
+                return Integer.parseInt(teclado.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: introduce un número válido.");
+            }
+        }
+    }
+
+    private static double leerDouble(String mensaje) {
+        while (true) {
+            try {
+                System.out.print(mensaje);
+                return Double.parseDouble(teclado.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: introduce un número válido.");
+            }
+        }
+    }
+
     // === MENÚ 1: GESTIONAR PERSONAS (PDF Sección 5.1) ===
     private static void menuPersonas() {
         System.out.println("\n--- GESTIONAR PERSONAS DE LA LIGA ---");
@@ -210,8 +231,7 @@ public class Main {
         System.out.println("1.3 Butecladoar persona por identificador");
         System.out.println("1.4 Modificar datos de persona");
         System.out.println("1.5 Eliminar persona");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 11 -> altaPersona();
@@ -359,11 +379,23 @@ public class Main {
 
         System.out.print("Nueva edad (" + j.getEdad() + "): ");
         String edadStr = teclado.nextLine();
-        if (!edadStr.isEmpty()) j.setEdad(Integer.parseInt(edadStr));
+        if (!edadStr.isEmpty()) {
+            try {
+                j.setEdad(Integer.parseInt(edadStr));
+            } catch (NumberFormatException e) {
+                System.out.println("Edad inválida, se mantiene el valor actual.");
+            }
+        }
 
         System.out.print("Nuevo salario (" + j.getSalarioBase() + "): ");
         String salarioStr = teclado.nextLine();
-        if (!salarioStr.isEmpty()) j.setSalarioBase(Integer.parseInt(salarioStr));
+        if (!salarioStr.isEmpty()) {
+            try {
+                j.setSalarioBase(Integer.parseInt(salarioStr));
+            } catch (NumberFormatException e) {
+                System.out.println("Salario inválido, se mantiene el valor actual.");
+            }
+        }
 
         System.out.print("Nuevo email (" + j.getEmail() + "): ");
         String email = teclado.nextLine();
@@ -389,11 +421,23 @@ public class Main {
 
         System.out.print("Nueva edad (" + e.getEdad() + "): ");
         String edadStr = teclado.nextLine();
-        if (!edadStr.isEmpty()) e.setEdad(Integer.parseInt(edadStr));
+        if (!edadStr.isEmpty()) {
+            try {
+                e.setEdad(Integer.parseInt(edadStr));
+            } catch (NumberFormatException ex) {
+                System.out.println("Edad inválida, se mantiene el valor actual.");
+            }
+        }
 
         System.out.print("Nuevo salario (" + e.getSalarioBase() + "): ");
         String salarioStr = teclado.nextLine();
-        if (!salarioStr.isEmpty()) e.setSalarioBase(Integer.parseInt(salarioStr));
+        if (!salarioStr.isEmpty()) {
+            try {
+                e.setSalarioBase(Integer.parseInt(salarioStr));
+            } catch (NumberFormatException ex) {
+                System.out.println("Salario inválido, se mantiene el valor actual.");
+            }
+        }
 
         System.out.print("Nuevo email (" + e.getEmail() + "): ");
         String email = teclado.nextLine();
@@ -451,8 +495,7 @@ public class Main {
         System.out.println("2.3 Ver todos los equipos");
         System.out.println("2.4 Ver equipo detallado");
         System.out.println("2.5 Validar convocatoria de equipo");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 21 -> crearEquipo();
@@ -470,8 +513,7 @@ public class Main {
             String nombre = teclado.nextLine();
             System.out.print("Ciudad: ");
             String ciudad = teclado.nextLine();
-            System.out.print("Presupuesto: ");
-            double presupuesto = Double.parseDouble(teclado.nextLine());
+            double presupuesto = leerDouble("Presupuesto: ");
 
             Equipo e = new Equipo(nombre, ciudad, presupuesto);
             liga.añadirEquipo(e);
@@ -527,8 +569,7 @@ public class Main {
         System.out.println("3.4 Vender entrenador al mercado libre");
         System.out.println("3.5 Promover suplente a titular");
         System.out.println("3.6 Sustituir titular");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 31 -> ficharJugador();
@@ -702,15 +743,13 @@ public class Main {
         System.out.println("4.2 Mostrar calendario completo");
         System.out.println("4.3 Consultar jornada");
         System.out.println("4.4 Consultar resultados por jornada");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 41 -> liga.generarCalendario();
             case 42 -> liga.mostrarCalendario();
             case 43 -> {
-                System.out.print("Número de jornada: ");
-                int j = Integer.parseInt(teclado.nextLine());
+                int j = leerInt("Número de jornada: ");
                 liga.consultarJornada(j);
             }
             case 44 -> System.out.println("Consulta de resultados no implementada aún.");
@@ -726,8 +765,7 @@ public class Main {
         System.out.println("5.3 Disputar siguiente partido");
         System.out.println("5.4 Mostrar todos los partidos pendientes");
         System.out.println("5.5 Vaciar cola");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 51 -> encolarPartido();
@@ -778,8 +816,7 @@ public class Main {
         System.out.println("6.2 Registrar resultado de partido");
         System.out.println("6.3 Calcular ganador de partido");
         System.out.println("6.4 Mostrar todos los partidos");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 61 -> crearPartido();
@@ -903,8 +940,7 @@ public class Main {
         System.out.println("7.3 Butecladoar incidencias por equipo");
         System.out.println("7.4 Butecladoar incidencias por jugador");
         System.out.println("7.5 Aplicar sanción");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 71 -> registrarIncidencia();
@@ -998,8 +1034,7 @@ public class Main {
         System.out.println("9.3 Mejor entrenador");
         System.out.println("9.4 Equipo con más presupuesto");
         System.out.println("9.5 Equipo con mejor rendimiento");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 91 -> topJugadoresMVP();
@@ -1058,8 +1093,7 @@ public class Main {
         System.out.println("\n--- MOSTRAR HISTORIAL DE ACCIONES ---");
         System.out.println("10.1 Mostrar última acción");
         System.out.println("10.2 Mostrar historial completo");
-        System.out.print("Opción: ");
-        int sub = Integer.parseInt(teclado.nextLine());
+        int sub = leerInt("Opción: ");
 
         switch (sub) {
             case 101 -> liga.mostrarUltimaAccion();

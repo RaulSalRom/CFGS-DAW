@@ -2,10 +2,7 @@ package Ejercicio6;
 
 import java.util.Scanner;
 
-/**
- * Clase principal que implementa un menú interactivo para gestionar un diccionario.
- * Permite añadir palabras, buscar, borrar y listar palabras por prefijo.
- */
+
 public class Principal {
 	public static void main(String[] args) {
 		Diccionario diccionario = new Diccionario();
@@ -22,7 +19,7 @@ public class Principal {
 			System.out.print("Elige una opción: ");
 
 			opcion = sc.nextInt();
-			sc.nextLine(); // limpiar buffer
+			sc.nextLine();
 
 			try {
 				switch (opcion) {

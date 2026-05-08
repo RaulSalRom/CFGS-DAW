@@ -1,9 +1,6 @@
 package Ejercicio2;
 
-/**
- * Programa principal que prueba la clase genérica Equipo con la clase Alumno.
- * Crea equipos de alumnos, los muestra y hace la unión de ambos.
- */
+
 public class PrincipalAlumnos {
 	public static void main(String[] args) {
 		try {

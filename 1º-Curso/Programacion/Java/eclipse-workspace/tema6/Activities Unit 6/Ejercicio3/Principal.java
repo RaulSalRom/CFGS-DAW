@@ -3,10 +3,7 @@ package Ejercicio3;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-/**
- * Clase principal que implementa un menú interactivo para gestionar el historial de navegación.
- * Permite añadir páginas, consultar historial completo, consultar por día y borrar historial.
- */
+
 public class Principal {
 	public static void main(String[] args) {
 		Historial historial = new Historial();
@@ -23,7 +20,7 @@ public class Principal {
 			System.out.print("Elige una opción: ");
 
 			opcion = sc.nextInt();
-			sc.nextLine(); // limpiar buffer
+			sc.nextLine();
 
 			try {
 				switch (opcion) {

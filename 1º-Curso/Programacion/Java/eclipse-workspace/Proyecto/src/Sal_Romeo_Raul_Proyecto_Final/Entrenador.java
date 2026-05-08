@@ -1,6 +1,6 @@
 package Sal_Romeo_Raul_Proyecto_Final;
 
-import java.io.Serializable;
+import java.util.*;
 
 /**
  * Entrenador de eSports que extiende PersonaLiga e implementa Entrenable.
@@ -17,8 +17,6 @@ import java.io.Serializable;
  *    (requiere que el entrenador esté asignado a un equipo, se implementará completamente al crear Equipo)
  */
 public class Entrenador extends PersonaLiga implements Entrenable, Comparable<Entrenador>, Serializable {
-
-    private static final long serialVersionUID = 1L;
 
     private int añosExperiencia;
     private String especialidad;
@@ -110,14 +108,14 @@ public class Entrenador extends PersonaLiga implements Entrenable, Comparable<En
     @Override
     public String toString() {
         return "Entrenador{" +
-                "id='" + getIdentificador() + '\'' +
-                ", nombre='" + getNombre() + '\'' +
-                ", nickname='" + getNickname() + '\'' +
-                ", email='" + getEmail() + '\'' +
+                "id='" + getIdentificador() +
+                ", nombre='" + getNombre() + 
+                ", nickname='" + getNickname() + 
+                ", email='" + getEmail() + 
                 ", edad=" + getEdad() +
                 ", salarioBase=" + getSalarioBase() +
                 ", añosExperiencia=" + getAñosExperiencia() +
-                ", especialidad='" + getEspecialidad() + '\'' +
+                ", especialidad='" + getEspecialidad() + 
                 ", victoriasTotales=" + getVictoriasTotales() +
                 ", rendimiento=" + calcularRendimiento() +
                 ", costeMensual=" + calcularCosteMensual() + "€" +

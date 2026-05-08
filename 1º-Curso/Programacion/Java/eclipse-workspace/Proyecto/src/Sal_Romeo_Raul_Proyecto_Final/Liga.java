@@ -1,23 +1,8 @@
 package Sal_Romeo_Raul_Proyecto_Final;
 
-import java.io.Serializable;
 import java.util.*;
 
-/**
- * Clase que gestiona la liga completa de LVP.
- *
- * Para memoria:
- * Contiene ArrayList de Equipos.
- * Gestiona búsquedas y operaciones globales.
- * Lanza EquipoNoEncontradoException al buscar equipos inexistentes.
- * Lanza NombreDuplicadoException al crear equipos con nombres repetidos.
- * Implementa matriz bidimensional para calendario (PDF 5.8).
- * Implementa cola FIFO para partidos pendientes (PDF 5.9).
- * Implementa pila LIFO para historial de acciones (PDF 5.10).
- */
 public class Liga implements Serializable {
-
-    private static final long serialVersionUID = 1L;
 
     private String nombreLiga;
 

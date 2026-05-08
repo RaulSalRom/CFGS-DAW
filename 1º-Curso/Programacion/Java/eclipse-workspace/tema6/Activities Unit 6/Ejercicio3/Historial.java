@@ -4,26 +4,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-/**
- * Clase que representa un historial de navegación web.
- * Utiliza una LinkedList para mantener el orden cronológico de las páginas visitadas.
- * No permite añadir páginas con fecha/hora anterior a la última almacenada.
- */
+
 public class Historial {
 	private LinkedList<PaginaWeb> paginas;
 
-	/**
-	 * Constructor del historial. Inicializa la lista vacía.
-	 */
+
 	public Historial() {
 		this.paginas = new LinkedList<>();
 	}
 
-	/**
-	 * Añade una nueva página al historial con la fecha/hora actual.
-	 * @param url URL de la página visitada
-	 * @throws HistorialException Si la fecha/hora actual es anterior a la última página almacenada
-	 */
+
 	public void nuevaPagina(String url) throws HistorialException {
 		LocalDateTime ahora = LocalDateTime.now();
 
@@ -38,9 +28,7 @@ public class Historial {
 		System.out.println("Añadida: " + url + " a las " + ahora);
 	}
 
-	/**
-	 * Muestra por consola todo el historial de páginas visitadas.
-	 */
+
 	public void consultarHistorialCompleto() {
 		if (paginas.isEmpty()) {
 			System.out.println("El historial está vacío");
@@ -55,10 +43,7 @@ public class Historial {
 		}
 	}
 
-	/**
-	 * Muestra por consola las páginas visitadas en un día concreto.
-	 * @param dia Fecha del día a consultar
-	 */
+
 	public void consultarHistorialDia(LocalDate dia) {
 		boolean hay = false;
 		System.out.println("\n=== HISTORIAL DEL DÍA " + dia + " ===");
@@ -75,9 +60,7 @@ public class Historial {
 		}
 	}
 
-	/**
-	 * Borra todo el historial de navegación.
-	 */
+
 	public void borrarHistorial() {
 		paginas.clear();
 		System.out.println("Historial borrado");

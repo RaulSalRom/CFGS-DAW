@@ -1,9 +1,6 @@
 package Ejercicio2;
 
-/**
- * Programa principal que prueba la clase genérica Equipo con Integer.
- * Crea equipos de números pares e impares, los muestra y hace la unión de ambos.
- */
+
 public class PrincipalInteger {
 	public static void main(String[] args) {
 		try {
