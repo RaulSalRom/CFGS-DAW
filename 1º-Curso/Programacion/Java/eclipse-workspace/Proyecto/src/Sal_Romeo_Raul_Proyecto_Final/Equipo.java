@@ -2,21 +2,25 @@ package Sal_Romeo_Raul_Proyecto_Final;
 
 import java.util.*;
 
+// clase que modela un equipo de la liga con sus jugadores, entrenadores y estadisticas
 public class Equipo {
-    private String nombre;
-    private String ciudad;
-    private double presupuesto;
-    private int victorias;
-    private int derrotas;
-    private int empates;
-    private int puntos;
-    private int puntosAFavor;
-    private int puntosEnContra;
+    // --- ATRIBUTOS DEL EQUIPO ---
+    private String nombre;          // nombre del equipo
+    private String ciudad;          // ciudad de origen
+    private double presupuesto;     // dinero disponible para fichajes
+    private int victorias;          // partidos ganados
+    private int derrotas;           // partidos perdidos
+    private int empates;            // partidos empatados
+    private int puntos;             // puntos totales en la clasificacion
+    private int puntosAFavor;       // puntos a favor totales
+    private int puntosEnContra;     // puntos en contra totales
 
-    private Jugador[] titulares;
-    private ArrayList<Jugador> suplentes;
-    private ArrayList<Entrenador> entrenadores;
+    // --- PLANTILLA ---
+    private Jugador[] titulares;                // array fijo de 5 titulares
+    private ArrayList<Jugador> suplentes;       // lista de suplentes
+    private ArrayList<Entrenador> entrenadores; // lista de entrenadores
 
+    // constructor: creamos el equipo con los datos basicos y vacio de jugadores
     public Equipo(String nombre, String ciudad, double presupuesto) {
         this.nombre = nombre;
         this.ciudad = ciudad;
@@ -27,11 +31,12 @@ public class Equipo {
         this.puntos = 0;
         this.puntosAFavor = 0;
         this.puntosEnContra = 0;
-        this.titulares = new Jugador[5];
+        this.titulares = new Jugador[5]; // huecos para 5 titulares
         this.suplentes = new ArrayList<Jugador>();
         this.entrenadores = new ArrayList<Entrenador>();
     }
 
+    // --- COMPARATOR: ordena de mayor a menor presupuesto ---
     public static final Comparator<Equipo> POR_PRESUPUESTO = new Comparator<Equipo>() {
         @Override
         public int compare(Equipo e1, Equipo e2) {
@@ -41,6 +46,7 @@ public class Equipo {
         }
     };
 
+    // --- GETTERS Y SETTERS BASICOS ---
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
     public String getCiudad() { return ciudad; }
@@ -54,39 +60,45 @@ public class Equipo {
     public int getPuntosAFavor() { return puntosAFavor; }
     public int getPuntosEnContra() { return puntosEnContra; }
 
+    // aniade un jugador como titular si hay hueco, si no lanza excepcion
     public void añadirTitular(Jugador jugador) throws PresupuestoExcedidoException, NombreDuplicadoException, RolNoDisponibleException {
         double costeFichaje = jugador.getPrecioFichaje();
         if (costeFichaje > presupuesto) {
             throw new PresupuestoExcedidoException(nombre, presupuesto, costeFichaje);
         }
+        // comprobamos que el nickname y el rol no esten repetidos en titulares
         for (Jugador j : titulares) {
             if (j != null && j.getNickname().equalsIgnoreCase(jugador.getNickname())) {
                 throw new NombreDuplicadoException("jugador", jugador.getNickname());
             }
             if (j != null && j.getRol().equalsIgnoreCase(jugador.getRol())) {
-                throw new RolNoDisponibleException("El rol " + jugador.getRol() + " ya está ocupado en titulares.");
+                throw new RolNoDisponibleException("El rol " + jugador.getRol() + " ya esta ocupado en titulares.");
             }
         }
+        // comprobamos que el nickname no este en suplentes
         for (Jugador j : suplentes) {
             if (j.getNickname().equalsIgnoreCase(jugador.getNickname())) {
                 throw new NombreDuplicadoException("jugador", jugador.getNickname());
             }
         }
+        // buscamos el primer hueco libre en el array de titulares
         for (int i = 0; i < titulares.length; i++) {
             if (titulares[i] == null) {
                 titulares[i] = jugador;
-                presupuesto -= costeFichaje;
+                presupuesto -= costeFichaje; // descontamos el precio del fichaje
                 return;
             }
         }
-        throw new RolNoDisponibleException("No hay plazas disponibles en titulares (máximo 5).");
+        throw new RolNoDisponibleException("No hay plazas disponibles en titulares (maximo 5).");
     }
 
+    // aniade un jugador como suplente (sin limite de cantidad)
     public void añadirSuplente(Jugador jugador) throws PresupuestoExcedidoException, NombreDuplicadoException {
         double costeFichaje = jugador.getPrecioFichaje();
         if (costeFichaje > presupuesto) {
             throw new PresupuestoExcedidoException(nombre, presupuesto, costeFichaje);
         }
+        // comprobamos que el nickname no este repetido ni en titulares ni en suplentes
         for (Jugador j : titulares) {
             if (j != null && j.getNickname().equalsIgnoreCase(jugador.getNickname())) {
                 throw new NombreDuplicadoException("jugador", jugador.getNickname());
@@ -98,9 +110,10 @@ public class Equipo {
             }
         }
         suplentes.add(jugador);
-        presupuesto -= costeFichaje;
+        presupuesto -= costeFichaje; // descontamos el precio del fichaje
     }
 
+    // aniade un entrenador al equipo si no hay otro con el mismo nickname
     public void añadirEntrenador(Entrenador entrenador) throws NombreDuplicadoException {
         for (Entrenador e : entrenadores) {
             if (e.getNickname().equalsIgnoreCase(entrenador.getNickname())) {
@@ -110,6 +123,7 @@ public class Equipo {
         entrenadores.add(entrenador);
     }
 
+    // devuelve una lista con todos los jugadores (titulares + suplentes)
     public ArrayList<Jugador> getTodosJugadores() {
         ArrayList<Jugador> todos = new ArrayList<Jugador>();
         for (Jugador j : titulares) {
@@ -123,6 +137,7 @@ public class Equipo {
     public Jugador[] getTitulares() { return titulares; }
     public ArrayList<Entrenador> getEntrenadores() { return entrenadores; }
 
+    // busca un jugador por nickname (primero en titulares, luego en suplentes)
     public Jugador getJugadorPorNickname(String nickname) {
         for (Jugador j : titulares) {
             if (j != null && j.getNickname().equalsIgnoreCase(nickname)) return j;
@@ -130,9 +145,10 @@ public class Equipo {
         for (Jugador j : suplentes) {
             if (j.getNickname().equalsIgnoreCase(nickname)) return j;
         }
-        return null;
+        return null; // no lo encontramos
     }
 
+    // devuelve el jugador no sancionado con mayor rendimiento del equipo
     public Jugador getJugadorConMayorRendimiento() {
         Jugador mejor = null;
         double maxRend = -1;
@@ -151,10 +167,11 @@ public class Equipo {
         return mejor;
     }
 
+    // elimina un jugador por nickname, devuelve true si lo encontro y lo borro
     public boolean eliminarJugador(String nickname) {
         for (int i = 0; i < titulares.length; i++) {
             if (titulares[i] != null && titulares[i].getNickname().equalsIgnoreCase(nickname)) {
-                titulares[i] = null;
+                titulares[i] = null; // dejamos el hueco libre
                 return true;
             }
         }
@@ -167,6 +184,7 @@ public class Equipo {
         return false;
     }
 
+    // elimina un entrenador por nickname, devuelve true si lo encontro y lo borro
     public boolean eliminarEntrenador(String nickname) {
         for (Entrenador e : entrenadores) {
             if (e.getNickname().equalsIgnoreCase(nickname)) {
@@ -177,6 +195,7 @@ public class Equipo {
         return false;
     }
 
+    // calcula la media de rendimiento de todos los jugadores del equipo
     public double calcularRendimientoEquipo() {
         ArrayList<Jugador> todos = getTodosJugadores();
         if (todos.isEmpty()) return 0;
@@ -187,6 +206,8 @@ public class Equipo {
         return suma / todos.size();
     }
 
+    // calcula el rendimiento total del equipo ponderado para simular partidos
+    // titulares*0.8 + suplentes*0.4 + entrenador*0.2
     public double simularRendimiento() {
         double total = 0;
         for (Jugador j : titulares) {
@@ -201,6 +222,7 @@ public class Equipo {
         return total;
     }
 
+    // --- METODOS PARA ACTUALIZAR ESTADISTICAS ---
     public void addVictoria() { this.victorias++; }
     public void addDerrota() { this.derrotas++; }
     public void addEmpate() { this.empates++; }
@@ -208,6 +230,7 @@ public class Equipo {
     public void addPuntosAFavor(int p) { this.puntosAFavor += p; }
     public void addPuntosEnContra(int p) { this.puntosEnContra += p; }
 
+    // muestra toda la informacion del equipo con sus jugadores y entrenadores
     public void mostrarInformacionDetallada() {
         System.out.println("=== EQUIPO: " + nombre + " ===");
         System.out.println("Ciudad: " + ciudad + " | Presupuesto: " + presupuesto + "€");
@@ -226,6 +249,7 @@ public class Equipo {
         }
     }
 
+    // devuelve el numero total de jugadores (titulares+suplentes)
     public int getNumJugadores() {
         int count = 0;
         for (Jugador j : titulares) { if (j != null) count++; }

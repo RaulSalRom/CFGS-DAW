@@ -2,21 +2,24 @@ package Sal_Romeo_Raul_Proyecto_Final;
 
 import java.util.*;
 
+// clase principal con el menu y toda la logica de interaccion con el usuario
 public class Main {
-    private static Liga liga;
-    private static Scanner teclado;
-    private static boolean consulta = true;
-    private static Temporada temporada;
+    // --- VARIABLES GLOBALES (se comparten entre todos los metodos) ---
+    private static Liga liga;           // la liga con todos los datos
+    private static Scanner teclado;     // para leer lo que escribe el usuario
+    private static boolean consulta = true; // controla el bucle de salir
+    private static Temporada temporada; // la temporada actual
 
+    // metodo principal: arranca el programa
     public static void main(String[] args) {
         teclado = new Scanner(System.in);
         liga = new Liga("LVP Superliga eSports");
         temporada = new Temporada("Temporada 2025");
 
-        inicializarDatosEjemplo();
+        inicializarDatosEjemplo(); // cargamos datos de prueba
 
         int opcion = 0;
-        do {
+        do { // bucle principal: se repite hasta que consulta sea false
             mostrarMenuPrincipal();
             try {
                 opcion = Integer.parseInt(teclado.nextLine());
@@ -29,12 +32,14 @@ public class Main {
             } catch (Exception e) {
                 System.out.println("Error inesperado: " + e.getMessage());
             }
-        } while (consulta);
+        } while (consulta); // mientras consulta sea true, el programa sigue
     }
 
+    // metodos estaticos para que otras clases (como Incidencia) puedan acceder a la liga
     public static Liga getLiga() { return liga; }
     public static Temporada getTemporada() { return temporada; }
 
+    // muestra el menu principal
     private static void mostrarMenuPrincipal() {
         System.out.println("\n========================================");
         System.out.println("   SISTEMA DE GESTION LIGA ESPORTS");
@@ -45,19 +50,20 @@ public class Main {
         System.out.print("Seleccione una opcion: ");
     }
 
+    // procesa la opcion del menu principal y llama al submenu que toque
     private static void procesarOpcionPrincipal(int opcion) {
         switch (opcion) {
             case 1: menuGestion(); break;
             case 2: menuEstadisticas(); break;
-            case 0:
+            case 0: // opcion salir con confirmacion
                 while (consulta) {
                     System.out.print("Estas seguro de que quieres salir? (s/n): ");
                     String resp = teclado.nextLine();
                     if (resp.equalsIgnoreCase("s")) {
-                        consulta = false;
+                        consulta = false; // ponemos false para salir del bucle principal
                         System.out.println("Cerrando el sistema... Hasta pronto!");
                     } else if (resp.equalsIgnoreCase("n")) {
-                        break;
+                        break; // sale del while pero sigue en el programa
                     } else {
                         System.out.println("Respuesta no valida. Introduce 's' o 'n'.");
                     }
@@ -69,6 +75,7 @@ public class Main {
         }
     }
 
+    // submenu de gestion: agrupa equipos, jugadores, entrenadores, mercado y temporada
     private static void menuGestion() {
         int sub;
         do {
@@ -93,12 +100,12 @@ public class Main {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Numero invalido.");
-                sub = -1;
+                sub = -1; // para que el do-while no salga
             }
         } while (sub != 0);
     }
 
-    // ========== 1. GESTION DE EQUIPOS ==========
+    // ===== GESTION DE EQUIPOS =====
 
     private static void menuGestionEquipos() {
         int sub;
@@ -127,13 +134,14 @@ public class Main {
         } while (sub != 0);
     }
 
+    // pide los datos para crear un equipo nuevo y lo guarda en la liga
     private static void crearEquipo() {
         try {
             System.out.print("Nombre del equipo: ");
             String nombre = teclado.nextLine();
             Validador.validarNombre(nombre);
 
-            if (liga.buscarEquipo(nombre) != null) {
+            if (liga.buscarEquipo(nombre) != null) { // comprobamos que no exista ya
                 System.out.println("Ya existe un equipo con ese nombre.");
                 return;
             }
@@ -147,12 +155,14 @@ public class Main {
 
             Equipo e = new Equipo(nombre, ciudad, presupuesto);
 
+            // preguntamos si quiere anadir jugadores al crearlo
             System.out.print("Cuantos jugadores quieres anadir? (0-5): ");
             int numJug = Integer.parseInt(teclado.nextLine());
             for (int i = 0; i < numJug; i++) {
                 crearJugadorEnEquipo(e);
             }
 
+            // preguntamos si quiere anadir entrenadores al crearlo
             System.out.print("Cuantos entrenadores quieres anadir? (0-2): ");
             int numEnt = Integer.parseInt(teclado.nextLine());
             for (int i = 0; i < numEnt; i++) {
@@ -170,6 +180,7 @@ public class Main {
         }
     }
 
+    // pide el nombre y elimina el equipo de la liga
     private static void eliminarEquipo() {
         System.out.print("Nombre del equipo a eliminar: ");
         String nombre = teclado.nextLine();
@@ -180,6 +191,7 @@ public class Main {
         }
     }
 
+    // muestra todos los equipos con sus datos basicos
     private static void verEquipos() {
         System.out.println("\n=== EQUIPOS EN LA LIGA ===");
         for (Equipo e : liga.getEquipos()) {
@@ -187,6 +199,7 @@ public class Main {
         }
     }
 
+    // muestra la informacion completa de un equipo (jugadores, entrenadores, stats)
     private static void verEquipoDetallado() {
         System.out.print("Nombre del equipo: ");
         String nombre = teclado.nextLine();
@@ -198,7 +211,7 @@ public class Main {
         e.mostrarInformacionDetallada();
     }
 
-    // ========== 2. GESTION DE JUGADORES ==========
+    // ===== GESTION DE JUGADORES =====
 
     private static void menuGestionJugadores() {
         int sub;
@@ -229,6 +242,7 @@ public class Main {
         } while (sub != 0);
     }
 
+    // muestra los equipos y pide seleccionar uno por nombre
     private static Equipo seleccionarEquipo() {
         verEquipos();
         System.out.print("Nombre del equipo: ");
@@ -238,6 +252,7 @@ public class Main {
         return e;
     }
 
+    // pide todos los datos de un jugador y lo aniade como suplente al equipo
     private static void crearJugadorEnEquipo(Equipo e) {
         try {
             System.out.print("  ID del jugador: ");
@@ -272,6 +287,7 @@ public class Main {
         }
     }
 
+    // pide todos los datos de un entrenador y lo aniade al equipo
     private static void crearEntrenadorEnEquipo(Equipo e) {
         try {
             System.out.print("  ID del entrenador: ");
@@ -322,13 +338,14 @@ public class Main {
         }
     }
 
+    // cambia el estado de sancion de un jugador (si esta sancionado lo desanciona y viceversa)
     private static void toggleSancion() {
         System.out.print("Nickname del jugador: ");
         String nick = teclado.nextLine();
         for (Equipo eq : liga.getEquipos()) {
             Jugador j = eq.getJugadorPorNickname(nick);
             if (j != null) {
-                j.setSancion(!j.isSancion());
+                j.setSancion(!j.isSancion()); // invertimos el estado
                 System.out.println("Jugador " + nick + " " + (j.isSancion() ? "sancionado." : "desancionado."));
                 return;
             }
@@ -336,6 +353,7 @@ public class Main {
         System.out.println("Jugador no encontrado.");
     }
 
+    // busca un jugador por nickname en todos los equipos
     private static void buscarJugador() {
         System.out.print("Nickname del jugador: ");
         String nick = teclado.nextLine();
@@ -350,6 +368,7 @@ public class Main {
         System.out.println("Jugador no encontrado.");
     }
 
+    // muestra todos los jugadores ordenados por rendimiento de mayor a menor
     private static void rankingJugadores() {
         ArrayList<Jugador> todos = new ArrayList<Jugador>();
         for (Equipo eq : liga.getEquipos()) {
@@ -368,6 +387,7 @@ public class Main {
         }
     }
 
+    // busca a que equipo pertenece un jugador
     private static String buscarEquipoDeJugador(Jugador jugador) {
         for (Equipo eq : liga.getEquipos()) {
             if (eq.getJugadorPorNickname(jugador.getNickname()) != null) return eq.getNombre();
@@ -375,7 +395,7 @@ public class Main {
         return "Sin equipo";
     }
 
-    // ========== 3. GESTION DE ENTRENADORES ==========
+    // ===== GESTION DE ENTRENADORES =====
 
     private static void menuGestionEntrenadores() {
         int sub;
@@ -420,6 +440,7 @@ public class Main {
         }
     }
 
+    // recorre todos los equipos y muestra sus entrenadores
     private static void verEntrenadores() {
         System.out.println("\n=== ENTRENADORES ===");
         boolean hay = false;
@@ -433,7 +454,7 @@ public class Main {
         if (!hay) System.out.println("No hay entrenadores registrados.");
     }
 
-    // ========== 4. MERCADO DE FICHAJES ==========
+    // ===== MERCADO DE FICHAJES =====
 
     private static void menuMercado() {
         int sub;
@@ -460,6 +481,7 @@ public class Main {
         } while (sub != 0);
     }
 
+    // quita un jugador de su equipo y lo pone en el mercado
     private static void ponerEnMercado() {
         Equipo e = seleccionarEquipo();
         if (e == null) return;
@@ -471,10 +493,11 @@ public class Main {
             return;
         }
         liga.ponerEnMercado(j);
-        e.eliminarJugador(nick);
+        e.eliminarJugador(nick); // lo quitamos del equipo
         System.out.println("Jugador " + nick + " puesto en el mercado. Precio: " + j.getPrecioFichaje() + "€");
     }
 
+    // compra un jugador del mercado y lo aniade como suplente al equipo seleccionado
     private static void comprarDelMercado() {
         if (liga.getMercado().isEmpty()) {
             System.out.println("No hay jugadores en el mercado.");
@@ -492,6 +515,7 @@ public class Main {
         }
     }
 
+    // muestra los jugadores que estan en el mercado con su precio
     private static void verMercado() {
         System.out.println("\n=== JUGADORES DISPONIBLES ===");
         if (liga.getMercado().isEmpty()) {
@@ -504,7 +528,7 @@ public class Main {
         }
     }
 
-    // ========== 5. TEMPORADA ==========
+    // ===== TEMPORADA =====
 
     private static void menuTemporada() {
         int sub;
@@ -533,6 +557,7 @@ public class Main {
         } while (sub != 0);
     }
 
+    // pide dos equipos y simula un partido entre ellos
     private static void simularPartido() {
         if (liga.getEquipos().size() < 2) {
             System.out.println("Se necesitan al menos 2 equipos para simular.");
@@ -563,7 +588,7 @@ public class Main {
         }
 
         int jornada = temporada.getPartidos().size() + 1;
-        String id = "P" + String.format("%03d", jornada);
+        String id = "P" + String.format("%03d", jornada); // P001, P002, etc
         Partido p = temporada.simularPartido(local, visit, id, jornada);
 
         System.out.println("\n=== RESULTADO ===");
@@ -573,6 +598,7 @@ public class Main {
         liga.registrarAccion("Partido " + id + ": " + local.getNombre() + " " + p.getPuntosLocal() + "-" + p.getPuntosVisitante() + " " + visit.getNombre());
     }
 
+    // muestra todos los partidos jugados en la temporada
     private static void verResultados() {
         System.out.println("\n=== RESULTADOS DE LA TEMPORADA ===");
         if (temporada.getPartidos().isEmpty()) {
@@ -584,11 +610,12 @@ public class Main {
         }
     }
 
+    // genera y muestra el reporte completo de la temporada
     private static void generarReporte() {
         System.out.println(temporada.generarReporte());
     }
 
-    // estadisticas
+    // ===== ESTADISTICAS =====
 
     private static void menuEstadisticas() {
         int sub;
@@ -621,7 +648,7 @@ public class Main {
         } while (sub != 0);
     }
 
-    // ========== 7. ENTRENAMIENTO ==========
+    // ===== ENTRENAMIENTO =====
 
     private static void menuEntrenamiento() {
         int sub;
@@ -646,6 +673,7 @@ public class Main {
         } while (sub != 0);
     }
 
+    // entrena a todos los jugadores y entrenadores de un equipo
     private static void entrenarEquipo() {
         Equipo e = seleccionarEquipo();
         if (e == null) return;
@@ -653,7 +681,6 @@ public class Main {
         for (Entrenador ent : e.getEntrenadores()) {
             ent.entrenar();
         }
-
         for (Jugador j : e.getTodosJugadores()) {
             j.entrenar();
         }
@@ -664,6 +691,7 @@ public class Main {
         }
     }
 
+    // entrena a todos los equipos de la liga
     private static void entrenarTodos() {
         for (Equipo e : liga.getEquipos()) {
             for (Entrenador ent : e.getEntrenadores()) {
@@ -676,8 +704,9 @@ public class Main {
         System.out.println("Todos los equipos han entrenado.");
     }
 
-    // ========== DATOS INICIALES ==========
+    // ===== DATOS INICIALES =====
 
+    // crea 3 equipos con jugadores y entrenadores de ejemplo para que el programa no empiece vacio
     private static void inicializarDatosEjemplo() {
         try {
             // Equipo 1: KOI

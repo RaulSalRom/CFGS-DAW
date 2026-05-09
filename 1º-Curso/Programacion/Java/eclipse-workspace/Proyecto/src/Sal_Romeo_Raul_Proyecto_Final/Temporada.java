@@ -2,10 +2,13 @@ package Sal_Romeo_Raul_Proyecto_Final;
 
 import java.util.*;
 
+// clase que gestiona una temporada completa con sus partidos, clasificacion y reportes
 public class Temporada {
-    private String nombre;
-    private ArrayList<Partido> partidos;
+    // --- ATRIBUTOS DE LA TEMPORADA ---
+    private String nombre;               // nombre de la temporada
+    private ArrayList<Partido> partidos; // lista de partidos jugados
 
+    // constructor: creamos la temporada sin partidos
     public Temporada(String nombre) {
         this.nombre = nombre;
         this.partidos = new ArrayList<Partido>();
@@ -14,12 +17,15 @@ public class Temporada {
     public String getNombre() { return nombre; }
     public ArrayList<Partido> getPartidos() { return partidos; }
 
+    // simula un partido entre dos equipos usando la formula del rendimiento
+    // cada equipo tiene un rendimiento base y se le aplica un factor aleatorio (0.8 a 1.2)
     public Partido simularPartido(Equipo local, Equipo visitante, String idPartido, int jornada) {
         Partido p = new Partido(idPartido, jornada, local, visitante);
 
         double rendLocal = local.simularRendimiento();
         double rendVisit = visitante.simularRendimiento();
 
+        // factor aleatorio para que no sea siempre igual
         double factorLocal = 0.8 + Math.random() * 0.4;
         double factorVisit = 0.8 + Math.random() * 0.4;
 
@@ -31,10 +37,10 @@ public class Temporada {
             local.addVictoria();
             visitante.addDerrota();
             local.addPuntos(3);
-            Jugador mejor = local.getJugadorConMayorRendimiento();
+            Jugador mejor = local.getJugadorConMayorRendimiento(); // el mejor del equipo ganador es MVP
             if (mejor != null) {
                 mvp = mejor.getNickname();
-                mejor.addMVP();
+                mejor.addMVP(); // le sumamos un MVP
             }
         } else if (puntosV > puntosL) {
             visitante.addVictoria();
@@ -45,7 +51,7 @@ public class Temporada {
                 mvp = mejor.getNickname();
                 mejor.addMVP();
             }
-        } else {
+        } else { // empate
             local.addEmpate();
             visitante.addEmpate();
             local.addPuntos(1);
@@ -53,17 +59,19 @@ public class Temporada {
             mvp = "Empate";
         }
 
+        // actualizamos puntos a favor y en contra
         local.addPuntosAFavor(puntosL);
         local.addPuntosEnContra(puntosV);
         visitante.addPuntosAFavor(puntosV);
         visitante.addPuntosEnContra(puntosL);
 
         p.registrarResultado(puntosL, puntosV, mvp);
-        partidos.add(p);
+        partidos.add(p); // guardamos el partido en la lista
 
         return p;
     }
 
+    // devuelve un mapa con los equipos y sus puntos
     public Map<Equipo, Integer> getClasificacion() {
         Map<Equipo, Integer> clasif = new HashMap<Equipo, Integer>();
         Set<Equipo> añadidos = new HashSet<Equipo>();
@@ -85,11 +93,13 @@ public class Temporada {
         return clasif;
     }
 
+    // muestra la clasificacion ordenada por puntos (con desempate por diferencia)
     public void mostrarClasificacion() {
-        System.out.println("\n=== CLASIFICACIÓN " + nombre + " ===");
+        System.out.println("\n=== CLASIFICACION " + nombre + " ===");
         ArrayList<Equipo> ordenada = new ArrayList<Equipo>();
         Set<Equipo> añadidos = new HashSet<Equipo>();
 
+        // recogemos los equipos que han jugado al menos un partido
         for (Partido p : partidos) {
             if (p.isDisputado()) {
                 if (!añadidos.contains(p.getEquipoLocal())) {
@@ -103,6 +113,7 @@ public class Temporada {
             }
         }
 
+        // ordenamos por puntos, si empate por diferencia
         Collections.sort(ordenada, new Comparator<Equipo>() {
             public int compare(Equipo e1, Equipo e2) {
                 if (e2.getPuntos() != e1.getPuntos())
@@ -121,6 +132,7 @@ public class Temporada {
         }
     }
 
+    // genera un reporte completo de la temporada en formato String
     public String generarReporte() {
         StringBuilder sb = new StringBuilder();
         sb.append("=== REPORTE DE TEMPORADA: ").append(nombre).append(" ===\n");
@@ -130,7 +142,7 @@ public class Temporada {
             sb.append(p.toString()).append("\n");
         }
 
-        sb.append("\n--- CLASIFICACIÓN ---\n");
+        sb.append("\n--- CLASIFICACION ---\n");
         ArrayList<Equipo> ordenada = new ArrayList<Equipo>();
         Set<Equipo> añadidos = new HashSet<Equipo>();
 
