@@ -1,7 +1,5 @@
 package Sal_Romeo_Raul_Proyecto_Final;
 
-import java.io.Serializable;
-
 /**
  * Clase que representa un partido de la LVP.
  *
@@ -11,9 +9,7 @@ import java.io.Serializable;
  * Lanza PartidoInvalidoException si se intenta crear un partido inválido.
  * Cumple con el requisito del PDF sección 5.11.
  */
-public class Partido implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Partido {
 
     private String identificador;
     private int jornada;

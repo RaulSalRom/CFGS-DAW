@@ -2,18 +2,7 @@ package Sal_Romeo_Raul_Proyecto_Final;
 
 import java.util.*;
 
-/**
- * Clase que representa un equipo de eSports de la LVP.
- *
- * Para memoria:
- * Contiene array fijo de Jugador para titulares y ArrayList para suplentes.
- * Gestiona presupuesto, fichajes y estadísticas de partidos.
- * Lanza PresupuestoExcedidoException al intentar fichar sin fondos.
- * Lanza NombreDuplicadoException si se añade un jugador con nickname repetido.
- * Lanza RolNoDisponibleException si se asigna un rol ya ocupado en titulares.
- */
-public class Equipo implements Serializable {
-
+public class Equipo {
     private String nombre;
     private String ciudad;
     private double presupuesto;
@@ -24,7 +13,7 @@ public class Equipo implements Serializable {
     private int puntosAFavor;
     private int puntosEnContra;
 
-    private Jugador[] titulares = new Jugador[5];
+    private Jugador[] titulares;
     private ArrayList<Jugador> suplentes;
     private ArrayList<Entrenador> entrenadores;
 
@@ -39,139 +28,50 @@ public class Equipo implements Serializable {
         this.puntosAFavor = 0;
         this.puntosEnContra = 0;
         this.titulares = new Jugador[5];
-        this.suplentes = new ArrayList<>();
-        this.entrenadores = new ArrayList<>();
+        this.suplentes = new ArrayList<Jugador>();
+        this.entrenadores = new ArrayList<Entrenador>();
     }
 
-    // Getters y Setters
-    public String getNombre() {
-        return nombre;
-    }
+    public static final Comparator<Equipo> POR_PRESUPUESTO = new Comparator<Equipo>() {
+        @Override
+        public int compare(Equipo e1, Equipo e2) {
+            if (e1.getPresupuesto() < e2.getPresupuesto()) return 1;
+            else if (e1.getPresupuesto() > e2.getPresupuesto()) return -1;
+            else return 0;
+        }
+    };
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public double getPresupuesto() {
-        return presupuesto;
-    }
-
-    public void setPresupuesto(double presupuesto) {
-        this.presupuesto = presupuesto;
-    }
-
-    public int getVictorias() {
-        return victorias;
-    }
-
-    public void setVictorias(int victorias) {
-        this.victorias = victorias;
-    }
-
-    public int getDerrotas() {
-        return derrotas;
-    }
-
-    public void setDerrotas(int derrotas) {
-        this.derrotas = derrotas;
-    }
-
-    public int getEmpates() {
-        return empates;
-    }
-
-    public void setEmpates(int empates) {
-        this.empates = empates;
-    }
-
-    public int getPuntos() {
-        return puntos;
-    }
-
-    public void setPuntos(int puntos) {
-        this.puntos = puntos;
-    }
-
-    public int getPuntosAFavor() {
-        return puntosAFavor;
-    }
-
-    public void setPuntosAFavor(int puntosAFavor) {
-        this.puntosAFavor = puntosAFavor;
-    }
-
-    public int getPuntosEnContra() {
-        return puntosEnContra;
-    }
-
-    public void setPuntosEnContra(int puntosEnContra) {
-        this.puntosEnContra = puntosEnContra;
-    }
-
-    public Jugador[] getTitulares() {
-        return titulares;
-    }
-
-    public ArrayList<Jugador> getSuplentes() {
-        return suplentes;
-    }
-
-    public ArrayList<Entrenador> getEntrenadores() {
-        return entrenadores;
-    }
-
-    public void addVictoria() {
-        victorias++;
-        puntos += 3;
-    }
-
-    public void addDerrota() {
-        derrotas++;
-    }
-
-    public void addEmpate() {
-        empates++;
-        puntos += 1;
-    }
-
-    public void addPuntosPartido(int favor, int contra) {
-        this.puntosAFavor += favor;
-        this.puntosEnContra += contra;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getCiudad() { return ciudad; }
+    public double getPresupuesto() { return presupuesto; }
+    public void setPresupuesto(double presupuesto) { this.presupuesto = presupuesto; }
+    public int getVictorias() { return victorias; }
+    public int getDerrotas() { return derrotas; }
+    public int getEmpates() { return empates; }
+    public int getPuntos() { return puntos; }
+    public void setPuntos(int puntos) { this.puntos = puntos; }
+    public int getPuntosAFavor() { return puntosAFavor; }
+    public int getPuntosEnContra() { return puntosEnContra; }
 
     public void añadirTitular(Jugador jugador) throws PresupuestoExcedidoException, NombreDuplicadoException, RolNoDisponibleException {
         double costeFichaje = jugador.getPrecioFichaje();
-
         if (costeFichaje > presupuesto) {
             throw new PresupuestoExcedidoException(nombre, presupuesto, costeFichaje);
         }
-
         for (Jugador j : titulares) {
             if (j != null && j.getNickname().equalsIgnoreCase(jugador.getNickname())) {
                 throw new NombreDuplicadoException("jugador", jugador.getNickname());
             }
+            if (j != null && j.getRol().equalsIgnoreCase(jugador.getRol())) {
+                throw new RolNoDisponibleException("El rol " + jugador.getRol() + " ya está ocupado en titulares.");
+            }
         }
-
         for (Jugador j : suplentes) {
             if (j.getNickname().equalsIgnoreCase(jugador.getNickname())) {
                 throw new NombreDuplicadoException("jugador", jugador.getNickname());
             }
         }
-
-        for (Jugador j : titulares) {
-            if (j != null && j.getRol().equalsIgnoreCase(jugador.getRol())) {
-                throw new RolNoDisponibleException("El rol " + jugador.getRol() + " ya está ocupado por " + j.getNickname() + " en los titulares.");
-            }
-        }
-
         for (int i = 0; i < titulares.length; i++) {
             if (titulares[i] == null) {
                 titulares[i] = jugador;
@@ -179,133 +79,26 @@ public class Equipo implements Serializable {
                 return;
             }
         }
-
         throw new RolNoDisponibleException("No hay plazas disponibles en titulares (máximo 5).");
     }
 
     public void añadirSuplente(Jugador jugador) throws PresupuestoExcedidoException, NombreDuplicadoException {
         double costeFichaje = jugador.getPrecioFichaje();
-
         if (costeFichaje > presupuesto) {
             throw new PresupuestoExcedidoException(nombre, presupuesto, costeFichaje);
         }
-
         for (Jugador j : titulares) {
             if (j != null && j.getNickname().equalsIgnoreCase(jugador.getNickname())) {
                 throw new NombreDuplicadoException("jugador", jugador.getNickname());
             }
         }
-
         for (Jugador j : suplentes) {
             if (j.getNickname().equalsIgnoreCase(jugador.getNickname())) {
                 throw new NombreDuplicadoException("jugador", jugador.getNickname());
             }
         }
-
         suplentes.add(jugador);
         presupuesto -= costeFichaje;
-    }
-
-    public void eliminarTitular(String nickname) {
-        for (int i = 0; i < titulares.length; i++) {
-            if (titulares[i] != null && titulares[i].getNickname().equalsIgnoreCase(nickname)) {
-                presupuesto += titulares[i].getPrecioFichaje();
-                titulares[i] = null;
-                return;
-            }
-        }
-    }
-
-    public void eliminarSuplente(String nickname) {
-        Iterator<Jugador> iterador = suplentes.iterator();
-        while (iterador.hasNext()) {
-            Jugador j = iterador.next();
-            if (j.getNickname().equalsIgnoreCase(nickname)) {
-                presupuesto += j.getPrecioFichaje();
-                iterador.remove();
-                return;
-            }
-        }
-    }
-
-    public void promoverSuplente(int posSuplente, int posTitular) throws RolNoDisponibleException {
-        if (posSuplente < 0 || posSuplente >= suplentes.size()) {
-            return;
-        }
-        if (posTitular < 0 || posTitular >= titulares.length) {
-            return;
-        }
-
-        Jugador suplente = suplentes.get(posSuplente);
-        Jugador titularActual = titulares[posTitular];
-
-        for (Jugador j : titulares) {
-            if (j != null && j != titularActual && j.getRol().equalsIgnoreCase(suplente.getRol())) {
-                throw new RolNoDisponibleException("El rol " + suplente.getRol() + " ya está ocupado en titulares.");
-            }
-        }
-
-        titulares[posTitular] = suplente;
-        suplentes.remove(posSuplente);
-
-        if (titularActual != null) {
-            suplentes.add(titularActual);
-        }
-    }
-
-    public void sustituirTitular(int posTitular, Jugador nuevo) throws RolNoDisponibleException, PresupuestoExcedidoException {
-        if (posTitular < 0 || posTitular >= titulares.length) {
-            return;
-        }
-
-        for (Jugador j : titulares) {
-            if (j != null && j != titulares[posTitular] && j.getRol().equalsIgnoreCase(nuevo.getRol())) {
-                throw new RolNoDisponibleException("El rol " + nuevo.getRol() + " ya está ocupado en titulares.");
-            }
-        }
-
-        Jugador anterior = titulares[posTitular];
-        titulares[posTitular] = nuevo;
-        presupuesto -= nuevo.getPrecioFichaje();
-
-        if (anterior != null) {
-            presupuesto += anterior.getPrecioFichaje();
-            suplentes.add(anterior);
-        }
-    }
-
-    public boolean validarConvocatoria() {
-        int contadorTitulares = 0;
-        for (Jugador j : titulares) {
-            if (j != null) {
-                contadorTitulares++;
-            }
-        }
-
-        if (contadorTitulares < 5) {
-            System.out.println("Faltan titulares: solo hay " + contadorTitulares + " de 5.");
-            return false;
-        }
-
-        for (Jugador j : titulares) {
-            if (j != null && j.isSancion()) {
-                System.out.println("El jugador " + j.getNickname() + " está sancionado y no puede jugar.");
-                return false;
-            }
-        }
-
-        ArrayList<String> rolesEncontrados = new ArrayList<>();
-        for (Jugador j : titulares) {
-            if (j != null) {
-                if (rolesEncontrados.contains(j.getRol().toUpperCase())) {
-                    System.out.println("Hay dos titulares con el mismo rol: " + j.getRol());
-                    return false;
-                }
-                rolesEncontrados.add(j.getRol().toUpperCase());
-            }
-        }
-
-        return true;
     }
 
     public void añadirEntrenador(Entrenador entrenador) throws NombreDuplicadoException {
@@ -317,148 +110,125 @@ public class Equipo implements Serializable {
         entrenadores.add(entrenador);
     }
 
-    public void eliminarEntrenador(String nickname) {
-        Iterator<Entrenador> it = entrenadores.iterator();
-        while (it.hasNext()) {
-            Entrenador e = it.next();
-            if (e.getNickname().equalsIgnoreCase(nickname)) {
-                it.remove();
-                return;
-            }
+    public ArrayList<Jugador> getTodosJugadores() {
+        ArrayList<Jugador> todos = new ArrayList<Jugador>();
+        for (Jugador j : titulares) {
+            if (j != null) todos.add(j);
         }
+        todos.addAll(suplentes);
+        return todos;
     }
+
+    public ArrayList<Jugador> getSuplentes() { return suplentes; }
+    public Jugador[] getTitulares() { return titulares; }
+    public ArrayList<Entrenador> getEntrenadores() { return entrenadores; }
 
     public Jugador getJugadorPorNickname(String nickname) {
         for (Jugador j : titulares) {
-            if (j != null && j.getNickname().equalsIgnoreCase(nickname)) {
-                return j;
-            }
+            if (j != null && j.getNickname().equalsIgnoreCase(nickname)) return j;
         }
         for (Jugador j : suplentes) {
-            if (j.getNickname().equalsIgnoreCase(nickname)) {
-                return j;
-            }
+            if (j.getNickname().equalsIgnoreCase(nickname)) return j;
         }
         return null;
     }
 
-    public double calcularCosteMensual() {
-        double total = 0;
+    public Jugador getJugadorConMayorRendimiento() {
+        Jugador mejor = null;
+        double maxRend = -1;
         for (Jugador j : titulares) {
-            if (j != null) {
-                total += j.calcularCosteMensual();
+            if (j != null && j.calcularRendimiento() > maxRend && !j.isSancion()) {
+                maxRend = j.calcularRendimiento();
+                mejor = j;
             }
         }
         for (Jugador j : suplentes) {
-            total += j.calcularCosteMensual();
+            if (j.calcularRendimiento() > maxRend && !j.isSancion()) {
+                maxRend = j.calcularRendimiento();
+                mejor = j;
+            }
         }
+        return mejor;
+    }
+
+    public boolean eliminarJugador(String nickname) {
+        for (int i = 0; i < titulares.length; i++) {
+            if (titulares[i] != null && titulares[i].getNickname().equalsIgnoreCase(nickname)) {
+                titulares[i] = null;
+                return true;
+            }
+        }
+        for (Jugador j : suplentes) {
+            if (j.getNickname().equalsIgnoreCase(nickname)) {
+                suplentes.remove(j);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean eliminarEntrenador(String nickname) {
         for (Entrenador e : entrenadores) {
-            total += e.calcularCosteMensual();
+            if (e.getNickname().equalsIgnoreCase(nickname)) {
+                entrenadores.remove(e);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public double calcularRendimientoEquipo() {
+        ArrayList<Jugador> todos = getTodosJugadores();
+        if (todos.isEmpty()) return 0;
+        double suma = 0;
+        for (Jugador j : todos) {
+            suma += j.calcularRendimiento();
+        }
+        return suma / todos.size();
+    }
+
+    public double simularRendimiento() {
+        double total = 0;
+        for (Jugador j : titulares) {
+            if (j != null) total += j.calcularRendimiento() * 0.8;
+        }
+        for (Jugador j : suplentes) {
+            total += j.calcularRendimiento() * 0.4;
+        }
+        if (!entrenadores.isEmpty()) {
+            total += entrenadores.get(0).calcularRendimiento() * 0.2;
         }
         return total;
     }
 
-    public double calcularRendimientoEquipo() {
-        int contador = 0;
-        double suma = 0;
-        for (Jugador j : titulares) {
-            if (j != null) {
-                suma += j.calcularRendimiento();
-                contador++;
-            }
-        }
-        if (contador == 0) {
-            return 0;
-        }
-        return suma / contador;
-    }
+    public void addVictoria() { this.victorias++; }
+    public void addDerrota() { this.derrotas++; }
+    public void addEmpate() { this.empates++; }
+    public void addPuntos(int p) { this.puntos += p; }
+    public void addPuntosAFavor(int p) { this.puntosAFavor += p; }
+    public void addPuntosEnContra(int p) { this.puntosEnContra += p; }
 
-    public double simularRendimiento() {
-        double rendimiento = 0;
+    public void mostrarInformacionDetallada() {
+        System.out.println("=== EQUIPO: " + nombre + " ===");
+        System.out.println("Ciudad: " + ciudad + " | Presupuesto: " + presupuesto + "€");
+        System.out.println("Puntos: " + puntos + " (V: " + victorias + " | E: " + empates + " | D: " + derrotas + ")");
+        System.out.println("--- Titulares ---");
         for (Jugador j : titulares) {
-            if (j != null) {
-                rendimiento += j.calcularRendimiento() * 0.8;
-            }
+            if (j != null) j.mostrarResumen();
         }
-        if (!entrenadores.isEmpty()) {
-            rendimiento += entrenadores.get(0).calcularRendimiento() * 0.2;
-        }
-        double factorAleatorio = 0.8 + Math.random() * 0.4;
-        return rendimiento * factorAleatorio;
-    }
-
-    public void entrenarEquipo() {
-        for (Jugador j : titulares) {
-            if (j != null) {
-                j.entrenar();
-            }
-        }
+        System.out.println("--- Suplentes ---");
         for (Jugador j : suplentes) {
-            j.entrenar();
+            j.mostrarResumen();
         }
-        for (Entrenador e : entrenadores) {
-            e.entrenar();
-        }
-    }
-
-    public void mostrarEquipo() {
-        System.out.println("=== EQUIPO: " + getNombre() + " ===");
-        System.out.println("Ciudad: " + getCiudad());
-        System.out.println("Presupuesto: " + getPresupuesto() + "€");
-        System.out.println("Puntos: " + getPuntos() + " (V: " + getVictorias() + " | E: " + getEmpates() + " | D: " + getDerrotas() + ")");
-        System.out.println("Puntos a favor: " + getPuntosAFavor() + " | Puntos en contra: " + getPuntosEnContra());
-        System.out.println("Coste mensual: " + calcularCosteMensual() + "€");
-        System.out.println("Rendimiento medio: " + calcularRendimientoEquipo());
-        System.out.println();
-
-        System.out.println("--- TITULARES (" + contarTitulares() + "/5) ---");
-        for (int i = 0; i < titulares.length; i++) {
-            if (titulares[i] != null) {
-                System.out.print("[" + i + "] ");
-                titulares[i].mostrarResumen();
-                System.out.println();
-            }
-        }
-
-        System.out.println("--- SUPLENTES (" + suplentes.size() + ") ---");
-        for (int i = 0; i < suplentes.size(); i++) {
-            System.out.print("[" + i + "] ");
-            suplentes.get(i).mostrarResumen();
-            System.out.println();
-        }
-
-        System.out.println("--- ENTRENADORES (" + entrenadores.size() + ") ---");
+        System.out.println("--- Entrenadores ---");
         for (Entrenador e : entrenadores) {
             e.mostrarResumen();
-            System.out.println();
         }
     }
 
-    private int contarTitulares() {
-        int contador = 0;
-        for (Jugador j : titulares) {
-            if (j != null) {
-                contador++;
-            }
-        }
-        return contador;
-    }
-
-    @Override
-    public String toString() {
-        return "Equipo{" +
-                "nombre='" + getNombre() + 
-                ", ciudad='" + getCiudad() + 
-                ", presupuesto=" + getPresupuesto() +
-                ", puntos=" + getPuntos() +
-                ", victorias=" + getVictorias() +
-                ", derrotas=" + getDerrotas() +
-                ", empates=" + getEmpates() +
-                ", puntosAFavor=" + getPuntosAFavor() +
-                ", puntosEnContra=" + getPuntosEnContra() +
-                ", numTitulares=" + contarTitulares() +
-                ", numSuplentes=" + suplentes.size() +
-                ", numEntrenadores=" + entrenadores.size() +
-                '}';
+    public int getNumJugadores() {
+        int count = 0;
+        for (Jugador j : titulares) { if (j != null) count++; }
+        return count + suplentes.size();
     }
 }

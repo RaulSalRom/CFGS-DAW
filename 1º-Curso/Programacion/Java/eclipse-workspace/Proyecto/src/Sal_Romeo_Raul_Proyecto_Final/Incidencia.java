@@ -1,7 +1,6 @@
 package Sal_Romeo_Raul_Proyecto_Final;
 
-import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Clase que representa una incidencia en la liga LVP.
@@ -11,7 +10,7 @@ import java.time.LocalDate;
  * Se almacena en ArrayList<Incidencia> dentro de Liga.
  * Cumple con el requisito del PDF sección 5.12.
  */
-public class Incidencia implements Serializable {
+public class Incidencia {
 
     private String identificador;
     private String tipo;
@@ -26,7 +25,7 @@ public class Incidencia implements Serializable {
         this.jugadorNickname = jugadorNickname;
         this.equipoNombre = equipoNombre;
         this.descripcion = descripcion;
-        this.fecha = LocalDate.now().toString();
+        this.fecha = new Date().toString();
     }
 
     // Getters y Setters

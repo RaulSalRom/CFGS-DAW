@@ -1,18 +1,6 @@
 package Sal_Romeo_Raul_Proyecto_Final;
 
-import java.util.*;
-
-/**
- * Clase abstracta base para personas vinculadas a la liga de eSports.
- * Fórmulas para memoria:
- * 1. calcularCosteMensual():
- *    - Jugador: salarioBase + (mvpTotales * 200)
- *    - Entrenador: salarioBase + (victoriasTotales * 150)
- */
-public abstract class PersonaLiga implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public abstract class PersonaLiga {
     private String identificador;
     private String nombre;
     private String nickname;
@@ -29,67 +17,33 @@ public abstract class PersonaLiga implements Serializable {
         this.email = email;
     }
 
-    public void setIdentificador(String identificador) {
-        this.identificador = identificador;
-    }
-
-    public String getIdentificador() {
-        return this.identificador;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getNickname() {
-        return this.nickname;
-    }
-
+    public String getIdentificador() { return identificador; }
+    public void setIdentificador(String identificador) { this.identificador = identificador; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNickname() { return nickname; }
+    public void setNickname(String nickname) { this.nickname = nickname; }
+    public int getEdad() { return edad; }
     public void setEdad(int edad) {
+        try { Validador.validarEdad(edad); } catch (DatoInvalidoException e) { System.out.println("Edad inválida: " + e.getMessage()); }
         this.edad = edad;
     }
-
-    public int getEdad() {
-        return this.edad;
-    }
-
+    public int getSalarioBase() { return salarioBase; }
     public void setSalarioBase(int salarioBase) {
+        try { Validador.validarSalario(salarioBase); } catch (DatoInvalidoException e) { System.out.println("Salario inválido: " + e.getMessage()); }
         this.salarioBase = salarioBase;
     }
-
-    public int getSalarioBase() {
-        return this.salarioBase;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
+    public String getEmail() { return email; }
     public void setEmail(String email) {
+        try { Validador.validarEmail(email); } catch (DatoInvalidoException e) { System.out.println("Email inválido: " + e.getMessage()); }
         this.email = email;
     }
 
     public abstract double calcularCosteMensual();
-
     public abstract void mostrarResumen();
 
     @Override
     public String toString() {
-        return "PersonaLiga{" +
-                "identificador='" + getIdentificador() + '\'' +
-                ", nombre='" + getNombre() + '\'' +
-                ", nickname='" + getNickname() + '\'' +
-                ", edad=" + getEdad() +
-                ", salarioBase=" + getSalarioBase() +
-                ", email='" + getEmail() + '\'' +
-                '}';
+        return "ID: " + identificador + " | Nombre: " + nombre + " | Nick: " + nickname;
     }
 }
