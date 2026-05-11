@@ -34,7 +34,15 @@ public class Validador {
 
     // valida que el email tenga formato correcto: texto@texto.texto
     public static void validarEmail(String email) throws DatoInvalidoException {
-        if (email == null || !email.matches("^[^@]+@[^@]+\\.[^@]+$")) {
+        if (email == null) {
+            throw new DatoInvalidoException("email", "null");
+        }
+        int arroba = email.indexOf('@');
+        int ultimoPunto = email.lastIndexOf('.');
+        if (arroba <= 0 || arroba != email.lastIndexOf('@')) { // no hay @, esta al principio, o hay mas de una
+            throw new DatoInvalidoException("email", email);
+        }
+        if (ultimoPunto < arroba || ultimoPunto == email.length() - 1) { // no hay . despues de la @ o el . es lo ultimo
             throw new DatoInvalidoException("email", email);
         }
     }

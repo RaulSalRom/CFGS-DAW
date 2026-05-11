@@ -31,20 +31,32 @@ public abstract class PersonaLiga {
     public int getEdad() { return edad; }
     // validamos que la edad sea correcta antes de guardarla
     public void setEdad(int edad) {
-        try { Validador.validarEdad(edad); } catch (DatoInvalidoException e) { System.out.println("Edad invalida: " + e.getMessage()); }
-        this.edad = edad;
+        try {
+            Validador.validarEdad(edad);
+            this.edad = edad;
+        } catch (DatoInvalidoException e) {
+            System.out.println("Edad invalida: " + e.getMessage());
+        }
     }
     public int getSalarioBase() { return salarioBase; }
     // validamos que el salario sea positivo antes de guardarlo
     public void setSalarioBase(int salarioBase) {
-        try { Validador.validarSalario(salarioBase); } catch (DatoInvalidoException e) { System.out.println("Salario invalido: " + e.getMessage()); }
-        this.salarioBase = salarioBase;
+        try {
+            Validador.validarSalario(salarioBase);
+            this.salarioBase = salarioBase;
+        } catch (DatoInvalidoException e) {
+            System.out.println("Salario invalido: " + e.getMessage());
+        }
     }
     public String getEmail() { return email; }
     // validamos el formato del email antes de guardarlo
     public void setEmail(String email) {
-        try { Validador.validarEmail(email); } catch (DatoInvalidoException e) { System.out.println("Email invalido: " + e.getMessage()); }
-        this.email = email;
+        try {
+            Validador.validarEmail(email);
+            this.email = email;
+        } catch (DatoInvalidoException e) {
+            System.out.println("Email invalido: " + e.getMessage());
+        }
     }
 
     // --- METODOS ABSTRACTOS (las hijas deciden como funcionan) ---

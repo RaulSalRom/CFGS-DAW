@@ -5,7 +5,7 @@ public class EquipoNoEncontradoException extends Exception {
 
     public EquipoNoEncontradoException(String nombreEquipo) {
 
-        super(String.format("No se ha encontrado ningún equipo con el nombre. ", nombreEquipo));
+        super("No se ha encontrado ningun equipo con el nombre: " + nombreEquipo);
 
     }
 }

@@ -11,6 +11,7 @@ public class Liga {
     private LinkedList<String> proximosPartidos; // cola FIFO de proximos partidos
     private ArrayList<Jugador> mercado;          // jugadores disponibles para fichar
     private ArrayList<Partido> partidos;         // partidos registrados en la liga
+    private ArrayList<Incidencia> incidencias;   // incidencias registradas
 
     // constructor: creamos la liga vacia con sus listas
     public Liga(String nombreLiga) {
@@ -20,6 +21,7 @@ public class Liga {
         this.proximosPartidos = new LinkedList<String>();
         this.mercado = new ArrayList<Jugador>();
         this.partidos = new ArrayList<Partido>();
+        this.incidencias = new ArrayList<Incidencia>();
     }
 
     // aniade una accion al historial (como un log)
@@ -41,18 +43,7 @@ public class Liga {
     public void mostrarClasificacion() {
         ArrayList<Equipo> ordenada = new ArrayList<Equipo>(equipos);
 
-        Collections.sort(ordenada, new Comparator<Equipo>() {
-            @Override
-            public int compare(Equipo e1, Equipo e2) {
-                if (e2.getPuntos() != e1.getPuntos()) {
-                    return Integer.compare(e2.getPuntos(), e1.getPuntos());
-                }
-                // si tienen los mismos puntos, desempate por diferencia
-                int dif1 = e1.getPuntosAFavor() - e1.getPuntosEnContra();
-                int dif2 = e2.getPuntosAFavor() - e2.getPuntosEnContra();
-                return Integer.compare(dif2, dif1);
-            }
-        });
+        Collections.sort(ordenada, Equipo.POR_PUNTOS);
 
         System.out.println("\n=== CLASIFICACION " + nombreLiga + " ===");
         for (int i = 0; i < ordenada.size(); i++) {
@@ -85,16 +76,16 @@ public class Liga {
         }
     }
 
-    // busca un equipo por nombre y lo elimina, devuelve true si lo encontro
-    public boolean eliminarEquipo(String nombre) {
-        for (Equipo e : equipos) {
-            if (e.getNombre().equalsIgnoreCase(nombre)) {
-                equipos.remove(e);
+    // busca un equipo por nombre y lo elimina, si no lo encuentra salta excepcion
+    public void eliminarEquipo(String nombre) throws EquipoNoEncontradoException {
+        for (int i = 0; i < equipos.size(); i++) {
+            if (equipos.get(i).getNombre().equalsIgnoreCase(nombre)) {
+                equipos.remove(i);
                 registrarAccion("Equipo " + nombre + " eliminado del sistema.");
-                return true;
+                return;
             }
         }
-        return false;
+        throw new EquipoNoEncontradoException(nombre);
     }
 
     // busca un equipo por nombre y lo devuelve (o null si no existe)
@@ -117,11 +108,11 @@ public class Liga {
 
     // compra un jugador del mercado y lo aniade como suplente al equipo comprador
     public boolean comprarDelMercado(String nickname, Equipo comprador) {
-        for (Jugador j : mercado) {
-            if (j.getNickname().equalsIgnoreCase(nickname)) {
+        for (int i = 0; i < mercado.size(); i++) {
+            if (mercado.get(i).getNickname().equalsIgnoreCase(nickname)) {
                 try {
-                    comprador.añadirSuplente(j);
-                    mercado.remove(j);
+                    comprador.añadirSuplente(mercado.get(i));
+                    mercado.remove(i);
                     registrarAccion("Jugador " + nickname + " comprado por " + comprador.getNombre());
                     return true;
                 } catch (Exception e) {
@@ -135,9 +126,9 @@ public class Liga {
 
     // quita un jugador del mercado sin comprarlo
     public void quitarDelMercado(String nickname) {
-        for (Jugador j : mercado) {
-            if (j.getNickname().equalsIgnoreCase(nickname)) {
-                mercado.remove(j);
+        for (int i = 0; i < mercado.size(); i++) {
+            if (mercado.get(i).getNickname().equalsIgnoreCase(nickname)) {
+                mercado.remove(i);
                 break;
             }
         }
@@ -149,5 +140,13 @@ public class Liga {
     public void añadirPartido(Partido p) {
         partidos.add(p);
         registrarAccion("Partido " + p.getIdentificador() + " registrado.");
+    }
+
+    public ArrayList<Incidencia> getIncidencias() { return incidencias; }
+
+    // aniade una incidencia a la lista de la liga
+    public void añadirIncidencia(Incidencia i) {
+        incidencias.add(i);
+        registrarAccion("Incidencia " + i.getIdentificador() + " registrada: " + i.getDescripcion());
     }
 }

@@ -5,12 +5,18 @@ import java.util.*;
 // clase con metodos estaticos para mostrar estadisticas y rankings de la liga
 public class ServicioEstadisticas {
 
-    // muestra el top N de jugadores con mas MVPs
-    public static void topMVPs(ArrayList<Equipo> equipos, int n) {
+    // junta todos los jugadores de todos los equipos en una sola lista
+    private static ArrayList<Jugador> recopilarJugadores(ArrayList<Equipo> equipos) {
         ArrayList<Jugador> todos = new ArrayList<Jugador>();
         for (Equipo e : equipos) {
             todos.addAll(e.getTodosJugadores());
         }
+        return todos;
+    }
+
+    // muestra el top N de jugadores con mas MVPs
+    public static void topMVPs(ArrayList<Equipo> equipos, int n) {
+        ArrayList<Jugador> todos = recopilarJugadores(equipos);
         Collections.sort(todos, Jugador.POR_MVP); // ordenamos por MVPs de mayor a menor
         System.out.println("\n=== TOP " + n + " JUGADORES POR MVP ===");
         for (int i = 0; i < Math.min(n, todos.size()); i++) {
@@ -21,15 +27,12 @@ public class ServicioEstadisticas {
 
     // muestra el top N de jugadores con mejor rendimiento
     public static void topRendimiento(ArrayList<Equipo> equipos, int n) {
-        ArrayList<Jugador> todos = new ArrayList<Jugador>();
-        for (Equipo e : equipos) {
-            todos.addAll(e.getTodosJugadores());
-        }
+        ArrayList<Jugador> todos = recopilarJugadores(equipos);
         Collections.sort(todos, Jugador.POR_RENDIMIENTO); // ordenamos por rendimiento de mayor a menor
         System.out.println("\n=== TOP " + n + " JUGADORES POR RENDIMIENTO ===");
         for (int i = 0; i < Math.min(n, todos.size()); i++) {
             Jugador j = todos.get(i);
-            System.out.println((i + 1) + ". " + j.getNickname() + " - Rend: " + String.format("%.1f", j.calcularRendimiento()));
+            System.out.println((i + 1) + ". " + j.getNickname() + " - Rend: " + j.calcularRendimiento());
         }
     }
 
@@ -73,7 +76,7 @@ public class ServicioEstadisticas {
         }
         if (mejor != null) {
             System.out.println("\n=== EQUIPO CON MEJOR RENDIMIENTO ===");
-            System.out.println(mejor.getNombre() + " - Rend: " + String.format("%.1f", maxRend));
+            System.out.println(mejor.getNombre() + " - Rend: " + maxRend);
         }
     }
 }

@@ -1,7 +1,5 @@
 package Sal_Romeo_Raul_Proyecto_Final;
 
-import java.util.Date;
-
 // clase que registra una incidencia en la liga (sanciones, expulsiones, errores tecnicos, etc)
 public class Incidencia {
 
@@ -13,14 +11,14 @@ public class Incidencia {
     private String descripcion;      // texto explicando lo que paso
     private String fecha;            // fecha en la que ocurrio
 
-    // constructor: creamos la incidencia con los datos y ponemos la fecha actual
-    public Incidencia(String identificador, String tipo, String jugadorNickname, String equipoNombre, String descripcion) {
+    // constructor: creamos la incidencia con los datos y la fecha
+    public Incidencia(String identificador, String tipo, String jugadorNickname, String equipoNombre, String descripcion, String fecha) {
         this.identificador = identificador;
         this.tipo = tipo;
         this.jugadorNickname = jugadorNickname;
         this.equipoNombre = equipoNombre;
         this.descripcion = descripcion;
-        this.fecha = new Date().toString(); // guardamos la fecha del momento
+        this.fecha = fecha;
     }
 
     // --- GETTERS Y SETTERS ---
@@ -37,19 +35,9 @@ public class Incidencia {
     public String getFecha() { return fecha; }
     public void setFecha(String fecha) { this.fecha = fecha; }
 
-    // busca al jugador en la liga y le pone sancion a true
-    public void aplicarSancion() {
-        if (jugadorNickname != null && !jugadorNickname.isEmpty()) {
-            for (Equipo e : Main.getLiga().getEquipos()) { // recorremos todos los equipos
-                if (e.getNombre().equalsIgnoreCase(equipoNombre)) {
-                    Jugador j = e.getJugadorPorNickname(jugadorNickname); // buscamos al jugador por nickname
-                    if (j != null) {
-                        j.setSancion(true); // lo sancionamos
-                    }
-                    break; // salimos del bucle porque ya lo encontramos
-                }
-            }
-        }
+    // pone sancion a true al jugador recibido
+    public void aplicarSancion(Jugador j) {
+        if (j != null) j.setSancion(true);
     }
 
     @Override

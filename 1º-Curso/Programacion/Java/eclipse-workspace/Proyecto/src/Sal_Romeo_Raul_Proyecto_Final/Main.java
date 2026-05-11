@@ -19,7 +19,7 @@ public class Main {
         inicializarDatosEjemplo(); // cargamos datos de prueba
 
         int opcion = 0;
-        do { // bucle principal: se repite hasta que consulta sea false
+        do { // bucle principal
             mostrarMenuPrincipal();
             try {
                 opcion = Integer.parseInt(teclado.nextLine());
@@ -39,7 +39,6 @@ public class Main {
     public static Liga getLiga() { return liga; }
     public static Temporada getTemporada() { return temporada; }
 
-    // muestra el menu principal
     private static void mostrarMenuPrincipal() {
         System.out.println("\n========================================");
         System.out.println("   SISTEMA DE GESTION LIGA ESPORTS");
@@ -55,15 +54,15 @@ public class Main {
         switch (opcion) {
             case 1: menuGestion(); break;
             case 2: menuEstadisticas(); break;
-            case 0: // opcion salir con confirmacion
+            case 0: // salir con confirmacion
                 while (consulta) {
                     System.out.print("Estas seguro de que quieres salir? (s/n): ");
                     String resp = teclado.nextLine();
                     if (resp.equalsIgnoreCase("s")) {
-                        consulta = false; // ponemos false para salir del bucle principal
+                        consulta = false;
                         System.out.println("Cerrando el sistema... Hasta pronto!");
                     } else if (resp.equalsIgnoreCase("n")) {
-                        break; // sale del while pero sigue en el programa
+                        break;
                     } else {
                         System.out.println("Respuesta no valida. Introduce 's' o 'n'.");
                     }
@@ -184,10 +183,11 @@ public class Main {
     private static void eliminarEquipo() {
         System.out.print("Nombre del equipo a eliminar: ");
         String nombre = teclado.nextLine();
-        if (liga.eliminarEquipo(nombre)) {
+        try {
+            liga.eliminarEquipo(nombre);
             System.out.println("Equipo eliminado.");
-        } else {
-            System.out.println("No se encontro el equipo.");
+        } catch (EquipoNoEncontradoException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -344,9 +344,16 @@ public class Main {
         String nick = teclado.nextLine();
         for (Equipo eq : liga.getEquipos()) {
             Jugador j = eq.getJugadorPorNickname(nick);
-            if (j != null) {
-                j.setSancion(!j.isSancion()); // invertimos el estado
-                System.out.println("Jugador " + nick + " " + (j.isSancion() ? "sancionado." : "desancionado."));
+                if (j != null) {
+                    j.setSancion(!j.isSancion());
+                    System.out.println("Jugador " + nick + " " + (j.isSancion() ? "sancionado." : "desancionado."));
+                    if (j.isSancion()) {
+                        String idInc = "INC" + (liga.getIncidencias().size() + 1);
+                        Incidencia inc = new Incidencia(idInc, "Sancion", nick, eq.getNombre(),
+                            "Sancion aplicada al jugador " + nick, "Fecha automatica");
+                        inc.aplicarSancion(j);
+                        liga.añadirIncidencia(inc);
+                    }
                 return;
             }
         }
@@ -383,7 +390,7 @@ public class Main {
         for (int i = 0; i < todos.size(); i++) {
             Jugador j = todos.get(i);
             System.out.println((i + 1) + ". " + j.getNickname() + " (" + j.getRol() + ") - Rend: " +
-                String.format("%.1f", j.calcularRendimiento()) + " | Equipo: " + buscarEquipoDeJugador(j));
+                j.calcularRendimiento() + " | Equipo: " + buscarEquipoDeJugador(j));
         }
     }
 
@@ -524,7 +531,7 @@ public class Main {
         }
         for (Jugador j : liga.getMercado()) {
             j.mostrarResumen();
-            System.out.println("   Precio fichaje: " + String.format("%.0f", j.getPrecioFichaje()) + "€");
+            System.out.println("   Precio fichaje: " + j.getPrecioFichaje() + "€");
         }
     }
 
@@ -588,7 +595,7 @@ public class Main {
         }
 
         int jornada = temporada.getPartidos().size() + 1;
-        String id = "P" + String.format("%03d", jornada); // P001, P002, etc
+        String id = "P" + jornada; // P1, P2, etc
         Partido p = temporada.simularPartido(local, visit, id, jornada);
 
         System.out.println("\n=== RESULTADO ===");
@@ -627,6 +634,7 @@ public class Main {
             System.out.println("4. Equipo con mas presupuesto");
             System.out.println("5. Equipo con mejor rendimiento");
             System.out.println("6. Entrenamiento");
+            System.out.println("7. Ver incidencias");
             System.out.println("0. Volver");
             System.out.print("Seleccione: ");
             try {
@@ -638,6 +646,7 @@ public class Main {
                     case 4: ServicioEstadisticas.equipoMasPresupuesto(liga.getEquipos()); break;
                     case 5: ServicioEstadisticas.equipoMejorRendimiento(liga.getEquipos()); break;
                     case 6: menuEntrenamiento(); break;
+                    case 7: verIncidencias(); break;
                     case 0: break;
                     default: System.out.println("Opcion no valida.");
                 }
@@ -674,16 +683,21 @@ public class Main {
     }
 
     // entrena a todos los jugadores y entrenadores de un equipo
-    private static void entrenarEquipo() {
-        Equipo e = seleccionarEquipo();
-        if (e == null) return;
-
+    private static void entrenarPlantilla(Equipo e) {
         for (Entrenador ent : e.getEntrenadores()) {
             ent.entrenar();
         }
         for (Jugador j : e.getTodosJugadores()) {
             j.entrenar();
         }
+    }
+
+    // entrena a todos los jugadores y entrenadores de un equipo
+    private static void entrenarEquipo() {
+        Equipo e = seleccionarEquipo();
+        if (e == null) return;
+
+        entrenarPlantilla(e);
 
         System.out.println("Equipo " + e.getNombre() + " ha entrenado. Nuevos niveles:");
         for (Jugador j : e.getTodosJugadores()) {
@@ -694,14 +708,23 @@ public class Main {
     // entrena a todos los equipos de la liga
     private static void entrenarTodos() {
         for (Equipo e : liga.getEquipos()) {
-            for (Entrenador ent : e.getEntrenadores()) {
-                ent.entrenar();
-            }
-            for (Jugador j : e.getTodosJugadores()) {
-                j.entrenar();
-            }
+            entrenarPlantilla(e);
         }
         System.out.println("Todos los equipos han entrenado.");
+    }
+
+    // ===== INCIDENCIAS =====
+
+    // muestra todas las incidencias registradas en la liga
+    private static void verIncidencias() {
+        System.out.println("\n=== INCIDENCIAS REGISTRADAS ===");
+        if (liga.getIncidencias().isEmpty()) {
+            System.out.println("No hay incidencias registradas.");
+            return;
+        }
+        for (Incidencia inc : liga.getIncidencias()) {
+            System.out.println(inc);
+        }
     }
 
     // ===== DATOS INICIALES =====
@@ -770,6 +793,11 @@ public class Main {
             liga.añadirEquipo(e3);
 
             liga.registrarAccion("Sistema inicializado con 3 equipos, 12 jugadores y 4 entrenadores.");
+
+            // incidencia de ejemplo
+            Incidencia incEjemplo = new Incidencia("INC0", "Aviso", "Eleni", "Heretics",
+                "La jugadora Eleni arrastra una sancion de la temporada anterior.", "Fecha automatica");
+            liga.añadirIncidencia(incEjemplo);
         } catch (Exception e) {
             System.out.println("Error cargando datos iniciales: " + e.getMessage());
         }

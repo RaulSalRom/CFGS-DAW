@@ -5,7 +5,7 @@ public class JugadorSancionadoException extends Exception {
 
     public JugadorSancionadoException(String nombreJugador) {
 
-        super(String.format("El jugador %s esta sancionado y no puede jugar.", nombreJugador));
+        super("El jugador " + nombreJugador + " esta sancionado y no puede jugar.");
         
     }
 }

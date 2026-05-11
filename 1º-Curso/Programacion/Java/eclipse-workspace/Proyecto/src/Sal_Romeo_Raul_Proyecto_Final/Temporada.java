@@ -113,16 +113,7 @@ public class Temporada {
             }
         }
 
-        // ordenamos por puntos, si empate por diferencia
-        Collections.sort(ordenada, new Comparator<Equipo>() {
-            public int compare(Equipo e1, Equipo e2) {
-                if (e2.getPuntos() != e1.getPuntos())
-                    return Integer.compare(e2.getPuntos(), e1.getPuntos());
-                int d1 = e1.getPuntosAFavor() - e1.getPuntosEnContra();
-                int d2 = e2.getPuntosAFavor() - e2.getPuntosEnContra();
-                return Integer.compare(d2, d1);
-            }
-        });
+        Collections.sort(ordenada, Equipo.POR_PUNTOS);
 
         for (int i = 0; i < ordenada.size(); i++) {
             Equipo e = ordenada.get(i);
@@ -159,15 +150,7 @@ public class Temporada {
             }
         }
 
-        Collections.sort(ordenada, new Comparator<Equipo>() {
-            public int compare(Equipo e1, Equipo e2) {
-                if (e2.getPuntos() != e1.getPuntos())
-                    return Integer.compare(e2.getPuntos(), e1.getPuntos());
-                int d1 = e1.getPuntosAFavor() - e1.getPuntosEnContra();
-                int d2 = e2.getPuntosAFavor() - e2.getPuntosEnContra();
-                return Integer.compare(d2, d1);
-            }
-        });
+        Collections.sort(ordenada, Equipo.POR_PUNTOS);
 
         for (int i = 0; i < ordenada.size(); i++) {
             Equipo e = ordenada.get(i);
