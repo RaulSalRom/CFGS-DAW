@@ -4,21 +4,19 @@ import java.util.*;
 
 // clase que modela un equipo de la liga con sus jugadores, entrenadores y estadisticas
 public class Equipo {
-    // --- ATRIBUTOS DEL EQUIPO ---
-    private String nombre;          // nombre del equipo
-    private String ciudad;          // ciudad de origen
-    private double presupuesto;     // dinero disponible para fichajes
-    private int victorias;          // partidos ganados
-    private int derrotas;           // partidos perdidos
-    private int empates;            // partidos empatados
-    private int puntos;             // puntos totales en la clasificacion
-    private int puntosAFavor;       // puntos a favor totales
-    private int puntosEnContra;     // puntos en contra totales
-
-    // --- PLANTILLA ---
-    private Jugador[] titulares;                // array fijo de 5 titulares
-    private ArrayList<Jugador> suplentes;       // lista de suplentes
-    private ArrayList<Entrenador> entrenadores; // lista de entrenadores
+    // atributos 
+    private String nombre;         
+    private String ciudad;          
+    private double presupuesto;  
+    private int victorias;        
+    private int derrotas;         
+    private int empates;           
+    private int puntos;            
+    private int puntosAFavor;     
+    private int puntosEnContra;    
+    private Jugador[] titulares;               
+    private ArrayList<Jugador> suplentes;     
+    private ArrayList<Entrenador> entrenadores; 
 
     // constructor: creamos el equipo con los datos basicos y vacio de jugadores
     public Equipo(String nombre, String ciudad, double presupuesto) {
@@ -36,7 +34,7 @@ public class Equipo {
         this.entrenadores = new ArrayList<Entrenador>();
     }
 
-      // --- GETTERS Y SETTERS BASICOS ---
+      // getter y setter
     public String getNombre() { 
         return nombre;
      }

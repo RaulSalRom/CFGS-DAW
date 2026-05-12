@@ -198,13 +198,15 @@ public class Jugador extends PersonaLiga implements Entrenable, Comparable<Jugad
     };
 
     @Override
-    // mostramos un resumen del jugador en una linea con sus stats principales
-    public void toString() {
-        System.out.println("ID: " + getIdentificador() + " | Nick: " + getNickname() + " | Rol: " + rol +
-            " | Mec: " + nivelMecanicas + " | Est: " + nivelEstrategia +
-            " | Rend: " + calcularRendimiento() +
-            " | Sal: " + getSalarioBase() + "€" +
-            (sancion ? " | SANCIONADO" : ""));
+    // toString de toda la vida
+    public String toString() {
+        return "ID: " + getIdentificador() + " | Nick: " + getNickname() + " | Rol: " + rol + " | Mec: " + nivelMecanicas + " | Est: " + nivelEstrategia + " | Rend: " + calcularRendimiento() + " | Sal: " + getSalarioBase() + "€" + (sancion ? " | SANCIONADO" : "");
+    }
+
+    @Override
+    public void mostrarResumen() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarResumen'");
     }
 
 }

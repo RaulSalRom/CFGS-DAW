@@ -16,7 +16,7 @@ public class Entrenador extends PersonaLiga implements Entrenable, Comparable<En
         this.victoriasTotales = victoriasTotales;
     }
 
-    // --- GETTERS ---
+    // getters
     public int getVictoriasTotales() { 
 
         return victoriasTotales; 
@@ -86,12 +86,18 @@ public class Entrenador extends PersonaLiga implements Entrenable, Comparable<En
 
     @Override
     // mostramos un resumen del entrenador con sus datos principales
-    public void toString() {
-        System.out.println("ID: " + getIdentificador() + " | Nick: " + getNickname() +
+    public String  toString() {
+        return "ID: " + getIdentificador() + " | Nick: " + getNickname() +
             " | Exp: " + añosExperiencia + " anos" +
             " | Esp: " + especialidad +
             " | Vic: " + victoriasTotales +
-            " | Coste: " + calcularCosteMensual() + "€");
+            " | Coste: " + calcularCosteMensual() + "€";
+    }
+
+    @Override
+    public void mostrarResumen() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarResumen'");
     }
 
 }
