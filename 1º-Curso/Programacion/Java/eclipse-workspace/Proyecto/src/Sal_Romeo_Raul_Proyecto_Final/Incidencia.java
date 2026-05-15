@@ -79,6 +79,6 @@ public class Incidencia {
 
     @Override
     public String toString() {
-        return "Incidencia{" + "id='" + identificador +  ", tipo='" + tipo +  ", jugador='" + jugadorNickname +  ", equipo='" + equipoNombre + ", descripcion='" + descripcion +  ", fecha=" + fecha + '}';
+        return "Incidencia{id='" + identificador + "', tipo='" + tipo + "', jugador='" + jugadorNickname + "', equipo='" + equipoNombre + "', descripcion='" + descripcion + "', fecha='" + fecha + "'}";
     }
 }

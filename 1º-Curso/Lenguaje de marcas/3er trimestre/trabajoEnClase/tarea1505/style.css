@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f0f0f0;
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+a {
+  color: #2563eb;
+}
+
+hr {
+  margin: 20px 0;
+  border: 1px solid #ccc;
+}
+
+.consejo {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.ejemplo-texto {
+  font-size: 18px;
+  background: #e8f5e9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.caja {
+  background: #fff3e0;
+  border: 1px solid #ffcc80;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 16px;
+}
+
+/* MOVIL: pantallas pequeñas */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .ejemplo-texto {
+    font-size: 15px;
+  }
+
+  .consejo {
+    padding: 15px;
+  }
+
+  .caja {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* TABLET: pantallas medianas */
+@media (min-width: 481px) and (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .ejemplo-texto {
+    font-size: 16px;
+  }
+
+  .caja {
+    padding: 20px;
+  }
+}
+
+/* ESCRITORIO: pantallas grandes */
+@media (min-width: 769px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .ejemplo-texto {
+    font-size: 20px;
+  }
+
+  .consejo {
+    padding: 30px;
+  }
+
+  .caja {
+    padding: 30px;
+    font-size: 18px;
+  }
+}

@@ -18,7 +18,8 @@ public class ServicioEstadisticas {
     public static void topMVPs(ArrayList<Equipo> equipos, int n) {
         ArrayList<Jugador> todos = recopilarJugadores(equipos);
         Collections.sort(todos, Jugador.POR_MVP); // ordenamos por MVPs de mayor a menor
-        System.out.println("\n=== TOP " + n + " JUGADORES POR MVP ===");
+        System.out.println();
+        System.out.println("=== TOP " + n + " JUGADORES POR MVP ===");
         for (int i = 0; i < Math.min(n, todos.size()); i++) {
             Jugador j = todos.get(i);
             System.out.println((i + 1) + ". " + j.getNickname() + " - " + j.getMvpTotales() + " MVPs");
@@ -29,7 +30,8 @@ public class ServicioEstadisticas {
     public static void topRendimiento(ArrayList<Equipo> equipos, int n) {
         ArrayList<Jugador> todos = recopilarJugadores(equipos);
         Collections.sort(todos, Jugador.POR_RENDIMIENTO); // ordenamos por rendimiento de mayor a menor
-        System.out.println("\n=== TOP " + n + " JUGADORES POR RENDIMIENTO ===");
+        System.out.println();
+        System.out.println("=== TOP " + n + " JUGADORES POR RENDIMIENTO ===");
         for (int i = 0; i < Math.min(n, todos.size()); i++) {
             Jugador j = todos.get(i);
             System.out.println((i + 1) + ". " + j.getNickname() + " - Rend: " + j.calcularRendimiento());
@@ -48,7 +50,8 @@ public class ServicioEstadisticas {
         }
         Collections.sort(todos, Entrenador.POR_VICTORIAS); // ordenamos por victorias de mayor a menor
         Entrenador mejor = todos.get(0); // el primero es el mejor
-        System.out.println("\n=== MEJOR ENTRENADOR ===");
+        System.out.println();
+        System.out.println("=== MEJOR ENTRENADOR ===");
         System.out.println(mejor.getNickname() + " - " + mejor.getVictoriasTotales() + " victorias");
     }
 
@@ -58,7 +61,8 @@ public class ServicioEstadisticas {
         ArrayList<Equipo> copia = new ArrayList<Equipo>(equipos);
         Collections.sort(copia, Equipo.POR_PRESUPUESTO); // ordenamos por presupuesto de mayor a menor
         Equipo mejor = copia.get(0);
-        System.out.println("\n=== EQUIPO CON MAS PRESUPUESTO ===");
+        System.out.println();
+        System.out.println("=== EQUIPO CON MAS PRESUPUESTO ===");
         System.out.println(mejor.getNombre() + " - " + mejor.getPresupuesto() + "€");
     }
 
@@ -75,7 +79,8 @@ public class ServicioEstadisticas {
             }
         }
         if (mejor != null) {
-            System.out.println("\n=== EQUIPO CON MEJOR RENDIMIENTO ===");
+            System.out.println();
+        System.out.println("=== EQUIPO CON MEJOR RENDIMIENTO ===");
             System.out.println(mejor.getNombre() + " - Rend: " + maxRend);
         }
     }

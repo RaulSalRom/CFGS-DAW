@@ -139,40 +139,6 @@ public class Jugador extends PersonaLiga implements Entrenable, Comparable<Jugad
         }
     }
 
-    // comparador: ordena de mayor a menor salario
-    public static final Comparator<Jugador> POR_SALARIO = new Comparator<Jugador>() {
-
-        @Override
-        public int compare(Jugador j1, Jugador j2) {
-
-            return Integer.compare(j2.getSalarioBase(), j1.getSalarioBase());
-
-        }
-    };
-
-    // ordena de mayor a menor por edad
-    public static final Comparator<Jugador> POR_EDAD = new Comparator<Jugador>() {
-        @Override
-        public int compare(Jugador j1, Jugador j2) {
-
-            return Integer.compare(j1.getEdad(), j2.getEdad());
-
-        }
-
-    };
-
-    // ordena por nickname alfabeticamente
-    public static final Comparator<Jugador> POR_NICKNAME = new Comparator<Jugador>() {
-
-        @Override
-        public int compare(Jugador j1, Jugador j2) {
-
-            return j1.getNickname().compareToIgnoreCase(j2.getNickname());
-
-        }
-
-    };
-
     // ordena por numero de mvps
         public static final Comparator<Jugador> POR_MVP = new Comparator<Jugador>() {
 
@@ -205,8 +171,7 @@ public class Jugador extends PersonaLiga implements Entrenable, Comparable<Jugad
 
     @Override
     public void mostrarResumen() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarResumen'");
+        System.out.println(this.toString());
     }
 
 }

@@ -35,12 +35,9 @@ public class Main {
         } while (consulta); // mientras consulta sea true, el programa sigue
     }
 
-    // metodos estaticos para que otras clases (como Incidencia) puedan acceder a la liga
-    public static Liga getLiga() { return liga; }
-    public static Temporada getTemporada() { return temporada; }
-
     private static void mostrarMenuPrincipal() {
-        System.out.println("\n========================================");
+        System.out.println();
+        System.out.println("========================================");
         System.out.println("   SISTEMA DE GESTION LIGA ESPORTS");
         System.out.println("========================================");
         System.out.println("1. Gestion");
@@ -78,7 +75,9 @@ public class Main {
     private static void menuGestion() {
         int sub;
         do {
-            System.out.println("\n--- GESTION ---");
+            System.out.println();
+            System.out.println();
+            System.out.println("--- GESTION ---");
             System.out.println("1. Gestion de Equipos");
             System.out.println("2. Gestion de Jugadores");
             System.out.println("3. Gestion de Entrenadores");
@@ -109,7 +108,9 @@ public class Main {
     private static void menuGestionEquipos() {
         int sub;
         do {
-            System.out.println("\n--- GESTION DE EQUIPOS ---");
+            System.out.println();
+            System.out.println();
+            System.out.println("--- GESTION DE EQUIPOS ---");
             System.out.println("1. Crear equipo");
             System.out.println("2. Eliminar equipo");
             System.out.println("3. Ver todos los equipos");
@@ -193,7 +194,8 @@ public class Main {
 
     // muestra todos los equipos con sus datos basicos
     private static void verEquipos() {
-        System.out.println("\n=== EQUIPOS EN LA LIGA ===");
+        System.out.println();
+        System.out.println("=== EQUIPOS EN LA LIGA ===");
         for (Equipo e : liga.getEquipos()) {
             System.out.println("- " + e.getNombre() + " (" + e.getCiudad() + ") | Presupuesto: " + e.getPresupuesto() + "€ | Puntos: " + e.getPuntos());
         }
@@ -216,7 +218,9 @@ public class Main {
     private static void menuGestionJugadores() {
         int sub;
         do {
-            System.out.println("\n--- GESTION DE JUGADORES ---");
+            System.out.println();
+            System.out.println();
+            System.out.println("--- GESTION DE JUGADORES ---");
             System.out.println("1. Anadir jugador a equipo");
             System.out.println("2. Eliminar jugador");
             System.out.println("3. Sancionar / Desancionar jugador");
@@ -351,7 +355,6 @@ public class Main {
                         String idInc = "INC" + (liga.getIncidencias().size() + 1);
                         Incidencia inc = new Incidencia(idInc, "Sancion", nick, eq.getNombre(),
                             "Sancion aplicada al jugador " + nick, "Fecha automatica");
-                        inc.aplicarSancion(j);
                         liga.añadirIncidencia(inc);
                     }
                 return;
@@ -386,7 +389,8 @@ public class Main {
             return;
         }
         Collections.sort(todos, Jugador.POR_RENDIMIENTO);
-        System.out.println("\n=== RANKING DE JUGADORES ===");
+        System.out.println();
+        System.out.println("=== RANKING DE JUGADORES ===");
         for (int i = 0; i < todos.size(); i++) {
             Jugador j = todos.get(i);
             System.out.println((i + 1) + ". " + j.getNickname() + " (" + j.getRol() + ") - Rend: " +
@@ -407,7 +411,9 @@ public class Main {
     private static void menuGestionEntrenadores() {
         int sub;
         do {
-            System.out.println("\n--- GESTION DE ENTRENADORES ---");
+            System.out.println();
+            System.out.println();
+            System.out.println("--- GESTION DE ENTRENADORES ---");
             System.out.println("1. Anadir entrenador a equipo");
             System.out.println("2. Eliminar entrenador");
             System.out.println("3. Ver todos los entrenadores");
@@ -449,7 +455,8 @@ public class Main {
 
     // recorre todos los equipos y muestra sus entrenadores
     private static void verEntrenadores() {
-        System.out.println("\n=== ENTRENADORES ===");
+        System.out.println();
+        System.out.println("=== ENTRENADORES ===");
         boolean hay = false;
         for (Equipo eq : liga.getEquipos()) {
             for (Entrenador ent : eq.getEntrenadores()) {
@@ -466,7 +473,9 @@ public class Main {
     private static void menuMercado() {
         int sub;
         do {
-            System.out.println("\n--- MERCADO DE FICHAJES ---");
+            System.out.println();
+            System.out.println();
+            System.out.println("--- MERCADO DE FICHAJES ---");
             System.out.println("1. Poner jugador en mercado");
             System.out.println("2. Comprar jugador del mercado");
             System.out.println("3. Ver jugadores disponibles");
@@ -524,7 +533,8 @@ public class Main {
 
     // muestra los jugadores que estan en el mercado con su precio
     private static void verMercado() {
-        System.out.println("\n=== JUGADORES DISPONIBLES ===");
+        System.out.println();
+        System.out.println("=== JUGADORES DISPONIBLES ===");
         if (liga.getMercado().isEmpty()) {
             System.out.println("No hay jugadores en el mercado.");
             return;
@@ -540,7 +550,9 @@ public class Main {
     private static void menuTemporada() {
         int sub;
         do {
-            System.out.println("\n--- TEMPORADA ---");
+            System.out.println();
+            System.out.println();
+            System.out.println("--- TEMPORADA ---");
             System.out.println("1. Simular partido");
             System.out.println("2. Ver clasificacion");
             System.out.println("3. Ver resultados de la temporada");
@@ -571,7 +583,8 @@ public class Main {
             return;
         }
 
-        System.out.println("\nEquipos disponibles:");
+        System.out.println();
+        System.out.println("Equipos disponibles:");
         for (int i = 0; i < liga.getEquipos().size(); i++) {
             System.out.println((i + 1) + ". " + liga.getEquipos().get(i).getNombre());
         }
@@ -598,7 +611,8 @@ public class Main {
         String id = "P" + jornada; // P1, P2, etc
         Partido p = temporada.simularPartido(local, visit, id, jornada);
 
-        System.out.println("\n=== RESULTADO ===");
+        System.out.println();
+        System.out.println("=== RESULTADO ===");
         System.out.println(local.getNombre() + " " + p.getPuntosLocal() + " - " + p.getPuntosVisitante() + " " + visit.getNombre());
         System.out.println("MVP: " + p.getJugadorMVP());
 
@@ -607,7 +621,8 @@ public class Main {
 
     // muestra todos los partidos jugados en la temporada
     private static void verResultados() {
-        System.out.println("\n=== RESULTADOS DE LA TEMPORADA ===");
+        System.out.println();
+        System.out.println("=== RESULTADOS DE LA TEMPORADA ===");
         if (temporada.getPartidos().isEmpty()) {
             System.out.println("Aun no se han jugado partidos.");
             return;
@@ -627,7 +642,9 @@ public class Main {
     private static void menuEstadisticas() {
         int sub;
         do {
-            System.out.println("\n--- ESTADISTICAS ---");
+            System.out.println();
+            System.out.println();
+            System.out.println("--- ESTADISTICAS ---");
             System.out.println("1. Top 5 jugadores por MVP");
             System.out.println("2. Top 5 jugadores por rendimiento");
             System.out.println("3. Mejor entrenador");
@@ -662,7 +679,9 @@ public class Main {
     private static void menuEntrenamiento() {
         int sub;
         do {
-            System.out.println("\n--- ENTRENAMIENTO ---");
+            System.out.println();
+            System.out.println();
+            System.out.println("--- ENTRENAMIENTO ---");
             System.out.println("1. Entrenar un equipo");
             System.out.println("2. Entrenar todos los equipos");
             System.out.println("0. Volver");
@@ -717,7 +736,8 @@ public class Main {
 
     // muestra todas las incidencias registradas en la liga
     private static void verIncidencias() {
-        System.out.println("\n=== INCIDENCIAS REGISTRADAS ===");
+        System.out.println();
+        System.out.println("=== INCIDENCIAS REGISTRADAS ===");
         if (liga.getIncidencias().isEmpty()) {
             System.out.println("No hay incidencias registradas.");
             return;
@@ -792,7 +812,82 @@ public class Main {
 
             liga.añadirEquipo(e3);
 
-            liga.registrarAccion("Sistema inicializado con 3 equipos, 12 jugadores y 4 entrenadores.");
+            // Equipo 4: FNATIC
+            Equipo e4 = new Equipo("FNATIC", "Barcelona", 420000);
+            e4.setPuntos(10);
+
+            Jugador j13 = new Jugador("J15", "David", "Dave", 22, 3000, "dave@fnatic.com", "Mid", 83, 77, 20, 1, false);
+            Jugador j14 = new Jugador("J16", "Laura", "Lau", 23, 3200, "lau@fnatic.com", "ADC", 86, 74, 22, 2, false);
+            Jugador j15 = new Jugador("J17", "Sergio", "Sergy", 21, 2800, "sergy@fnatic.com", "Top", 78, 80, 18, 0, false);
+            Jugador j16 = new Jugador("J18", "Mario", "MarioK", 24, 3100, "mario@fnatic.com", "Jungla", 80, 76, 25, 1, false);
+
+            e4.añadirTitular(j15);
+            e4.añadirTitular(j16);
+            e4.añadirTitular(j13);
+            e4.añadirTitular(j14);
+
+            e4.añadirSuplente(new Jugador("J19", "Noelia", "Noe", 20, 2200, "noe@fnatic.com", "Support", 72, 78, 12, 0, false));
+
+            Entrenador ent4 = new Entrenador("E05", "Pablo", "PablitoCoach", 34, 4200, "pablo@fnatic.com", 9, "Tactica", 45);
+            e4.añadirEntrenador(ent4);
+
+            liga.añadirEquipo(e4);
+
+            // Equipo 5: Barça eSports
+            Equipo e5 = new Equipo("Barça eSports", "Barcelona", 390000);
+            e5.setPuntos(8);
+
+            Jugador j17 = new Jugador("J20", "Andrea", "Andre", 22, 2900, "andre@barcaesports.com", "Mid", 81, 79, 24, 1, false);
+            Jugador j18 = new Jugador("J21", "Cristian", "Cris", 21, 2600, "cris@barcaesports.com", "Top", 77, 76, 16, 0, false);
+            Jugador j19 = new Jugador("J22", "Natalia", "Nati", 20, 2700, "nati@barcaesports.com", "ADC", 84, 73, 14, 0, false);
+
+            e5.añadirTitular(j18);
+            e5.añadirTitular(j17);
+            e5.añadirTitular(j19);
+
+            e5.añadirSuplente(new Jugador("J23", "Alex", "AlexJr", 19, 2100, "alex@barcaesports.com", "Support", 71, 76, 8, 0, false));
+            e5.añadirSuplente(new Jugador("J24", "Ruben", "Rubi", 22, 2600, "rubi@barcaesports.com", "Jungla", 76, 78, 12, 0, false));
+
+            Entrenador ent5 = new Entrenador("E06", "Maria", "MariaCoach", 31, 3600, "maria@barcaesports.com", 7, "Motivacion", 30);
+            e5.añadirEntrenador(ent5);
+
+            liga.añadirEquipo(e5);
+
+            // Equipo 6: G2 Esports
+            Equipo e6 = new Equipo("G2 Esports", "Madrid", 460000);
+            e6.setPuntos(14);
+
+            Jugador j20 = new Jugador("J25", "Adrian", "Adri", 24, 3400, "adri@g2esports.com", "Mid", 87, 80, 28, 2, false);
+            Jugador j21 = new Jugador("J26", "Samuel", "Samu", 23, 3100, "samu@g2esports.com", "Jungla", 81, 83, 26, 1, false);
+            Jugador j22 = new Jugador("J27", "Claudia", "Clau", 22, 3000, "clau@g2esports.com", "ADC", 85, 76, 24, 1, false);
+            Jugador j23 = new Jugador("J28", "Daniel", "Dani", 25, 2900, "dani@g2esports.com", "Top", 76, 82, 22, 0, false);
+
+            e6.añadirTitular(j23);
+            e6.añadirTitular(j21);
+            e6.añadirTitular(j20);
+            e6.añadirTitular(j22);
+
+            e6.añadirSuplente(new Jugador("J29", "Beatriz", "Bea", 21, 2400, "bea@g2esports.com", "Support", 74, 80, 15, 0, false));
+
+            Entrenador ent6 = new Entrenador("E07", "Antonio", "AntonioCoach", 36, 4300, "antonio@g2esports.com", 11, "Estrategia", 50);
+            e6.añadirEntrenador(ent6);
+
+            liga.añadirEquipo(e6);
+
+            // Jugadores en el mercado de fichajes
+            Jugador mercado1 = new Jugador("J30", "Miguel", "Migue", 25, 2800, "migue@free.com", "Mid", 78, 76, 10, 0, false);
+            Jugador mercado2 = new Jugador("J31", "Sandra", "San", 22, 2600, "san@free.com", "ADC", 80, 72, 8, 1, false);
+            Jugador mercado3 = new Jugador("J32", "Victor", "Vik", 24, 2500, "vik@free.com", "Top", 74, 78, 12, 0, false);
+            Jugador mercado4 = new Jugador("J33", "Eva", "Evita", 21, 2300, "evita@free.com", "Support", 73, 75, 6, 0, false);
+            Jugador mercado5 = new Jugador("J34", "Ivan", "IvanJ", 23, 2700, "ivan@free.com", "Jungla", 77, 74, 9, 0, false);
+
+            liga.ponerEnMercado(mercado1);
+            liga.ponerEnMercado(mercado2);
+            liga.ponerEnMercado(mercado3);
+            liga.ponerEnMercado(mercado4);
+            liga.ponerEnMercado(mercado5);
+
+            liga.registrarAccion("Sistema inicializado con 6 equipos, 24 jugadores y 7 entrenadores. 5 jugadores en el mercado.");
 
             // incidencia de ejemplo
             Incidencia incEjemplo = new Incidencia("INC0", "Aviso", "Eleni", "Heretics",

@@ -71,31 +71,10 @@ public class Temporada {
         return p;
     }
 
-    // devuelve un mapa con los equipos y sus puntos
-    public Map<Equipo, Integer> getClasificacion() {
-        Map<Equipo, Integer> clasif = new HashMap<Equipo, Integer>();
-        Set<Equipo> añadidos = new HashSet<Equipo>();
-
-        for (Partido p : partidos) {
-            if (p.isDisputado()) {
-                Equipo local = p.getEquipoLocal();
-                Equipo visit = p.getEquipoVisitante();
-                if (!añadidos.contains(local)) {
-                    clasif.put(local, local.getPuntos());
-                    añadidos.add(local);
-                }
-                if (!añadidos.contains(visit)) {
-                    clasif.put(visit, visit.getPuntos());
-                    añadidos.add(visit);
-                }
-            }
-        }
-        return clasif;
-    }
-
     // muestra la clasificacion ordenada por puntos (con desempate por diferencia)
     public void mostrarClasificacion() {
-        System.out.println("\n=== CLASIFICACION " + nombre + " ===");
+        System.out.println();
+        System.out.println("=== CLASIFICACION " + nombre + " ===");
         ArrayList<Equipo> ordenada = new ArrayList<Equipo>();
         Set<Equipo> añadidos = new HashSet<Equipo>();
 

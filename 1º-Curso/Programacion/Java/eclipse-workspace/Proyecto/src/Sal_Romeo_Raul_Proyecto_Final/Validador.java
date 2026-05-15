@@ -25,13 +25,6 @@ public class Validador {
         }
     }
 
-    // valida que el nickname no este vacio y tenga minimo 3 caracteres
-    public static void validarNickname(String nickname) throws DatoInvalidoException {
-        if (nickname == null || nickname.trim().length() < 3) {
-            throw new DatoInvalidoException("nickname", nickname);
-        }
-    }
-
     // valida que el email tenga formato correcto: texto@texto.texto
     public static void validarEmail(String email) throws DatoInvalidoException {
         if (email == null) {
@@ -44,13 +37,6 @@ public class Validador {
         }
         if (ultimoPunto < arroba || ultimoPunto == email.length() - 1) { // no hay . despues de la @ o el . es lo ultimo
             throw new DatoInvalidoException("email", email);
-        }
-    }
-
-    // valida que el nivel de mecanicas o estrategia este entre 1 y 100
-    public static void validarNivel(int nivel, String campo) throws DatoInvalidoException {
-        if (nivel < 1 || nivel > 100) {
-            throw new DatoInvalidoException(campo, String.valueOf(nivel));
         }
     }
 

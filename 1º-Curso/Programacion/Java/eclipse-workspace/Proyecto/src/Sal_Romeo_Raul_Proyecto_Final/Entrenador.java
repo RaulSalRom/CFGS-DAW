@@ -96,8 +96,7 @@ public class Entrenador extends PersonaLiga implements Entrenable, Comparable<En
 
     @Override
     public void mostrarResumen() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarResumen'");
+        System.out.println(this.toString());
     }
 
 }

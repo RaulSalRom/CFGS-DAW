@@ -8,7 +8,6 @@ public class Liga {
     private String nombreLiga;                  // nombre de la liga
     private ArrayList<Equipo> equipos;          // lista de equipos registrados
     private ArrayList<String> historialAcciones; // historial de acciones (pila LIFO)
-    private LinkedList<String> proximosPartidos; // cola FIFO de proximos partidos
     private ArrayList<Jugador> mercado;          // jugadores disponibles para fichar
     private ArrayList<Partido> partidos;         // partidos registrados en la liga
     private ArrayList<Incidencia> incidencias;   // incidencias registradas
@@ -18,7 +17,6 @@ public class Liga {
         this.nombreLiga = nombreLiga;
         this.equipos = new ArrayList<Equipo>();
         this.historialAcciones = new ArrayList<String>();
-        this.proximosPartidos = new LinkedList<String>();
         this.mercado = new ArrayList<Jugador>();
         this.partidos = new ArrayList<Partido>();
         this.incidencias = new ArrayList<Incidencia>();
@@ -52,56 +50,14 @@ public class Liga {
 
         Collections.sort(ordenada, Equipo.POR_PUNTOS);
 
-        System.out.println("\n CLASIFICACION " + nombreLiga + ":");
+        System.out.println();
+        System.out.println("CLASIFICACION " + nombreLiga + ":");
 
         for (int i = 0; i < ordenada.size(); i++) {
 
             Equipo e = ordenada.get(i);
 
             System.out.println((i + 1) + ". " + e.getNombre() + " - Puntos: " + e.getPuntos());
-
-        }
-
-    }
-
-    // muestra el historial de acciones en orden inverso stack
-    public void mostrarHistorial() {
-
-        System.out.println("\nHISTORIAL DE ACCIONES ");
-
-        if (historialAcciones.isEmpty()) {
-
-            System.out.println("No hay acciones registradas.");
-
-        } else {
-
-            for (int i = historialAcciones.size() - 1; i >= 0; i--) {
-
-                System.out.println(historialAcciones.get(i));
-
-            }
-
-        }
-
-    }
-
-    // muestra los proximos partidos en cola
-    public void mostrarProximosPartidos() {
-
-        System.out.println("\nPROXIMOS PARTIDOS :");
-
-        if (proximosPartidos.isEmpty()) {
-
-            System.out.println("No hay partidos programados.");
-
-        } else {
-
-            for (String partido : proximosPartidos) {
-
-                System.out.println(partido);
-
-
-            }
 
         }
 
@@ -191,23 +147,7 @@ public class Liga {
         
     }
 
-    // quita un jugador del mercado sin comprarlo
-    public void quitarDelMercado(String nickname) {
-        for (int i = 0; i < mercado.size(); i++) {
-            if (mercado.get(i).getNickname().equalsIgnoreCase(nickname)) {
-                mercado.remove(i);
-                break;
-            }
-        }
-    }
-
     public ArrayList<Partido> getPartidos() { return partidos; }
-
-    // aniade un partido a la lista de la liga y lo registra
-    public void añadirPartido(Partido p) {
-        partidos.add(p);
-        registrarAccion("Partido " + p.getIdentificador() + " registrado.");
-    }
 
     public ArrayList<Incidencia> getIncidencias() { return incidencias; }
 

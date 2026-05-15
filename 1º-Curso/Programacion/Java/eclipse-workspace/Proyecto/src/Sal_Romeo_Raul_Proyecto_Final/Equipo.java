@@ -343,11 +343,11 @@ public class Equipo {
     // elimina un entrenador por nickname, devuelve true si lo encontro y lo borro
     public boolean eliminarEntrenador(String nickname) {
 
-        for (Entrenador e : entrenadores) {
+        for (int i = 0; i < entrenadores.size(); i++) {
 
-            if (e.getNickname().equalsIgnoreCase(nickname)) {
+            if (entrenadores.get(i).getNickname().equalsIgnoreCase(nickname)) {
 
-                entrenadores.remove(e);
+                entrenadores.remove(i);
 
                 return true;
 
@@ -464,19 +464,6 @@ public class Equipo {
             e.mostrarResumen();
 
         }
-
-    }
-
-    // devuelve el numero total de jugadores (titulares+suplentes)
-    public int getNumJugadores() {
-
-        int count = 0;
-
-        for (Jugador j : titulares) { 
-            if (j != null) count++; 
-        }
-
-        return count + suplentes.size();
 
     }
 
