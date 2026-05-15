@@ -225,7 +225,8 @@ public class Main {
             System.out.println("2. Eliminar jugador");
             System.out.println("3. Sancionar / Desancionar jugador");
             System.out.println("4. Buscar jugador por nickname");
-            System.out.println("5. Ranking de jugadores");
+            System.out.println("5. Ver todos los jugadores");
+            System.out.println("6. Ranking de jugadores");
             System.out.println("0. Volver");
             System.out.print("Seleccione: ");
             try {
@@ -235,7 +236,8 @@ public class Main {
                     case 2: eliminarJugador(); break;
                     case 3: toggleSancion(); break;
                     case 4: buscarJugador(); break;
-                    case 5: rankingJugadores(); break;
+                    case 5: verTodosJugadores(); break;
+                    case 6: rankingJugadores(); break;
                     case 0: break;
                     default: System.out.println("Opcion no valida.");
                 }
@@ -378,6 +380,22 @@ public class Main {
         System.out.println("Jugador no encontrado.");
     }
 
+    // muestra todos los jugadores de todos los equipos
+    private static void verTodosJugadores() {
+        System.out.println();
+        System.out.println("=== TODOS LOS JUGADORES ===");
+        boolean hay = false;
+        for (Equipo eq : liga.getEquipos()) {
+            System.out.println("Equipo: " + eq.getNombre());
+            for (Jugador j : eq.getTodosJugadores()) {
+                System.out.print("  ");
+                j.mostrarResumen();
+                hay = true;
+            }
+        }
+        if (!hay) System.out.println("No hay jugadores registrados.");
+    }
+
     // muestra todos los jugadores ordenados por rendimiento de mayor a menor
     private static void rankingJugadores() {
         ArrayList<Jugador> todos = new ArrayList<Jugador>();
@@ -393,8 +411,9 @@ public class Main {
         System.out.println("=== RANKING DE JUGADORES ===");
         for (int i = 0; i < todos.size(); i++) {
             Jugador j = todos.get(i);
+            double rend = Math.round(j.calcularRendimiento() * 100.0) / 100.0;
             System.out.println((i + 1) + ". " + j.getNickname() + " (" + j.getRol() + ") - Rend: " +
-                j.calcularRendimiento() + " | Equipo: " + buscarEquipoDeJugador(j));
+                rend + " | Equipo: " + buscarEquipoDeJugador(j));
         }
     }
 

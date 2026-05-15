@@ -166,7 +166,8 @@ public class Jugador extends PersonaLiga implements Entrenable, Comparable<Jugad
     @Override
     // toString de toda la vida
     public String toString() {
-        return "ID: " + getIdentificador() + " | Nick: " + getNickname() + " | Rol: " + rol + " | Mec: " + nivelMecanicas + " | Est: " + nivelEstrategia + " | Rend: " + calcularRendimiento() + " | Sal: " + getSalarioBase() + "€" + (sancion ? " | SANCIONADO" : "");
+        double rend = Math.round(calcularRendimiento() * 100.0) / 100.0;
+        return "ID: " + getIdentificador() + " | Nick: " + getNickname() + " | Rol: " + rol + " | Mec: " + nivelMecanicas + " | Est: " + nivelEstrategia + " | Rend: " + rend + " | Sal: " + getSalarioBase() + "€" + (sancion ? " | SANCIONADO" : "");
     }
 
     @Override

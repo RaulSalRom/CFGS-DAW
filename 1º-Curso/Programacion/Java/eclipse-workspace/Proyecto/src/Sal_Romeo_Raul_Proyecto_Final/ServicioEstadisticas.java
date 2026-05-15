@@ -34,7 +34,8 @@ public class ServicioEstadisticas {
         System.out.println("=== TOP " + n + " JUGADORES POR RENDIMIENTO ===");
         for (int i = 0; i < Math.min(n, todos.size()); i++) {
             Jugador j = todos.get(i);
-            System.out.println((i + 1) + ". " + j.getNickname() + " - Rend: " + j.calcularRendimiento());
+            double rend = Math.round(j.calcularRendimiento() * 100.0) / 100.0;
+            System.out.println((i + 1) + ". " + j.getNickname() + " - Rend: " + rend);
         }
     }
 
