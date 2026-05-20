@@ -1,0 +1,40 @@
+1.  Explícame en qué orden exacto valida Equipo.añadirTitular(...) y qué 
+excepciones puede lanzar antes de meter al jugador en el array de titulares.
+
+Lo primero que hacemos es para verifiacr si el jugador está sancionado o no, si está sancionado no se puede añadir como 
+titular, luego comprobamos si tenemos el dinero suficiente para ficharlo, sino te sale la excepción, siguiendo vemos un 
+condicionante que dice que si dentro de los titulares hay un no nulo y está el mismo nombre, nos sale otra excepcion, otra que 
+comprueba si está el rol ya seleccionado dentro del equipo, si está te devuelve una excepción, luego reviso si el nombre está 
+en los suplentes y si el nombre está, te vuelve a salir que está duplicado y por ultimo si intentas poner mas de 5 jugadores 
+titulares te devuelve la excepcion de rol no disponible.
+
+ 
+2.  Explícame cómo funciona Temporada.simularPartido(...): de dónde salen los 
+puntos, cómo decides el MVP y cómo se actualiza la clasificación. 
+
+El metodo de simular partido empieza creando un objeto partido con sus atributos, despues crea dos doubles a los que se les 
+asigna el rendimiento de cada equipo, el rendimiento sale de esta formula:
+
+calcularRendimiento() = (añosExperiencia × 2) + (victoriasTotales × 1.5)
+
+Luego creamos otro double para meter un poco de aleatorización a los partidos, para que algun equipo que no tenga tanto 
+rendimiento tenga opcion a ganar algun partido.
+
+Despues lo que hacemos es declarar variables enteras en las que multiplico el rendimiento con la aleatorizacion de cada 
+equipo, sacando asi quien ha ganado y quien ha perdido.
+
+Por otro lado tenemos una serie de condicionantes para darle los puntos a quienes ha ganado, luego asignamos al MVP al jugador 
+que mayor rendimiento ha tenido en el partido.
+
+Por ultimo lo que hacemos es actualizar los puntos a ambos equipos y registrar el resultado del partido .
+
+
+
+3.  En tus archivos, Jugador.toString() y Entrenador.toString() llevan @Override. ¿Qué problema técnico tiene eso y cómo 
+habría que corregirlo?
+
+Llevan override porque este método ya está llamado en otras clases y lo que hago con el override es que cuando estemos 
+trabajando con el de la clase Jugador por ejemplo, nos devuelva el método que hemos creado para esa clase.
+
+Si estuviese declarado con void seria un error, porque lo que hacemos normalmente es trabajar con el String que nos devuelve 
+el metodo.
