@@ -41,7 +41,7 @@ hr {
   border: 1px solid #ccc;
 }
 
-.card {
+.box {
   background: white;
   border: 3px solid transparent;
   border-image: linear-gradient(135deg, #667eea, #764ba2) 1;
@@ -60,7 +60,7 @@ h2 {
   padding: clamp(8px, 2vw, 12px);
 }
 
-.box {
+.texto {
   background: #fff3e0;
   border: 3px solid transparent;
   border-image: linear-gradient(135deg, #f093fb, #f5576c) 1;
