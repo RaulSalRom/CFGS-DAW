@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "5a51224443481934",
+        "id": "75bd709e749da06f",
         "type": "tabs",
         "children": [
           {
-            "id": "fef5a61759c17ca7",
+            "id": "7f517714dc99f3a1",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "obsidian/ObsidianVault/Base-de-datos/📁 Base de datos.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "📁 Base de datos"
             }
           }
         ]
@@ -176,6 +180,9 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "fef5a61759c17ca7",
-  "lastOpenFiles": []
+  "active": "7f517714dc99f3a1",
+  "lastOpenFiles": [
+    "obsidian/Sin título.canvas",
+    "obsidian/ObsidianVault/Sin título.canvas"
+  ]
 }

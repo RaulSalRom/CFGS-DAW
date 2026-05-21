@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "534313571be9c166",
+        "id": "3e7de956ac0a82a4",
         "type": "tabs",
         "children": [
           {
-            "id": "2c3608cba84fe97d",
+            "id": "c0391cb7148b6135",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ObsidianVault/Programacion/📁 Programacion.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "📁 Programacion"
+              "title": "Nueva pestaña"
             }
           }
         ]
@@ -183,8 +179,12 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "2c3608cba84fe97d",
+  "active": "c0391cb7148b6135",
   "lastOpenFiles": [
+    "ObsidianVault/Lenguaje-de-marcas/LENGUAJES_DE_MARCAS_-_RESUMEN_DE_ENERO.md",
+    "ObsidianVault/Sistemas-Informaticos/Curso_desarrollado_script_1ª_Parte_V_1_4.md",
+    "Sin título.canvas",
+    "ObsidianVault/Programacion/📁 Programacion.md",
     "ObsidianVault/MEMORIA.md",
     "ObsidianVault/Programacion/Resumen.md",
     "ObsidianVault/📚 Indice General.md",
@@ -202,7 +202,6 @@
     "2026-04-11.md",
     "Sin nombre",
     "notas_programacion.md",
-    "Sin título.canvas",
     "cree un enlace.md",
     "Bienvenido.md"
   ]
