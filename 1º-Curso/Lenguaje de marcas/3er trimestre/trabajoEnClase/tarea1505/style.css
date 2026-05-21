@@ -1,4 +1,4 @@
- * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -7,13 +7,20 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f0f0f0;
-  padding: 20px;
+  padding: clamp(10px, 3vw, 30px);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container {
   max-width: 700px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: clamp(24px, 5vw, 40px);
   margin-bottom: 5px;
 }
 
@@ -22,8 +29,11 @@ p {
   line-height: 1.5;
 }
 
-a {
-  color: #2563eb;
+code {
+  background: #e8e8e8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
 }
 
 hr {
@@ -31,93 +41,29 @@ hr {
   border: 1px solid #ccc;
 }
 
-.consejo {
+.card {
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, #667eea, #764ba2) 1;
+  padding: clamp(15px, 4vw, 30px);
   margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 20px;
+  font-size: clamp(18px, 3vw, 24px);
   margin-bottom: 10px;
 }
 
-.ejemplo-texto {
-  font-size: 18px;
+.highlight {
+  font-size: clamp(15px, 2.5vw, 20px);
   background: #e8f5e9;
-  padding: 10px;
-  border-radius: 5px;
+  padding: clamp(8px, 2vw, 12px);
 }
 
-.caja {
+.box {
   background: #fff3e0;
-  border: 1px solid #ffcc80;
-  border-radius: 5px;
-  padding: 15px;
-  font-size: 16px;
-}
-
-/* MOVIL: pantallas pequeñas */
-@media (max-width: 480px) {
-  body {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  h2 {
-    font-size: 18px;
-  }
-
-  .ejemplo-texto {
-    font-size: 15px;
-  }
-
-  .consejo {
-    padding: 15px;
-  }
-
-  .caja {
-    padding: 10px;
-    font-size: 14px;
-  }
-}
-
-/* TABLET: pantallas medianas */
-@media (min-width: 481px) and (max-width: 768px) {
-  h1 {
-    font-size: 28px;
-  }
-
-  .ejemplo-texto {
-    font-size: 16px;
-  }
-
-  .caja {
-    padding: 20px;
-  }
-}
-
-/* ESCRITORIO: pantallas grandes */
-@media (min-width: 769px) {
-  h1 {
-    font-size: 36px;
-  }
-
-  .ejemplo-texto {
-    font-size: 20px;
-  }
-
-  .consejo {
-    padding: 30px;
-  }
-
-  .caja {
-    padding: 30px;
-    font-size: 18px;
-  }
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, #f093fb, #f5576c) 1;
+  padding: clamp(12px, 3vw, 24px);
+  font-size: clamp(14px, 2vw, 18px);
 }

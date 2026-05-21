@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consejos CSS Responsive</title>
+  <title>Raúl Sal Romeo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>CSS Responsive</h1>
+  <div class="container">
+    <h1>Raúl Sal Romeo</h1>
+    <hr>
 
-  <hr>
+    <div class="card">
+      <h2>Responsive</h2>
+      <p>Este texto se adapta al ancho de la pantalla gracias a <code>clamp()</code>.</p>
+      <p class="highlight">Este texto se ve bien tanto en móvil como en pantalla grande.</p>
+    </div>
 
-  <div class="consejo">
-    <h2>1. Tipografía fluida con media queries</h2>
-    <p>En lugar de usar un tamaño fijo, cambiamos el tamaño del texto según la pantalla con @media.</p>
-    <p class="ejemplo-texto">Este texto se ve bien tanto en móvil como en pantalla grande.</p>
-  </div>
-
-  <div class="consejo">
-    <h2>2. Padding que se adapta</h2>
-    <p>Usamos padding con porcentajes y media queries para que los márgenes interiores no queden ni muy grandes ni muy pequeños.</p>
-    <div class="caja">
-      Esta caja tiene padding distinto según el ancho de la pantalla.
+    <div class="card">
+      <h2>Padding</h2>
+      <p>El padding interior cambia de forma fluida sin media queries.</p>
+      <div class="box">
+        Caja con padding fluido y borde degradado.
+      </div>
     </div>
   </div>
 

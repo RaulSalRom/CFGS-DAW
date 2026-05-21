@@ -227,7 +227,7 @@ footer {
   text-align: center;
   width: 100%;
   
-  /* NUEVO: Creamos un borde superior de 4px y le aplicamos un degradado de colores.
+  /* Creamos un borde superior de 4px y le aplicamos un degradado de colores.
      El '1' al final indica que el degradado debe extenderse en todo el ancho del borde. */
   border-top: 4px solid;
   border-image: linear-gradient(to right, #ce6b6b, #f5f5f5, #ce6b6b) 1;
