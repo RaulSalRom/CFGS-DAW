@@ -1,12 +1,9 @@
 
-DROP DATABASE IF EXISTS GestionGimnasio;
-CREATE DATABASE GestionGimnasio;
-USE GestionGimnasio;
-
 CREATE TABLE Usuario (
     id_usuario        INT PRIMARY KEY AUTO_INCREMENT,
     nombre            VARCHAR(100) NOT NULL,
     apellido          VARCHAR(100) NOT NULL,
+    nombre_completo   VARCHAR(200) GENERATED ALWAYS AS (CONCAT(nombre, ' ', apellido)) STORED,
     email             VARCHAR(150) UNIQUE NOT NULL,
     telefono          VARCHAR(20),
     fecha_nacimiento  DATE
@@ -21,7 +18,7 @@ CREATE TABLE Entrenador (
 
 CREATE TABLE Socio (
     id_socio        INT PRIMARY KEY,
-    fecha_registro  DATE,
+    fecha_registro  DATE DEFAULT CURRENT_DATE,
     estado          VARCHAR(50) DEFAULT 'Activo',
     FOREIGN KEY (id_socio) REFERENCES Usuario(id_usuario) ON DELETE CASCADE
 );
@@ -79,6 +76,29 @@ CREATE TABLE Clase_Equipamiento (
     PRIMARY KEY (id_clase, id_equipamiento),
     FOREIGN KEY (id_clase)        REFERENCES Clase(id_clase),
     FOREIGN KEY (id_equipamiento) REFERENCES Equipamiento(id_equipamiento)
+);
+
+-- ---------------------------------------------------------------
+-- GESTIÓN DE USUARIOS (Tema 5 - Teoría)
+-- ---------------------------------------------------------------
+
+-- Creamos un usuario administrador y otro de solo lectura
+CREATE USER IF NOT EXISTS 'admin_fitnet'@'localhost' IDENTIFIED BY 'Admin123!';
+CREATE USER IF NOT EXISTS 'consulta_fitnet'@'localhost' IDENTIFIED BY 'Consulta123!';
+
+-- Admin: todos los privilegios sobre la BD
+GRANT ALL PRIVILEGES ON GestionGimnasio.* TO 'admin_fitnet'@'localhost';
+
+-- Consulta: solo SELECT
+GRANT SELECT ON GestionGimnasio.* TO 'consulta_fitnet'@'localhost';
+
+-- Creamos una tabla para registrar usuarios que se dan de baja (para triggers)
+CREATE TABLE Log_Socios_Eliminados (
+    id_log      INT PRIMARY KEY AUTO_INCREMENT,
+    id_socio    INT,
+    nombre      VARCHAR(100),
+    apellido    VARCHAR(100),
+    fecha_baja  DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 -- ---------------------------------------------------------------
@@ -258,7 +278,29 @@ INSERT INTO Clase_Equipamiento (id_clase, id_equipamiento) VALUES
 (7, 4),(8, 9),(9, 4),(10, 7),(10, 9);
 
 
+
+
+-- Simulamos un pago que se revierte porque hubo un error
+START TRANSACTION;
+    INSERT INTO Pago (id_socio, cantidad, fecha_pago, metodo_pago)
+    VALUES (3, 50.00, NOW(), 'Tarjeta');
+    SET @ultimo_pago = LAST_INSERT_ID();
+    SELECT CONCAT('Pago insertado con id = ', @ultimo_pago) AS 'Debug';
+ROLLBACK;
+
+SELECT 'El pago fue revertido con ROLLBACK, no quedó registrado' AS 'Resultado';
+
+-- Ahora uno real que sí se confirma
+START TRANSACTION;
+    INSERT INTO Pago (id_socio, cantidad, fecha_pago, metodo_pago)
+    VALUES (3, 50.00, NOW(), 'Tarjeta');
+COMMIT;
+
+SELECT 'Este pago SÍ quedó registrado (COMMIT)' AS 'Resultado';
+
+-- ---------------------------------------------------------------
 -- TRIGGER 1: Antes de actualizar el estado de un Socio, registrar el cambio en Log_Cambios_Socio.
+-- ---------------------------------------------------------------
 
 DELIMITER $$
 
@@ -290,7 +332,38 @@ END$$
 
 DELIMITER ;
 
+-- TRIGGER 3: BEFORE INSERT en Socio - asigna fecha_registro si no se proporciona (demostración de NEW)
+DELIMITER $$
+
+CREATE TRIGGER trg_socio_fecha_registro
+BEFORE INSERT ON Socio
+FOR EACH ROW
+BEGIN
+    IF NEW.fecha_registro IS NULL THEN
+        SET NEW.fecha_registro = CURDATE();
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- TRIGGER 4: AFTER DELETE en Socio - registra los datos del socio eliminado en el log (OLD)
+DELIMITER $$
+
+CREATE TRIGGER trg_log_socio_eliminado
+AFTER DELETE ON Socio
+FOR EACH ROW
+BEGIN
+    INSERT INTO Log_Socios_Eliminados (id_socio, nombre, apellido)
+    SELECT OLD.id_socio, u.nombre, u.apellido
+    FROM Usuario u
+    WHERE u.id_usuario = OLD.id_socio;
+END$$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------
 -- PROCEDIMIENTO 1: Registrar un nuevo socio + su membresía inicial en una misma transacción.
+-- ---------------------------------------------------------------
 DELIMITER $$
 
 CREATE PROCEDURE sp_registrar_socio_completo(
@@ -512,6 +585,155 @@ END$$
 
 DELIMITER ;
 
+-- ---------------------------------------------------------------
+-- FUNCIÓN 3: Genera un email corporativo a partir del nombre y apellido (cadenas)
+-- Ejemplo: 'Carlos Gómez' → 'carlos.gomez@fitnet.com'
+-- ---------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE FUNCTION fn_generar_email(p_nombre VARCHAR(100), p_apellido VARCHAR(100))
+RETURNS VARCHAR(150)
+DETERMINISTIC
+BEGIN
+    RETURN CONCAT(
+        LOWER(p_nombre),
+        '.',
+        LOWER(p_apellido),
+        '@fitnet.com'
+    );
+END$$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------
+-- PROCEDIMIENTO 5: Contar socios por estado usando parámetro OUT
+-- ---------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_contar_socios_estado(
+    IN  p_estado   VARCHAR(50),
+    OUT p_total    INT
+)
+BEGIN
+    SELECT COUNT(*) INTO p_total
+    FROM Socio
+    WHERE estado = p_estado;
+END$$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------
+-- PROCEDIMIENTO 6: INOUT - incrementa un valor y lo devuelve
+-- Simula añadir un recargo a una cantidad de pago
+-- ---------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_aplicar_recargo(
+    INOUT p_cantidad DECIMAL(10,2),
+    IN    p_porcentaje DECIMAL(5,2)
+)
+BEGIN
+    SET p_cantidad = p_cantidad + (p_cantidad * p_porcentaje / 100);
+END$$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------
+-- PROCEDIMIENTO 7: Categorizar un pago según su importe usando CASE
+-- ---------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_categorizar_pago(
+    IN  p_id_pago    INT,
+    OUT p_categoria  VARCHAR(20)
+)
+BEGIN
+    DECLARE v_cantidad DECIMAL(10,2);
+
+    SELECT cantidad INTO v_cantidad
+    FROM Pago
+    WHERE id_pago = p_id_pago;
+
+    CASE
+        WHEN v_cantidad < 50 THEN
+            SET p_categoria = 'Económico';
+        WHEN v_cantidad BETWEEN 50 AND 200 THEN
+            SET p_categoria = 'Estándar';
+        WHEN v_cantidad > 200 THEN
+            SET p_categoria = 'Premium';
+        ELSE
+            SET p_categoria = 'Desconocido';
+    END CASE;
+END$$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------
+-- PROCEDIMIENTO 8: Recorrer equipamiento con WHILE (cursor con WHILE)
+-- Genera un resumen de equipos por tipo en Dashboard_Estadisticas
+-- ---------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_resumen_equipamiento()
+BEGIN
+    DECLARE v_tipo     VARCHAR(50);
+    DECLARE v_total    INT;
+    DECLARE v_finished INT DEFAULT 0;
+
+    DECLARE cur_tipos CURSOR FOR
+        SELECT DISTINCT tipo FROM Equipamiento WHERE tipo IS NOT NULL;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+
+    OPEN cur_tipos;
+
+    WHILE v_finished = 0 DO
+        FETCH cur_tipos INTO v_tipo;
+
+        IF v_finished = 0 THEN
+            SELECT COUNT(*) INTO v_total
+            FROM Equipamiento
+            WHERE tipo = v_tipo;
+
+            INSERT INTO Dashboard_Estadisticas (indicador, valor_num, valor_texto)
+            VALUES (
+                CONCAT('Equipos tipo "', v_tipo, '"'),
+                v_total,
+                CONCAT(v_total, ' equipos de tipo ', v_tipo)
+            );
+        END IF;
+    END WHILE;
+
+    CLOSE cur_tipos;
+
+    SELECT CONCAT('OK - Resumen de equipamiento generado') AS resultado;
+END$$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------
+-- CREATE TABLE AS SELECT (Tema 5 - ACT 06 teoría)
+-- Tabla de resumen de ingresos por socio
+-- ---------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS Resumen_Ingresos_Socio AS
+SELECT
+    s.id_socio,
+    u.nombre_completo,
+    COUNT(DISTINCT p.id_pago)      AS num_pagos,
+    IFNULL(SUM(p.cantidad), 0)     AS total_ingresos,
+    IFNULL(AVG(p.cantidad), 0)     AS media_por_pago
+FROM Socio s
+JOIN Usuario u ON s.id_socio = u.id_usuario
+LEFT JOIN Pago p ON s.id_socio = p.id_socio
+GROUP BY s.id_socio, u.nombre_completo;
+
+-- ---------------------------------------------------------------
 -- Limpiamos las estadísticas previas del dashboard
 DELETE FROM Dashboard_Estadisticas;
 
@@ -625,7 +847,47 @@ END$$
 DELIMITER ;
 
 -- ============================================================
--- EJECUCIÓN DEL INFORME Y CONSULTA DEL DASHBOARD
+-- DEMOSTRACIÓN DE FUNCIÓN DE CADENAS
+-- ============================================================
+SELECT
+    nombre,
+    apellido,
+    fn_generar_email(nombre, apellido) AS email_generado
+FROM Usuario
+LIMIT 5;
+
+-- ============================================================
+-- DEMOSTRACIÓN DE PROCEDIMIENTO CON OUT
+-- ============================================================
+CALL sp_contar_socios_estado('Activo', @total_activos);
+SELECT @total_activos AS 'Total socios activos';
+
+CALL sp_contar_socios_estado('Inactivo', @total_inactivos);
+SELECT @total_inactivos AS 'Total socios inactivos';
+
+-- ============================================================
+-- DEMOSTRACIÓN DE PROCEDIMIENTO CON INOUT
+-- ============================================================
+SET @precio = 100.00;
+CALL sp_aplicar_recargo(@precio, 21.00);
+SELECT @precio AS 'Precio con IVA (21%)';
+
+-- ============================================================
+-- DEMOSTRACIÓN DE PROCEDIMIENTO CON CASE
+-- ============================================================
+CALL sp_categorizar_pago(1, @categoria);
+SELECT @categoria AS 'Categoría del pago 1';
+
+CALL sp_categorizar_pago(2, @categoria);
+SELECT @categoria AS 'Categoría del pago 2';
+
+-- ============================================================
+-- DEMOSTRACIÓN DE CURSOR CON WHILE
+-- ============================================================
+CALL sp_resumen_equipamiento();
+
+-- ============================================================
+-- EJECUCIÓN DEL INFORME PRINCIPAL Y CONSULTA DEL DASHBOARD
 -- ============================================================
 CALL sp_generar_informe_estadistico();
 
@@ -637,4 +899,16 @@ SELECT
     fecha_calculo    AS 'Calculado el'
 FROM Dashboard_Estadisticas
 ORDER BY id_stat;
+
+-- ============================================================
+-- MOSTRAR TABLA CREADA CON CREATE TABLE AS SELECT
+-- ============================================================
+SELECT * FROM Resumen_Ingresos_Socio;
+
+-- ============================================================
+-- MOSTRAR USUARIOS CREADOS (gestión de usuarios)
+-- ============================================================
+SELECT User, Host FROM mysql.user WHERE User LIKE '%fitnet%';
+SHOW GRANTS FOR 'admin_fitnet'@'localhost';
+SHOW GRANTS FOR 'consulta_fitnet'@'localhost';
 

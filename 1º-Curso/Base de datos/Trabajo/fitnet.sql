@@ -1,7 +1,5 @@
-
-CREATE DATABASE GestionGimnasio;
-USE GestionGimnasio;
-
+create database Gestion_Gimnasio;
+use Gestion_Gimnasio;
 CREATE TABLE Usuario (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -21,7 +19,7 @@ CREATE TABLE Entrenador (
 
 CREATE TABLE Socio (
     id_socio INT PRIMARY KEY, 
-    fecha_registro DATE DEFAULT (CURRENT_DATE),
+    fecha_registro DATE DEFAULT CURRENT_DATE,
     estado VARCHAR(50) DEFAULT 'Activo', 
     FOREIGN KEY (id_socio) REFERENCES Usuario(id_usuario) ON DELETE CASCADE
 );
@@ -80,8 +78,6 @@ CREATE TABLE Clase_Equipamiento (
     FOREIGN KEY (id_clase) REFERENCES Clase(id_clase),
     FOREIGN KEY (id_equipamiento) REFERENCES Equipamiento(id_equipamiento)
 );
-
-USE GestionGimnasio;
 
 INSERT INTO Usuario (id_usuario, nombre, apellido, email, telefono, fecha_nacimiento) VALUES
 (1, 'Carlos', 'Gómez', 'carlos.gomez@example.com', '600111222', '1980-03-15'),
@@ -220,13 +216,16 @@ where id_socio IN (
 --Borramos los registros de asistencia de las clases que no tuvieron ningún cupo lleno 
 --(clases donde el cupo máximo es muy alto pero la asistencia fue menor al 10%) 
 
-delete from Asistencia
-where id_clase in (
-    select id_clase 
-    from Clase 
-    where cupo_maximo > 15 
-    and id_clase not in (select id_clase from Asistencia group by id_clase HAVING COUNT(*) > 2)
-);
+delete a
+from Asistencia a
+join Clase c on a.id_clase = c.id_clase
+left join (
+    select id_clase, COUNT(*) as cnt
+    from Asistencia
+    group by id_clase
+) as ac on a.id_clase = ac.id_clase
+where c.cupo_maximo > 15
+and (ac.cnt is null or ac.cnt <= 2);
 
 --Vista que genera el "Dashboard de Gimnasio": une Usuario, Socio, Membresia y Entrenador 
 --para ver quién entrena a quién y qué membresía tiene cada uno 
