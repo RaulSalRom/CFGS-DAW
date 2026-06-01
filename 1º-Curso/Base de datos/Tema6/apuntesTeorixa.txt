@@ -1,0 +1,117 @@
+MongoDB funciona con una estructura dinámica a diferencia de SQL, un NoSQL puede cambiar de un registro a otro.
+
+Son más veloces ya que están diseñadas para aplicaciones como RRSS, perdiendo integridad a cambio de velocidad
+
+Se permite la redundancia de datos, es decir, podemos tener el mismo dato en varios lugares, para mejorar la velocidad de la consulta.
+
+CONCEPTOS DE MONGODB
+
+- Collecction : Es el equivalente a una tabla en SQL, es un conjunto de documentos.
+
+- Document : Es el equivalente a una fila en SQL, es un conjunto de campos y valores.
+
+- BSON : Es el formato de almacenamiento de MongoDB, es una representación binaria de JSON.
+
+- Campo _id y ObjectId : Cada documento necesita una primary key llamada _id, si no se introduce se genera automaticamente un ObjectId, que es un identificador único de 12 bytes, estos bytes se dividen en 3 partes:
+	- TIMESTAMP: 4 bytes
+	- Contador incremental: 3 bytes
+	- Los restantes un valor aleatorio generado a partir de la dirección MAC y el PID del proceso que lo genera.
+
+TIPOS DE DATOS
+
+Fechas : JSON no tiene un tipo de dato para fechas, MongoDB si, se almacena como un entero de 64 bits que representa el número de milisegundos desde el 1 de enero de 1970 con new Date() o new ISODate().
+
+Números : JSON solo ve "números" sin distinguir decimales de enteros, MongoDB tiene double (64 bits), int (32 bits), long (64 bits), decimal (128 bits)
+
+Objetos anidados : Campos que contienen otro documento JSON completo dentro de ellos (ej: un campo host que dentro tiene host_name y host_location). Para acceder a ellos en código se usa la notación de puntos (variable.objeto.campo).
+
+
+CONSULTAS
+
+$regex: Permite buscar cadenas de texto con patrones
+^: Se usa junto a $regex para buscar textos que empiecen por una palabra exacta
+$options: "i": Se añade a la expresión regular para que la búsqueda NO distinga entre mayúsculas y minúsculas
+Sintaxis: {"title": {"$regex": "the", $options: "i"}}
+
+1. Operadores Condicionales :
+$eq : Equal
+$ne : Not Equal
+$gt : Greater Than
+$gte : Greater Than or Equal
+$lt : Less Than
+$lte : Less Than or Equal
+$in : In
+$nin : Not In
+
+2. Operadores Lógicos :
+$and : AND lógico
+$or : OR lógico
+$not : NOT lógico
+
+3. Proyecciones y modificadores de consulta :
+
+.limit(n): Limita el resultado a un número máximo de registros.
+.skip(n): Salta u omite los primeros n documentos del resultado (muy útil para paginación).
+.sort({ campo: 1 }): Ordena los resultados. Usa 1 para orden ascendente y -1 para descendente.
+
+4. Operadores de actualización (updateOne(), updateMany(), findOneAndUpdate()): returnNewDocument: true para que devuelva el documento actualizado en lugar del original. returnDocument: "after" es la nueva forma de decir lo mismo que returnNewDocument: true.
+
+$currentDate: Establece el valor de un campo con la fecha o marca de tiempo actual. (Se puede usar con {$type: "timestamp"} o {$type: "date"})
+Uso combinado de arrays ($push + $each + $sort): Cuando usas $push con $each para añadir varios valores , puedes añadir también $sort: 1 para que los elementos del array se ordenen automáticamente al guardarse.
+
+$set: Establece el valor de un campo específico
+$unset: Elimina un campo
+$inc: Incrementa el valor de un campo numérico.
+$mul: Multiplica el valor de un campo numérico.
+$rename: Renombra un campo.
+$push: Agrega un valor a un array.
+$pull: Elimina un valor de un array. $pullAll: Elimina múltiples valores de un array.
+$addToSet: Agrega un valor a un array solo si no existe.
+$pop: Elimina el primer o último elemento de un array.
+$each: Se usa junto con $push para agregar múltiples valores a un array.
+$position: Se usa junto con $push para especificar la posición en la que se agregará el nuevo valor en un array.
+$slice: Se usa junto con $push para limitar el tamaño del array después de agregar un nuevo valor.
+
+
+
+5. Agregaciones y uniones:
+
+
+$match: Filtra los documentos igual que un find()
+$project: Moldea el documento, deciciendo qué campos pasan a la siguiente etapa
+
+$group: Agrupa los documentos por un campo específico y realiza operaciones de agregación como sum, avg, min, max, etc.
+Sintaxis: campo_nuevo: { $acumulador: "expresión_original" }.  Ejemplo: "numTitles": { $sum: 1 } (suma 1 por cada documento).  Ejemplo: "avgRuntime": { $avg: "$runtime" } (calcula el promedio del campo runtime).
+
+$lookup: Realiza una operación de unión entre dos colecciones, similar a un JOIN en SQL, requiere 4 parámetros:
+
+from (colección a unir),
+localField (campo de la colección actual)
+foreignField (campo de la colección a unir)
+as (nombre del nuevo campo que contendrá el resultado de la unión).
+
+
+Comandos Básicos de Consola
+cls: Limpia la consola
+show dbs: Muestra todas las bases de datos que tienen alguna colección
+db: Muestra en qué base de datos estamos trabajando actualmente
+use [nombreBD]: Selecciona la base de datos a usar; si no existe, la crea
+show collections: Muestra las colecciones de la base de datos en uso
+db.createCollection('nombre'): Crea una colección manualmente
+db.[coleccion].drop(): Elimina una colección entera
+db.dropDatabase(): Elimina la base de datos actual en uso
+
+
+Consultas específicas para Arrays:
+$all: Busca documentos donde el array contenga todos los elementos indicados, sin importar el orden ni el tamaño del array
+.$ (Proyección en arrays): Excluye todos los elementos del array excepto el elemento que hizo coincidencia en la búsqueda.
+Sintaxis: {"languages.$" : 1}.  $slice (Proyección en arrays): Limita los elementos devueltos de un array según su posición de índice (puedes pasarle números negativos para sacar los últimos elementos o rangos [x, y]).
+
+OPERACIONES CRUD
+
+insert( { ... } ): Crea un documento nuevo y, si la colección no existe, la crea
+insertMany( [ { ... }, { ... } ] ): Inserta varios documentos de golpe pasándolos dentro de un array [ ]
+deleteOne( { filtro } ): Elimina solo el primer documento que coincida con la búsqueda.  deleteMany( { filtro } ): Elimina todos los documentos que coincidan. (Ojo: si le pasas {} los borra todos )  findOneAndDelete( { filtro } ): Busca, elimina y te muestra el documento eliminado como respuesta
+replaceOne( { filtro }, { nuevo_documento } ): Reemplaza todo el documento original por uno completamente nuevo (manteniendo su _id)
+
+
