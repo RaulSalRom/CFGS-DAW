@@ -1,0 +1,117 @@
+TEORIA:
+PUNTO 1, 2 Y 3
+
+PRACTICO:
+HASTA EL 3.4 (incluido)
+
+TEORIA:
+1. Introducción a noSQL
+Bases de datos no relacionales ---> bases de datos noSQL
+
+Mongodb
+Es popular por poder almacenar datos estructurados y no estructurados.
+Fundado por Kevin P. Ryan, Dwight Merriman y Eliot Horowitz en NYC.
+Organización -->(primero) 10gen --> MongoDB (inspirados en el termino humongus)
+Diseño basado en documentos, con sintaxis intuitiva para consultas y comandos.
+
+2.Documentos y tipos de datos
+Muchas aplicaciones intercambian archivos en format Javascript Object Notation(JSON). MongoDB
+almacena los datos en formato JSON binario(BSON) y los representa en JSON legible por humanos
+
+Sintaxis del JSON
+Los documentos JSON, son un conjunto de texto sin formato de pares clave-valor.
+Los JSON tiene una estructura de un conjunto de llaves {}, corchetes[], dos puntos :,
+y comas ,.
+
+clave : valor
+En un objeto JSON, los pares clave-valor están encerrados con llaves {}. La clave es 
+siempre una cadena de texto y el valor puede ser cualquier tipo especificado por JSON.
+{key : value}
+
+Array 
+Un array es un conjunto de valores encerrados entre corchetes [] y separados por comas ,.
+[value1, value2, value3]
+
+Tipos de datos JSON
+La presencia de tipos de datos basicos proporcionadso por JSON reduce la complegidad:
+-String
+-Numero
+-Boolean
+-Objeto
+-Array
+-Null
+No distingue entre números enteros y flotantes.
+JSON no admite tipos de datos Fecha y estas solo se representan como cadenas simples.
+
+Documentos de Mongodb
+Una base de datos Mongodb se compone de colecciones y documentos. Una base de datos puede
+tener una o más colecciones, y cada colección puede almacenar uno o más documentos relacionados.
+En comparación con Sistema de Gestión de Bases de Datos Relacionales, las colecciones son analogas
+y los documentos son analogos a las filas. Pero los documentos son mucho más flexibles.
+
+Tipos de datos de MongoDB
+String: en MongoDB, los campos de cadena están codificados en UTF-8. Ademas, admiten 
+capacidades de búsqueda con expresiones regulares.
+
+Numbers   :   En MongoDB se admite los varios tipos de números. 
+    •double: punto flotante de 64 bits 
+    •int: entero de 32 bits con signo 
+    •long: entero sin signo de 64 bits 
+    •decimal: punto flotante de 128 bits, que cumple con IEE 754 
+
+Booleans: se utiliza para representar si algo es verdadero o falso.
+
+Null   :   Nulo es un tipo de datos especial en un documento y denota un campo que no contiene un 
+valor. El campo nulo solo puede tener nulo como valor. 
+
+
+Objects: Se utilizan para representar documentos ANIDADOS o INCRUSTADOS, es decir, un 
+campo cuyo valor es otro documento JSON válido. 
+El siguiente documento tiene otro documento anidado llamado "host" 
+El valor del campo de host es otro documento de JSON. MongoDB usa una notación de puntos . 
+para acceder a los objetos anidados.
+Para acceder a un documento anidado, podemos crear una variable y a partir de ahi usar la 
+notacion de punto para acceder al documento anidado.
+Ejemplo: Acceder la informacion del host_name del documento listing.
+"host_name" es un campo que está dentro del documento "host" que a su vez es un 
+documento anidado del documento principal listing almacenado en una variable.
+listing.host.host_name 
+
+
+Array: es una colección de cero o más valores que deben estar encerrado con corchetes [ ]. En 
+MongoDB, no hay límite para la cantidad de elementos que puede contener un array o la cantidad 
+de arrays que puede tener un documento. Sin embargo, el tamaño total del documento no debe 
+exceder los 16 MB. 
+
+Se puede acceder a cada elemento de un array utilizando su posición de índice. El número de 
+índice se incluye entre corchetes. (Los índices empiezan desde 0). 
+
+Un array puede contener cualquier campo de tipo de datos válido de MongoDB, incluso arrays 
+anidados. Esto se puede ver en el siguiente ejemplo: 
+
+ObjectId: Cada documento de una colección debe tener un _id que contenga un valor único. 
+Este campo actúa como clave principal para estos documentos. Las claves primarias se utilizan 
+para identificar de forma única los documentos y siempre están indexadas. El valor del campo _id 
+debe ser único en una colección.
+
+Si inserta un documento sin un campo _id, el controlador MongoDB generará automáticamente 
+una ID única y la agregará al documento. Cuando el controlador agrega automáticamente el campo 
+_id, el valor se genera mediante ObjectId.
+El valor ObjectId está diseñado para generar código ligero que es único en diferentes máquinas. 
+Genera un valor único de 12 bytes, donde los primeros 4 bytes representan la marca de tiempo, los 
+bytes 5 a 9 representan un valor aleatorio y los últimos 3 bytes son un contador incremental.
+
+Fechas   :   MongoDB si admite tipos de fecha explícitamente. Puesto que en JSON no admiten tipos 
+de fecha porque se representan como cadenas sin formato.
+Las fechas de MongoDB se almacenan en forma de milisegundos desde el 1 de enero de 1970. 
+
+Para almacenar la representación de milisegundos de una fecha, MongoDB usa un entero de 64 bits 
+( long ). Todas las fechas se almacenan en UTC y no hay una zona horaria asociada a ellas.
+Puede crear instancias de fecha usando Date () , new Date () o new ISODate ()
+
+Las fechas creadas con un new Date () o new ISODate () siempre estarán en UTC, y las 
+creadas con Date () estarán en la zona horaria local.
+
+
+Date() usa la representación de fecha de JavaScript, que está en forma de cadenas simples. No 
+son útiles para la comparación o manipulación.
