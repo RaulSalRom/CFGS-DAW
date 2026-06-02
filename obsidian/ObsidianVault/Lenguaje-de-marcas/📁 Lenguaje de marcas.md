@@ -9,6 +9,8 @@
 - [[LM-Tema3|Flexbox y Grid]] - Layout moderno
 - [[LM-Tema4|Animaciones y Transiciones]] - movemento y efectos
 - [[LM-Tema5|CSS Moderno]] - Nuevas funcionalidades
+- [[HTML-Cheatsheet-Manu|HTML Cheatsheet (Manz)]] - Referencia rápida HTML
+- [[CSS-Cheatsheet-Manu|CSS Cheatsheet (Manz)]] - Referencia rápida CSS
 
 ## 🏷️ Tags
 #asignatura #html #css #web
