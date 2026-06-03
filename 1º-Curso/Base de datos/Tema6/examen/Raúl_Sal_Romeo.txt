@@ -1,0 +1,30 @@
+1. db.pokedex.findOne({"id" : 25}, {"name.english" : 1, "type" : 1, _id : 0})
+
+2.db.pokedex.find({"base.HP" : {$gt : 100}})
+
+3.db.pokedex.find({}, {"name.english": 1, "name.japanese": 1, "base.Speed": 1, _id: 0}).sort({"base.Speed": 1}).limit(5)
+
+4.db.pokedex.find({"type.0" : "Fire"}, {"name.english" : 1, "name.japanese" : 1, "type" : 1, _id : 0})
+
+5.db.pokedex.find({$or :[{"type" : "Dark"}, {"type" : "Ghost"}]}, {"name.english" : 1,  _id : 0})
+
+6.db.pokedex.insertOne({"id" : 1000,
+                      "name":{
+                        "english" : "Testmon",
+                        "japanese" : "テストモン",
+                        "chinese" : "测试怪",
+                        "french" : "Testmon"
+                      },
+                     "type" : ["Phychic", "Fairy"],
+                      "base": {
+                        "HP" : 100,
+                        "Attack" : 120,
+                        "Defense" : 80,
+                        "Sp. Attack" : 130,
+                        "Sp. Defense" : 90,
+                        "Speed" : 95
+                      }
+                     })
+7. db.moves.deleteMany({"power": null})
+
+8.db.pokedex.updateMany({"name.english": {$in: ["Mewtwo", "Rayquaza"]}},{$set: {"legendary": true}})
