@@ -1,6 +1,6 @@
 # CFGS-DAW - Desarrollo de Aplicaciones Web
 
-Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado superior (1º curso, 2025-2026).
+Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado superior (1º y 2º curso, 2025-2026).
 
 ---
 
@@ -19,8 +19,6 @@ CFGS-DAW/
 │   ├── Sistemas Informaticos/   # Linux, redes, bash scripting
 │   └── Sostenibilidad/          # Economía verde, medio ambiente, IA ética
 │
-├── Cursos aparte/
-│   └── Curso Javascript/        # Apuntes de JavaScript
 │
 ├── obsidian/
 │   └── ObsidianVault/           # Vault de Obsidian con apuntes por asignatura
@@ -32,7 +30,7 @@ CFGS-DAW/
 
 ---
 
-## Asignaturas
+## Asignaturas de primero
 
 | Asignatura | Contenido |
 |------------|-----------|
@@ -46,10 +44,3 @@ CFGS-DAW/
 | Sostenibilidad | Economía verde, residuo cero, IA ética |
 
 ---
-
-## Recursos
-
-- [Documentación Java](https://docs.oracle.com/javase/)
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [MySQL Documentation](https://dev.mysql.com/doc/)
-- [Linux Commands](https://linux.die.net/man/)
