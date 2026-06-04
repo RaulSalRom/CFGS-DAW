@@ -9,17 +9,27 @@ Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado supe
 ```
 CFGS-DAW/
 ├── 1º-Curso/
-│   ├── Base de datos/           # SQL, MySQL, procedimientos, triggers, cursores
+│   ├── Base de datos/           # SQL, MySQL, procedimientos, triggers, cursores, MongoDB
 │   ├── Digitalizacion/          # Ciberseguridad, transformación digital
-│   ├── Entorno de desarrollo/   # Testing, Scrum, metodologías
-│   ├── IPE/                     # Instalación y planificación
-│   ├── Lenguaje de marcas/      # HTML, CSS, XML
+│   ├── Entorno de desarrollo/   # Caja negra, caja balnca, SCRUM...
+│   ├── IPE/                     # Nominas, PRL...
+│   ├── Lenguaje de marcas/      # HTML, CSS, dbdiagram
 │   ├── Programacion/            # Java, POO, estructuras de datos
 │   │   └── Java/eclipse-workspace/  # Proyectos Eclipse organizados por temas
 │   ├── Sistemas Informaticos/   # Linux, redes, bash scripting
 │   └── Sostenibilidad/          # Economía verde, medio ambiente, IA ética
 │
-│
+├── 2º-Curso/
+│   ├── Desarrollo web en entorno cliente/          
+│   ├── Desarrollo web en entorno servidor/     
+│   ├── Despliegue de aplicaciones web/   
+│   ├── Digitalizacion/ 
+│   ├── Diseño de interfaces web/ 
+│   ├── Ingles profesional/
+│   ├── IPE 2/   
+│   ├── Modulo optativo/  
+│   ├── Proyecto intermodular/  
+│   └── Sostenibilidad/
 ├── obsidian/
 │   └── ObsidianVault/           # Vault de Obsidian con apuntes por asignatura
 │
