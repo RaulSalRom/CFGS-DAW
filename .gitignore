@@ -12,10 +12,6 @@ bin/
 .DS_Store
 Thumbs.db
 
-# Obsidian Vault - Config (ignorar, no subir)
-obsidian/ObsidianVault/.obsidian/
-obsidian/ObsidianVault/workspace.json
-obsidian/ObsidianVault/graph.json
 *.md.bak
 
 # Notas personales

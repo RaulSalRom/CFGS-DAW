@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "obsidian/ObsidianVault/Base-de-datos/📁 Base de datos.md",
+                "file": "Base-de-datos/📁 Base de datos.md",
                 "mode": "source",
                 "source": false
               },
@@ -182,7 +182,6 @@
   },
   "active": "7f517714dc99f3a1",
   "lastOpenFiles": [
-    "obsidian/Sin título.canvas",
-    "obsidian/ObsidianVault/Sin título.canvas"
+    "Sin título.canvas"
   ]
 }
