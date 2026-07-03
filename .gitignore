@@ -21,3 +21,7 @@ Thumbs.db
 .idea/
 *.iml
 .vscode/Proyecto-Integrador/
+
+# opencode
+.opencode/node_modules/
+.opencode/package-lock.json
