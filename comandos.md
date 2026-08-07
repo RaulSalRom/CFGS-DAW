@@ -25,7 +25,7 @@
 
 -cat: muestra el contenido de un archivo.
 
--nano, vi, jed: editores de texto en terminal. nano es fácil de usar, vi más simple, y jed recomendado para HTML.
+-nano: editor de texto en terminal.
 
 -df: muestra el espacio en disco. Con df -m en megabytes.
 
@@ -33,10 +33,6 @@
 
 -zip y unzip: comprimen y descomprimen archivos ZIP.
 
--uname: muestra información del sistema. Con uname -a se obtiene información completa.
-
--chmod: cambia permisos y hace ejecutables los archivos. Ejemplo: chmod +x script.py.
-
--hostname: muestra el nombre de host y dirección IP. Con hostname -I se muestra la IP.
+-chmod: cambia permisos y hace ejecutables los archivos. 
 
 -ping: comprueba la conexión con un servidor. Ejemplo: ping google.com
