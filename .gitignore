@@ -25,3 +25,4 @@ Thumbs.db
 # opencode
 .opencode/node_modules/
 .opencode/package-lock.json
+.obsidian
