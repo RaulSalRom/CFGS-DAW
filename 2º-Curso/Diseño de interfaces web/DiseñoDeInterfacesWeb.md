@@ -3,7 +3,7 @@
 -semi duplex
 -duplex
 
-
+--
 ## ejemplos de comunicaciones enfocado en la informatica:
 
 Sistema:
@@ -35,29 +35,29 @@ A mayor numero de frecuencias mas capacidad de operacion que tiene
 
 
 
-
+--
 
 
 # Tipos de sistemas operativos
 ## Monolitico
 - SO
--HARDWARE
+- HARDWARE
 
 ## Capas
--Aplicacion
--Gestor de ficheros
--Gestion de memoria
--Gestion entrada/salida
--Hardware
+- Aplicacion
+- Gestor de ficheros
+- Gestion de memoria
+- Gestion entrada/salida
+- Hardware
 
 ## Servidores
--Gestion de entrada y salida
--Gestion de memoria
--Gestion de ficheros
--Hardware
+- Gestion de entrada y salida
+- Gestion de memoria
+- Gestion de ficheros
+- Hardware
 
 ## Maquinas virtuales
 - SO1 y SO2
--Maquina virtual
--SO host
--Hardware
+- Maquina virtual
+- SO host
+- Hardware
