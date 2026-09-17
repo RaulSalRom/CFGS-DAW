@@ -26,3 +26,5 @@ Thumbs.db
 .opencode/node_modules/
 .opencode/package-lock.json
 .obsidian
+# PDFs grandes
+*.pdf

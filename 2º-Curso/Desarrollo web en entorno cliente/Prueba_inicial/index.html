@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba inicial</title>
+</head>
+<body>
+
+  <div class="caja">
+    <h1>Calculadora de IVA</h1>
+
+    <!-- Campo numérico para el precio base -->
+    <label for="precio">Precio base (€):</label>
+    <input type="number" id="precio" step="0.01" placeholder="Ej: 100">
+
+    <!-- Selector del tipo de IVA: el value es el porcentaje -->
+    <label for="iva">Tipo de IVA:</label>
+    <select id="iva">
+      <option value="21">General: 21%</option>
+      <option value="10">Reducido: 10%</option>
+      <option value="5">Superreducido: 5%</option>
+    </select>
+
+    <!-- Botón de calcular (type="button" para que no recargue la página) -->
+    <button type="button" id="calcular">Calcular</button>
+
+    <!-- Aquí se muestra el error y el desglose -->
+    <p id="error"></p>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    // 1) Cogemos los elementos del HTML por su id
+    var inputPrecio = document.getElementById("precio");
+    var selectIva = document.getElementById("iva");
+    var boton = document.getElementById("calcular");
+    var error = document.getElementById("error");
+    var resultado = document.getElementById("resultado");
+
+    // 2) Escuchamos el clic del botón
+    boton.addEventListener("click", function () {
+      // 3) Leemos los valores introducidos
+      // Precio: lo convertimos a número decimal con parseFloat
+      var precio = parseFloat(inputPrecio.value);
+      // IVA: el value del select también es texto, lo pasamos a número
+      var tipoIva = parseFloat(selectIva.value);
+
+      // Limpiamos el resultado anterior y el error
+      resultado.innerHTML = "";
+      error.textContent = "";
+
+      // 4) Validamos el precio: debe ser un número mayor que 0
+      if (isNaN(precio) || precio <= 0) {
+        error.textContent = "Error: introduce un precio válido mayor que 0.";
+        return; // salimos de la función y no calculamos nada
+      }
+
+      // 5) Datos correctos: calculamos el importe del IVA y el total
+      var importeIva = precio * tipoIva / 100;
+      var precioFinal = precio + importeIva;
+
+      // 6) Inyectamos el desglose dentro del documento sin recargar
+      resultado.innerHTML =
+        "Precio base: " + precio.toFixed(2) + " €<br>" +
+        "IVA (" + tipoIva + "%): " + importeIva.toFixed(2) + " €<br>" +
+        "<strong>Precio final: " + precioFinal.toFixed(2) + " €</strong>";
+    });
+  </script>
+
+</body>
+</html>
