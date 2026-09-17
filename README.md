@@ -8,7 +8,7 @@ Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado supe
 
 ```
 CFGS-DAW/
-├── 1º-Curso/
+├── 1º-Curso(kursaal)/
 │   ├── Base de datos/           # SQL, MySQL, procedimientos, triggers, cursores, MongoDB
 │   ├── Digitalizacion/          # Ciberseguridad, transformación digital
 │   ├── Entorno de desarrollo/   # Caja negra, caja balnca, SCRUM...
@@ -20,22 +20,17 @@ CFGS-DAW/
 │   └── Sostenibilidad/          # Economía verde, medio ambiente, IA ética
 │
 ├── 2º-Curso/
-│   ├── Desarrollo web en entorno cliente/          
-│   ├── Desarrollo web en entorno servidor/     
-│   ├── Despliegue de aplicaciones web/   
-│   ├── Digitalizacion/ 
-│   ├── Diseño de interfaces web/ 
-│   ├── Ingles profesional/
-│   ├── IPE 2/   
-│   ├── Modulo optativo/  
-│   ├── Proyecto intermodular/  
-│   └── Sostenibilidad/
-├── obsidian/
-│   └── ObsidianVault/           # Vault de Obsidian con apuntes por asignatura
+│   ├── Desarrollo web en entorno cliente/   # JavaScript, DOM, eventos, fetch
+│   ├── Desarrollo web en entorno servidor/  # PHP, formularios, sesiones, PDF del libro
+│   ├── Despliegue de aplicaciones web/      # Servidores, contenedores, CI/CD
+│   ├── Diseño de interfaces web/            # Comunicaciones, ciclos de reloj, jerarquía de memoria
+│   ├── IPE II/                              # Orientación laboral, ofertas de empleo
+│   ├── Inglés profesional/                  # Inglés técnico
+│   └── Proyecto intermodular/               # Proyecto final del ciclo
 │
-├── opencode.json                # Configuración del servidor OpenCode
-├── tui.json                     # Tema y preferencias de la terminal OpenCode
-└── .gitignore                   # Archivos ignorados por Git
+├── .obsidian/                   # Configuración del vault de Obsidian
+├── .gitignore                   # Archivos ignorados por Git
+└── README.md                    # Este archivo
 ```
 
 ---
@@ -52,5 +47,19 @@ CFGS-DAW/
 | Digitalizacion | Ciberseguridad, retos, transformación digital |
 | IPE | Instalación y planificación |
 | Sostenibilidad | Economía verde, residuo cero, IA ética |
+
+---
+
+## Asignaturas de segundo
+
+| Asignatura | Contenido |
+|------------|-----------|
+| Desarrollo web en entorno cliente | JavaScript, DOM, eventos, fetch, prueba inicial (HTML + JS) |
+| Desarrollo web en entorno servidor | PHP, formularios, sesiones, libro de servidor (PDF) |
+| Despliegue de aplicaciones web | Servidores web, contenedores, CI/CD |
+| Diseño de interfaces web | Comunicaciones, ciclos de reloj, jerarquía de memoria |
+| IPE II | Orientación laboral, análisis de ofertas de empleo |
+| Inglés profesional | Inglés técnico aplicado al desarrollo |
+| Proyecto intermodular | Proyecto final integrador del ciclo |
 
 ---
