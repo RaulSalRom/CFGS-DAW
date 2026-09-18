@@ -80,7 +80,3 @@ El portal filtra los currículums buscando palabras clave coincidentes con la of
 - **Imagen como empresa:** tiene **poca presencia pública** y no existe mucha información corporativa contrastada. **Recomendación:** antes de inscribirse conviene **investigar bien la oferta** (portal oficial, presencia web/redes, datos de contacto reales) para confirmar la empresa y descartar ofertas poco transparentes. Es una práctica habitual en bolsas de empleo y conviene ser prudente.
 
 ---
-
-> **Nota personal:** las respuestas de los apartados 2 y 3 están redactadas para un perfil general de estudiante de DAW. Ajusta a tu caso concreto: tu nivel real de inglés, tus proyectos del ciclo, tu stack favorito y el salario que quieres pedir.
-
-> **Ojo:** las ofertas de empleo caducan. Antes de entregar, revisa en cada portal (LinkedIn, InfoJobs e Indeed) que sigan publicadas y, si hace falta, sustitúyelas por otras equivalentes de tu provincia usando las mismas palabras clave.
