@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "horarios.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "horarios"
             }
           }
         ]
@@ -184,8 +184,13 @@
   },
   "active": "7f517714dc99f3a1",
   "lastOpenFiles": [
-    "notas.md",
+    "2º-Curso/IPE II/Ipe II 2025.pdf",
+    "2º-Curso/Ipe II 2025.pdf",
+    "Ipe II 2025.pdf",
     "comandos.md",
+    "horarios.md",
+    "README.md",
+    "notas.md",
     "Sin título.canvas"
   ]
 }
