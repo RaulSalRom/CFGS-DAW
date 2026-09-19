@@ -1,6 +1,6 @@
 # CFGS-DAW - Desarrollo de Aplicaciones Web
 
-Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado superior (1º y 2º curso, 2025-2026).
+Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado superior (1º y 2º curso, 2025-2027).
 
 ---
 
@@ -19,7 +19,7 @@ CFGS-DAW/
 │   ├── Sistemas Informaticos/   # Linux, redes, bash scripting
 │   └── Sostenibilidad/          # Economía verde, medio ambiente, IA ética
 │
-├── 2º-Curso/
+├── 2º-Curso(kuursal)/
 │   ├── Desarrollo web en entorno cliente/   # JavaScript, DOM, eventos, fetch
 │   ├── Desarrollo web en entorno servidor/  # PHP, formularios, sesiones, PDF del libro
 │   ├── Despliegue de aplicaciones web/      # Servidores, contenedores, CI/CD
@@ -50,6 +50,21 @@ CFGS-DAW/
 
 ---
 
+## 📊 Notas por asignatura de primero
+
+| Asignatura              | Nota |
+|-------------------------|:----:|
+| IPE                     |  9   |                   
+| Sistemas Informáticos   |  7   |                             
+| Digitalización          |  7   |                             
+| Lenguaje de marcas      |  7   |                             
+| Base de datos           |  6   |                             
+| Programación            |  6   |                             
+| Entorno de desarrollo   |  6   |                             
+| Sostenibilidad          |  5   |                  
+
+---
+
 ## Asignaturas de segundo
 
 | Asignatura | Contenido |
@@ -63,3 +78,24 @@ CFGS-DAW/
 | Proyecto intermodular | Proyecto final integrador del ciclo |
 
 ---
+# Horario — 2º DAW
+
+| Hora | Lunes | Martes | Miércoles | Jueves | Viernes |
+|------|-------|--------|-----------|--------|---------|
+| 15:45-16:45 | Inglés (Guillén) | DIWEB (Navarro) | Optativa (Ocaña) | DWEC (Carvajal) | Despliegue (Vizuete) |
+| 16:45-17:45 | DIWEB (Navarro) | IPE II (Téllez) | IPE II (Téllez) | DWEC (Carvajal) | DWES (Amado) |
+| 17:45-18:45 | DIWEB (Navarro) | DWEC (Carvajal) | Despliegue (Vizuete) | IPE II (Téllez) | DWES (Amado) |
+| 19:00-20:00 | DWES (Amado) | Inglés (Guillén) | DIWEB (Navarro) | DWEC (Carvajal) | DWEC (Carvajal) |
+| 20:00-21:00 | DWES (Amado) | Proyecto (Tello) | DIWEB (Navarro) | Optativa (Ocaña) | DWEC (Carvajal) |
+| 21:00-22:00 | DWES (Amado) | Proyecto (Tello) | DWES (Amado) | Optativa (Ocaña) | DWES (Amado) |
+
+## Leyenda
+
+- Inglés = Inglés Profesional GS
+- DIWEB = Diseño de Interfaces Web
+- IPE II = Itinerario Personal para la Empleabilidad II
+- DWEC = Desarrollo Web Entorno Cliente
+- DWES = Desarrollo Web Entorno Servidor
+- Proyecto = Proyecto Intermodular DAW
+- Optativa = Gestores de Contenido
+- Despliegue = Despliegue de Aplicaciones
