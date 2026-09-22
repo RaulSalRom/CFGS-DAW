@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2 - Captura de Evento Clic</title>
+</head>
 <body>
-  <h1 id="titulo">Modificando el código HTML</h1>
-  <p id="prueba">Modificando el contenido.</p>
-  <!-- Al hacer clic, document.getElementById localiza el nodo y cambia su texto interno -->
-  <button type="button" onclick="document.getElementById('prueba').innerHTML = 'CAMBIANDO el contenido!'">
-    ¡Dale!
+  <p id="saludo">Hallo!.</p>
+
+  <button type="button" onclick="document.getElementById('saludo').innerHTML = '¡Hola!'; document.getElementById('saludo').style.color = 'red';">
+    Español
   </button>
-  <button type="button2" onclick="document.getElementById('prueba').innerHTML = 'CAMBIANDO el encabezado!'; document.getElementById('titulo').innerHTML = 'CAMBIANDO el encabezado!'">    
-    ¡Cambia ambos!
+
+ <button type="button" onclick="document.getElementById('saludo').innerHTML = 'Hello!'; document.getElementById('saludo').style.color = 'purple';">   
+    Inglés
   </button>
-  <script>
-    const boton = document.getElementById('botton2');
-    boton.addEventListener('click', function() {
-        console.log('Infomración: Se ha hecho clic en el botón');
-    });
-</script>
+
+   <button type="button" onclick="document.getElementById('saludo').innerHTML = 'Здравствуйте!'; document.getElementById('saludo').style.color = 'orange';">
+    Ruso
+  </button>
 </body>
 </html>
