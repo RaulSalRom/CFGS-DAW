@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1 id="titulo">Modificando el código HTML</h1>
+  <p id="prueba">Modificando el contenido.</p>
+  <!-- Al hacer clic, document.getElementById localiza el nodo y cambia su texto interno -->
+  <button type="button" onclick="document.getElementById('prueba').innerHTML = 'CAMBIANDO el contenido!'">
+    ¡Dale!
+  </button>
+  <button type="button2" onclick="document.getElementById('prueba').innerHTML = 'CAMBIANDO el encabezado!'; document.getElementById('titulo').innerHTML = 'CAMBIANDO el encabezado!'">    
+    ¡Cambia ambos!
+  </button>
+  <script>
+    const boton = document.getElementById('botton2');
+    boton.addEventListener('click', function() {
+        console.log('Infomración: Se ha hecho clic en el botón');
+    });
+</script>
+</body>
+</html>

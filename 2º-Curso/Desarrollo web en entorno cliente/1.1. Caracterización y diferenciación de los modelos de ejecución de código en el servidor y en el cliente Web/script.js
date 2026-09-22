@@ -14,7 +14,7 @@ document.getElementById("btnGenerar").addEventListener("click", () => {
 
   catalogoProductos = [];
 
-  const TOTAL_REGISTROS = 150000;
+  const TOTAL_REGISTROS = 5000000;
 
   for (let i = 1; i <= TOTAL_REGISTROS; i++) {
 
