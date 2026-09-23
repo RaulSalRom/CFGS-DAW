@@ -80,3 +80,42 @@ El portal filtra los currículums buscando palabras clave coincidentes con la of
 - **Imagen como empresa:** tiene **poca presencia pública** y no existe mucha información corporativa contrastada. **Recomendación:** antes de inscribirse conviene **investigar bien la oferta** (portal oficial, presencia web/redes, datos de contacto reales) para confirmar la empresa y descartar ofertas poco transparentes. Es una práctica habitual en bolsas de empleo y conviene ser prudente.
 
 ---
+
+Tarea 2: Video Currículum
+
+Realizar un video currículum.
+
+Graba tu video currículum (2 a 3 minutos):
+
+    Cuida la iluminación y la calidad del sonido
+    Utiliza ropa adecuada para una entrevista
+    Cuida el lenguaje, evita muletillas y presta atención a los gestos
+    Presentate de forma breve (experiencia y formación)
+    Explica que empleo buscas
+
+Puedes usar una oferta real de empleo a la que envías tu candidatura.
+
+SE MUY ORIGINAL: usa subtítulos, iconos, etc..... Recuerda que debes llamar la atención del seleccionador, por ello es muy importante resaltar todo aquello que te diferencia del resto de candidatos y todas tus fortalezas. 
+
+
+Tarea 4: Actividades
+
+En la libreta
+
+    Marcos ha sido seleccionado para una entrevista de trabajo y te pide ayuda para saber como se la tiene que preparar. Indica: qué debe hacer antes de la entrevista, como debe ser su comunicación verbal y no verbal. Pon ejemplos.
+    Rocío ha sido seleccionada en un empresa. Fue recomendada por su mejor amiga del CFGS que sabe que es constante y tiene muy buenas calificaciones. ¿Qué proceso de selección se ha llevado en este caso? Indica cuáles son las reglas para poder conseguir una buena red de contactos. 
+    A través de Linkedln un reclutador se ha puesto en contacto con Roberto. Le ha pedido que el envíe su CV y le ha ofrecido un puesto de empleo. ¿Por qué usar Linkelin si estás estudiando FP? ¿Qué consejos seguirías para empezar a usar Linkdln?
+    Carmen está muy interesada en trabajar en una empresa de su sector, pero actualmente no hay procesos de selección abiertos. ¿Qué puede hacer Carmen? Explica brevemente los pasos a seguir. 
+
+
+
+
+
+Tarea 5: Mi marca personal
+
+En la libreta.
+
+    Diferencia entre identidad digital y huella digital. Define los conceptos. 
+    ¿Qué es la marca personal?
+    ¿Crees que es importante la marca personal?
+    ¿Qué pasos se deben seguir para crear la marca personal?
