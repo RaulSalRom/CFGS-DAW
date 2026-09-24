@@ -11,10 +11,14 @@
             "id": "bbd9a19474ed717f",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "type": "markdown",
+              "state": {
+                "file": "obsidian/2º-Curso/IPE II.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "IPE II"
             }
           }
         ]
@@ -180,6 +184,11 @@
   },
   "active": "bbd9a19474ed717f",
   "lastOpenFiles": [
+    "obsidian/2º-Curso/Desarrollo web en entorno servidor.md",
+    "obsidian/README.md",
+    "obsidian/2º-Curso/Desarrollo web en entorno cliente.md",
+    "obsidian/1º-Curso/Base de datos.md",
+    "README.md",
     "-h ${archivo}.md",
     "2º-Curso/Desarrollo web en entorno cliente/DesarrolloWebEnEntornoCliente.md",
     "2º-Curso/IPE II/Ipe II 2025.pdf",
@@ -187,7 +196,6 @@
     "Ipe II 2025.pdf",
     "comandos.md",
     "horarios.md",
-    "README.md",
     "notas.md",
     "Sin título.canvas"
   ]

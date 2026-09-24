@@ -1,0 +1,25 @@
+<!-- Ejercicio 1:  Añadir un segundo botón al ejemplo de los apuntes, al pulsarlo, no solo 
+altere el párrafo sino que cambie también el texto del encabezado <h1> mediante 
+document.getElementById() y innerHTML. -->
+<!DOCTYPE html> 
+<html> 
+<body> 
+  <h1 id="encabezado">Modificando el codigo HTML</h1> 
+  <p id="prueba">Modificando el contenido.</p> 
+  <!-- Al hacer clic, document.getElementById localiza el nodo y cambia su texto interno --> 
+  <button type="button" onclick="document.getElementById('prueba').innerHTML = 'CAMBIANDO el contenido!'"> 
+    ¡Dale! 
+  </button> 
+  <button type="button"; onclick="cambiarParrafo(); cambiarEncabezado();"> 
+    Alteracion de parrafo y de encabezado <h1>
+  </button>
+  <script>
+    function cambiarParrafo(){
+        document.getElementById('prueba').innerHTML = 'CAMBIANDO el contenido del parrafo!';
+    }
+    function cambiarEncabezado(){
+        document.getElementById('encabezado').innerHTML = 'CAMBIANDO el contenido del encabezado!';
+    }
+  </script>
+</body> 
+</html>

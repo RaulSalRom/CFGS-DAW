@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html> 
+<body> 
+  
+    <h1 id="encabezado">TITULO</h1> 
+    <p id="prueba">Sistema de espera.</p>
+     <button id="botonConsola" type="button"; onclick="botonConsole()"> 
+        console.log
+     </button> 
+    <button id="botonEstilo" type="button"; onclick="botonEstilo()"> 
+        Modificacion del parrafo
+     </button>
+    <button id="botonAlerta" type="button"; onclick="botonAlerta()"> 
+        Alerta
+     </button>
+    <script>
+        
+        function botonConsole(){
+            let date = new Date().toLocaleDateString();
+            console.log(date);
+        }
+        function botonEstilo(){
+            document.getElementById("prueba").innerHTML = "Sistema activo";
+            document.getElementById("prueba").style.color = "green";
+        }
+        function botonAlerta(){
+            window.alert("El proceso se ha completado correctamente");
+        }
+
+    </script>
+</body>
+</html>

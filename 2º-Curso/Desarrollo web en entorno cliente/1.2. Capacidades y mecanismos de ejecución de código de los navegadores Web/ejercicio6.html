@@ -1,0 +1,36 @@
+<!--Transformar el código para generar los textos directamente en el flujo 
+de la página mediante el método document.write().-->
+<!DOCTYPE html> 
+<html> 
+<body> 
+  
+    <h1 id="encabezado">Modificando el codigo HTML</h1> 
+    <p id="prueba">Modificando el contenido.</p>
+
+    <button id="botonEspanol" type="button"; onclick="cambioEspanol()"> 
+        Espanol
+     </button> 
+    <button id="botonIngles" type="button"; onclick="cambioIngles()"> 
+        Ingles
+     </button>
+    <button id="botonRuso" type="button"; onclick="cambioRuso()"> 
+        Ruso
+     </button>
+  <script>
+    function botonesHTML(){
+        return '<button type="button" onclick="cambioEspanol()">Espanol</button>'
+            + '<button type="button" onclick="cambioIngles()">Ingles</button>'
+            + '<button type="button" onclick="cambioRuso()">Ruso</button>';
+    }
+    function cambioEspanol(){
+        document.write("Hola<br>" + botonesHTML());
+    }
+    function cambioIngles(){
+        document.write("Hello<br>" + botonesHTML());
+    }
+    function cambioRuso(){
+        document.write("Привет<br>" + botonesHTML());
+    }
+  </script>
+</body> 
+</html>
