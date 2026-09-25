@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test de siete preguntas</title>
+</head>
+<body>
+  <h1>Test de siete preguntas</h1>
+
+  <p id="pregunta1">Google Chrome utiliza los motores Blink y V8.</p>
+  <button type="button" onclick="responderPregunta1(true)">Verdadero</button>
+  <button type="button" onclick="responderPregunta1(false)">Falso</button>
+
+  <p id="pregunta2">Firefox utiliza los motores Gecko y SpiderMonkey.</p>
+  <button type="button" onclick="responderPregunta2(true)">Verdadero</button>
+  <button type="button" onclick="responderPregunta2(false)">Falso</button>
+
+  <p id="pregunta3">localStorage borra sus datos al cerrar la pestaña.</p>
+  <button type="button" onclick="responderPregunta3(true)">Verdadero</button>
+  <button type="button" onclick="responderPregunta3(false)">Falso</button>
+
+  <p id="pregunta4">sessionStorage conserva los datos mientras la pestaña siga abierta.</p>
+  <button type="button" onclick="responderPregunta4(true)">Verdadero</button>
+  <button type="button" onclick="responderPregunta4(false)">Falso</button>
+
+  <p id="pregunta5">Cambiar únicamente el color de un texto provoca siempre un reflow.</p>
+  <button type="button" onclick="responderPregunta5(true)">Verdadero</button>
+  <button type="button" onclick="responderPregunta5(false)">Falso</button>
+
+  <p id="pregunta6">El DOM representa de forma estructurada los elementos de una página web.</p>
+  <button type="button" onclick="responderPregunta6(true)">Verdadero</button>
+  <button type="button" onclick="responderPregunta6(false)">Falso</button>
+
+  <p id="pregunta7">window.alert() bloquea la ejecución hasta que el usuario acepta el aviso.</p>
+  <button type="button" onclick="responderPregunta7(true)">Verdadero</button>
+  <button type="button" onclick="responderPregunta7(false)">Falso</button>
+
+  <script>
+    function responderPregunta1(respuesta) {
+      if (respuesta === true) {
+        document.getElementById("pregunta1").style.color = "green";
+      } else {
+        document.getElementById("pregunta1").style.color = "red";
+      }
+    }
+
+    function responderPregunta2(respuesta) {
+      if (respuesta === true) {
+        document.getElementById("pregunta2").style.color = "green";
+      } else {
+        document.getElementById("pregunta2").style.color = "red";
+      }
+    }
+
+    function responderPregunta3(respuesta) {
+      if (respuesta === false) {
+        document.getElementById("pregunta3").style.color = "green";
+      } else {
+        document.getElementById("pregunta3").style.color = "red";
+      }
+    }
+
+    function responderPregunta4(respuesta) {
+      if (respuesta === true) {
+        document.getElementById("pregunta4").style.color = "green";
+      } else {
+        document.getElementById("pregunta4").style.color = "red";
+      }
+    }
+
+    function responderPregunta5(respuesta) {
+      if (respuesta === false) {
+        document.getElementById("pregunta5").style.color = "green";
+      } else {
+        document.getElementById("pregunta5").style.color = "red";
+      }
+    }
+
+    function responderPregunta6(respuesta) {
+      if (respuesta === true) {
+        document.getElementById("pregunta6").style.color = "green";
+      } else {
+        document.getElementById("pregunta6").style.color = "red";
+      }
+    }
+
+    function responderPregunta7(respuesta) {
+      if (respuesta === true) {
+        document.getElementById("pregunta7").style.color = "green";
+      } else {
+        document.getElementById("pregunta7").style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
