@@ -7,22 +7,36 @@
 <body>
   <h1>Haz clic en la imagen</h1>
 
-  <img id="imagen" src="https://placehold.co/300x200?text=1" alt="Fotograma 1" onclick="cambiarImagen()">
+  <img id="imagen" src="https://placehold.co/300x200?text=1" alt="Fotograma 1">
+  
+  <button onclick="cambiarImagenNegativo()"> < </button>
+  
+  <button onclick="cambiarImagenPositivo()"> > </button>
+  
 
   <script>
     const imagenes = [
-      "https://placehold.co/300x200?text=1",
-      "https://placehold.co/300x200?text=2",
-      "https://placehold.co/300x200?text=3",
-      "https://placehold.co/300x200?text=4"
+      "https://imgs.search.brave.com/mGBTolxKp0Q-N77O02mjfND20C3XzQLPjpLysihuHhA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDE4NTQz/NjQuanBn",
+      "https://imgs.search.brave.com/PzH-FZDnJaus_9XCkl8INE5C-URZbkJSP_ZZVAEkc4o/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91cy4x/MjNyZi5jb20vNDUw/d20vZXZnZW5peTU1/NS9ldmdlbml5NTU1/MjExMS9ldmdlbml5/NTU1MjExMTA0ODI1/LzE3ODI4OTU2Ny1t/aXJhZGEtZGUtbGVv/bmVzLWZhbWlsaWEt/ZGUtbGVvbmVzLWFm/cmljYW5vcy1taXJh/bmRvLmpwZz92ZXI9/Ng",
+      "https://imgs.search.brave.com/HTjL0TNkeolhkw17dxCkq7nqYZd9HBXJTtwehPpL04I/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zaGFy/ZWQuZmFzdGx5LnN0/ZWFtc3RhdGljLmNv/bS9zdG9yZV9pdGVt/X2Fzc2V0cy9zdGVh/bS9hcHBzLzExNDUz/NTAvOTFhYzMzNGEy/YzEzN2QwODk2OGNj/YzBiYzQ3NGEwMjU3/OTYwMjEwMC9oZWFk/ZXIuanBnP3Q9MTc3/OTkwMTI2NQ",
+      "https://imgs.search.brave.com/QHE2i54DT5Mk8YpRJ0SJ-q142g9HUIRfyrAEMdU6Lr4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lY2ku/Y29udGViaW8uY29t/L21hdGVyaWFsL2Nv/bnRlbnRzLzU3MTY3/LzE3NjAwODg0MTBf/SHlydWxlLVdhcnJp/b3JzLmpwZw"
     ];
     let indice = 0;
 
-    function cambiarImagen() {
+    function cambiarImagenPositivo() {
       indice++;
 
       if (indice === imagenes.length) {
         indice = 0;
+      }
+
+      document.getElementById("imagen").src = imagenes[indice];
+    }
+     function cambiarImagenNegativo() {
+      indice--;
+
+      if (indice < 0) {
+        indice = imagenes.length - 1;
       }
 
       document.getElementById("imagen").src = imagenes[indice];
