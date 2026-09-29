@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 4 - Modificar el contenido de la página web</title>
+</head>
+<body>
+  <h1>Ejercicio 4: Modificar el contenido de la página web</h1>
+
+  <h2>Apartado A - Ejemplo del tema (declaración tradicional)</h2>
+  <p id="prueba">Modificando el contenido.</p>
+  <button type="button" onclick="cambiarTexto()">¡Dale!</button>
+  <p id="log"></p>
+
+  <h2>Apartado B - Misma acción reescrita con función flecha</h2>
+  <p id="prueba2">Modificando el contenido.</p>
+  <button type="button" onclick="cambiarTextoFlecha()">¡Dale!</button>
+  <p id="log2"></p>
+
+  <h2>Apartado C - Expresión de función</h2>
+  <p id="prueba3">Modificando el contenido.</p>
+  <button type="button" onclick="cambiarTextoExpresion()">¡Dale!</button>
+  <p id="log3"></p>
+
+  <script>
+    // Apartado A - declaración tradicional (ejemplo del tema)
+    function cambiarTexto() {
+      document.getElementById('prueba').innerHTML = 'CAMBIANDO el contenido!';
+      document.getElementById('log').textContent = 'Invocada mediante Function Declaration.';
+    }
+
+    // Apartado B - función flecha (sintaxis compacta)
+    const cambiarTextoFlecha = () => {
+      document.getElementById('prueba2').innerHTML = 'CAMBIANDO el contenido!';
+      document.getElementById('log2').textContent = 'Invocada mediante Arrow Function.';
+    };
+
+    // Apartado C - expresión de función
+    const cambiarTextoExpresion = function () {
+      document.getElementById('prueba3').innerHTML = 'CAMBIANDO el contenido!';
+      document.getElementById('log3').textContent = 'Invocada mediante Function Expression.';
+    };
+  </script>
+</body>
+</html>

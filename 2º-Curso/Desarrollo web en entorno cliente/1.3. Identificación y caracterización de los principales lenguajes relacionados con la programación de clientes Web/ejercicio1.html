@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1 - Declaración tradicional (Function Declaration)</title>
+</head>
+<body>
+  <h1>Ejercicio 1: Declaración tradicional (Function Declaration)</h1>
+
+  <p>
+    Es la forma clásica de declarar una función. Disfruta de <strong>hoisting</strong>:
+    puede invocarse antes de la línea donde está escrita.
+  </p>
+
+  <h2>Apartado A - Hoisting</h2>
+  <p>
+    La llamada se escribe <em>por encima</em> de la declaración. Funciona igualmente
+    porque la función se "<em>sube</em>" al principio del ámbito.
+  </p>
+  <button type="button" onclick="mostrarHoisting()">Invocar antes de declarar</button>
+  <p id="hoisting"></p>
+
+  <h2>Apartado B - Varias invocaciones</h2>
+  <p>
+    Una función se define una vez y se puede ejecutar (invocar) tantas veces como sea necesario.
+  </p>
+  <label for="nombre">Nombre: </label>
+  <input type="text" id="nombre" value="Ana">
+  <button type="button" onclick="saludarUsuario()">Saludar</button>
+  <p id="salida"></p>
+
+  <script>
+    function saludar(nombre) {
+      return `Hola, ${nombre}`;
+    }
+
+    function mostrarHoisting() {
+      // La función saludar se invoca aquí, pero se declara más abajo.
+      document.getElementById("hoisting").textContent = saludar("Ana");
+    }
+
+    function saludarUsuario() {
+      const nombre = document.getElementById("nombre").value;
+      document.getElementById("salida").textContent = saludar(nombre);
+    }
+
+    // Invocada al cargar la página, antes de su declaración:
+    document.getElementById("salida").textContent = saludar("Ana");
+  </script>
+</body>
+</html>

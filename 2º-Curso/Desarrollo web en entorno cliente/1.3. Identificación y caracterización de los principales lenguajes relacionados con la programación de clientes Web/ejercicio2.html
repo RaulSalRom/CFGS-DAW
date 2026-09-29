@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2 - Expresión de función (Function Expression)</title>
+</head>
+<body>
+  <h1>Ejercicio 2: Expresión de función (Function Expression)</h1>
+
+  <p>
+    Se asigna una función (normalmente anónima) a una variable o constante.
+    <strong>No se puede usar antes de definirla</strong>, a diferencia de la
+    declaración tradicional.
+  </p>
+
+  <h2>Apartado A - Función duplicar</h2>
+  <label for="numero">Número: </label>
+  <input type="number" id="numero" value="5">
+  <button type="button" onclick="calcular()">Duplicar</button>
+  <p id="salida"></p>
+
+  <h2>Apartado B - Funciona repetidamente con el mismo bloque</h2>
+  <p>
+    Se define una vez y se invoca tantas veces como se necesite, sin duplicar código.
+  </p>
+  <div id="tabla"></div>
+
+  <script>
+    const duplicar = function (numero) {
+      return numero * 2;
+    };
+
+    function calcular() {
+      const numero = parseInt(document.getElementById("numero").value, 10);
+      document.getElementById("salida").textContent = `duplicar(${numero}) = ${duplicar(numero)}`;
+    }
+
+    // Tabla: la misma función invocada cinco veces
+    const numeros = [1, 2, 3, 4, 5];
+    let filas = "<table border='1' cellpadding='6'><tr><th>Número</th><th>duplicar(n)</th></tr>";
+
+    for (let i = 0; i < numeros.length; i++) {
+      filas += `<tr><td>${numeros[i]}</td><td>${duplicar(numeros[i])}</td></tr>`;
+    }
+
+    filas += "</table>";
+    document.getElementById("tabla").innerHTML = filas;
+
+    document.getElementById("salida").textContent = `duplicar(5) = ${duplicar(5)}`;
+  </script>
+</body>
+</html>
