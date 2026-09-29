@@ -20,3 +20,14 @@
 18. sells
 19. was waiting , was , had gone , come , couldn`t
 20. used , brokes , haven`t skied
+
+
+## 29/09/2026
+1·
+1. a T , b T
+2. a T , b F
+3. a F , b T
+
+2·
+1. IT workers
+2.Lockde them and asked for reason
