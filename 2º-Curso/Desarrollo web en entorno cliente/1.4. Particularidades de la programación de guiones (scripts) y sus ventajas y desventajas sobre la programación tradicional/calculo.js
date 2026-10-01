@@ -12,7 +12,9 @@
 //        Uncaught ReferenceError: <variable> is not defined
 //
 // Ejecuta con:  node calculo.js
-// O abre calculo.html en el navegador y pulsa F12 -> pestaña Consola.
+// O en el navegador: abre una pestaña nueva, entra en la consola (F12) y pega
+// el contenido de este archivo. Las líneas 1 y 2 se muestran y el error rojo
+// aparece al llegar a la instrucción fallida.
 // ============================================================================
 
 // ----------------------------------------------------------------------------
