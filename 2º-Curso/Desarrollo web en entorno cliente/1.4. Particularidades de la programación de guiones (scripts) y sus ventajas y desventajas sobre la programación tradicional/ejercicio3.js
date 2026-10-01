@@ -1,14 +1,6 @@
-// ============================================================================
-// EJERCICIO 3 - Calculadora del Último Día de un Mes
-//
-// El truco: new Date(año, mes, 0) pide el DÍA 0 del mes `mes`. Como el día 0
-// no existe, el motor desborda hacia atrás y devuelve el último día del mes
-// ANTERIOR. Por eso, para saber cuántos días tiene un mes en formato humano
-// (1 = enero ... 12 = diciembre) basta con new Date(año, mes, 0).getDate().
-//
-// Regla del año bisiesto: divisible entre 4, salvo los múltiplos de 100, que
-// solo lo son si además son divisibles entre 400.
-// ============================================================================
+// Ejercicio 3 - Calculadora del último día de un mes
+// Truco: new Date(año, mes, 0) desborda al día 0 y devuelve el último día del mes pedido.
+// Bisiesto: divisible entre 4, salvo los múltiplos de 100 que no lo sean de 400.
 
 const NOMBRES_MESES = [
   "enero", "febrero", "marzo", "abril", "mayo", "junio",

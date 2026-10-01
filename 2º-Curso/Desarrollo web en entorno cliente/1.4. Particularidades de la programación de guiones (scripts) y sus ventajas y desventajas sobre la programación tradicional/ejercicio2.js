@@ -4,13 +4,12 @@ const MS_POR_DIA = 1000 * 60 * 60 * 24; // 86.400.000 ms
 const REGEX_ISO = /^\d{4}-\d{2}-\d{2}$/;
 
 function calcularDiasDiferencia(fechaInicio, fechaFin) {
-  // Validación del formato recibido 
+  // Validación del formato recibido
   if (!REGEX_ISO.test(fechaInicio) || !REGEX_ISO.test(fechaFin)) {
     throw new Error("Las fechas deben tener el formato YYYY-MM-DD");
   }
 
-  //Conversión a milisegundos con .getTime() 
-
+  // Conversión a milisegundos con .getTime()
   const inicio = new Date(fechaInicio).getTime();
   const fin = new Date(fechaFin).getTime();
 
@@ -18,7 +17,7 @@ function calcularDiasDiferencia(fechaInicio, fechaFin) {
     throw new Error("Alguna de las fechas no es válida");
   }
 
-  //Diferencia en milisegundos y paso a días
+  // Diferencia en milisegundos y paso a días
   const diferenciaMilisegundos = fin - inicio;
 
   return Math.floor(diferenciaMilisegundos / MS_POR_DIA);
