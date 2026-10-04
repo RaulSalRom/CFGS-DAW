@@ -1,5 +1,58 @@
 # TEMA 1: Arquitecturas y Tecnologías de Programación sobre Clientes Web
 
+## Índice
+
+- [1.1. Caracterización y diferenciación de los modelos de ejecución de código en el servidor y en el cliente Web](#11-caracterización-y-diferenciación-de-los-modelos-de-ejecución-de-código-en-el-servidor-y-en-el-cliente-web)
+  - [A. Contexto Histórico y Estandarización de la Web](#a-contexto-histórico-y-estandarización-de-la-web)
+  - [B. El Entorno Servidor (Back-end)](#b-el-entorno-servidor-back-end)
+  - [C. El Entorno Cliente (Front-end)](#c-el-entorno-cliente-front-end)
+  - [D. Tabla Comparativa: Cliente vs. Servidor](#d-tabla-comparativa-cliente-vs-servidor)
+  - [E. Evolución de la Navegación: De la Web Tradicional a la Web Moderna](#e-evolución-de-la-navegación-de-la-web-tradicional-a-la-web-moderna)
+  - [F. Criterios de Asignación de Tareas: Cliente vs. Servidor](#f-criterios-de-asignación-de-tareas-cliente-vs-servidor)
+  - [G. Vocabulario Técnico](#g-vocabulario-técnico)
+
+- [1.2. Capacidades y mecanismos de ejecución de código de los navegadores Web](#12-capacidades-y-mecanismos-de-ejecución-de-código-de-los-navegadores-web)
+  - [A. ¿Qué es un Navegador Web y Cómo se Organiza por Dentro?](#a-qué-es-un-navegador-web-y-cómo-se-organiza-por-dentro)
+  - [B. Los Grandes Motores de Navegadores en la Actualidad](#b-los-grandes-motores-de-navegadores-en-la-actualidad)
+  - [C. Cómo Transforma el Navegador el Código en Píxeles (El Proceso de Renderizado)](#c-cómo-transforma-el-navegador-el-código-en-píxeles-el-proceso-de-renderizado)
+  - [D. Capacidades Nativas del Navegador (APIs Web)](#d-capacidades-nativas-del-navegador-apis-web)
+  - [E. El DOM (Document Object Model) como Puente de Comunicación](#e-el-dom-document-object-model-como-puente-de-comunicación)
+  - [F. Mecanismos de Salida y Comunicación del Navegador](#f-mecanismos-de-salida-y-comunicación-del-navegador)
+  - [G. Capacidades Prácticas de Manipulación Dinámica](#g-capacidades-prácticas-de-manipulación-dinámica)
+  - [H. El Objeto Global window y el Árbol Jerárquico del BOM](#h-el-objeto-global-window-y-el-árbol-jerárquico-del-bom)
+  - [I. Profundización en el Renderizado: Reflow (Layout) y Repaint](#i-profundización-en-el-renderizado-reflow-layout-y-repaint)
+
+- [1.3. Identificación y caracterización de los principales lenguajes relacionados con la programación de clientes Web](#13-identificación-y-caracterización-de-los-principales-lenguajes-relacionados-con-la-programación-de-clientes-web)
+  - [A. La Tríada Fundamental de la Programación Cliente](#a-la-tríada-fundamental-de-la-programación-cliente)
+  - [B. JavaScript. Evolución histórica](#b-javascript-evolución-histórica)
+  - [C. El Ecosistema de Frameworks y Librerías de Front-end](#c-el-ecosistema-de-frameworks-y-librerías-de-front-end)
+  - [D. Caracterización de los Principales Frameworks del Mercado](#d-caracterización-de-los-principales-frameworks-del-mercado)
+  - [E. Vocabulario Técnico Fundamental del Criterio](#e-vocabulario-técnico-fundamental-del-criterio)
+  - [F. Funciones en JavaScript. Introducción](#f-funciones-en-javascript-introducción)
+
+- [1.4. Particularidades de la programación de guiones (scripts) y sus ventajas y desventajas sobre la programación tradicional](#14-particularidades-de-la-programación-de-guiones-scripts-y-sus-ventajas-y-desventajas-sobre-la-programación-tradicional)
+  - [A. Origen, Concepto y Naturaleza de los Scripts](#a-origen-concepto-y-naturaleza-de-los-scripts)
+  - [B. Diferencias Fundamentales entre Lenguajes de Script y Lenguajes Tradicionales](#b-diferencias-fundamentales-entre-lenguajes-de-script-y-lenguajes-tradicionales)
+  - [C. Análisis de Ventajas y Desventajas de la Programación de Guiones](#c-análisis-de-ventajas-y-desventajas-de-la-programación-de-guiones)
+  - [D. Casos Singulares y Proyección del Ecosistema de Scripting](#d-casos-singulares-y-proyección-del-ecosistema-de-scripting)
+  - [E. El Objeto Date en JavaScript](#e-el-objeto-date-en-javascript)
+
+- [1.5. Verificación de los mecanismos de integración de los lenguajes de marcas con los lenguajes de programación de clientes Web](#15-verificación-de-los-mecanismos-de-integración-de-los-lenguajes-de-marcas-con-los-lenguajes-de-programación-de-clientes-web)
+  - [Opciones de Integración de JavaScript en HTML](#opciones-de-integración-de-javascript-en-html)
+  - [A. La Etiqueta `<script>` y su Evolución Técnica](#a-la-etiqueta-script-y-su-evolución-técnica)
+  - [B. Código JavaScript en Ficheros Externos Separados](#b-código-javascript-en-ficheros-externos-separados)
+  - [C. Código JavaScript Embebido dentro del HTML](#c-código-javascript-embebido-dentro-del-html)
+  - [D. Reglas de Ubicación: ¿Dentro de `<head>` o dentro de `<body>`?](#d-reglas-de-ubicación-dentro-de-head-o-dentro-de-body)
+
+- [1.6. Reconocimiento y evaluación de las herramientas de programación y prueba sobre clientes Web](#16-reconocimiento-y-evaluación-de-las-herramientas-de-programación-y-prueba-sobre-clientes-web)
+  - [A. Herramientas Locales: De Editores Básicos a IDEs Avanzados](#a-herramientas-locales-de-editores-básicos-a-ides-avanzados)
+  - [B. Integración con Sistemas de Control de Versiones (Git y GitHub)](#b-integración-con-sistemas-de-control-de-versiones-git-y-github)
+  - [C. Entornos de Programación y Prueba Online](#c-entornos-de-programación-y-prueba-online)
+  - [D. Herramientas de Prueba y Depuración del Navegador (DevTools)](#d-herramientas-de-prueba-y-depuración-del-navegador-devtools)
+  - [E. Criterios de Evaluación y Selección de Herramientas](#e-criterios-de-evaluación-y-selección-de-herramientas)
+
+---
+
 ## 1.1. Caracterización y diferenciación de los modelos de ejecución de código en el servidor y en el cliente Web
 
 Cualquier aplicación web funciona mediante el modelo cliente/servidor. Este modelo reparte el trabajo entre dos equipos conectados a través de internet: el cliente (el ordenador, móvil o tableta de la persona que navega) y el servidor (uno o varios ordenadores remotos que guardan los datos y la lógica principal).
@@ -600,165 +653,485 @@ console.log(sumar(3, 4)); // 7
 </body>
 </html>
 ```
-## 1.4. Particularidades de la programación de guiones (scripts) y sus ventajas y desventajas sobre la programación tradicional (Criterio 1.4)
-El desarrollo de software ha experimentado una profunda evolución conceptual. Tradicionalmente, los lenguajes de programación se concebían para construir aplicaciones aisladas e independientes (standalone) destinadas a la gestión empresarial clásica (nóminas, contabilidad, procesadores de texto, hojas de cálculo o almacenes) sobre sistemas operativos de escritorio o arquitecturas cliente/servidor monolíticas.
-La llegada de internet, la ubicuidad de los dispositivos móviles (teléfonos inteligentes y tabletas) y la necesidad de ejecutar lógica dentro de navegadores web transformaron los requisitos técnicos. Ya no se programa todo desde cero: se emplean entornos anfitriones (host systems) para acoplar y ejecutar rutinas dinámicas.
 
 ---
+
+## 1.4. Particularidades de la programación de guiones (scripts) y sus ventajas y desventajas sobre la programación tradicional
+
+El desarrollo de software ha experimentado una profunda evolución conceptual. Tradicionalmente, los lenguajes de programación se concebían para construir aplicaciones aisladas e independientes (*standalone*) destinadas a la gestión empresarial clásica (nóminas, contabilidad, procesadores de texto, hojas de cálculo o almacenes) sobre sistemas operativos de escritorio o arquitecturas cliente/servidor monolíticas.
+
+La llegada de internet, la ubicuidad de los dispositivos móviles (teléfones inteligentes y tabletas) y la necesidad de ejecutar lógica dentro de navegadores web transformaron los requisitos técnicos. Ya no se programa todo desde cero: se emplean entornos anfitriones (*host systems*) para acoplar y ejecutar rutinas dinámicas.
+
+---
+
 ### A. Origen, Concepto y Naturaleza de los Scripts
-Nacimiento de los scripts: Surgieron como secuencias de comandos o pequeños fragmentos de código diseñados para automatizar tareas rutinarias y repetitivas en los sistemas operativos.
-Dependencia del intérprete: Los scripts siempre son ejecutados por un intérprete de comandos o motor de ejecución subyacente.
-De pequeñas macros a programas complejos: En la actualidad, los scripts han superado su concepción como simples rutinas auxiliares. En la web actual representan programas completos con arquitecturas complejas de miles de líneas de código, manejando estados, interfaces reactivas y comunicaciones de red.
+
+- **Nacimiento de los scripts:** Surgieron como secuencias de comandos o pequeños fragmentos de código diseñados para automatizar tareas rutinarias y repetitivas en los sistemas operativos.
+- **Dependencia del intérprete:** Los scripts siempre son ejecutados por un intérprete de comandos o motor de ejecución subyacente.
+- **De pequeñas macros a programas complejos:** En la actualidad, los scripts han superado su concepción como simples rutinas auxiliares. En la web actual representan programas completos con arquitecturas complejas de miles de líneas de código, manejando estados, interfaces reactivas y comunicaciones de red.
 
 ---
+
 ### B. Diferencias Fundamentales entre Lenguajes de Script y Lenguajes Tradicionales
+
 El contraste entre ambos mundos define sus posibilidades técnicas y operativas:
-#### 1. Proceso de compilación frente a interpretación:
-Lenguajes tradicionales: Requieren un paso previo de compilación que traduce el código fuente a código máquina binario específico para una plataforma. Sin esa fase de compilación, el programa no existe como ejecutable.
-Lenguajes de script: Son interpretados directamente. El motor procesa y evalúa las instrucciones línea a línea en tiempo de ejecución, sin requerir una compilación previa por parte del programador ni generar un archivo ejecutable intermedio independiente.
 
-#### 2. Ejecución independiente frente a integración en un sistema anfitrión (host):
-Lenguajes tradicionales: Crean programas standalone (programas independientes que se ejecutan directamente en un sistema operativo sin necesidad de instalar un entorno de desarrollo). Compilados Nativos (C++, Go, Rust): Crean binarios autónomos (.exe) directamente.
-Gestionados por Entorno/Máquina Virtual (Java, C#): Se compilan a un código intermedio y requieren un entorno instalado (JVM / .NET) para ejecutarse, aunque hoy permiten empaquetarse como standalone.
-Interpretados / Script (Python, JavaScript): Leen el código fuente línea por línea mediante un intérprete, requiriendo su propio entorno o un navegador (host), pero también soportan empaquetado moderno.
-Aunque nacieron para requerir un sistema anfitrión contenedor (como JavaScript dentro de un documento HTML en el navegador), hoy en día pueden ejecutarse de manera autónoma.
-En consola: Python y JavaScript (mediante Node.js) pueden ejecutarse directamente sobre el sistema operativo desde la terminal.
-Como Standalone: Ambos lenguajes permiten empaquetar el código junto con su intérprete utilizando herramientas externas (como PyInstaller para Python o pkg/Electron para JavaScript), transformándolos también en aplicaciones independientes y ejecutables.
+#### 1. Proceso de compilación frente a interpretación
 
-#### 3. Desarrollo desde cero frente a reutilización de componentes preexistentes:
-Lenguajes tradicionales: Construyen a menudo sus propias estructuras, interfaces y librerías desde la base.
-Lenguajes de script: Nacieron diseñados para apoyarse y enlazar componentes que ya existen en el sistema anfitrión (como los elementos del DOM, el motor gráfico o las llamadas de red del navegador, en el caso de JavaScript,).
+- **Lenguajes tradicionales:** Requieren un paso previo de compilación que traduce el código fuente a código máquina binario específico para una plataforma. Sin esa fase de compilación, el programa no existe como ejecutable.
+- **Lenguajes de script:** Son interpretados directamente. El motor procesa y evalúa las instrucciones línea a línea en tiempo de ejecución, sin requerir una compilación previa por parte del programador ni generar un archivo ejecutable intermedio independiente.
 
-#### 4. Momento de detección de errores:
-Lenguajes tradicionales: La fase de compilación actúa como un filtro estricto de sintaxis y tipos; si existe un fallo estructural, el binario ejecutable no llega a generarse.
-Lenguajes de script: Al ejecutarse línea a línea directamente en el entorno del cliente, los fallos sintácticos o de asignación se descubren durante el tiempo de ejecución (runtime), lo que exige planes de prueba exhaustivos.
+#### 2. Ejecución independiente frente a integración en un sistema anfitrión (*host*)
 
-#### 5. Clasificación de lenguajes:
-Lenguajes de programación tradicional: C, C++, Java, Swift, Pascal.
-Lenguajes de scripting: JavaScript, Shell script, Perl, PHP, Python, Ruby.
+| Tipo de lenguaje | Descripción |
+|---|---|
+| **Lenguajes tradicionales** | Crean programas *standalone* (programas independientes que se ejecutan directamente en un sistema operativo sin necesidad de instalar un entorno de desarrollo). |
+| **Compilados nativos (C++, Go, Rust)** | Crean binarios autónomos (`.exe`) directamente. |
+| **Gestionados por Entorno/Máquina Virtual (Java, C#)** | Se compilan a un código intermedio y requieren un entorno instalado (JVM / .NET) para ejecutarse, aunque hoy permiten empaquetarse como *standalone*. |
+| **Interpretados / Script (Python, JavaScript)** | Leen el código fuente línea por línea mediante un intérprete, requiriendo su propio entorno o un navegador (*host*), pero también soportan empaquetado moderno. |
+
+Aunque nacieron para requerir un sistema anfitrión contenedor (como JavaScript dentro de un documento HTML en el navegador), hoy en día pueden ejecutarse de manera autónoma:
+
+- **En consola:** Python y JavaScript (mediante Node.js) pueden ejecutarse directamente sobre el sistema operativo desde la terminal.
+- **Como *Standalone*:** Ambos lenguajes permiten empaquetar el código junto con su intérprete utilizando herramientas externas (como PyInstaller para Python o pkg/Electron para JavaScript), transformándolos también en aplicaciones independientes y ejecutables.
+
+#### 3. Desarrollo desde cero frente a reutilización de componentes preexistentes
+
+- **Lenguajes tradicionales:** Construyen a menudo sus propias estructuras, interfaces y librerías desde la base.
+- **Lenguajes de script:** Nacieron diseñados para apoyarse y enlazar componentes que ya existen en el sistema anfitrión (como los elementos del DOM, el motor gráfico o las llamadas de red del navegador, en el caso de JavaScript).
+
+#### 4. Momento de detección de errores
+
+- **Lenguajes tradicionales:** La fase de compilación actúa como un filtro estricto de sintaxis y tipos; si existe un fallo estructural, el binario ejecutable no llega a generarse.
+- **Lenguajes de script:** Al ejecutarse línea a línea directamente en el entorno del cliente, los fallos sintácticos o de asignación se descubren durante el tiempo de ejecución (*runtime*), lo que exige planes de prueba exhaustivos.
+
+#### 5. Clasificación de lenguajes
+
+- **Lenguajes de programación tradicional:** C, C++, Java, Swift, Pascal.
+- **Lenguajes de scripting:** JavaScript, Shell script, Perl, PHP, Python, Ruby.
 
 ---
+
 ### C. Análisis de Ventajas y Desventajas de la Programación de Guiones
+
 #### Ventajas Destacadas
-- Sencillez y curva de aprendizaje rápida: Han sido diseñados específicamente para que sean fáciles de utilizar y programar, reduciendo la complejidad formal de los lenguajes tradicionales.
-- Agilidad en el ciclo de desarrollo: No requieren esperar tiempos de compilación ni enlazar binarios. Cualquier cambio en el código fuente se comprueba al instante recargando la página en el navegador.
-- Integración natural: Facilidad absoluta para incrustarse dentro de otros lenguajes o documentos, como ocurre con la integración directa de JavaScript dentro de las etiquetas de un archivo HTML.
-- Portabilidad mediante el anfitrión: El código JavaScript puede funcionar de manera multiplataforma en cualquier ordenador, tableta o smartphone siempre que disponga de un navegador compatible con los estándares.
+
+- **Sencillez y curva de aprendizaje rápida:** Han sido diseñados específicamente para que sean fáciles de utilizar y programar, reduciendo la complejidad formal de los lenguajes tradicionales.
+- **Agilidad en el ciclo de desarrollo:** No requieren esperar tiempos de compilación ni enlazar binarios. Cualquier cambio en el código fuente se comprueba al instante recargando la página en el navegador.
+- **Integración natural:** Facilidad absoluta para incrustarse dentro de otros lenguajes o documentos, como ocurre con la integración directa de JavaScript dentro de las etiquetas de un archivo HTML.
+- **Portabilidad mediante el anfitrión:** El código JavaScript puede funcionar de manera multiplataforma en cualquier ordenador, tableta o *smartphone* siempre que disponga de un navegador compatible con los estándares.
 
 #### Desventajas y Riesgos Técnicos
-- Mayor tasa de errores en tiempo de ejecución: Al interpretarse en caliente, un fallo en una rama de código condicional poco transitada puede pasar desapercibido hasta que el usuario final interactúa con ese elemento concreto.
-- Rendimiento bruto inferior: Aunque los motores modernos aplican compilación en tiempo real (JIT), un lenguaje interpretado dinámico consume más memoria y ciclos de procesador que un ejecutable binario en C o C++ optimizado.
-- Exposición del código fuente: En el caso de JavaScript, al transferirse al cliente como texto plano para ser interpretado en su navegador, el código queda expuesto de forma pública ante cualquier usuario.
+
+> [!WARNING] Riesgos del scripting en el cliente
+> - **Mayor tasa de errores en tiempo de ejecución:** Al interpretarse en caliente, un fallo en una rama de código condicional poco transitada puede pasar desapercibido hasta que el usuario final interactúa con ese elemento concreto.
+> - **Rendimiento bruto inferior:** Aunque los motores modernos aplican compilación en tiempo real (JIT), un lenguaje interpretado dinámico consume más memoria y ciclos de procesador que un ejecutable binario en C o C++ optimizado.
+> - **Exposición del código fuente:** En el caso de JavaScript, al transferirse al cliente como texto plano para ser interpretado en su navegador, el código queda expuesto de forma pública ante cualquier usuario.
 
 ---
+
 ### D. Casos Singulares y Proyección del Ecosistema de Scripting
-La proyección de Python en el mercado: Dentro de los lenguajes de scripting, Python destaca por tener una proyección enorme al ser el lenguaje de referencia en el desarrollo de inteligencia artificial, computación científica y tratamiento masivo de datos.
-#### El caso de Java vs. JavaScript: A pesar de la similitud en sus nombres por razones comerciales en su origen histórico, son lenguajes con filosofías opuestas:
-- Java: Lenguaje de programación tradicional, fuertemente tipado, compilado a bytecode, orientado rígidamente a objetos y ejecutable en una máquina virtual.
 
-- JavaScript: Lenguaje de script, dinámico, débilmente tipado, interpretado directamente en el navegador y orientado a eventos.
+> [!TIP] La proyección de Python en el mercado
+> Dentro de los lenguajes de scripting, Python destaca por tener una proyección enorme al ser el lenguaje de referencia en el desarrollo de inteligencia artificial, computación científica y tratamiento masivo de datos.
+
+#### El caso de Java vs. JavaScript
+
+A pesar de la similitud en sus nombres por razones comerciales en su origen histórico, son lenguajes con filosofías opuestas:
+
+- **Java:** Lenguaje de programación tradicional, fuertemente tipado, compilado a *bytecode*, orientado rígidamente a objetos y ejecutable en una máquina virtual.
+- **JavaScript:** Lenguaje de *script*, dinámico, débilmente tipado, interpretado directamente en el navegador y orientado a eventos.
 
 ---
+
 ### E. El Objeto Date en JavaScript
+
 #### 1. Naturaleza y Modelo Interno de las Fechas
-En JavaScript, las fechas no son un tipo de dato primitivo, sino instancias del objeto nativo Date.
-Representación temporal fija: Un objeto Date contiene una instantánea congelada en el tiempo (un punto estático). No se actualiza dinámicamente como un reloj en tiempo real.
-Época Unix (Epoch Time): Internamente, JavaScript almacena la fecha como un número entero: el número de milisegundos transcurridos desde el 1 de enero de 1970 a las 00:00:00 UTC (Coordinated Universal Time).
-Un valor positivo indica instantes posteriores a esa fecha.
-Un valor negativo indica instantes anteriores a 1970.
-1día=2460601000=86.400.000ms.
+
+En JavaScript, las fechas no son un tipo de dato primitivo, sino instancias del objeto nativo `Date`.
+
+- **Representación temporal fija:** Un objeto `Date` contiene una instantánea congelada en el tiempo (un punto estático). No se actualiza dinámicamente como un reloj en tiempo real.
+- **Época Unix (Epoch Time):** Internamente, JavaScript almacena la fecha como un número entero: el número de milisegundos transcurridos desde el 1 de enero de 1970 a las 00:00:00 UTC (*Coordinated Universal Time*).
+- Un valor **positivo** indica instantes posteriores a esa fecha.
+- Un valor **negativo** indica instantes anteriores a 1970.
+
+> [!NOTE] Conversión entre días y milisegundos
+> ```
+> 1 día = 24 × 60 × 60 × 1000 = 86.400.000 ms
+> ```
+
+```javascript
 // Obtención del timestamp Unix actual en milisegundos sin instanciar un objeto
 const tiempoActualMs = Date.now(); 
 console.log(tiempoActualMs); // Ejemplo: 1790591037183
+```
 
-2. Formas de Instanciación (new Date)
+#### 2. Formas de Instanciación (new Date)
+
 Existen cuatro variantes principales del constructor:
-A. Sin argumentos (Fecha y hora actual)
-Captura el instante exacto según el reloj del sistema local:
-const ahora = new Date();
 
-B. Mediante cadena de texto (Date String)
+##### A. Sin argumentos (Fecha y hora actual)
+
+Captura el instante exacto según el reloj del sistema local:
+
+```javascript
+const ahora = new Date();
+```
+
+##### B. Mediante cadena de texto (Date String)
+
 Interpreta fechas expresadas en formatos estándar reconocidos por el analizador sintáctico (ISO 8601 o RFC 2822):
+
+```javascript
 // Formato recomendado ISO 8601 (YYYY-MM-DD o YYYY-MM-DDTHH:mm:ss)
 const fechaISO = new Date("2026-09-28");
 const fechaHora = new Date("2026-09-28T12:30:00");
+```
 
-C. Por componentes numéricos (año, mes, [día, horas, minutos, segundos, ms])
+##### C. Por componentes numéricos (año, mes, [día, horas, minutos, segundos, ms])
+
 Permite pasar entre 2 y 7 parámetros enteros:
+
+```javascript
 // new Date(año, mesIndex, día, hora, minutos, segundos, milisegundos)
 const navidad = new Date(2026, 11, 25, 10, 30, 0, 0);
+```
 
-Regla de indexación de meses (0 a 11):
-En JavaScript, los meses son de base cero (zero-indexed):
-0 = Enero, 1 = Febrero, ..., 11 = Diciembre.
-Los días del mes (1 a 31), en cambio, van del 1 en adelante.
-Comportamiento de desbordamiento (Overflow automático)
-Si se asignan valores superiores a los límites naturales del mes o del día, el motor calcula el exceso y avanza automáticamente a la siguiente unidad temporal:
+**Regla de indexación de meses (0 a 11):** En JavaScript, los meses son de base cero (*zero-indexed*):
+
+- `0` = Enero, `1` = Febrero, ..., `11` = Diciembre.
+- Los días del mes (1 a 31), en cambio, van del 1 en adelante.
+
+**Comportamiento de desbordamiento (Overflow automático):** Si se asignan valores superiores a los límites naturales del mes o del día, el motor calcula el exceso y avanza automáticamente a la siguiente unidad temporal:
+
+```javascript
 // Mes 15 -> 2026 + 1 año (12 meses) + 3 meses restantes = Abril de 2027
 const fechaMesExcedido = new Date(2026, 15, 20); 
 
 // Día 35 en junio (junio tiene 30 días) -> 5 de julio
 const fechaDiaExcedido = new Date(2026, 5, 35); 
+```
 
-Tratamiento de años con uno o dos dígitos
-Si el primer argumento está entre 0 y 99, JavaScript asume que corresponde al siglo XX (1900–1999):
+**Tratamiento de años con uno o dos dígitos:** Si el primer argumento está entre 0 y 99, JavaScript asume que corresponde al siglo XX (1900–1999):
+
+```javascript
 const fechaPasada = new Date(95, 5, 15); // 15 de junio de 1995
+```
 
-D. Mediante milisegundos desde la época Unix
+##### D. Mediante milisegundos desde la época Unix
+
 Si se pasa un único número entero al constructor, se interpreta siempre como milisegundos transcurridos desde el 1 de enero de 1970:
+
+```javascript
 const inicioUnix = new Date(0); // Thu Jan 01 1970 01:00:00 GMT+0100 (hora local española)
 const unDiaDespues = new Date(86400000); // 2 de enero de 1970
+```
 
-// OJO: Pasar un solo número NUNCA indica el año
-const errorComun = new Date(2026); // Interpreta 2026 milisegundos después de 1970
+> [!WARNING] OJO: Pasar un solo número NUNCA indica el año
+> ```javascript
+> const errorComun = new Date(2026); // Interpreta 2026 milisegundos después de 1970
+> ```
 
-3. Métodos Principales de Conversión y Salida
-Método
-Estándar de Formato
-Salida Típica
-Caso de Uso
-toString()
-Texto completo con zona horaria local
-Mon Sep 28 2026 12:23:57 GMT+0200 (CEST)
-Depuración rápida / Conversión por defecto
-toDateString()
-Solo fecha en formato legible
-Mon Sep 28 2026
-Interfaces sin detalle de horas
-toTimeString()
-Solo hora con huso horario
-12:23:57 GMT+0200 (CEST)
-Registros de eventos horarios
-toISOString()
-Estándar ISO 8601 en tiempo universal (UTC)
-2026-09-28T10:23:57.000Z
-Intercambio de datos con APIs y bases de datos
-toUTCString()
-Estándar HTTP / RFC 7231
-Mon, 28 Sep 2026 10:23:57 GMT
-Configuración de cabeceras HTTP o cookies
-toLocaleDateString()
-Formato según la localización del usuario
-28/9/2026 (en España: es-ES)
-Interfaz de usuario final
+#### 3. Métodos Principales de Conversión y Salida
 
+| Método | Estándar de Formato | Salida Típica | Caso de Uso |
+|---|---|---|---|
+| `toString()` | Texto completo con zona horaria local | Mon Sep 28 2026 12:23:57 GMT+0200 (CEST) | Depuración rápida / Conversión por defecto |
+| `toDateString()` | Solo fecha en formato legible | Mon Sep 28 2026 | Interfaces sin detalle de horas |
+| `toTimeString()` | Solo hora con huso horario | 12:23:57 GMT+0200 (CEST) | Registros de eventos horarios |
+| `toISOString()` | Estándar ISO 8601 en tiempo universal (UTC) | 2026-09-28T10:23:57.000Z | Intercambio de datos con APIs y bases de datos |
+| `toUTCString()` | Estándar HTTP / RFC 7231 | Mon, 28 Sep 2026 10:23:57 GMT | Configuración de cabeceras HTTP o cookies |
+| `toLocaleDateString()` | Formato según la localización del usuario | 28/9/2026 (en España: es-ES) | Interfaz de usuario final |
 
-4. Métodos de Acceso y Modificación (Getters y Setters)
+#### 4. Métodos de Acceso y Modificación (Getters y Setters)
+
 Para operar con partes concretas de una fecha se emplean los métodos nativos del objeto:
+
+```javascript
 const f = new Date(2026, 8, 28, 14, 45, 10); // 28 de septiembre de 2026
+```
 
-// LECTURA (Getters)
-f.getFullYear();      // 2026
-f.getMonth();         // 8 (Septiembre, porque Enero es 0)
-f.getDate();          // 28 (Día del mes)
-f.getDay();           // Día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
-f.getHours();         // 14
-f.getMinutes();       // 45
-f.getSeconds();       // 10
-f.getTime();          // Timestamp en ms (equivalente a valueOf())
+##### LECTURA (Getters)
 
-// ESCRITURA (Setters)
-f.setFullYear(2027);  // Cambia el año a 2027
-f.setMonth(0);        // Cambia el mes a enero
-f.setDate(15);        // Cambia el día al 15
+| Método | Descripción | Ejemplo |
+|---|---|---|
+| `getFullYear()` | Año completo | `2026` |
+| `getMonth()` | Mes (0 = Enero, ..., 11 = Diciembre) | `8` (Septiembre) |
+| `getDate()` | Día del mes (1-31) | `28` |
+| `getDay()` | Día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado) | `1` (Lunes) |
+| `getHours()` | Hora (0-23) | `14` |
+| `getMinutes()` | Minutos (0-59) | `45` |
+| `getSeconds()` | Segundos (0-59) | `10` |
+| `getTime()` | Timestamp en milisegundos (equivalente a `valueOf()`) | `1790591037183` |
 
+##### ESCRITURA (Setters)
+
+| Método | Descripción | Ejemplo |
+|---|---|---|
+| `setFullYear(año)` | Cambia el año | `f.setFullYear(2027)` |
+| `setMonth(mes)` | Cambia el mes (0-11) | `f.setMonth(0)` |
+| `setDate(dia)` | Cambia el día del mes (1-31) | `f.setDate(15)` |
+
+---
+
+## 1.5. Verificación de los mecanismos de integración de los lenguajes de marcas con los lenguajes de programación de clientes Web
+
+El lenguaje JavaScript no actúa de forma aislada en el navegador: se combina y complementa directamente con el código HTML de la página web. Para que el motor del navegador reconozca y ejecute las instrucciones de *script*, el estándar define mecanismos precisos de integración que determinan cómo, cuándo y en qué orden se procesa la lógica en relación con la estructura del documento.
+
+### Opciones de Integración de JavaScript en HTML
+
+- **Código embebido:** Todo en el mismo archivo.
+- **Ficheros separados:** Recomendado en proyectos profesionales.
+
+---
+
+### A. La Etiqueta `<script>` y su Evolución Técnica
+
+La etiqueta estándar `<script>` es el contenedor oficial que el consorcio W3C define para insertar o enlazar código ejecutable dentro de un documento HTML:
+
+- **Sintaxis actual (HTML5):** Basta con abrir y cerrar la etiqueta `<script>` y `</script>`. Los navegadores modernos asumen de forma predeterminada que el lenguaje interpretado es JavaScript.
+- **Compatibilidad histórica (versiones legadas):** En versiones anteriores de JavaScript y HTML era común y obligatorio especificar el tipo MIME mediante el atributo `type`:
+
+  ```html
+  <script type="text/javascript"></script>
+  ```
+
+- **La sintaxis estricta de cierre:** Una etiqueta `<script>` jamás puede cerrarse de forma abreviada (`<script src="script.js" />`). Debe incluir obligatoriamente su etiqueta de cierre correspondiente `</script>`, incluso cuando se enlazan ficheros externos vacíos de contenido interno.
+
+---
+
+### B. Código JavaScript en Ficheros Externos Separados
+
+Consiste en mantener la estructura HTML en un archivo con extensión `.html` y extraer toda la lógica de programación a archivos de texto independientes con extensión `.js`.
+
+#### 1. Código del archivo `index.html`
+
+```html
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>Myfpschool</title> 
+  <!-- Enlace al fichero script.js ubicado en la misma carpeta --> 
+  <script src="script.js"></script> 
+</head> 
+<body> 
+</body> 
+</html> 
+```
+
+#### 2. Código del archivo `script.js`
+
+```javascript
+// Definición de una función básica de saludo 
+function diAlgo() 
+{ 
+  alert("hola"); // Muestra un cuadro modal emergente con el texto "hola" 
+} 
+ 
+// Invocación directa de la función al cargarse el fichero 
+diAlgo(); 
+```
+
+#### 3. Ventajas técnicas de utilizar ficheros externos
+
+- **Velocidad de carga y aprovechamiento de la memoria caché:** El navegador descarga el archivo `.js` una única vez y lo almacena en su memoria caché local. Si el usuario navega a otras páginas del mismo sitio web que usan ese script, no tiene que volver a descargarlo por la red, reduciendo el consumo de ancho de banda y acelerando la respuesta.
+- **Independencia de facetas (Modularidad):** Se separa de forma estricta la estructura del contenido (HTML) del comportamiento dinámico (JavaScript), permitiendo que diseñadores y programadores trabajen simultáneamente sin pisarse el código.
+- **Mantenimiento y reutilización de código:** Si se necesita corregir una función o actualizar un cálculo, se modifica un solo archivo `.js` y los cambios se reflejan inmediatamente en todas las páginas web que lo referencian.
+- **Buenas prácticas de ordenación de carpetas:** En los proyectos profesionales, las empresas y los desarrolladores experimentados organizan los recursos situando los scripts dentro de un directorio dedicado denominado `js` o `script` (por ejemplo, `<script src="./js/script.js"></script>`).
+
+---
+
+### C. Código JavaScript Embebido dentro del HTML
+
+Permite incrustar bloques de código JavaScript directamente entre las líneas de marcado del propio archivo HTML.
+
+#### Código de ejemplo (`index.html`)
+
+```html
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>Myfpschool</title> 
+  <script> 
+    // Se declara la función dentro de la cabecera head 
+    function diAlgo() 
+    { 
+      alert("Hola"); 
+    } 
+  </script> 
+</head> 
+<body> 
+  <!-- Se ejecuta la función en el cuerpo del documento body --> 
+  <script> 
+    diAlgo(); 
+  </script> 
+</body> 
+</html> 
+```
+
+#### Ejemplo: Modificar el Contenido de la Página Web
+
+```html
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <title>Modificando HTML con addEventListener</title> 
+</head> 
+<body> 
+  <h1>Modificando el código HTML</h1> 
+  <p id="prueba">Modificando el contenido.</p> 
+ 
+  <button type="button" id="btnCambiar"> 
+    ¡Dale! 
+  </button> 
+ 
+  <script> 
+    function cambiarTexto() { 
+      // Usar textContent si solo cambias texto (más rápido y seguro que innerHTML) 
+      document.getElementById('prueba').textContent = 'CAMBIANDO el contenido!'; 
+    } 
+ 
+    const boton = document.getElementById('btnCambiar'); 
+    boton.addEventListener('click', cambiarTexto); 
+  </script> 
+</body> 
+</html> 
+```
+
+#### Características y desventajas de este enfoque
+
+- **Mismo resultado visual:** Tanto el enfoque embebido como el externo provocan exactamente el mismo efecto ante el usuario (ambos despliegan una alerta emergente con el saludo).
+- **Dificultad de mantenimiento:** Diseminar bloques `<script>` desordenados a lo largo del `<head>` y del `<body>` convierte el código en un bloque difícil de depurar, entender y mantener a largo plazo.
+- **Criterio de uso excepcional:** Solo se justifica el uso de JavaScript embebido cuando las líneas de código son mínimas, específicas para una sola página y no vayan a modificarse prácticamente nunca.
+
+---
+
+### D. Reglas de Ubicación: ¿Dentro de `<head>` o dentro de `<body>`?
+
+El código JavaScript puede situarse indistintamente en la cabecera `<head>` o dentro del cuerpo `<body>` del documento. Sin embargo, la posición influye de manera determinante en cómo se procesa la página web:
+
+- **Ubicación en el `<head>`:**
+  - El navegador lee el documento de arriba a abajo. Si encuentra una etiqueta `<script>` en el `<head>`, detiene el análisis del HTML hasta que el script se descarga y se ejecuta por completo.
+  - **Problema común:** Si ese script intenta acceder a un elemento del `<body>` (por ejemplo, mediante `document.getElementById('prueba')`), fallará con un error porque ese elemento aún no ha sido leído ni construido en el DOM.
+- **Ubicación al final del `<body>` (antes de `</body>`):**
+  - Se considera la recomendación tradicional más eficaz: garantiza que todo el marcado HTML, textos e imágenes ya se han analizado e insertado en el DOM antes de que comience a ejecutarse la lógica de interacción.
+
+#### Profundización moderna: Atributos `defer` y `async` (HTML5)
+
+Para scripts externos colocados en el `<head>`, los estándares modernos permiten evitar el bloqueo del navegador mediante dos atributos:
+
+- **`defer`:** Descarga el archivo JavaScript en segundo plano mientras el navegador sigue construyendo el HTML, pero retrasa su ejecución exacta hasta que el documento HTML se ha parseado por completo.
+
+  ```html
+  <script defer src="script.js"></script> 
+  ```
+
+- **`async`:** Descarga el archivo en segundo plano y lo ejecuta de inmediato en cuanto termina la descarga, sin importar si el HTML ha terminado de leerse (útil para herramientas externas de analítica o contadores).
+
+  ```html
+  <script async src="script.js"></script> 
+  ```
+
+---
+
+## 1.6. Reconocimiento y evaluación de las herramientas de programación y prueba sobre clientes Web
+
+El desarrollo profesional en JavaScript requiere superar el uso de editores de texto elementales y adoptar entornos de trabajo que integren asistentes de código, depuradores interactivos, gestores de dependencias y sistemas de control de versiones. El técnico en desarrollo de aplicaciones web debe evaluar y seleccionar las herramientas adecuadas en función de la envergadura del proyecto, la infraestructura disponible y el flujo de trabajo en equipo.
+
+---
+
+### A. Herramientas Locales: De Editores Básicos a IDEs Avanzados
+
+Para escribir código JavaScript es técnicamente suficiente un editor de texto plano sin formato (como Notepad en Windows o *gedit* en Linux). Sin embargo, en un entorno de desarrollo empresarial esta práctica es inviable debido a la falta de herramientas que automaticen la verificación de la sintaxis y la gestión de proyectos.
+
+#### Ranking de Editores Top para JavaScript / TypeScript
+
+El ranking mundial de entornos y editores más utilizados específicamente para JavaScript y TypeScript según la encuesta global de Stack Overflow Developer Survey:
+
+##### 1. Visual Studio Code (75.9% de uso global)
+
+**Su rol en JS/TS:** Es el estándar absoluto de la industria. Más del 80% de los desarrolladores *frontend* lo tienen como su herramienta principal. Cuenta con soporte nativo de fábrica para TypeScript (ya que el propio editor está programado en TS) y extensiones obligatorias de ecosistema como ESLint, Prettier y los React/Vue Snippets.
+
+##### 2. Notepad++ (27.4% de uso global)
+
+**Su rol en JS/TS:** Aunque no es un entorno para armar una aplicación moderna compleja (como una app de Next.js), sigue apareciendo extremadamente alto en las métricas globales porque miles de desarrolladores lo usan en Windows para la edición rápida de scripts sueltos de JavaScript, manipulación veloz de archivos `.json` gigantescos o tareas ligeras de automatización sin consumir recursos.
+
+##### 3. Vim / Neovim (38.3% de uso combinado)
+
+- Vim: 24.3% | Neovim: 14%
+- **Su rol en JS/TS:** Es el entorno favorito de los desarrolladores avanzados y administradores de servidores que obtienen con Neovim el mismo autocompletado y tipado inteligente de TypeScript que ofrece VS Code, pero corriendo directo en la terminal a máxima velocidad.
+
+##### 4. Cursor (17.9% de uso global y subiendo)
+
+**Su rol en JS/TS:** Es la herramienta de Inteligencia Artificial que más rápido ha escalado en los rankings. Al ser un clon exacto de VS Code, se ha vuelto sumamente popular entre desarrolladores de JavaScript porque permite usar la IA nativa para generar componentes interactivos completos de interfaces web o refactorizar archivos TypeScript complejos con instrucciones simples en lenguaje natural.
+
+##### 5. Los IDEs de JetBrains (15.1% combinados en web)
+
+- WebStorm: 7.6%
+- **Su rol en JS/TS:** WebStorm es considerado el Rolls-Royce de los IDEs para JavaScript. Su porcentaje global parece menor porque es una herramienta tradicionalmente comercial de pago, pero en entornos profesionales y corporativos es muy cotizado debido a que su motor de refactorización de código y detección de rutas rotas en JavaScript/TypeScript es el más inteligente y seguro del mercado.
+
+> [!NOTE] JetBrains y WebStorm
+> JetBrains recientemente liberó una versión totalmente gratuita de WebStorm para uso no comercial, lo que está impulsando su adopción.
+
+#### Características técnicas fundamentales para la elección de un entorno profesional
+
+- **Código abierto (*Open-source*) y gratuidad:** Garantiza que la comunidad de programadores audite el código, reporte fallos y publique mejoras de forma continua, solucionando incidencias con mayor rapidez que en aplicaciones propietarias cerradas.
+- **Arquitectura modular:** Permite activar, desactivar o reemplazar componentes internos del editor según los gustos o necesidades del desarrollador.
+- **Gestor de paquetes integrado (*Package Manager*):** Mecanismo de línea de comandos o interfaz visual para registrar, instalar, actualizar y eliminar librerías, extensiones y temas visuales de forma desatendida.
+- **Autocompletado predictivo:** Asistente que analiza las variables, funciones y métodos del lenguaje mientras se escribe, minimizando fallos tipográficos y acelerando la codificación.
+- **Sistema de paneles múltiples:** Organización visual del espacio de trabajo en paneles divididos para comparar y editar varios archivos (HTML, CSS y JS) simultáneamente.
+- **Soporte y canales comunitarios:** Apoyo técnico distribuido en foros y plataformas colaborativas como Slack o redes sociales.
+
+---
+
+### B. Integración con Sistemas de Control de Versiones (Git y GitHub)
+
+El desarrollo en equipo exige registrar el historial de cambios, gestionar ramas de características y coordinar modificaciones concurrentes:
+
+- **Git:** Sistema de control de versiones distribuido que rastrea cada modificación realizada en los archivos del proyecto a lo largo del tiempo.
+- **GitHub:** Plataforma en la nube para alojar repositorios Git, facilitando la revisión de código por pares (*pull requests*), el seguimiento de incidencias (*issues*) y la integración continua.
+- **Integración en el IDE:** Editores como Visual Studio Code integran paneles nativos de Git que permiten confirmar cambios (*commits*), alternar entre ramas y resolver conflictos sin salir del entorno de edición.
+
+---
+
+### C. Entornos de Programación y Prueba Online
+
+Cuando se necesita probar fragmentos de código de forma inmediata sin configurar un entorno local, o cuando se trabaja desde dispositivos con restricciones de instalación, los IDEs en la nube ofrecen una alternativa funcional:
+
+- **Coding Ground (Tutorialspoint):**
+  - Plataforma accesible vía navegador web ([https://www.tutorialspoint.com/online_javascript_editor.php](https://www.tutorialspoint.com/online_javascript_editor.php)).
+  - Proporciona un editor con resaltado de sintaxis, visualización previa (*Preview*) y consola de ejecución simultánea.
+  - Permite gestionar múltiples ficheros dentro de un mismo proyecto, así como descargar el código generado al equipo local o importar archivos externos.
+- **Otras plataformas en la nube:** Soluciones como CodeSandbox, StackBlitz o JSFiddle permiten evaluar librerías y componentes sin requerir instalación previa. Permiten arrancar proyectos de React, Angular o Vue directamente desde el navegador en un par de segundos.
+
+---
+
+### D. Herramientas de Prueba y Depuración del Navegador (DevTools)
+
+El navegador web integra su propio conjunto de herramientas de diagnóstico técnico, accesibles de forma universal pulsando la tecla **F12** o mediante la combinación **Ctrl + Shift + I**:
+
+- **Panel Consola (*Console*):**
+  - Permite interactuar directamente con el motor de JavaScript en tiempo real.
+  - Muestra las salidas emitidas por el código mediante `console.log()` y resalta en color rojo las excepciones y errores no capturados durante la ejecución.
+- **Panel Fuentes (*Sources / Debugger*):**
+  - Permite examinar los ficheros `.js` descargados y establecer puntos de interrupción (*breakpoints*) en líneas concretas.
+  - Cuando la ejecución alcanza un punto de interrupción, el navegador congela la ejecución del *script*, permitiendo al desarrollador inspeccionar el valor de las variables en memoria paso a paso y analizar la pila de llamadas (*Call Stack*).
+- **Panel Red (*Network*):**
+  - Supervisa todas las peticiones HTTP que realiza la página web (ficheros HTML, hojas de estilo CSS, *scripts* `.js`, imágenes o peticiones asíncronas de datos).
+  - Permite comprobar el código de respuesta del servidor (200 OK, 404 Not Found, 500 Server Error), el tiempo exacto de transferencia y el tamaño de los recursos descargados.
+
+---
+
+### E. Criterios de Evaluación y Selección de Herramientas
+
+Para seleccionar el software de desarrollo en un proyecto web, se aplican los siguientes factores técnicos:
+
+| Parámetro de Decisión | Editor Ligero / Online | IDE Completo / Avanzado |
+|---|---|---|
+| Escenario de uso idóneo | Pruebas de concepto rápidas, corrección puntual de errores, equipos con hardware limitado. | Proyectos profesionales medianos y grandes, aplicaciones basadas en *frameworks* (React, Angular). |
+| Consumo de recursos | Mínimo; funciona en cualquier navegador web. | Medio-alto; requiere memoria RAM y almacenamiento local para indexar el proyecto. |
+| Control de versiones | Limitado a exportar o descargar archivos sueltos. | Integración profunda con Git, ramas, control de diferencias visuales y GitHub. |
+| Personalización | Escasa o nula; depende de la plataforma web. | Elevada; personalizable mediante gestores de paquetes y extensiones de la comunidad. |
+
+---
