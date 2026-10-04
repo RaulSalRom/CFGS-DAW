@@ -1,17 +1,21 @@
 # Session Memory
 
-## Project Context
-- **Repo**: CFGS-DAW — Desarrollo de Aplicaciones Web
-- **Structure**: 1º-Curso/ (subjects), 2º-Curso/, obsidian/
-- **Type**: Study notes and exercises for higher degree vocational training
+> Contexto completo en `~/Boveda`. Este repo solo guarda lo propio del ciclo formativo.
 
-## Preferences
-- Config files created: `opencode.json`, `tui.json` in project root
-- Memory stored in `.opencode/MEMORY.md`
+## Project Context
+- **Repo**: CFGS-DAW — apuntes y ejercicios del CFGS de Desarrollo de Aplicaciones Web (2º curso, Kursaal).
+- **Es un vault de Obsidian**: la raíz ya es el vault. `1º-Curso(kursaal)/` y `2º-Curso/`.
+- **Índice maestro**: `1º-Curso(kursaal)/📚 Indice General.md`. Si añades una nota, añádela también ahí.
+- **Contexto del sistema, repos y hábitos**: `~/Boveda` (`00-INDICE.md`). No duplicarlo aquí.
+- **Config local**: `opencode.json` (servidor en 127.0.0.1:4096), `tui.json`.
+
+## Convenciones
+- Notas en español; carpetas con prefijo de unidad (`1.1.`, `UT2_`, `Tema 0:`).
+- Commits en español coloquial, sin Conventional Commits.
 
 ## Sessions
 
+> El registro vive en `~/Boveda/40-Habitos/40.2-Bitacora.md`.
+
 ### 2026-05-11 — Initial setup
-- Created `opencode.json` (server config: port 4096, localhost, mDNS off)
-- Created `tui.json` (TUI config: opencode theme, scroll speed 3, auto diff, mouse on)
-- Created `.opencode/MEMORY.md` for cross-session memory
+- `opencode.json`, `tui.json` y este `MEMORY.md`. Contexto migrado a `~/Boveda` el 2026-10-04.

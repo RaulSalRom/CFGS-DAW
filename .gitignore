@@ -25,6 +25,13 @@ Thumbs.db
 # opencode
 .opencode/node_modules/
 .opencode/package-lock.json
-.obsidian
+# Obsidian: la config del vault sí se versiona, el estado de la sesión no.
+# Ojo: si un fichero ya está trackeado, .gitignore no le afecta.
+# Hay quesacarlo del índice una vez con `git rm --cached <fichero>`.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/*/data.json
+
 # libro de ipe
 2º-Curso/IPE II/Ipe II 2025.pdf
