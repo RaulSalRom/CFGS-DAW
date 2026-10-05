@@ -26,10 +26,15 @@ Thumbs.db
 .opencode/node_modules/
 .opencode/package-lock.json
 # Obsidian: la config del vault sí se versiona, el estado de la sesión no.
+# appearance.json y core-plugins.json son preferencias reales y se versionan.
+# app.json y graph.json guardan estado de sesión (ajustes de export PDF, zoom
+# y pan del grafo): cambian en cada uso y solo ensucian el diff.
 # Ojo: si un fichero ya está trackeado, .gitignore no le afecta.
-# Hay quesacarlo del índice una vez con `git rm --cached <fichero>`.
+# Hay que sacarlo del índice una vez con `git rm --cached <fichero>`.
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+.obsidian/app.json
+.obsidian/graph.json
 .obsidian/cache
 .obsidian/plugins/*/data.json
 
