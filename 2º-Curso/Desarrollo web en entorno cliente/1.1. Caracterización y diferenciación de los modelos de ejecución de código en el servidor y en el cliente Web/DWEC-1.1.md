@@ -1,21 +1,5 @@
 # DWEC 1.1 — Modelos de ejecución de código en servidor y cliente Web
 
-> **Resultado de Aprendizaje (RA1):** *Selecciona las arquitecturas y tecnologías de
-> programación sobre clientes Web, identificando y analizando las capacidades y
-> características de cada una.*
->
-> **Criterio Curricular Oficial (CE 1.a):** *Se han caracterizado y diferenciar los
-> modelos de ejecución de código en el servidor y en el cliente web.*
-> *(El PDF de este criterio no incluye la cabecera oficial; el código `CE 1.a` se deduce
-> de la secuencia del RA1: 1.a → 1.1, 1.b → 1.2, 1.c → 1.3, 1.d → 1.4, 1.e → 1.5, 1.f → 1.6.)*
->
-> **Ponderación:** 16,67% del RA1 | 0,833% sobre la calificación final del módulo.
->
-> **PDF oficial de la carpeta:** `TEMA 1 - Modelos de ejecución de código en servidor y cliente Web.pdf`
-> (contiene únicamente la Actividad Práctica Guiada y el Cuestionario ya resueltos).
-
----
-
 ## Índice
 
 - [1. Teoría](#1-teoría)
@@ -24,12 +8,8 @@
   - [1.1.2 El entorno cliente (front-end)](#112-el-entorno-cliente-front-end)
   - [1.1.3 Tabla comparativa cliente vs. servidor](#113-tabla-comparativa-cliente-vs-servidor)
   - [1.1.4 De la web tradicional a la web moderna](#114-de-la-web-tradicional-a-la-web-moderna)
-  - [1.1.5 Criterios de asignación de tareas](#115-criterios-de-asignación-de-tareas)
-- [2. Actividad práctica guiada y cuestionario](#2-actividad-práctica-guiada-y-cuestionario)
-- [3. Archivos de la carpeta](#3-archivos-de-la-carpeta)
-- [4. Errores e inconsistencias detectadas](#4-errores-e-inconsistencias-detectadas)
-- [5. Para el examen](#5-para-el-examen)
-- [6. Vocabulario](#6-vocabulario)
+- [2. Para el examen](#2-para-el-examen)
+- [3. Vocabulario](#3-vocabulario)
 
 ---
 
@@ -117,131 +97,9 @@ dispositivo.
 3. JavaScript pide de forma **asíncrona** solo los datos necesarios en **JSON** y actualiza
    **selectivamente** las partes del árbol visual que cambian.
 
-### 1.1.5 Criterios de asignación de tareas
-
-> **Principio:** lo que aporta **usabilidad e inmediatez** va en el cliente; lo que requiere
-> **integridad y seguridad** va en el servidor.
-
-**Operaciones propias del cliente:**
-
-- Desplegar y ocultar menús, ventanas modales o acordeones.
-- Modificar estilos y colores en respuesta a eventos del ratón (*hover*, clics).
-- Ordenar y filtrar colecciones de datos ya cargadas en memoria.
-
-**Operaciones exclusivas del servidor:**
-
-- Cobros con pasarelas de pago bancarias (el importe final se calcula **en servidor** para
-  evitar alteraciones maliciosas en el navegador).
-- Consultas complejas sobre miles o millones de registros.
-- Comprobación de privilegios y roles antes de conceder accesos administrativos.
-
 ---
 
-## 2. Actividad práctica guiada y cuestionario
-
-> **Objetivo de la actividad (PDF oficial):** medir con `console.time()` / `console.timeEnd()`
-> el coste de ejecutar **en el cliente** la generación, ordenación y filtrado de un catálogo,
-> y comparar 150.000 frente a 500.000 registros.
-
-### 2.1 Modificaciones guiadas (las tres ya están aplicadas en `script.js`)
-
-| # | Instrucción del PDF | Solución aplicada en el código |
-|---|---|---|
-| 1 | Invertir el criterio de ordenación: de **mayor a menor precio** | `catalogoProductos.sort((a, b) => b.precio - a.precio)` y el mensaje muestra primero el más caro |
-| 2 | Cambiar el predicado del filtro a la categoría **"Telefonía"** | `.filter(prod => prod.categoria === "Telefonía")` y el texto del visor lo confirma |
-| 3 | Subir el volumen de 150.000 a 500.000 (o 5.000.000) y **anotar los tiempos** | `const TOTAL_REGISTROS = 5000000;` |
-
-### 2.2 Cuestionario de análisis técnico
-
-Enunciado y respuestas están en [`cuestionario.md`](cuestionario.md). Resumen de las
-conclusiones que hay que saber defender en un examen:
-
-| Cuestión | Respuesta correcta | Justificación técnica |
-|---|---|---|
-| **1.** ¿El tiempo de ordenación con 150.000 vs 500.000 elementos es lineal? | **No, es superlineal (n·log n)** | Al crecer el tamaño, el algoritmo de ordenación necesita **más comparaciones por elemento**, no solo procesar más datos. De ahí que 3,3× más elementos no impliquen 3,3× de tiempo. |
-| **2.** 10.000 usuarios reordenando a la vez, ¿cuánto tiempo total de CPU? | 10.000 × 300 ms = **3.000.000 ms = 3.000 s ≈ 50 min de CPU** | Esos 50 min se reparten **en paralelo** entre 10.000 dispositivos distintos: cada usuario espera solo ~300 ms, sin colas. El servidor y la BBDD no se saturan al evitar 10.000 consultas `ORDER BY` continuas. |
-| **3.** (No aparece en el PDF) | — | El enunciado salta de la 2 a la 4; es una errata del material. |
-| **4.** ¿Es viable traer 8 millones de registros al navegador? | **No**, por tres razones | 1. **RAM**: ~100 B por registro × 8 M ≈ 800 MB solo en datos, pero cada objeto JS real ocupa mucho más (>1-2 GB): la pestaña se cierra o falla. 2. **Red**: 800 MB+ por visitante es lentísimo. 3. **CPU**: ordenar millones de objetos congela la pantalla (mal UX). **Solución: paginación en servidor**, que envía paquetes pequeños (`LIMIT`/`OFFSET`) según el *scroll* o el cambio de página. |
-
----
-
-## 3. Archivos de la carpeta
-
-| Archivo | Tipo | Función |
-|---|---|---|
-| `catalogo.html` | HTML | Interfaz de la práctica: panel con 3 botones (`btnGenerar`, `btnOrdenar`, `btnFiltrar`) y un visor `#consolaVisual` que hace de consola "visible" dentro de la página. Enlaza `style.css` con `<link>` y `script.js` con `<script src>` al final del `<body>`. |
-| `script.js` | JavaScript | Los 3 listeners con `addEventListener` y flechas. Cronometra cada fase con `console.time()`/`console.timeEnd()`. |
-| `style.css` | CSS | Estilos del panel y de los botones, con `button:hover`. Da color de consola al `#consolaVisual` (`#222` de fondo, `#00ff66` de texto, `font-family: monospace`, `white-space: pre-line` para los `\n` del `textContent`). |
-| `cuestionario.md` | Markdown | Respuestas redactadas al cuestionario de análisis técnico (ver §2.2). |
-| `TEMA 1 - ... .pdf` | PDF | Enunciado de la actividad guiada + cuestionario con sus soluciones. |
-
-### 3.1 Cómo se demuestra el criterio en el código
-
-**A. La CPU del cliente hace el trabajo del servidor.** Este fragmento es la demostración
-literal del apartado 1.1.5: el navegador recorre el array, ordena y filtra **sin ninguna
-petición HTTP ni consulta SQL**:
-
-```javascript
-// Ordenar por precio, de mayor a menor
-catalogoProductos.sort((a, b) => b.precio - a.precio);
-
-// Filtrar declarativamente
-const productosFiltrados = catalogoProductos.filter(
-  (prod) => prod.categoria === "Telefonía"
-);
-```
-
-**B. Lo que dice la propia interfaz al usuario** (mensaje clave del ejercicio):
-
-> *"El servidor no ha tenido que ejecutar ninguna consulta SQL ni consumir hilos de
-> procesamiento."*
-
-**C. Patrón de defensa frente a lista vacía.** Los botones 2 y 3 comprueban que haya datos
-antes de operar; es la traducción en código del principio de integridad:
-
-```javascript
-if (catalogoProductos.length === 0) {
-  salida.textContent = "Primero genera los productos.";
-  return;   // sale de la función: no intenta ordenar un array vacío
-}
-```
-
-**D. Cronometrado con la consola del navegador** (vinculado con el apartado 1.6.D):
-
-```javascript
-console.time("Tiempo de ordenación (CPU Cliente)");
-// ... operación ...
-console.timeEnd("Tiempo de ordenación (CPU Cliente)");
-```
-
----
-
-## 4. Errores e inconsistencias detectadas
-
-> [!WARNING] Los datos del cuestionario no son reproducibles con el código actual
-> `script.js` genera `const TOTAL_REGISTROS = 5000000;` (**5 millones**) y escribe
-> *"Generando 500.000 registros..."* y *"Generados 5.000.000 productos"* en el visor, pero
-> `cuestionario.md` documenta tiempos medidos **con 150.000 frente a 500.000**. Los
-> 36,77 ms / 38,23 ms del cuestionario **no** proceden de la ejecución actual de `script.js`.
-> Para que la actividad sea coherente hay que fijar `TOTAL_REGISTROS` en `150000`, repetir
-> las tres mediciones, apuntarlas y pasar después a `500000` (o `5000000`).
-
-> [!WARNING] `salida` se captura en un instante demasiado pronto
-> `const salida = document.getElementById("consolaVisual");` se ejecuta **una sola vez**, al
-> cargarse el script. Funciona porque el `<script src="script.js">` está **al final del
-> `<body>`**, y por eso ya encuentra el `<div>`. Si alguien moviera el script al `<head>`
-> (como en el `index.html` del criterio 1.5), `salida` valdría `null` y
-> `salida.textContent` lanzaría un `TypeError`. Es un ejemplo real del problema que el
-> apartado 1.5.D describe.
-
-> [!NOTE] Detalle de ámbito global
-> `catalogoProductos` y `salida` se declaran con `let`/`const` en el ámbito superior del
-> script, así que **no** cuelgan de `window` (a diferencia de lo que sí ocurriría con `var`).
-> Es la excepción moderna a la regla del apartado 1.2.H.
-
----
-
-## 5. Para el examen
+## 2. Para el examen
 
 1. **¿Dónde se ejecuta el código de cliente y dónde el de servidor?**
    El de cliente, localmente en el navegador, con la CPU, RAM y batería del dispositivo del
@@ -295,7 +153,7 @@ console.timeEnd("Tiempo de ordenación (CPU Cliente)");
 
 ---
 
-## 6. Vocabulario
+## 3. Vocabulario
 
 - **Cliente:** dispositivo y software navegador con el que el usuario interactúa con la aplicación.
 - **Servidor:** máquina conectada permanentemente a la red que aloja los servicios, gestiona las
