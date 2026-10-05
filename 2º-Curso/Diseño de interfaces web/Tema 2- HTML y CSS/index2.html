@@ -8,12 +8,88 @@
 <body>
     <table border="2">
         <tr>
-            <th colspan="2">H1</th>
+            <th>H1</th>
+            <th>H2</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td rowspan="2">B</td>
+        </tr>
+        <tr>
+            <td>C</td>
+        </tr>
+    </table>
+     <table border="5">
+        <tr>
+            <th>H1</th>
+            <td colspan="2">H2</td>
+            <td colspan="3">H3</td>
+
         </tr>
         <tr>
             <td>A</td>
             <td>B</td>
+            <td>C</td>
+            <td rowspan="2">D</td>
+            <td>E</td>
+            <td rowspan="3">F</td>
         </tr>
-    
+        <tr>
+            <td>G</td>
+            <td rowspan="2">H</td>
+            <td>I</td>
+            <td>J</td>
+            
+        </tr>
+        <tr>
+            <td>K</td>
+            <td colspan="2">L</td>
+            <td>M</td>
+        </tr>
+    </table>
+
+
+
+    <form>
+    <fieldset>
+       
+        <legend>Datos de clase</legend>
+         
+        <label for="asignatura">Nombre de la asignatura: </label>
+        <input id="asignatura" type="text"><br>
+
+        <label for="hora">Hora: </label>
+        <select id="hora">
+            <option value="nulo" selected>Nulo</option>
+            <option value="value1">1º</option>
+            <option value="value2" selected>2º</option>
+            <option value="value3" selected>3º</option>
+            <option value="value4" selected>4º</option>
+            <option value="value5" selected>5º</option>
+            <option value="value6" selected>6º</option>
+        </select><br><br>
+
+        <label>Curso: </label>
+        <input type="checkbox" value="2025-2026">2025-2026 
+        <input type="checkbox" value="2026-2027">2026-2027
+
+         <label for="estudios">Estudios: </label>
+        <select id="estudios">
+           <optgroup label="Horario">
+              <option>Horario de mañana</option>
+              <option>Horario de tarde</option>
+           </optgroup>
+        </select><br><br>
+        <input list="asignaturas" id="asignaturas">
+        <datalist id="asignaturas">
+            <option value="Cliente">
+            <option value="Servidor">
+            <option value="Diseño">
+            <option value="Despliegue">
+    </datalist>
+    </fieldset> 
+        
+</form>
+
 </body>
 </html>
