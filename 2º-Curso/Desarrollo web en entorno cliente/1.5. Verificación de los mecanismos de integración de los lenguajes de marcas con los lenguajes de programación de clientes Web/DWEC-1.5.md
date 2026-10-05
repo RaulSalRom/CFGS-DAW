@@ -1,5 +1,9 @@
 # DWEC 1.5 — Integración de los lenguajes de marcas con los lenguajes de programación de clientes Web
 
+> **Teoría completa de este criterio:** [[DesarrolloWebEnEntornoCliente#1.5. Verificación de los mecanismos de integración de los lenguajes de marcas con los lenguajes de programación de clientes Web|1.5]]
+> dentro de `DesarrolloWebEnEntornoCliente.md` (el TEMA 1 entero, los seis criterios).
+> Esta nota es la capa de examen: actividades resueltas, errores detectados y "para el examen".
+
 ## Índice
 
 - [1. Teoría](#1-teoría)

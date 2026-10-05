@@ -1,5 +1,9 @@
 # DWEC 1.6 — Herramientas de programación y prueba sobre clientes Web
 
+> **Teoría completa de este criterio:** [[DesarrolloWebEnEntornoCliente#1.6. Reconocimiento y evaluación de las herramientas de programación y prueba sobre clientes Web|1.6]]
+> dentro de `DesarrolloWebEnEntornoCliente.md` (el TEMA 1 entero, los seis criterios).
+> Esta nota es la capa de examen: actividades resueltas, errores detectados y "para el examen".
+
 ## Índice
 
 - [1. Teoría](#1-teoría)

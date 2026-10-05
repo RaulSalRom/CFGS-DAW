@@ -1,5 +1,9 @@
 # DWEC 1.1 — Modelos de ejecución de código en servidor y cliente Web
 
+> **Teoría completa de este criterio:** [[DesarrolloWebEnEntornoCliente#1.1. Caracterización y diferenciación de los modelos de ejecución de código en el servidor y en el cliente Web|1.1]]
+> dentro de `DesarrolloWebEnEntornoCliente.md` (el TEMA 1 entero, los seis criterios).
+> Esta nota es la capa de examen: actividades resueltas, errores detectados y "para el examen".
+
 ## Índice
 
 - [1. Teoría](#1-teoría)

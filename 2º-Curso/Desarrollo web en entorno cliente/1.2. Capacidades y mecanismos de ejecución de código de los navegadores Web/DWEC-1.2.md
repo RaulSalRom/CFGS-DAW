@@ -1,5 +1,9 @@
 # DWEC 1.2 — Capacidades y mecanismos de ejecución de código de los navegadores Web
 
+> **Teoría completa de este criterio:** [[DesarrolloWebEnEntornoCliente#1.2. Capacidades y mecanismos de ejecución de código de los navegadores Web|1.2]]
+> dentro de `DesarrolloWebEnEntornoCliente.md` (el TEMA 1 entero, los seis criterios).
+> Esta nota es la capa de examen: actividades resueltas, errores detectados y "para el examen".
+
 ## Índice
 
 - [1. Teoría](#1-teoría)

@@ -1,5 +1,9 @@
 # DWEC 1.4 — Programación de guiones (scripts): particularidades, ventajas y desventajas
 
+> **Teoría completa de este criterio:** [[DesarrolloWebEnEntornoCliente#1.4. Particularidades de la programación de guiones (scripts) y sus ventajas y desventajas sobre la programación tradicional|1.4]]
+> dentro de `DesarrolloWebEnEntornoCliente.md` (el TEMA 1 entero, los seis criterios).
+> Esta nota es la capa de examen: actividades resueltas, errores detectados y "para el examen".
+
 ## Índice
 
 - [1. Teoría](#1-teoría)

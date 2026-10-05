@@ -1,5 +1,18 @@
 # TEMA 1: Arquitecturas y Tecnologías de Programación sobre Clientes Web
 
+> **Este fichero es la TEORÍA completa del TEMA 1**, con los seis criterios del 1.1 al 1.6.
+> La **nota de examen** de cada criterio (actividades oficiales resueltas, errores detectados,
+> tabla de decisión y "para el examen") va en las notas `DWEC-1.x.md` de cada carpeta.
+
+| Criterio | Nota de examen |
+|---|---|
+| 1.1 | [[DWEC-1.1]] |
+| 1.2 | [[DWEC-1.2]] |
+| 1.3 | [[DWEC-1.3]] |
+| 1.4 | [[DWEC-1.4]] |
+| 1.5 | [[DWEC-1.5]] |
+| 1.6 | [[DWEC-1.6]] |
+
 ## Índice
 
 - [1.1. Caracterización y diferenciación de los modelos de ejecución de código en el servidor y en el cliente Web](#11-caracterización-y-diferenciación-de-los-modelos-de-ejecución-de-código-en-el-servidor-y-en-el-cliente-web)
@@ -54,6 +67,8 @@
 ---
 
 ## 1.1. Caracterización y diferenciación de los modelos de ejecución de código en el servidor y en el cliente Web
+
+> **Nota de examen del criterio 1.1:** [[DWEC-1.1]]
 
 Cualquier aplicación web funciona mediante el modelo cliente/servidor. Este modelo reparte el trabajo entre dos equipos conectados a través de internet: el cliente (el ordenador, móvil o tableta de la persona que navega) y el servidor (uno o varios ordenadores remotos que guardan los datos y la lógica principal).
 
@@ -172,6 +187,8 @@ Para decidir la ubicación de un procedimiento se aplica el principio: lo que ap
 ---
 
 ## 1.2. Capacidades y mecanismos de ejecución de código de los navegadores Web
+
+> **Nota de examen del criterio 1.2:** [[DWEC-1.2]]
 
 ### A. ¿Qué es un Navegador Web y Cómo se Organiza por Dentro?
 
@@ -453,6 +470,8 @@ Cuando un script altera el DOM o los estilos, el navegador no responde de forma 
 
 ## 1.3. Identificación y caracterización de los principales lenguajes relacionados con la programación de clientes Web
 
+> **Nota de examen del criterio 1.3:** [[DWEC-1.3]]
+
 La programación en el entorno del cliente no se reduce a escribir líneas de código aisladas; se fundamenta en una tríada estandarizada y en un ecosistema de librerías y marcos de trabajo (*frameworks*) que estructuran, decoran y dotan de comportamiento reactivo a las aplicaciones web modernas.
 
 ### A. La Tríada Fundamental de la Programación Cliente
@@ -657,6 +676,8 @@ console.log(sumar(3, 4)); // 7
 ---
 
 ## 1.4. Particularidades de la programación de guiones (scripts) y sus ventajas y desventajas sobre la programación tradicional
+
+> **Nota de examen del criterio 1.4:** [[DWEC-1.4]]
 
 El desarrollo de software ha experimentado una profunda evolución conceptual. Tradicionalmente, los lenguajes de programación se concebían para construir aplicaciones aisladas e independientes (*standalone*) destinadas a la gestión empresarial clásica (nóminas, contabilidad, procesadores de texto, hojas de cálculo o almacenes) sobre sistemas operativos de escritorio o arquitecturas cliente/servidor monolíticas.
 
@@ -876,6 +897,8 @@ const f = new Date(2026, 8, 28, 14, 45, 10); // 28 de septiembre de 2026
 
 ## 1.5. Verificación de los mecanismos de integración de los lenguajes de marcas con los lenguajes de programación de clientes Web
 
+> **Nota de examen del criterio 1.5:** [[DWEC-1.5]]
+
 El lenguaje JavaScript no actúa de forma aislada en el navegador: se combina y complementa directamente con el código HTML de la página web. Para que el motor del navegador reconozca y ejecute las instrucciones de *script*, el estándar define mecanismos precisos de integración que determinan cómo, cuándo y en qué orden se procesa la lógica en relación con la estructura del documento.
 
 ### Opciones de Integración de JavaScript en HTML
@@ -1036,6 +1059,8 @@ Para scripts externos colocados en el `<head>`, los estándares modernos permite
 ---
 
 ## 1.6. Reconocimiento y evaluación de las herramientas de programación y prueba sobre clientes Web
+
+> **Nota de examen del criterio 1.6:** [[DWEC-1.6]]
 
 El desarrollo profesional en JavaScript requiere superar el uso de editores de texto elementales y adoptar entornos de trabajo que integren asistentes de código, depuradores interactivos, gestores de dependencias y sistemas de control de versiones. El técnico en desarrollo de aplicaciones web debe evaluar y seleccionar las herramientas adecuadas en función de la envergadura del proyecto, la infraestructura disponible y el flujo de trabajo en equipo.
 
