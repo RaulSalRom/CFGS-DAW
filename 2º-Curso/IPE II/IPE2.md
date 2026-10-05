@@ -160,5 +160,64 @@ Para Schumpeter, la innovación va más allá de inventar un producto e implica 
 1. **Presentar un nuevo producto:** Lanzar un bien o servicio inexistente hasta la fecha en el mercado (ej. drones o inteligencia artificial).
 2. **Abrirse a un nuevo mercado o clientes:** Adaptar un producto existente para llegar a segmentos que no lo consumían (ej. refrescos sin azúcar).
 3. **Descubrir una nueva fuente de materias primas:** Localizar e incorporar nuevos proveedores fuera de la zona habitual o en el extranjero.
-4. **Aplicar una nueva forma de producir o prestar el servicio:** Cambiar los procesos de fabricación o comercialización (ej. eliminar intermediarios vendiendo únicamente a través de tienda online propia)[3].
+4. **Aplicar una nueva forma de producir o prestar el servicio:** Cambiar los procesos de fabricación o comercialización (ej. eliminar intermediarios vendiendo únicamente a través de tienda online propia).
 5. **Organizar la empresa de forma diferente:** Reestructurar la gestión del organigrama o de los recursos humanos (ej. adoptar el teletrabajo como modelo principal).
+
+## Tarea 3: Motivo o motivación
+### 1\. Conceptos de motivo y motivación, y ejemplos de motivos
+
+* **Motivo:** Es la razón o detonante concreto que lleva a una persona a querer crear una empresa; actúa como la "chispa" inicial para comenzar el proyecto[1][2].
+* **Motivación:** Es la ilusión interna y el deseo profundo en el proyecto que impulsan a luchar y perseverar sin desfallecer ante las dificultades (la "dinamita" que le da continuidad)[1][2].
+* **Ejemplos de motivos:**
+  * Querer ganar más dinero que trabajando por cuenta ajena[1][2].
+  * Encontrar un empleo o salir del desempleo[1][2].
+  * Ser tu propio jefe y no depender de un superior[1][2].
+  * Estar insatisfecho en la empresa actual[1][2].
+  * Tener libertad de horarios y elegir los días de descanso[2].
+  * Dedicarse a un tema que gusta y que no es posible desarrollar trabajando para otros[2].
+  * Ofrecer un bien o servicio útil a la comunidad o lograr satisfacción personal.
+
+---
+
+### 2\. Características principales de un emprendedor
+
+* **Creatividad e innovación:** Es un innovador por definición; tiene la habilidad de crear algo nuevo o de hacer las cosas de manera diferente y mejor.
+* **Asunción de riesgos:** Asume el riesgo calculado de fracasar en el intento, evaluando y gestionando la incertidumbre del proyecto.
+* **Persistencia:** No se desanima ante los primeros obstáculos o fracasos; sabe perseverar y esperar los resultados.
+* **Autoconfianza con autocrítica:** Se marca objetivos realistas con la seguridad de alcanzarlos, manteniendo la capacidad de reconocer errores y aprender de ellos.
+* **Capacidad de organización:** Gestiona de forma ordenada los diferentes recursos (humanos, materiales, capital) sin verse desbordado.
+* **Capacidad de trabajo:** Disposición a dedicar esfuerzo y un tiempo prolongado para sacar adelante el proyecto.
+* **Habilidades sociales:** Se comunica constantemente con clientes, proveedores y colaboradores con empatía, asertividad y escucha activa.
+* **Honradez:** Mantiene un sentido ético, respeto a los demás y cumplimiento de los compromisos para generar confianza a largo plazo.
+
+---
+
+### 3\. Tipos de emprendedores
+
+1. **El empresario emprendedor:** Es aquel que crea una empresa desde el inicio, lanzando un nuevo proyecto al mercado y asumiendo el riesgo económico directo y la innovación que conlleva.
+2. **El empresario corporativo:** Es la persona que trabaja dentro de una organización ya existente, pero dispone de la autonomía suficiente para plantear y desarrollar nuevos proyectos como si fueran propios (por ejemplo, gestores de una ONG o altos cargos de la Administración).
+
+👉 **Denominación:** El **empresario corporativo** es la figura que recibe también el nombre de **intraemprendedor**.
+
+## Tarea 5: Design Thinking
+### 1\. Puntos en los que se basa el Design Thinking
+
+El Design Thinking se asienta sobre seis pilares fundamentales:
+
+* **Empatía con el cliente:** Es su característica principal, consistente en centrarse en el cliente, sus necesidades y sus problemas para adaptar las soluciones a su realidad.
+* **Trabajo en equipo:** Fomenta la colaboración interdisciplinar donde personas con distintos puntos de vista comparten su visión sobre los problemas y las posibles soluciones.
+* **Cultura del prototipado:** Apuesta por elaborar prototipos rápidos, sencillos y baratos para mostrárselos al cliente, recibir sus comentarios (*feedback*) y perfeccionar la propuesta mediante aproximaciones sucesivas.
+* **Visión integradora de la innovación:** Otorga relevancia al contexto social, cultural, político y ético en el que se desarrolla la innovación, entendiendo que el entorno condiciona el éxito o fracaso del producto.
+* **Potenciación de la imaginación y la creatividad:** Estimula el uso del lado más creativo e intuitivo del cerebro (lado derecho), aportando un enfoque más humanístico a la gestión empresarial.
+* **Descubrimiento de necesidades latentes:** Combina lo que el cliente expresa verbalmente con la observación directa de su comportamiento real para detectar carencias o necesidades no manifiestas.
+
+---
+
+### 2\. Los 4 pasos del Design Thinking
+
+Unificando las etapas de ideación y prototipado en la fase de construcción, el proceso consta de 4 pasos esenciales:
+
+1. **Mapear (Marco de trabajo / Empatizar):** Consiste en definir para quién se quieren idear soluciones. Se parte de las creencias e hipótesis previas que el equipo tiene sobre quién es su cliente objetivo y cuáles son sus supuestas necesidades.
+2. **Explorar (Investigación / Definir):** Implica salir a la realidad e investigar a fondo al cliente mediante entrevistas cualitativas, etnografía u observación directa para averiguar cómo es realmente, cuáles son sus verdaderos problemas y qué necesita de forma prioritaria.
+3. **Construir (Idear y Prototipar):** Combina la generación amplia de soluciones creativas (como tormenta de ideas o SCAMPER) con la selección de la mejor propuesta para convertirla en un prototipo tangible o visual (bocetos, *concept sketch*, *storyboard* o modelos a pequeña escala).
+4. **Testear (Evaluar / Validar):** Consiste en presentar el prototipo al cliente real para comprobar si la solución le resulta útil y tiene sentido para él. Se recopilan las críticas y sugerencias para perfeccionar el prototipo o valorar si es necesario realizar un pivote antes de construir el producto mínimo viable.
