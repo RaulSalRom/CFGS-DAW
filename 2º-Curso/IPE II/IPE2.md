@@ -119,3 +119,46 @@ En la libreta.
     ¿Qué es la marca personal?
     ¿Crees que es importante la marca personal?
     ¿Qué pasos se deben seguir para crear la marca personal?
+
+
+# Unidad Didáctica 3: El emprendimiento
+## Tarea 1: Tipos de emprendedores
+### 1. Zonas de la zona de confort según cada modelo
+Modelo clásico: Zona de confort --> Zona de aprendizaje --> Zona de pánico.
+Modelo optimista: Zona de confort --> Zona de aprendizaje --> Zona mágica.
+Modelo intermedio: Zona de confort --> Zona de miedo --> Zona de aprendizaje --> Zona de crecimiento. 
+
+---
+
+### 2. Diferencias principales: Cuenta ajena vs. Cuenta propia
+Jerarquía: Por cuenta ajena se depende de un jefe; por cuenta propia se es el propio jefe.
+Responsabilidad y Riesgo: Por cuenta ajena la responsabilidad se limita a cumplir el trabajo asignado; por cuenta propia se asume la gestión global y el riesgo económico (beneficios o pérdidas).
+Salario y Horario: Por cuenta ajena se percibe un salario fijo y se cumple un horario2; por cuenta propia los ingresos varían según el negocio y el trabajo suele llevarse a casa.
+Satisfacción: Por cuenta ajena depende en gran medida del clima laboral; por cuenta propia nace de asumir y superar un reto empresarial propio.
+
+---
+
+## Tarea 2: Innovación
+### 1. Ejemplos de innovación sostenible
+
+* **Innovación de producto:** Creación de alimentos *plant-based* (a base de plantas) para sustituir a la carne y reducir la huella ambiental.
+* **Innovación de proceso:** Modelos de economía circular donde se reutilizan materiales y se recicla ropa usada para reducir residuos.
+* **Innovación organizacional:** Implantación de políticas de **cero papel** dentro de la cultura de trabajo de la empresa[1]. *(Otros ejemplos recogidos en las fuentes son la tecnología de purificación de agua potable accesible, la fabricación de ropa con plásticos reciclados del mar o aplicaciones para evitar el desperdicio de comida).*
+
+---
+
+### 2. Definición de emprendedor
+
+Un **emprendedor** es aquella persona capaz de **convertir una idea en un proyecto real y concreto** (sea una empresa o una organización social como una ONG, asociación o fundación), generando algún tipo de innovación en el entorno y aportando beneficios económicos y sociales.
+
+---
+
+### 3. Formas de ser innovador según Schumpeter
+
+Para Schumpeter, la innovación va más allá de inventar un producto e implica hacer las cosas de manera diferente mediante **5 formas**:
+
+1. **Presentar un nuevo producto:** Lanzar un bien o servicio inexistente hasta la fecha en el mercado (ej. drones o inteligencia artificial).
+2. **Abrirse a un nuevo mercado o clientes:** Adaptar un producto existente para llegar a segmentos que no lo consumían (ej. refrescos sin azúcar).
+3. **Descubrir una nueva fuente de materias primas:** Localizar e incorporar nuevos proveedores fuera de la zona habitual o en el extranjero.
+4. **Aplicar una nueva forma de producir o prestar el servicio:** Cambiar los procesos de fabricación o comercialización (ej. eliminar intermediarios vendiendo únicamente a través de tienda online propia)[3].
+5. **Organizar la empresa de forma diferente:** Reestructurar la gestión del organigrama o de los recursos humanos (ej. adoptar el teletrabajo como modelo principal).
