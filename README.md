@@ -9,9 +9,10 @@ Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado supe
 ```
 CFGS-DAW/
 ├── 1º-Curso(kursaal)/
+│   ├── 📚 Indice General.md     # Índice maestro del vault
 │   ├── Base de datos/           # SQL, MySQL, procedimientos, triggers, cursores, MongoDB
 │   ├── Digitalizacion/          # Ciberseguridad, transformación digital
-│   ├── Entorno de desarrollo/   # Caja negra, caja balnca, SCRUM...
+│   ├── Entorno de desarrollo/   # Caja negra, caja blanca, SCRUM...
 │   ├── IPE/                     # Nominas, PRL...
 │   ├── Lenguaje de marcas/      # HTML, CSS, dbdiagram
 │   ├── Programacion/            # Java, POO, estructuras de datos
@@ -19,19 +20,34 @@ CFGS-DAW/
 │   ├── Sistemas Informaticos/   # Linux, redes, bash scripting
 │   └── Sostenibilidad/          # Economía verde, medio ambiente, IA ética
 │
-├── 2º-Curso(kuursal)/
-│   ├── Desarrollo web en entorno cliente/   # JavaScript, DOM, eventos, fetch
+├── 2º-Curso/
+│   ├── Desarrollo web en entorno cliente/
+│   │   ├── DesarrolloWebEnEntornoCliente.md  # TEORÍA completa del TEMA 1 (criterios 1.1 a 1.6)
+│   │   ├── 1.1. .../DWEC-1.1.md              # Nota de EXAMEN de cada criterio
+│   │   ├── 1.2. .../DWEC-1.2.md              #   (actividades resueltas, errores,
+│   │   ├── 1.3. .../DWEC-1.3.md              #    "para el examen" y vocabulario)
+│   │   ├── 1.4. .../DWEC-1.4.md
+│   │   ├── 1.5. .../DWEC-1.5.md
+│   │   ├── 1.6. .../DWEC-1.6.md
+│   │   └── Prueba_inicial/
 │   ├── Desarrollo web en entorno servidor/  # PHP, formularios, sesiones, PDF del libro
 │   ├── Despliegue de aplicaciones web/      # Servidores, contenedores, CI/CD
 │   ├── Diseño de interfaces web/            # Comunicaciones, ciclos de reloj, jerarquía de memoria
 │   ├── IPE II/                              # Orientación laboral, ofertas de empleo
 │   ├── Inglés profesional/                  # Inglés técnico
+│   ├── Optativa/                            # Gestores de contenido (CDMON)
 │   └── Proyecto intermodular/               # Proyecto final del ciclo
 │
 ├── .obsidian/                   # Configuración del vault de Obsidian
+├── .opencode/                   # Config local de opencode (MEMORY.md, opencode.json, tui.json)
+├── .vscode/                     # Ajustes de VS Code (puerto de Live Server)
 ├── .gitignore                   # Archivos ignorados por Git
 └── README.md                    # Este archivo
 ```
+
+> **DWEC tiene dos capas.** `DesarrolloWebEnEntornoCliente.md` es la teoría completa del
+> TEMA 1. Las notas `DWEC-1.x.md` son la capa de examen de cada criterio. Cada nota enlaza
+> a su apartado del monolito y viceversa.
 
 ---
 
@@ -75,6 +91,7 @@ CFGS-DAW/
 | Diseño de interfaces web | Comunicaciones, ciclos de reloj, jerarquía de memoria |
 | IPE II | Orientación laboral, análisis de ofertas de empleo |
 | Inglés profesional | Inglés técnico aplicado al desarrollo |
+| Optativa | Gestores de contenido, UD 01 sobre CMS y CDMON |
 | Proyecto intermodular | Proyecto final integrador del ciclo |
 
 ---
