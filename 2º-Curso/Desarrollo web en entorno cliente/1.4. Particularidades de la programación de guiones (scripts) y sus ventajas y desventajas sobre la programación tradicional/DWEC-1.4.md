@@ -1,19 +1,5 @@
 # DWEC 1.4 — Programación de guiones (scripts): particularidades, ventajas y desventajas
 
-> **Resultado de Aprendizaje (RA1):** *Selecciona las arquitecturas y tecnologías de
-> programación sobre clientes Web, identificando y analizando las capacidades y
-> características de cada una.*
->
-> **Criterio Curricular Oficial (CE 1.d):** *Se han reconocido las particularidades de la
-> programación de guiones y sus ventajas y desventajas sobre la programación tradicional.*
->
-> **Ponderación:** 16,67% del RA1 | 0,833% sobre la calificación final del módulo.
->
-> **PDF oficial de la carpeta:** `1.4. ... .pdf` (teoría completa, el objeto `Date` y los
-> 7 ejercicios con su enunciado; tiene capa de texto).
-
----
-
 ## Índice
 
 - [1. Teoría](#1-teoría)

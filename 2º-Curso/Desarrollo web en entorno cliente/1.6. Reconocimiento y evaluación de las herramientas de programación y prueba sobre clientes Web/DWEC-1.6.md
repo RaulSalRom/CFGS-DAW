@@ -1,19 +1,5 @@
 # DWEC 1.6 — Herramientas de programación y prueba sobre clientes Web
 
-> **Resultado de Aprendizaje (RA1):** *Selecciona las arquitecturas y tecnologías de
-> programación sobre clientes Web, identificando y analizando las capacidades y
-> características de cada una.*
->
-> **Criterio Curricular Oficial (CE 1.f):** *Se han reconocido y evaluado las herramientas de
-> programación y prueba sobre clientes web.*
->
-> **Ponderación:** 16,67% del RA1 | 0,833% sobre la calificación final del módulo.
->
-> **PDF oficial de la carpeta:** `1.6. ... .pdf` (teoría + actividad de configuración, con capa
-> de texto) y `1.6. ... hecha.pdf` (versión resuelta; escaneo de 2 páginas sin texto extraíble).
-
----
-
 ## Índice
 
 - [1. Teoría](#1-teoría)

@@ -1,20 +1,5 @@
 # DWEC 1.3 — Principales lenguajes relacionados con la programación de clientes Web
 
-> **Resultado de Aprendizaje (RA1):** *Selecciona las arquitecturas y tecnologías de
-> programación sobre clientes Web, identificando y analizando las capacidades y
-> características de cada una.*
->
-> **Criterio Curricular Oficial (CE 1.c):** *Se han identificado y caracterizado los
-> principales lenguajes relacionados con la programación de clientes web.*
->
-> **Ponderación:** 16,67% del RA1 | 0,833% sobre la calificación final del módulo.
->
-> **PDF oficial de la carpeta:** `1.3. ... .pdf` (teoría + actividades) y
-> `1.3. ... resuelta.pdf` (con la solución de la actividad de análisis comparativo; es un
-> escaneo sin capa de texto).
-
----
-
 ## Índice
 
 - [1. Teoría](#1-teoría)

@@ -1,19 +1,5 @@
 # DWEC 1.5 — Integración de los lenguajes de marcas con los lenguajes de programación de clientes Web
 
-> **Resultado de Aprendizaje (RA1):** *Selecciona las arquitecturas y tecnologías de
-> programación sobre clientes Web, identificando y analizando las capacidades y
-> características de cada una.*
->
-> **Criterio Curricular Oficial (CE 1.e):** *Se han verificado los mecanismos de integración de
-> los lenguajes de marcas con los lenguajes de programación de clientes web.*
->
-> **Ponderación:** 16,67% del RA1 | 0,833% sobre la calificación final del módulo.
->
-> **PDF oficial de la carpeta:** `1.5. ... .pdf` (teoría + actividades) y
-> `1.5. ... hecho.pdf` (versión resuelta; es un escaneo de 3 páginas sin capa de texto).
-
----
-
 ## Índice
 
 - [1. Teoría](#1-teoría)

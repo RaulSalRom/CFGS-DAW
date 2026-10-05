@@ -1,20 +1,5 @@
 # DWEC 1.2 — Capacidades y mecanismos de ejecución de código de los navegadores Web
 
-> **Resultado de Aprendizaje (RA1):** *Selecciona las arquitecturas y tecnologías de
-> programación sobre clientes Web, identificando y analizando las capacidades y
-> características de cada una.*
->
-> **Criterio Curricular Oficial (CE 1.b):** *Se han identificado las capacidades y
-> mecanismos de ejecución de código de los navegadores web.*
->
-> **Ponderación:** 16,67% del RA1 | 0,833% sobre la calificación final del módulo.
->
-> **PDF oficial de la carpeta:** `enuncida.pdf` (los 9 ejercicios), más
-> `1.2. Capacidades y mecanismos de ejecución de código de los navegadores Web.pdf` (teoría) y
-> `... con funciones.pdf` (teoría de los mismos ejercicios resuelta con funciones).
-
----
-
 ## Índice
 
 - [1. Teoría](#1-teoría)
@@ -27,11 +12,8 @@
   - [1.2.G Manipulación dinámica](#12g-capacidades-prácticas-de-manipulación-dinámica)
   - [1.2.H El objeto global window y el BOM](#12h-el-objeto-global-window-y-el-árbol-jerárquico-del-bom)
   - [1.2.I Reflow y Repaint](#12i-profundización-en-el-renderizado-reflow-layout-y-repaint)
-- [2. Los 9 ejercicios oficiales](#2-los-9-ejercicios-oficiales)
-- [3. Archivos de la carpeta](#3-archivos-de-la-carpeta)
-- [4. Errores e inconsistencias detectadas](#4-errores-e-inconsistencias-detectadas)
-- [5. Para el examen](#5-para-el-examen)
-- [6. Vocabulario](#6-vocabulario)
+- [2. Para el examen](#2-para-el-examen)
+- [3. Vocabulario](#3-vocabulario)
 
 ---
 
@@ -85,12 +67,9 @@ Para funcionar sin fallos ni bloqueos, su interior se divide en **siete módulos
 
 Cuando el navegador recibe el archivo HTML por la red, realiza **cuatro pasos consecutivos**:
 
-1. **Creación del DOM y CSSOM.** Lee el HTML y construye en memoria un árbol con todas las
-   etiquetas (**árbol DOM**). Al mismo tiempo lee el CSS y genera el árbol de reglas de estilo
+1. **Creación del DOM y CSSOM.** Lee el HTML y construye en memoria un árbol con todas las etiquetas (**árbol DOM**). Al mismo tiempo lee el CSS y genera el árbol de reglas de estilo
    (**árbol CSSOM**).
-2. **Unión en el Árbol de Renderizado (Render Tree).** Combina el árbol de etiquetas con el de
-   estilos. Aquí **solo entran los elementos que se van a ver**: las etiquetas de configuración
-   (como `<head>`) o las que tengan `display: none;` quedan fuera porque no ocupan espacio visual.
+2. **Unión en el Árbol de Renderizado (Render Tree).** Combina el árbol de etiquetas con el de estilos. Aquí **solo entran los elementos que se van a ver**: las etiquetas de configuración  (como `<head>`) o las que tengan `display: none;` quedan fuera porque no ocupan espacio visual.
 3. **Disposición (Layout / Reflow).** Calcula ancho, alto y coordenadas exactas de cada caja
    según el tamaño de la ventana.
 4. **Pintado (Paint).** Dibuja colores, bordes, tipografías e imágenes píxel a píxel.
@@ -155,8 +134,7 @@ window  (BOM / Navegador)
 - **Definición técnica:** representación estructurada de todos los elementos que forman la
   página web (enlaces, botones, textos, imágenes y contenedores).
 - **El rol de JavaScript:** no dibuja directamente en la tarjeta gráfica. Se comunica con la
-  interfaz del DOM para **buscar nodos**, leer sus propiedades, alterar su contenido o borrar y
-  crear etiquetas sobre la marcha. Cada vez que JavaScript cambia el DOM, el motor de
+  interfaz del DOM para **buscar nodos**, leer sus propiedades, alterar su contenido o borrar y crear etiquetas sobre la marcha. Cada vez que JavaScript cambia el DOM, el motor de
   renderizado **recalcula el espacio** de los elementos y **vuelve a pintar** la pantalla.
 
 ### 1.2.F Mecanismos de salida y comunicación del navegador
@@ -360,216 +338,7 @@ costosas:
 
 ---
 
-## 2. Los 9 ejercicios oficiales
-
-Enunciados extraídos literalmente de `enuncida.pdf`.
-
-### Ejercicio 1 — Cambiar párrafo y encabezado con `getElementById()` e `innerHTML`
-
-> Añadir un segundo botón al ejemplo de los apuntes, al pulsarlo, no solo altere el párrafo
-> sino que cambie también el texto del encabezado `<h1>` mediante `document.getElementById()` y
-> `innerHTML`.
-
-→ Solución: [`ejercicio1.html`](./ejercicio1.html). El botón original escribe el `onclick`
-en línea; el segundo invoca dos funciones, `cambiarParrafo()` y `cambiarEncabezado()`, cada una
-con su `getElementById`.
-
-### Ejercicio 2 — Traza informativa con `console.log()`
-
-> Implementar una página que capture el evento clic de un botón para emitir una traza
-> informativa a las herramientas de desarrollo mediante `console.log()`.
-
-→ Solución: [`ejercicio2.html`](./ejercicio2.html). La función `capturarEvento()` escribe en la
-consola. **El usuario no ve nada en la página**: solo el desarrollador en F12.
-
-### Ejercicio 3 — Sustituir la escritura por `window.alert()`
-
-> Modificar el ejercicio anterior sustituyendo la escritura en el párrafo por ventanas de aviso
-> emergentes modales utilizando el método `window.alert()` / `alert()`.
-
-→ Solución: [`ejercicio3.html`](./ejercicio3.html). Se elimina el `<p id="prueba">` y solo queda
-el `alert`. El enunciado pide `window.alert()` y el código usa `window.alert()`, lo que además
-permite ver que ambas formas son equivalentes.
-
-### Ejercicio 4 — Tres idiomas con `.style.color`
-
-> Construir una web con tres botones ("Ruso", "Español", "Inglés") que alteren un párrafo
-> (`<p>`) mostrando un saludo en el idioma elegido y aplicando a dicho párrafo un color de fuente
-> CSS diferente para cada uno mediante `.style.color`.
-
-→ Solución: [`ejercicio4.html`](./ejercicio4.html). Cada función escribe en el `<p>` con
-`innerHTML` **y** cambia el color: Español → `red`, Inglés → `blue`, Ruso → `green`.
-Demuestra las dos técnicas de la 1.2.G (contenido y estilo) en la misma acción.
-
-### Ejercicio 5 — Los tres idiomas solo por consola
-
-> Adaptar el mismo ejercicio para que las salidas en los tres idiomas se impriman únicamente a
-> través de la consola de desarrollador.
-
-→ Solución: [`ejercicio5.html`](./ejercicio5.html). Mismo HTML que el 4, pero las funciones ya
-**no tocan el DOM**: solo `console.log()`. El `<p>` permanece con su texto original, lo que
-demuestra que `console.log()` no altera la página.
-
-### Ejercicio 6 — Generar textos en el flujo con `document.write()`
-
-> Transformar el código para generar los textos directamente en el flujo de la página mediante
-> el método `document.write()`.
-
-→ Solución: [`ejercicio6.html`](./ejercicio6.html). La función `botonesHTML()` devuelve el
-markup de los tres botones como **cadena**, y cada `cambioX()` concatena el saludo con esa
-cadena: `document.write("Hola<br>" + botonesHTML())`.
-
-> [!WARNING] Comportamiento que demuestra
-> Al pulsar un botón, `document.write()` se ejecuta **después** de la carga y por eso **borra
-> todo el documento**, dejando solo el saludo y los botones reconstruidos. Es exactamente el
-> comportamiento crítico del apartado 1.2.F.3, y la razón por la que **no se usa en desarrollos
-> modernos**. Observa cómo el código se ve obligado a *reconstruir* los botones que el borrón
-> elimina.
-
-### Ejercicio 7 — Interfaz con `console.log()`, estilo y `alert()`
-
-> Diseña una interfaz compuesta por un titular `<h1>`, un párrafo
-> `<p id="estado">Sistema en espera</p>` y tres botones:
-> 1. **Botón 1 (Consola):** emite una traza mediante `console.log()` indicando la hora del
->    sistema.
-> 2. **Botón 2 (Estilo):** modifica el color de fondo del párrafo a verde y su texto a "Sistema
->    Activo" mediante `innerHTML` y `.style.backgroundColor`.
-> 3. **Botón 3 (Alerta):** lanza un cuadro modal mediante `window.alert()` avisando de que el
->    proceso ha concluido.
-
-→ Solución: [`ejercicio7.html`](./ejercicio7.html). `botonConsole()` usa
-`new Date().toLocaleDateString()` y lo escribe por consola; `botonEstilo()` combina `innerHTML`
-y `.style.color`; `botonAlerta()` lanza el `window.alert()`.
-
-> [!NOTE] Detalle a corregir
-> El enunciado pide `.style.backgroundColor`, y el enunciado del `<p>` es `id="estado"`, pero la
-> solución usa `id="prueba"` y cambia `.style.color` en lugar de `.style.backgroundColor`.
-> La solución es válida conceptualmente (es un **repaint**, no un reflow), pero no coincide
-> literalmente con el enunciado.
-
-### Ejercicio 8 — Test interactivo de siete preguntas
-
-> Desarrollar un test interactivo de siete preguntas con botones «Verdadero» y «Falso». Cuando el
-> usuario hace clic, el script evalúa el acierto y modifica la propiedad de estilo
-> `.style.color = "green"` (acierto) o `.style.color = "red"` (error).
-
-→ Solución: [`ejercicio8.html`](./ejercicio8.html). Estructura: un `<p>` por pregunta con su `id`
-(`pregunta1`…`pregunta7`) y dos botones que llaman a `responderPreguntaN(true|false)`.
-
-**Clave de respuestas razonadas del test** (el test no contiene contador de aciertos: solo
-pinta el color correcto o incorrecto):
-
-| # | Enunciado | Correcto | Razón |
-|---|---|---|---|
-| 1 | Chrome utiliza los motores **Blink y V8** | **Verdadero** | Blink renderiza, V8 ejecuta (tabla 1.2.B). |
-| 2 | Firefox utiliza **Gecko y SpiderMonkey** | **Verdadero** | Mozilla no usa Chromium (tabla 1.2.B). |
-| 3 | `localStorage` **borra** sus datos al cerrar la pestaña | **Falso** | Eso es `sessionStorage`. `localStorage` es **permanente** (tabla 1.2.D). |
-| 4 | `sessionStorage` conserva los datos mientras la pestaña siga abierta | **Verdadero** | Al cerrar la pestaña se borra (tabla 1.2.D). |
-| 5 | Cambiar solo el color de un texto provoca **siempre** un reflow | **Falso** | El color provoca solo **repaint**. El reflow es para cambios de geometría (apartado 1.2.I). |
-| 6 | El DOM representa de forma estructurada los elementos de una página web | **Verdadero** | Definición técnica del apartado 1.2.E. |
-| 7 | `window.alert()` bloquea la ejecución hasta que el usuario acepta | **Verdadero** | Diálogo síncrono y bloqueante (apartado 1.2.F.4). |
-
-### Ejercicio 9 — Secuencia cíclica de imágenes reasignando `.src`
-
-> Crear una secuencia cíclica de al menos 4 imágenes fotograma a fotograma. Al hacer clic sobre
-> la imagen, el script comprueba cuál se está visualizando (mediante una condición o extrayendo un
-> contador de un array) y reasigna el atributo `.src` para mostrar la siguiente.
-
-→ Soluciones: [`ejercicio9.html`](./ejercicio9.html) e [`index.html`](./index.html).
-
-**Dos implementaciones distintas de lo mismo:**
-
-| | `ejercicio9.html` | `index.html` |
-|---|---|---|
-| Disparador | Dos botones `<` y `>` | Clic **sobre la imagen** (`onclick` en el `<img>`) |
-| Dirección | Bidireccional (`indice--` / `indice++`) | Solo hacia adelante |
-| Control de borde | `if (indice < 0) indice = longitud - 1` | `if (indice === imagenes.length) indice = 0` |
-| Imágenes | 4 URLs de *Brave Search* | 4 URLs de `placehold.co` (marcadores de posición) |
-
-Fragmento clave común (versión `index.html`):
-
-```javascript
-const imagenes = [ /* 4 rutas */ ];
-let indice = 0;
-
-function cambiarImagen() {
-  indice++;
-  if (indice === imagenes.length) {  // al llegar al final, vuelve al principio
-    indice = 0;                      // secuencia cíclica
-  }
-  document.getElementById("imagen").src = imagenes[indice];
-}
-```
-
----
-
-## 3. Archivos de la carpeta
-
-| Archivo | Tipo | Qué demuestra / qué ejercicio resuelve |
-|---|---|---|
-| `enuncida.pdf` | PDF | **Los 9 enunciados oficiales** del criterio (texto extraíble). |
-| `1.2. Capacidades... .pdf` | PDF | Teoría del criterio + los 6 primeros ejercicios con su solución guiada. |
-| `1.2. ... con funciones.pdf` | PDF | Los mismos ejercicios resueltos usando **funciones** en lugar de `onclick` en línea. |
-| `ejercicio1.html` | HTML | Ej. 1 — cambiar `<p>` y `<h1>` con `getElementById()` e `innerHTML`. |
-| `ejercicio2.html` | HTML | Ej. 2 — traza por `console.log()`. |
-| `ejercicio3.html` | HTML | Ej. 3 — `window.alert()` en lugar de escritura en el párrafo. |
-| `ejercicio4.html` | HTML | Ej. 4 — tres idiomas con `innerHTML` + `.style.color`. |
-| `ejercicio5.html` | HTML | Ej. 5 — los tres idiomas solo por `console.log()`, sin tocar el DOM. |
-| `ejercicio6.html` | HTML | Ej. 6 — generación del flujo con `document.write()`. |
-| `ejercicio7.html` | HTML | Ej. 7 — interfaz con `console.log()`, estilo y `alert()`. |
-| `ejercicio8.html` | HTML | Ej. 8 — test de siete preguntas verdadero/falso. |
-| `ejercicio9.html` | HTML | Ej. 9 — secuencia cíclica de imágenes con botones `<` y `>`. |
-| `index.html` | HTML | Variante del ej. 9: clic sobre la imagen y URLs de `placehold.co`. |
-
-### 3.1 Las cinco vías de salida, ordenadas por visibilidad
-
-Los ejercicios 2 a 7 recorren sistemáticamente las cuatro vías del apartado 1.2.F:
-
-| Vía | ¿La ve el usuario? | ¿Altera la página? | Ejercicio |
-|---|---|---|---|
-| `console.log()` | **No** (solo F12) | No | 2, 5, 7 |
-| `innerHTML` | **Sí** | Sí | 1, 4, 7 |
-| `document.write()` | **Sí** | Sí (**borra el documento** si se usa tras la carga) | 6 |
-| `window.alert()` | **Sí**, como modal **bloqueante** | No | 3, 7 |
-
----
-
-## 4. Errores e inconsistencias detectadas
-
-> [!WARNING] Punto y coma espurio en el atributo `onclick` (ejercicios 1 a 7)
-> En `ejercicio1.html` a `ejercicio7.html` el botón está escrito así:
-> `<button id="boton" type="button"; onclick="capturarEvento()">`
-> El `;` después de `type="button"` **no pertenece a la sintaxis HTML**. Según el estándar, el
-> analizador lo descarta como error de análisis y el atributo `onclick` **sí** queda enlazado,
-> por lo que los ejercicios funcionan. Aun así, es HTML **inválido** que un validador marcaría
-> como error y que confunde al leerlo. La forma correcta es `type="button" onclick="..."`.
-
-> [!WARNING] El ejercicio 7 no coincide con su enunciado
-> El enunciado pide `<p id="estado">Sistema en espera</p>` y `.style.backgroundColor`, y la
-> solución usa `id="prueba"` con el texto "Sistema de espera." y cambia `.style.color`.
-> Además el enunciado numera el `<h1>` como `<h1>` y el código usa `<h1 id="prueba">` duplicado
-> en el ejercicio 1. Ver la nota en §2, Ejercicio 7.
-
-> [!NOTE] `ejercicio8.html` no puntúa
-> El enunciado dice "el script **evalúa el acierto**", y el código solo **pinta de verde o rojo**
-> la pregunta. No hay contador de aciertos ni puntuación final, así que el usuario no obtiene
-> resultado final. Se puede completar con un contador y un mensaje de nota final.
-
-> [!NOTE] `index.html` es un duplicado de `ejercicio9.html`
-> Ambos resuelven el ejercicio 9. `index.html` además depende de un **servicio externo**
-> (`placehold.co`), así que sin conexión el ejercicio se queda en blanco. Conviene decidir cuál
-> de los dos se entrega como solución definitiva, o renombrar `index.html` a
-> `ejercicio9-v2.html` para que el HTML de la carpeta no oculte al ejercicio real.
-
-> [!NOTE] Rutas de `ejercicio9.html`
-> Las cuatro imágenes apuntan a URLs de *Brave Search* con tokens de sesión. **No son
-> permanentes** y dejarán de funcionar; además obligan al navegador a hacer peticiones
-> externas. Para una entrega sin conexión conviene descargar las cuatro imágenes a una carpeta
-> `img/` y usar rutas relativas.
-
----
-
-## 5. Para el examen
+## 2. Para el examen
 
 1. **Enumera los siete módulos internos de un navegador web y explica qué hace cada uno.**
    Interfaz de usuario, motor del navegador, motor de renderizado, motor de JavaScript, capa de
@@ -655,7 +424,7 @@ Los ejercicios 2 a 7 recorren sistemáticamente las cuatro vías del apartado 1.
 
 ---
 
-## 6. Vocabulario
+## 3. Vocabulario
 
 - **Navegador web:** aplicación cliente que pide páginas por HTTP/HTTPS, interpreta el código
   recibido y lo muestra de forma interactiva.
