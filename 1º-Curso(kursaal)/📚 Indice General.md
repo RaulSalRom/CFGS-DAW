@@ -59,13 +59,14 @@
 
 ## 📗 Asignaturas de 2º Curso
 
-### [[DesarrolloWebEnEntornoCliente|DWEC · TEMA 1 (teoría completa)]]
+### [[DesarrolloWebEnEntornoCliente|DWEC · TEMAS 1 y 2 (teoría completa)]]
 - [[DWEC-1.1]]
 - [[DWEC-1.2]]
 - [[DWEC-1.3]]
 - [[DWEC-1.4]]
 - [[DWEC-1.5]]
 - [[DWEC-1.6]]
+- [[DWEC-2.1]]
 
 ### [[DesarrolloWebEnEntornoServidor|DWES]]
 ### [[DiseñoDeInterfacesWeb|Diseño de interfaces web (DIWEB)]]

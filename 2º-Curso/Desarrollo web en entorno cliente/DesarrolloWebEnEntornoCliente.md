@@ -1,8 +1,9 @@
 # TEMA 1: Arquitecturas y Tecnologías de Programación sobre Clientes Web
 
-> **Este fichero es la TEORÍA completa del TEMA 1**, con los seis criterios del 1.1 al 1.6.
-> La **nota de examen** de cada criterio (actividades oficiales resueltas, errores detectados,
-> tabla de decisión y "para el examen") va en las notas `DWEC-1.x.md` de cada carpeta.
+> **Este fichero es la TEORÍA completa de los TEMAS 1 y 2.** El TEMA 1 reúne los seis
+> criterios del 1.1 al 1.6; el TEMA 2, los criterios 2.1 y 2.2.
+> La **nota de examen** de cada criterio del TEMA 1 (actividades oficiales resueltas, errores
+> detectados, tabla de decisión y "para el examen") va en las notas `DWEC-1.x.md` de cada carpeta.
 
 | Criterio | Nota de examen |
 |---|---|
@@ -63,6 +64,23 @@
   - [C. Entornos de Programación y Prueba Online](#c-entornos-de-programación-y-prueba-online)
   - [D. Herramientas de Prueba y Depuración del Navegador (DevTools)](#d-herramientas-de-prueba-y-depuración-del-navegador-devtools)
   - [E. Criterios de Evaluación y Selección de Herramientas](#e-criterios-de-evaluación-y-selección-de-herramientas)
+
+### TEMA 2: Sintaxis del Lenguaje JavaScript
+
+- [2.1. Selección de un lenguaje de programación de clientes Web](#21-selección-de-un-lenguaje-de-programación-de-clientes-web-criterio-21)
+  - [Evolución y selección de tecnologías en cliente](#evolución-y-selección-de-tecnologías-en-cliente)
+  - [A. Razones técnicas para la selección de JavaScript en front-end](#a-razones-técnicas-para-la-selección-de-javascript-en-front-end)
+  - [B. Reglas sintácticas universales del lenguaje](#b-reglas-sintácticas-universales-del-lenguaje)
+  - [C. Especificación del lenguaje: de JavaScript a ECMAScript (ES6 / ES2015)](#c-especificación-del-lenguaje-de-javascript-a-ecmascript-es6-es2015)
+  - [D. Evaluación de alternativas: JavaScript frente a TypeScript y JSX](#d-evaluación-de-alternativas-javascript-frente-a-typescript-y-jsx)
+  - [E. Glosario técnico asociado a la selección del lenguaje](#e-glosario-técnico-asociado-a-la-selección-del-lenguaje)
+  - [F. Actividades prácticas y ejercicios del criterio 2.1](#f-actividades-prácticas-y-ejercicios-del-criterio-21)
+- [2.2. Utilización de los distintos tipos de variables y operadores disponibles en el lenguaje](#22-utilización-de-los-distintos-tipos-de-variables-y-operadores-disponibles-en-el-lenguaje-criterio-22)
+  - [A. Declaración y asignación de variables: var, let y const](#a-declaración-y-asignación-de-variables-var-let-y-const)
+  - [B. Tipos de datos primitivos en detalle](#b-tipos-de-datos-primitivos-en-detalle)
+  - [C. El operador de inspección de tipos: typeof](#c-el-operador-de-inspección-de-tipos-typeof)
+  - [D. Operadores del lenguaje](#d-operadores-del-lenguaje)
+  - [E. Precedencia y asociatividad de operadores](#e-precedencia-y-asociatividad-de-operadores)
 
 ---
 
@@ -1163,15 +1181,7 @@ Para seleccionar el software de desarrollo en un proyecto web, se aplican los si
 
 # TEMA 2: Sintaxis del Lenguaje JavaScript
 
-## 2.1. Selección de un lenguaje de programación de clientes Web (Criterio 2.1)
-
-**Resultado de Aprendizaje 2 (RA2):** Escribe sentencias simples, aplicando la sintaxis del lenguaje y verificando su ejecución sobre navegadores Web.
-**Criterio Curricular Oficial: CE 2.a** (Se ha seleccionado un lenguaje de programación de clientes web en función de sus posibilidades.).
-**Ponderación del Criterio:** (10% del RA2 | 0,5% sobre la calificación final del módulo).
-
-La elección de una tecnología para el desarrollo en el entorno cliente determina la compatibilidad, el rendimiento, la mantenibilidad y la experiencia de usuario de cualquier aplicación web. Aunque históricamente han existido diversas alternativas para dotar de dinamismo al navegador, JavaScript (ECMAScript) se ha consolidado como el estándar universal indiscutible respaldado por la industria y los organismos internacionales.
-
----
+## 2.1. Selección de un lenguaje de programación de clientes Web 
 
 ## EVOLUCIÓN Y SELECCIÓN DE TECNOLOGÍAS EN CLIENTE
 
@@ -1386,3 +1396,593 @@ let TotalVentas = 1200;
 console.log(totalVentas);
 console.log(TotalVentas);
 ```
+
+---
+
+## 2.2. Utilización de los distintos tipos de variables y operadores disponibles en el lenguaje (Criterio 2.2)
+
+**Resultado de Aprendizaje 2 (RA2):** Escribe sentencias simples, aplicando la sintaxis del lenguaje y verificando su ejecución sobre navegadores Web.
+**Criterio Curricular Oficial: CE 2.b** (Se han utilizado los distintos tipos de variables y operadores disponibles en el lenguaje).
+**Ponderación del Criterio:** (10% del RA2 | 0,5% sobre la calificación final del módulo).
+
+En JavaScript el manejo de datos se apoya en un sistema de **tipado débil y dinámico**: los tipos van asociados a los **valores**, no a las variables que los contienen. Un identificador puede guardar un número entero en un instante de la ejecución y contener una cadena de texto o un objeto complejo unas líneas más tarde.
+
+> [!NOTE] Aclaración previa: ¿5 o 7 tipos primitivos?
+> Los manuales clásicos basados en **ECMAScript 5** enseñan **5 tipos primitivos**: `number`, `string`, `boolean`, `undefined` y `null`. El estándar moderno (**ECMAScript 6+**) incorporó dos más:
+> - **`symbol`** (ES6, 2015): identificadores únicos que no chocan entre sí.
+> - **`bigint`** (ES2020): enteros de longitud arbitraria que superan los límites de cálculo de `number`.
+>
+> Por tanto: en **ES5** hay **5 primitivos**; en **ES6+** hay **7 primitivos** y **1 tipo de referencia** (`Object`, del cual derivan los arrays y las funciones).
+
+### Tipos primitivos: por valor e inmutables
+
+Los tipos primitivos (`number`, `string`, etc.) se guardan **por valor directo** en una memoria rápida llamada **Stack** (pila).
+
+- **¿Qué significa «por valor»?** Al copiar una variable a otra, JavaScript hace una *fotocopia* exacta: ambas variables se vuelven totalmente independientes.
+- **¿Qué significa «inmutable»?** El valor original no se puede modificar; solo se puede **sustituir** por uno nuevo.
+
+```javascript
+let precioOriginal = 100;
+let precioCopia = precioOriginal; // Se hace una "fotocopia" del número 100
+
+precioCopia = 150; // Cambiamos la copia
+
+console.log(precioOriginal); // 100 (sigue intacto)
+console.log(precioCopia);    // 150
+```
+
+Ejemplo de inmutabilidad con cadenas de texto:
+
+```javascript
+let texto = "hola";
+console.log(texto[0]); // "h"
+
+texto[0] = "b";        // JavaScript ignora esto silenciosamente
+console.log(texto);     // "hola" (no cambió)
+```
+
+> [!TIP] Activa el «Strict Mode» (modo estricto)
+> Con `"use strict"` el motor deja de ignorar la escritura y lanza un error:
+>
+> ```javascript
+> "use strict";
+> let texto = "hola";
+> texto[0] = "b"; // ¡Aquí el programa se detiene!
+> console.log(texto);
+> ```
+
+### Tipos de referencia: por referencia y mutables
+
+Los objetos, arrays y funciones son complejos y pesados, por lo que se guardan en una memoria más grande llamada **Heap** (montón). En la variable **no se guarda el objeto real, sino una dirección de memoria** (como un mapa o un enlace web).
+
+- **¿Qué significa «por referencia»?** Al copiar la variable no se duplica el objeto: lo que se copia es el **enlace** a la misma dirección de memoria. Ambas variables apuntan al mismo lugar.
+- **¿Qué significa «mutable»?** Se puede alterar, añadir o borrar partes del interior del objeto o array sin cambiar su dirección de memoria.
+
+```javascript
+const lista = ["HTML", "CSS"];
+const listaCopia = lista;   // ¡Ojo! No es una copia
+
+listaCopia.push("JS");      // Modificamos (mutamos) el array a través de la "copia"
+
+console.log(lista);         // ["HTML", "CSS", "JS"]
+console.log(listaCopia);    // ["HTML", "CSS", "JS"]
+```
+
+> [!IMPORTANT] Stack frente a Heap
+> - **Stack (pila):** memoria rápida y pequeña donde viven los **primitivos**, guardados **por valor**.
+> - **Heap (montón):** memoria grande donde viven **objetos, arrays y funciones**; en la variable solo se guarda su **dirección** (referencia).
+
+---
+
+## A. Declaración y asignación de variables: `var`, `let` y `const`
+
+Una **variable** es un contenedor con nombre en la memoria del ordenador. JavaScript asocia el tipo de dato al **valor** que contiene y no al nombre de la variable (**tipado dinámico**).
+
+### 1. Peculiaridades de la declaración clásica con `var`
+
+`var` es la instrucción original de JavaScript (1995). Tiene particularidades que hoy se consideran problemáticas:
+
+**A. Declaración múltiple en una única sentencia.** Se pueden declarar varias variables a la vez separándolas con comas:
+
+```javascript
+var x = 5, y = 6, z = x + y;
+console.log(z); // 11
+```
+
+**B. Variable declarada pero no inicializada (`undefined`).** Si reservas la variable pero no le asignas valor, JavaScript le pone `undefined` automáticamente:
+
+```javascript
+var miCoche;
+console.log(miCoche); // undefined (existe, pero está vacía)
+```
+
+**C. Redeclaración permitida sin avisar de error.** Si vuelves a escribir `var` con el mismo nombre y sin nuevo valor, la variable no se borra: conserva el valor que ya tenía:
+
+```javascript
+var nombre = "Juan";
+var nombre;            // No da error y NO borra el contenido
+console.log(nombre);   // "Juan"
+```
+
+**D. Tipado dinámico en acción.** Una misma variable puede cambiar de tipo a lo largo del tiempo sin que el navegador proteste:
+
+```javascript
+var dato;         // Tipo: undefined (sin valor aún)
+dato = 5;         // Ahora su tipo es number
+dato = "John";    // Ahora ha mutado a string
+console.log(dato); // "John"
+```
+
+### 2. Declaraciones modernas: `let` y `const` (recomendadas)
+
+**`let`** — para variables cuyo valor va a cambiar:
+
+- **Ámbito de bloque:** solo vive dentro de las llaves `{ ... }` donde se crea (un `{}`, un `if`, un `for`, una función).
+- **Prohíbe la redeclaración:** declarar dos veces la misma variable en el mismo bloque detiene el programa con un error sintáctico.
+- **Permite reasignación:** su valor puede variar.
+
+```javascript
+let contador = 0;
+contador = 1; // Totalmente válido: reasignamos su valor
+
+// Ámbito de bloque con let:
+{
+  let mensajeSecreto = "Clave123";
+  console.log(mensajeSecreto); // Funciona dentro de las llaves
+}
+// console.log(mensajeSecreto);
+// ReferenceError: mensajeSecreto is not defined (fuera de las llaves no existe)
+```
+
+**`const`** — para valores fijos que no deben cambiar:
+
+- **Obligatorio inicializar:** no puedes poner `const pi;` sin darle su valor en la misma línea.
+- **No permite reasignación:** si intentas cambiar su valor, el navegador lanza un `TypeError`.
+- **Convención:** las constantes fijas del programa suelen escribirse en MAYÚSCULAS.
+
+```javascript
+const IVA = 0.21;
+IVA = 0.10; // TypeError: Assignment to constant variable
+```
+
+> [!NOTE] El matiz de `const` con objetos y arrays (mutabilidad del contenido)
+> `const` impide cambiar la **referencia** (la «caja» en memoria), pero **sí permite alterar las propiedades de dentro**:
+>
+> ```javascript
+> const usuario = { nombre: "Marcos", edad: 20 };
+>
+> // VÁLIDO: cambiamos una propiedad de dentro del objeto
+> usuario.nombre = "Laura";
+> console.log(usuario.nombre); // "Laura"
+>
+> // INVÁLIDO: no podemos sustituir la caja entera por otra
+> // usuario = { nombre: "Pedro" }; // TypeError: Assignment to constant variable
+> ```
+
+---
+
+## B. Tipos de datos primitivos en detalle
+
+### 1. Numéricos: `number` y `bigint`
+
+**`number`** — números enteros y decimales. En JavaScript no existen los tipos `int` o `float` por separado: **todos los números son `number`** (64 bits en coma flotante según la norma **IEEE 754**).
+
+```javascript
+let edad = 25;         // Entero
+let precio = 19.99;    // Decimal (se usa punto, no coma)
+let particulas = 2e-9; // Notación científica: equivale a 2 × 10^-9
+
+// Bases numéricas con prefijos
+let binario = 0b101;     // 5   (binario, prefijo 0b)
+let octal = 0o12;        // 10  (octal, prefijo 0o)
+let hexadecimal = 0xFF;  // 255 (hexadecimal, prefijo 0x)
+```
+
+**Valores numéricos especiales:**
+
+- **`Infinity` / `-Infinity`:** aparece al dividir entre cero, en lugar de bloquear el programa.
+- **`NaN`** (*Not-a-Number*): aparece cuando intentas hacer una cuenta matemática con algo que no es un número.
+
+```javascript
+console.log(10 / 0); // Infinity
+
+let errorCalculo = "hola" * 2;
+console.log(errorCalculo);               // NaN
+console.log(Number.isNaN(errorCalculo)); // true (comprueba si es NaN)
+```
+
+> [!WARNING] El problema de la precisión en coma flotante (IEEE 754)
+> Al basarse en 64 bits de doble precisión en binario, JavaScript no representa de forma exacta ciertas fracciones decimales:
+>
+> ```javascript
+> console.log(0.1 + 0.2);         // 0.30000000000000004
+> console.log(0.1 + 0.2 === 0.3); // false
+> ```
+>
+> **Solución profesional:** para importes monetarios o cálculos críticos se recurre al redondeo explícito (`Number.EPSILON` o `toFixed()`):
+>
+> ```javascript
+> Math.abs((0.1 + 0.2) - 0.3) < Number.EPSILON; // true
+> ```
+
+**`bigint`** — números enteros gigantes. Los `number` pierden precisión si superan `Number.MAX_SAFE_INTEGER` (9.007.199.254.740.991). Si añades una letra `n` al final de un entero, se convierte en `bigint` y no pierde ningún dígito:
+
+```javascript
+let enteroGigante = 9007199254740991n + 5n;
+console.log(enteroGigante); // 9007199254740996n (cálculo exacto)
+```
+
+### 2. Cadenas de texto: `string`
+
+Representan secuencias de texto. Se pueden crear de tres formas:
+
+```javascript
+let saludo1 = 'Hola con comillas simples';
+let saludo2 = "Hola con comillas dobles";
+
+// Template literals (con acento grave `): permiten interpolar variables con ${}
+let modulo = "DWEC";
+let horas = 160;
+let frase = `El módulo de ${modulo} tiene ${horas} horas lectivas.`;
+console.log(frase); // "El módulo de DWEC tiene 160 horas lectivas."
+```
+
+**Secuencias de escape** (caracteres especiales que no se pueden teclear directamente):
+
+| Escape | Significado |
+|---|---|
+| `\n` | Inserta un salto de línea |
+| `\t` | Inserta una tabulación |
+| `\"` o `\'` | Permite meter comillas dentro de comillas del mismo tipo |
+| `\\` | Dibuja una barra invertida |
+| `\u{20BF}` | Inserta un símbolo Unicode por su código hexadecimal (ej. ₿ Bitcoin) |
+
+```javascript
+console.log("Línea 1\nLínea 2 con tabulador:\t\u{20BF}");
+```
+
+### 3. Lógicos o booleanos: `boolean`
+
+Solo admiten dos valores posibles: `true` (verdadero) o `false` (falso). Se usan para comprobar condiciones:
+
+```javascript
+let tieneCarnet = true;
+let esMayorDeEdad = false;
+```
+
+### 4. `undefined` frente a `null` (diferencia visual y práctica)
+
+- **`undefined`:** significa que algo no ha sido asignado todavía (el sistema no sabe qué hay ahí).
+- **`null`:** es un valor que pones **tú** voluntariamente para indicar que esa variable está expresamente vacía.
+
+```javascript
+let cajaSinAbrir;
+console.log(cajaSinAbrir); // undefined (el motor ve que no tiene valor asignado)
+
+let cajaVacia = null;
+console.log(cajaVacia);    // null (el programador indica: "esta caja está vacía a propósito")
+```
+
+### 5. `symbol`
+
+Un `symbol` es un identificador que el navegador garantiza que es **100 % único** en el universo de la memoria. Aunque crees dos símbolos con la misma descripción, nunca serán iguales:
+
+```javascript
+let id1 = Symbol("matricula");
+let id2 = Symbol("matricula");
+
+console.log(id1 === id2); // false (son completamente diferentes e independientes)
+
+// ¿Para qué sirve? Para añadir identificadores "ocultos" a objetos sin peligro
+// de sobrescribir propiedades que ya existieran en librerías de terceros:
+let alumno = { nombre: "Elena" };
+alumno[id1] = "EXP-2026-001";
+console.log(alumno[id1]); // "EXP-2026-001"
+```
+
+---
+
+## C. El operador de inspección de tipos: `typeof`
+
+Se coloca delante de cualquier valor o variable para que nos diga qué tipo de dato es:
+
+```javascript
+console.log(typeof 42);           // "number"
+console.log(typeof "Hola");       // "string"
+console.log(typeof true);         // "boolean"
+console.log(typeof undefined);    // "undefined"
+console.log(typeof 100n);         // "bigint"
+console.log(typeof Symbol("id")); // "symbol"
+console.log(typeof { a: 1 });     // "object"
+console.log(typeof [1, 2, 3]);    // "object" (los arrays son un tipo de objeto)
+console.log(typeof function(){}); // "function" (las funciones son objetos ejecutables)
+```
+
+> [!WARNING] Puntos conflictivos típicos de examen
+> ```javascript
+> console.log(typeof NaN);  // "number"  (aunque signifique Not-a-Number)
+> console.log(typeof null); // "object"  (error histórico de 1995 que se conserva)
+> ```
+
+---
+
+## D. Operadores del lenguaje
+
+### 1. Operadores aritméticos
+
+Sirven para realizar cálculos matemáticos:
+
+| Operador | Nombre | Ejemplo | Resultado |
+|---|---|---|---|
+| `+` | Suma / Concatenación | `10 + 5` | `15` (si es texto: `"10" + "5"` da `"105"`) |
+| `-` | Resta | `10 - 5` | `5` |
+| `*` | Multiplicación | `10 * 5` | `50` |
+| `/` | División | `10 / 4` | `2.5` |
+| `%` | Módulo (resto entero de la división) | `10 % 3` | `1` (10 entre 3 es 3 y sobra 1) |
+| `**` | Exponenciación (potencia) | `2 ** 3` | `8` (2 × 2 × 2) |
+| `++` | Incremento unitario (+1) | `a++` | `a` pasa a valer `6` |
+| `--` | Decremento unitario (-1) | `a--` | `a` pasa a valer `4` |
+
+**Diferencia entre pre-incremento (`++a`) y post-incremento (`a++`):**
+
+```javascript
+let x = 5;
+let y = x++; // Post-incremento: PRIMERO asigna el valor actual (5) a 'y', y LUEGO suma 1 a 'x'
+console.log(y); // 5
+console.log(x); // 6
+
+let a = 5;
+let b = ++a; // Pre-incremento: PRIMERO suma 1 a 'a' (6), y LUEGO asigna ese 6 a 'b'
+console.log(b); // 6
+console.log(a); // 6
+```
+
+**Operadores unarios de signo y conversión:**
+
+```javascript
+let s = "25";
+console.log(+s); // 25 numérico (equivale a Number(s))
+console.log(-s); // -25 numérico
+```
+
+### 2. Operadores de asignación
+
+Asignan un valor a una variable:
+
+- **Simple (`=`):** `let x = 10;`
+- **Compuestos:** realizan la cuenta matemática y guardan el resultado de golpe.
+
+| Compuesto | Equivale a |
+|---|---|
+| `x += 5` | `x = x + 5` |
+| `x -= 2` | `x = x - 2` |
+| `x *= 3` | `x = x * 3` |
+| `x /= 2` | `x = x / 2` |
+| `x %= 2` | `x = x % 2` |
+| `x **= 2` | `x = x ** 2` |
+
+**Asignaciones lógicas modernas (ES2021):**
+
+```javascript
+// ??= (asignación nula lógica): solo pone el valor si la variable es null o undefined
+let usuario = null;
+usuario ??= "Invitado";
+console.log(usuario); // "Invitado" (se asignó porque era null)
+
+let puerto = 0;
+puerto ??= 8080;
+console.log(puerto); // 0 (respeta el cero porque 0 no es null ni undefined)
+
+// ||= (asignación lógica OR): asigna si la variable contiene cualquier valor falso (0, "", null, undefined)
+let titulo = "";
+titulo ||= "Sin Título";
+console.log(titulo); // "Sin Título" (al ser cadena vacía se sobrescribe)
+```
+
+### 3. Operadores de comparación (relacionales)
+
+Comprueban dos valores y devuelven siempre un booleano (`true` o `false`):
+
+```javascript
+// IGUALDAD ABSTRACTA (==): convierte los tipos si son distintos (PELIGROSA)
+console.log(5 == "5"); // true (convierte el texto "5" a número y dice que son iguales)
+
+// IGUALDAD ESTRICTA (===): comprueba que coincidan en VALOR y en TIPO
+console.log(5 === "5"); // false (uno es un número y el otro es texto)
+
+// DESIGUALDAD ESTRICTA (!==): devuelve true si son distintos en valor o en tipo
+console.log(5 !== "5"); // true
+
+console.log(null == undefined);  // true  (equivalentes por la regla abstracta)
+console.log(null === undefined); // false (distintos tipos de datos)
+
+console.log(0 == false);  // true  (0 y false se consideran equivalentes con ==)
+console.log(0 === false); // false (number vs boolean)
+
+// Mayor / menor
+console.log(10 > 5); // true
+console.log(5 < 15); // true
+
+// Mayor o igual / menor o igual
+console.log(10 >= 5); // true
+console.log(5 <= 5);  // true
+```
+
+> [!IMPORTANT] Regla de oro
+> Usa siempre **igualdad estricta (`===` y `!==`)** para evitar conversiones ocultas de tipo.
+
+### 4. Operadores lógicos (tablas de verdad)
+
+Los operadores `&&` y `||` no devuelven necesariamente valores booleanos, sino **el valor exacto del operando** que resolvió la expresión:
+
+- **`&&`** (*AND* / Y): da `true` solo si ambos lados son verdaderos. Si el primero es falso, se detiene inmediatamente (*cortocircuito*).
+- **`||`** (*OR* / O): da `true` si al menos uno de los lados es verdadero. Si el primero es verdadero, se detiene de inmediato.
+- **`!`** (*NOT* / negación): invierte el valor booleano. La **doble negación** (`!!valor`) convierte cualquier dato a su equivalente booleano.
+- **`??`** (coalescencia nula): devuelve el segundo valor **solo si el primero es `null` o `undefined`**.
+
+```javascript
+// AND (&&)
+console.log(true && true);        // true
+console.log(true && false);       // false
+console.log(false && "HOLA");     // false (al ser el primero false, ni mira el segundo)
+
+// OR (||)
+console.log(false || true);       // true
+console.log(false || false);      // false
+console.log("Texto" || false);    // "Texto" (al ser el primero verdadero, lo devuelve)
+
+// NOT (!)
+console.log(!true);               // false
+console.log(!false);              // true
+console.log(!"hola");             // false (un texto lleno es verdadero; su negación es false)
+
+// Diferencia clave entre || y ??
+let puntos = 0;
+console.log(puntos || 10); // 10 (con || el cero se confunde con falso)
+console.log(puntos ?? 10); // 0  (con ?? se respeta el cero como valor válido)
+
+let puertoInput = 0;
+let puertoA = puertoInput || 3000; // 3000 (¡Error! Considera el puerto 0 como inválido)
+let puertoB = puertoInput ?? 3000; // 0    (Correcto: conserva el 0 porque no es nulo)
+
+// Doble negación (!!): convierte cualquier expresión a booleano canónico
+console.log(!!"texto"); // true
+console.log(!!0);       // false
+```
+
+**Valores _truthy_ frente a _falsy_.** Solo existen **8 valores _falsy_**; cualquier otro se evalúa siempre como verdadero (_truthy_):
+
+| Valores _falsy_ (evalúan a `false`) | _Truthy_ que suelen confundir |
+|---|---|
+| `false` | `"0"` (cadena con un cero) → `true` |
+| `0`, `-0`, `0n` | `"false"` (cadena con texto) → `true` |
+| `""`, `''` (cadena vacía) | `[]` (array vacío) → `true` |
+| `null` | `{}` (objeto vacío) → `true` |
+| `undefined` | `function(){}` → `true` |
+| `NaN` | `-1`, `3.14` (cualquier número no nulo) → `true` |
+
+### 5. Operadores a nivel de bits (bitwise)
+
+Operan tratando los números enteros como una hilera de 32 ceros y unos (binario):
+
+```javascript
+// El número 5 en binario es: 0101
+// El número 1 en binario es: 0001
+
+console.log(5 & 1);  // 1  (0101 & 0001 = 0001)  AND a nivel de bits
+console.log(5 | 1);  // 5  (0101 | 0001 = 0101)  OR a nivel de bits
+console.log(~5);     // -6 (inversión de bits)    NOT a nivel de bits
+console.log(5 ^ 1);  // 4  (0101 ^ 0001 = 0100)  XOR a nivel de bits
+console.log(5 << 1); // 10 (desplaza 1 bit a la izquierda: multiplica por 2)
+console.log(5 >> 1); // 2  (desplaza 1 bit a la derecha con signo)
+```
+
+| Operador | Operación | Ejemplo | Cómputo binario | Resultado |
+|---|---|---|---|---|
+| `&` | AND a nivel de bits | `5 & 1` | `0101 & 0001` | `1` |
+| `\|` | OR a nivel de bits | `5 \| 1` | `0101 \| 0001` | `5` |
+| `~` | NOT a nivel de bits | `~5` | inversión de bits | `-6` |
+| `^` | XOR a nivel de bits | `5 ^ 1` | `0101 ^ 0001` | `4` |
+| `<<` | Desplazamiento a la izquierda | `5 << 1` | desplaza 1 bit | `10` |
+| `>>` | Desplazamiento a la derecha con signo | `5 >> 1` | desplaza 1 bit | `2` |
+| `>>>` | Desplazamiento a la derecha sin signo | `5 >>> 1` | rellena con ceros | `2` |
+
+### 6. Operadores específicos del lenguaje
+
+**A. Operador condicional ternario (`? :`).** Es un `if/else` resumido en una sola línea:
+
+```javascript
+let edad = 19;
+// Estructura: (condición) ? valor_si_es_true : valor_si_es_false
+let estado = (edad >= 18) ? "Mayor de edad" : "Menor de edad";
+console.log(estado); // "Mayor de edad"
+```
+
+**B. Operador de encadenamiento opcional (`?.`).** Evita que el programa se rompa al consultar propiedades anidadas si algo es nulo:
+
+```javascript
+let alumno = { nombre: "Carlos", contacto: null };
+
+// Sin ?., esto daría un fallo grave: TypeError: Cannot read properties of null
+// Con ?., devuelve undefined de forma segura sin romper el programa:
+console.log(alumno.contacto?.telefono); // undefined
+```
+
+**C. Operador `delete`.** Borra una propiedad de un objeto:
+
+```javascript
+let coche = { marca: "Seat", color: "Rojo" };
+delete coche.color;   // Borra la propiedad color
+console.log(coche);   // { marca: "Seat" }
+```
+
+**D. Operador `in`.** Comprueba si un objeto tiene una propiedad concreta:
+
+```javascript
+let persona = { nombre: "Marta", edad: 30 };
+console.log("nombre" in persona);    // true
+console.log("apellidos" in persona); // false
+```
+
+**E. Operador `instanceof`.** Comprueba si un objeto fue creado a partir de una clase o plantilla:
+
+```javascript
+let hoy = new Date();
+console.log(hoy instanceof Date); // true
+```
+
+**F. Operador coma (`,`).** Ejecuta varias instrucciones de izquierda a derecha y se queda con el resultado de la última:
+
+```javascript
+let resultado = (1 + 2, 3 + 4); // Calcula 3, luego calcula 7, y guarda el 7
+console.log(resultado); // 7
+```
+
+> [!WARNING] No confundir el operador coma con el separador de argumentos
+> ```javascript
+> console.log(1, 2, 3);   // Separador: imprime los tres números por separado: 1 2 3
+> console.log((1, 2, 3)); // Operador: imprime únicamente el último valor: 3
+> ```
+
+A veces se usa para ejecutar una lógica intermedia justo antes de una evaluación en un `if` o un `while`:
+
+```javascript
+let x = 0;
+
+// Incrementa x, evalúa x * 2, y el resultado final decide si entra al IF
+if (x++, x * 2 > 0) {
+  console.log("Entró al bloque con x valiendo:", x); // x vale 1
+}
+```
+
+**G. Operador `void`.** Evalúa una expresión y descarta su valor devolviendo siempre `undefined`:
+
+```javascript
+let valor = void (5 + 5);
+console.log(valor); // undefined
+```
+
+---
+
+## E. Precedencia y asociatividad de operadores
+
+Jerarquía de evaluación, **de mayor a menor prioridad**:
+
+1. **Agrupación:** paréntesis `(...)`
+2. **Miembros y llamadas:** acceso a propiedades (`.`, `[]`), llamadas a funciones `()`
+3. **Operadores unarios:** `typeof`, `!`, `++`, `--`, `+`, `-`, `delete`, `void`
+4. **Exponenciación:** `**` (asociatividad de derecha a izquierda)
+5. **Multiplicación, división, resto:** `*`, `/`, `%`
+6. **Suma y resta:** `+`, `-`
+7. **Desplazamiento de bits:** `<<`, `>>`, `>>>`
+8. **Relacionales y pertenencia:** `<`, `<=`, `>`, `>=`, `in`, `instanceof`
+9. **Igualdad:** `===`, `!==`, `==`, `!=`
+10. **Bits lógicos:** `&`, `^`, `|`
+11. **Lógicos de alta prioridad:** `&&` (conjunción)
+12. **Lógicos de baja prioridad:** `||` y `??` — mezclar `||` y `??` sin paréntesis lanza un `SyntaxError`
+13. **Condicional ternario:** `? :`
+14. **Asignación:** `=`, `+=`, `-=`, etc. (asociatividad de derecha a izquierda)
+15. **Coma:** `,`
+
+> [!TIP] Ante la duda, paréntesis
+> Los paréntesis aclaran la intención y evitan tener que memorizar toda la tabla de precedencia.
