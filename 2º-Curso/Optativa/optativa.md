@@ -63,3 +63,48 @@ Razones de su popularidad:
 | Comunidad de soporte | Control total del código |
 | Limitaciones de diseño | Tiempo de desarrollo mayor |
 | Dependencia de plugins | Optimización específica |
+
+## 1.5.- ¿Por qué WordPress?
+Elegir un CMS(WordPress) cuando:
+·Proyectos con presupuesto limitado
+·Necesidad de lanzamiento rápido
+·Cliente quiere gestionar contenido autonomamente
+·Proyectos de mediana complejidad
+·No se necesitan funcionalidades muy específicas
+
+Elegir desarrollo a medida cuando:
+·Requerimientos tecnicos muy especificos
+·Grandes volumenes de datos y usuarios
+·Integraciones complejas con otros sistemas
+·Aplicaciones web complejas(no solo el contenido)
+
+## 1.6.-CDMON - Caracterisitcas
+- Panel de contros --> custom desarrollado
+- Almacenamiento --> desde 5GB hasta ilimitado
+- Correos --> cuentas ilimitadas incluidas
+- Certificadp SSL --> Gratuito incluido
+- Bases de datos --> MySQL ilimitadas
+
+### 1.6.1.- CDMON - Ventajas
+- Hospedaje en español
+- Panel de control intuitivo
+- Instalador automático de WordPress
+- Soporte técnico en español
+- Dominio incluido en el curso
+
+## 1.9.- Enlaces permanentes(Permalinks)
+
+¿Que son los Permalinks? --> Estructura de URLs que apuntan a contenido especifico de forma permanente
+
+Evolucion:
+· Default: ?p=123 (poco amigable)
+· Fecha y nombre: /2024/09/24/mi-entrada
+· Solo nombre: /mi-entrada/ (recomendado para SEO)
+
+Opciones disponibles:
+· Default: ?p=123 (No recomendado)
+· Dia y nombre: /2024/09/24/sample-post/ (Bueno para blogs de noticias)
+· Mes y nombre: /2024/09/sample-post/ (Equilibrado)
+· Numerico: /archives/123/ (Poco claro)
+· Nombre de la entrada: /sample-post/ (Mejor para SEO)
+· Estructura personalizada: Para usuarios avanzados
