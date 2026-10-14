@@ -108,3 +108,21 @@ Opciones disponibles:
 · Numerico: /archives/123/ (Poco claro)
 · Nombre de la entrada: /sample-post/ (Mejor para SEO)
 · Estructura personalizada: Para usuarios avanzados
+
+## 1.10.- Importancia SEO de los Permalinks
+
+Buenas practicas para URLs amigables:
+1. Incluir palabras clave: /marketing-digital/ vs /pagina1/
+2. Estructura logica: /categoria/post-individual/
+3. Evitar caracteres especiales: Usar guiones en vez de espacioss
+4. Mantener URLs cortas: Maximo 55-6 niveles de directorio
+
+Ejemplo de URL optimizada:
+   (X) ?p=123
+   (X) /2024/09/24/como-configurar-wordpress-para-seo/
+   (Y) /wordpress/configuracion-seo
+
+Impacto en el SEO:
+· Mejor experiencia de usuario
+· Las URLs aparecen en los resultados de busqueda
+· Las palabras claves en la URL son factor de ranking
