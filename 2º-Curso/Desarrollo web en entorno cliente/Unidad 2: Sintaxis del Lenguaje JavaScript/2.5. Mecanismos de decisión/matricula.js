@@ -34,6 +34,20 @@ function calcularMatricula(datos) {
  
     return { valido: true, total: total }; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Batería de pruebas: Comprobación de equivalencia funcional 
 console.assert( 
     calcularMatricula(null).valido === false &&  
