@@ -24,7 +24,17 @@ function procesarEvaluacion() {
   const igualdadEstricta = (valA === valB); 
   const operacionOr = valA || valB; 
   const operacionNullish = valA ?? valB; 
- 
+
+  // Modificación 1: operador lógico AND y doble negación booleana 
+  const operacionAnd = valA && valB; 
+  const negacionDoble = !!valA; 
+
+  // Modificación 2: protección contra excedentes de entero con BigInt 
+  let avisoBigInt = ""; 
+  if (typeof valA === "number" && valA > Number.MAX_SAFE_INTEGER) { 
+    avisoBigInt = `<div class="aviso">Aviso: Precisión comprometida. Utiliza BigInt (sufijo n) para operar en este rango</div>`; 
+  } 
+
   visor.innerHTML = ` 
     <strong>Operando A:</strong> <span class="resaltado">${String(valA)}</span> (typeof: 
 ${tipoA})<br> 
@@ -35,7 +45,10 @@ ${tipoB})<br>
     <strong>Igualdad abstracta (A == B):</strong> ${igualdadAbstracta}<br> 
     <strong>Igualdad estricta   (A === B):</strong> ${igualdadEstricta}<br> 
     <strong>Cortocircuito OR    (A || B):</strong> ${String(operacionOr)}<br> 
-    <strong>Coalescencia nula   (A ?? B):</strong> ${String(operacionNullish)} 
+    <strong>Coalescencia nula   (A ?? B):</strong> ${String(operacionNullish)}<br> 
+    <strong>Cortocircuito AND   (A && B):</strong> ${String(operacionAnd)}<br> 
+    <strong>Doble negación      (!!A):</strong> ${negacionDoble}<br> 
+    ${avisoBigInt} 
   `; 
 } 
  

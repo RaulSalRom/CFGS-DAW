@@ -81,6 +81,28 @@
   - [C. El operador de inspección de tipos: typeof](#c-el-operador-de-inspección-de-tipos-typeof)
   - [D. Operadores del lenguaje](#d-operadores-del-lenguaje)
   - [E. Precedencia y asociatividad de operadores](#e-precedencia-y-asociatividad-de-operadores)
+- [2.3. Identificación de los ámbitos de utilización de las variables](#23-identificación-de-los-ámbitos-de-utilización-de-las-variables-criterio-23)
+  - [A. ¿Qué es el Ámbito (Scope) de una Variable?](#a-qué-es-el-ámbito-scope-de-una-variable)
+  - [B. Los Tres Niveles de Ámbito](#b-los-tres-niveles-de-ámbito)
+  - [C. Sombreado de Variables (Variable Shadowing) y Cadena de Ámbitos (Scope Chain)](#c-sombreado-de-variables-variable-shadowing-y-cadena-de-ámbitos-scope-chain)
+  - [D. Elevación (Hoisting) y la Zona Muerta Temporal (TDZ)](#d-elevación-hoisting-y-la-zona-muerta-temporal-tdz)
+  - [E. Fugas de Ámbito (Scope Leaks) y el Modo Estricto ("use strict")](#e-fugas-de-ámbito-scope-leaks-y-el-modo-estricto-use-strict)
+  - [F. El Patrón Módulo mediante IIFE (Immediately Invoked Function Expressions)](#f-el-patrón-módulo-mediante-iife-immediately-invoked-function-expressions)
+- [2.4. Conversiones entre distintos tipos de datos](#24-conversiones-entre-distintos-tipos-de-datos-criterio-24)
+  - [A. El Sistema de Tipado Débil y la Coerción de Tipos](#a-el-sistema-de-tipado-débil-y-la-coerción-de-tipos)
+  - [B. Conversión Automática de Tipos (Coerción Implícita)](#b-conversión-automática-de-tipos-coerción-implícita-type-coercion)
+  - [C. Conversión Manual de Tipos (Conversión Explícita)](#c-conversión-manual-de-tipos-conversión-explícita-type-casting)
+  - [D. Tabla Resumen de Coerciones y Casos Especiales](#d-tabla-resumen-de-coerciones-y-casos-especiales)
+  - [E. El Peligro de la Igualdad Abstracta (==) frente a la Igualdad Estricta (===)](#e-el-peligro-de-la-igualdad-abstracta--frente-a-la-igualdad-estricta-)
+  - [F. Coerción Estricta y Excepciones: Symbol y BigInt](#f-coerción-estricta-y-excepciones-symbol-y-bigint)
+- [2.5. Mecanismos de decisión](#25-mecanismos-de-decisión-criterio-25)
+  - [A. ¿Qué es un Mecanismo de Decisión y qué es un Bloque?](#a-qué-es-un-mecanismo-de-decisión-y-qué-es-un-bloque)
+  - [B. La Estructura Condicional if...else](#b-la-estructura-condicional-ifelse)
+  - [C. Decisiones Múltiples: if...else if...else y Anidamiento](#c-decisiones-múltiples-ifelse-ifelse-y-anidamiento)
+  - [D. La Sentencia de Selección Múltiple: switch...case...default](#d-la-sentencia-de-selección-múltiple-switchcasedefault)
+  - [E. Expresión Condicional Ternaria (? :)](#e-expresión-condicional-ternaria--)
+  - [F. Decisiones Mediante Operadores de Cortocircuito](#f-decisiones-mediante-operadores-de-cortocircuito)
+  - [G. Reducción de Complejidad Ciclomática mediante Cláusulas de Guarda (Guard Clauses) y Retorno Temprano (Early Return)](#g-reducción-de-complejidad-ciclomática-mediante-cláusulas-de-guarda-guard-clauses-y-retorno-temprano-early-return)
 
 ---
 
@@ -1986,3 +2008,885 @@ Jerarquía de evaluación, **de mayor a menor prioridad**:
 
 > [!TIP] Ante la duda, paréntesis
 > Los paréntesis aclaran la intención y evitan tener que memorizar toda la tabla de precedencia.
+
+---
+
+## 2.3. Identificación de los ámbitos de utilización de las variables (Criterio 2.3)
+
+## A. ¿Qué es el Ámbito (Scope) de una Variable?
+
+El ámbito (*scope*) es el conjunto de reglas que determinan en qué partes del código una variable es accesible y visible, y en qué momento es destruida por el recolector de basura (*Garbage Collector*) de la memoria RAM.
+
+En JavaScript existen tres niveles fundamentales de ámbito:
+
+1. **Ámbito Global (Global Scope):** accesible desde cualquier lugar del *script*.
+2. **Ámbito de Función (Function / Local Scope):** accesible únicamente dentro de la función donde se declaró.
+3. **Ámbito de Bloque (Block Scope):** accesible únicamente dentro del par de llaves `{ ... }` donde se definió.
+
+## B. Los Tres Niveles de Ámbito
+
+### 1. Ámbito Global
+
+Cualquier variable declarada fuera de una función y fuera de un bloque de llaves pertenece al ámbito global. Todos los *scripts* de la página pueden leerla y modificarla:
+
+```javascript
+let nombreAplicacion = "Portal Educativo IES"; // Variable Global
+
+function mostrarCabecera()
+{
+  console.log("Aplicación:", nombreAplicacion); // Lectura permitida desde dentro de la función
+}
+
+mostrarCabecera();
+console.log("En el programa principal:", nombreAplicacion); // Lectura permitida en el exterior
+```
+
+#### Ciclo de vida de las variables globales
+
+Nacen en el momento en que se procesa o carga el *script* en el navegador y permanecen en memoria durante toda la sesión de la página, destruyéndose únicamente cuando el usuario cierra la pestaña o navega hacia otra URL.
+
+#### El riesgo de la polución global
+
+Si dos *scripts* independientes usan la misma variable global (por ejemplo, `var total = 0;`), uno sobrescribirá el valor del otro de forma silenciosa, originando fallos catastróficos.
+
+#### Diferencia entre `var` y `let` / `const` en el Ámbito Global
+
+- En el navegador, una variable declarada con `var` en el ámbito global se convierte automáticamente en una propiedad del objeto global `window` (`window.miVariable`).
+- Si se declara con `let` o `const`, sigue siendo accesible globalmente pero no contamina el objeto `window`, evitando sobreescribir métodos nativos del navegador como `window.open` o `window.close`.
+
+### 2. Ámbito de Función (Ámbito Local Clásico)
+
+Cuando declaras una variable dentro del cuerpo de una función, dicha variable nace al invocarse la función y se destruye al terminar su ejecución. Este es el único ámbito que respetaba la palabra reservada clásica `var`:
+
+```javascript
+function autenticarUsuario()
+{
+  var tokenSesion = "XYZ-123456"; // Ámbito de función (local)
+  console.log("Token generado dentro:", tokenSesion); // Funciona
+}
+
+autenticarUsuario();
+
+// Intentar acceder desde fuera de la función:
+// console.log(tokenSesion);
+// ERROR: Uncaught ReferenceError: tokenSesion is not defined
+```
+
+### 3. Ámbito de Bloque (ES6+: `let` y `const`)
+
+Un bloque de código es cualquier conjunto de sentencias delimitadas por llaves `{ ... }`, como el cuerpo de un `if`, un `switch`, un bucle `for` / `while` o simplemente llaves aisladas.
+
+- `let` y `const` tienen ámbito de bloque: solo son visibles entre las llaves donde se declararon.
+- `var` IGNORA el ámbito de bloque: se escapa de las llaves y se filtra al exterior (fuga de variables).
+
+#### Demostración A — Bloque simple
+
+```javascript
+// A. Demostración con bloque simple
+{
+  var variableConVar = "Me escapo de las llaves";
+  let variableConLet = "Quedo atrapada dentro";
+  const variableConConst = "También atrapada dentro";
+}
+
+console.log(variableConVar);   // Funciona: "Me escapo de las llaves"
+// console.log(variableConLet);   // ERROR: Uncaught ReferenceError: variableConLet is not defined
+// console.log(variableConConst); // ERROR: Uncaught ReferenceError: variableConConst is not defined
+```
+
+#### Demostración B — El clásico problema del bucle contador
+
+```javascript
+for (var i = 0; i < 3; i++) {
+  //
+  // Bucle con var
+}
+console.log("Valor de i tras el bucle (var):", i); // Imprime: 3 (¡La variable se filtró al exterior!)
+
+for (let j = 0; j < 3; j++) {
+  //
+  // Bucle con let
+}
+// console.log(j); // ERROR: ReferenceError: j is not defined (i quedó destruida limpiamente)
+```
+
+## C. Sombreado de Variables (Variable Shadowing) y Cadena de Ámbitos (Scope Chain)
+
+Cuando una función o bloque necesita resolver el valor de una variable, el motor busca hacia afuera siguiendo una jerarquía estricta denominada **Cadena de Ámbitos (Scope Chain)**:
+
+1. Busca primero en el ámbito local más inmediato (el bloque o función actual).
+2. Si no la encuentra, sube al ámbito exterior envolvente.
+3. Repite el proceso hasta alcanzar el Ámbito Global.
+4. Si llega al ámbito global y no existe, lanza un `ReferenceError`.
+
+Si una variable local tiene exactamente el mismo nombre que una variable global, la variable local ensombrece (*shadowing*) a la global mientras se esté dentro de su ámbito, sin modificar el valor de la exterior:
+
+```javascript
+let curso = "2º DAW (Ámbito Global)"; // Variable Global
+
+function gestionarAula()
+{
+  let curso = "1º SMR (Ámbito Local de la función)"; // Ensombrece a la variable global
+
+  if (true)
+  {
+    let curso = "Taller de Robótica (Ámbito de Bloque)"; // Ensombrece a la de la función
+    console.log("Nivel 3 (Bloque):", curso); // Imprime: Taller de Robótica
+  }
+
+  console.log("Nivel 2 (Función):", curso); // Imprime: 1º SMR (vuelve al valor de la función)
+}
+
+gestionarAula();
+console.log("Nivel 1 (Global):", curso); // Imprime: 2º DAW (la global permaneció intacta)
+```
+
+## D. Elevación (Hoisting) y la Zona Muerta Temporal (TDZ)
+
+El comportamiento de cómo se cargan las variables en memoria antes de ejecutarse el *script* marca una diferencia crítica entre `var`, `let` y `const`.
+
+### 1. Elevación con `var`
+
+El motor detecta las declaraciones con `var` y reserva espacio para ellas al inicio del contexto, asignándoles el valor provisional `undefined`:
+
+```javascript
+console.log(precioArticulo); // Imprime: undefined (NO da error; fue elevada sin valor)
+var precioArticulo = 50;
+console.log(precioArticulo); // Imprime: 50
+```
+
+### 2. Elevación con `let` y `const`: La Zona Muerta Temporal (TDZ)
+
+`let` y `const` también se elevan internamente, pero el motor prohíbe terminantemente acceder a ellas antes de la línea física de su inicialización. El tramo de código comprendido entre el inicio del bloque y la línea de declaración se denomina **Zona Muerta Temporal** (*Temporal Dead Zone* - TDZ):
+
+```javascript
+{
+  // INICIO DE LA TDZ PARA 'tasa'
+  // console.log(tasa); // ERROR: Uncaught ReferenceError: Cannot access 'tasa' before initialization
+
+  let datoNeutro = 10;
+  // FIN DE LA TDZ PARA 'tasa'
+  let tasa = 0.21; // Aquí nace formalmente la variable
+  console.log(tasa); // Imprime: 0.21
+}
+```
+
+## E. Fugas de Ámbito (Scope Leaks) y el Modo Estricto ("use strict")
+
+En JavaScript clásico, si un programador olvida escribir `let`, `const` o `var` delante de una variable, el motor no detiene la ejecución; en su lugar, crea una variable global oculta en `window`, originando fugas de memoria y errores impredecibles:
+
+```javascript
+function procesarCalculo()
+{
+  // ERROR TIPOGRÁFICO: Se omite var/let/const
+  resultadoFuga = 100; // Se convierte automáticamente en variable global accidental
+}
+
+procesarCalculo();
+console.log(window.resultadoFuga); // Imprime: 100 (La variable contaminó el entorno global)
+```
+
+### Prevención Profesional: `"use strict"`
+
+Al colocar la directiva `"use strict";` en la primera línea de un archivo o función, el motor activa el modo estricto y bloquea de inmediato cualquier variable no declarada:
+
+```javascript
+"use strict"; // Activa las restricciones de seguridad modernas
+
+function procesarCalculoSeguro()
+{
+  // total = 200; // ERROR: Uncaught ReferenceError: total is not defined
+  let total = 200; // Obliga a declarar el ámbito correctamente
+  console.log(total);
+}
+procesarCalculoSeguro();
+```
+
+## F. El Patrón Módulo mediante IIFE (Immediately Invoked Function Expressions)
+
+Antes de la llegada de los módulos nativos en ECMAScript 2015 (`import` / `export`), la única herramienta que ofrecía JavaScript para aislar variables del objeto global `window` era el **ámbito de función**. Si un desarrollador incluía múltiples archivos `.js` en un mismo documento HTML, cualquier variable declarada con `var` fuera de una función pasaba a formar parte del espacio de nombres global (`window`), provocando colisiones accidentales de identificadores. Para solucionar este problema se diseñó el patrón **IIFE** (Expresión de Función Invocada Inmediatamente).
+
+### Estructura Sintáctica de una IIFE
+
+Una IIFE es una función que se declara y se ejecuta en el mismo instante en que el intérprete del navegador la lee. Para que el motor no la interprete como una declaración de función tradicional (la cual requeriría un nombre obligatorio), se encierra entre paréntesis `(...)` para transformarla en una **expresión de función**, seguida de otro par de paréntesis `()` para ejecutarla:
+
+```javascript
+(function()
+{
+  // Código completamente aislado
+  var secreto = "ClavePrivada123";
+  console.log("IIFE ejecutada con éxito");
+})();
+
+// Si intentamos acceder desde fuera:
+// console.log(secreto); // Lanza ReferenceError: secreto is not defined
+```
+
+---
+
+## 2.4. Conversiones entre distintos tipos de datos (Criterio 2.4)
+
+## A. El Sistema de Tipado Débil y la Coerción de Tipos
+
+En JavaScript, las variables no tienen tipo fijo asignado en la declaración, sino que los tipos están asociados a los valores en tiempo de ejecución. Al ser un lenguaje débilmente tipado, el motor intenta resolver operaciones entre tipos heterogéneos mediante la **coerción de tipos** (*Type Coercion*), es decir, la transformación de un tipo de dato en otro según el contexto semántico de la instrucción.
+
+Existen dos modalidades de conversión:
+
+1. **Conversión automática o implícita:** la realiza el intérprete siguiendo reglas internas de conveniencia.
+2. **Conversión manual o explícita:** la fuerza el programador mediante funciones del estándar (`Number()`, `String()`, etc.).
+
+## B. Conversión Automática de Tipos (Coerción Implícita) (*type coercion*)
+
+### 1. Coerción a Cadenas de Texto (*String Coercion*)
+
+Ocurre fundamentalmente con el operador binario de suma (`+`). Si uno de los operandos es de tipo texto, JavaScript convierte automáticamente el otro operando a cadena y realiza una concatenación:
+
+```javascript
+// El número 5 se transforma a cadena "5" y se unen:
+let resultado1 = 12 + "5";
+console.log(resultado1); // Imprime: "125" (tipo string)
+
+let resultado2 = "67" + 11;
+console.log(resultado2); // Imprime: "6711" (tipo string)
+
+// Comportamiento con booleanos y nulos en cadenas:
+console.log("Acceso: " + true);  // "Acceso: true"
+console.log("Dato: " + null);    // "Dato: null"
+```
+
+### 2. Coerción a Números (*Numeric Coercion*)
+
+Aparece cuando se aplican operadores estrictamente matemáticos (`-`, `*`, `/`, `%`, `**`). En estos contextos, el motor fuerza a que los operandos se transformen a números:
+
+```javascript
+// La resta no admite concatenación, por tanto fuerza la resta numérica:
+console.log("10" - 2);  // 8 (el texto "10" se convierte en número 10)
+
+// La multiplicación convierte ambas partes a número:
+console.log(12 * "5");   // 60
+console.log("67" * 11);  // 737
+
+// Coerción de valores lógicos:
+// true se asume como 1; false se asume como 0
+console.log(true * 7);   // 7 (1 * 7)
+console.log(9 - false);  // 9 (9 - 0)
+
+// Coerción de null y undefined:
+// null representa vacío intencionado y se evalúa como 0
+console.log(null * 6);   // 0 (0 * 6)
+
+// undefined no tiene representación numérica coherente, por lo que genera NaN
+console.log(undefined / 7);  // NaN (Not-a-Number)
+
+// Operaciones imposibles:
+console.log("texto" * 8);        // NaN (no se puede interpretar "texto" como número)
+console.log(Infinity - "texto"); // NaN
+console.log(NaN + 4);            // NaN
+```
+
+### 3. Coerción a Booleanos (*Boolean Coercion*)
+
+Sucede de forma automática dentro de estructuras condicionales (`if`, bucles `while`) o cuando intervienen operadores lógicos (`&&`, `||`, `!`). El motor clasifica el dato según sea un valor **Falsy** o **Truthy**.
+
+> **REGLA MNEMOTÉCNICA — Los 8 valores Falsy en JavaScript**
+>
+> Cualquier dato fuera de esta lista cerrada se evalúa como `true`:
+>
+> `false`, `0`, `-0`, `0n`, `""` (cadena vacía), `null`, `undefined` y `NaN`
+
+## C. Conversión Manual de Tipos (Conversión Explícita) (*type casting*)
+
+Delegar en la conversión automática puede introducir errores de cálculo o desbordamientos difíciles de rastrear en producción. La práctica recomendada consiste en forzar el tipo explícitamente.
+
+### 1. Transformación Explícita a Número
+
+Existen tres formas estándar en el lenguaje:
+
+- **Función constructora `Number(valor)`:** intenta convertir el valor completo a un número. Si contiene caracteres no numéricos, devuelve de inmediato `NaN`:
+
+```javascript
+console.log(Number("42"));     // 42
+console.log(Number("42px"));   // NaN (falla por las letras 'px')
+console.log(Number(true));     // 1
+console.log(Number(false));    // 0
+console.log(Number(null));     // 0
+console.log(Number(undefined));// NaN
+```
+
+- **Funciones de análisis sintáctico `parseInt()` y `parseFloat()`:** leen de izquierda a derecha extrayendo la parte numérica hasta encontrar un carácter no válido:
+
+```javascript
+console.log(parseInt("42px", 10));     // 42 (base 10 especificada)
+console.log(parseFloat("19.95 euros")); // 19.95
+console.log(parseInt("ancho: 100"));    // NaN (comienza por una letra)
+```
+
+- **Operador unario positivo (`+`):** es la vía más corta y eficiente en JavaScript para convertir una cadena a número:
+
+```javascript
+let entrada = "150";
+let total = +entrada;  // Convierte "150" a 150 numérico
+console.log(typeof total);  // "number"
+```
+
+### 2. Transformación Explícita a Cadena de Texto
+
+- **Función constructora `String(valor)`:** funciona con cualquier tipo de dato, incluso con valores primitivos nulos o indefinidos:
+
+```javascript
+console.log(String(123));        // "123"
+console.log(String(true));       // "true"
+console.log(String(null));       // "null"
+console.log(String(undefined));  // "undefined"
+```
+
+- **Método `valor.toString()`:** se invoca sobre el valor, pero provoca un error bloqueante `TypeError` si la variable contiene `null` o `undefined`:
+
+```javascript
+let edad = 20;
+console.log(edad.toString());  // "20"
+
+let vacio = null;
+// vacio.toString();
+// ERROR: Uncaught TypeError: Cannot read properties of null
+```
+
+### 3. Transformación Explícita a Booleano
+
+- **Función `Boolean(valor)`:** evalúa directamente según la regla de valores falsy/truthy:
+
+```javascript
+console.log(Boolean(1));        // true
+console.log(Boolean(0));        // false
+console.log(Boolean(""));       // false
+console.log(Boolean(" "));      // true (un espacio en blanco cuenta como texto)
+console.log(Boolean([]));       // true (los objetos y matrices son siempre truthy)
+```
+
+- **Operador de doble negación (`!!`):** invierte dos veces el valor, forzándolo a booleano de forma concisa:
+
+```javascript
+let token = "XYZ-123";
+let tieneSesion = !!token;  // Convierte a true si hay cadena, false si está vacía
+console.log(tieneSesion);   // true
+```
+
+`!!valor` es exactamente lo mismo que `Boolean(valor)` en cuanto a su resultado final. Ambos métodos fuerzan a JavaScript a convertir cualquier dato en un booleano puro (`true` o `false`).
+
+## D. Tabla Resumen de Coerciones y Casos Especiales
+
+La siguiente matriz ilustra las peculiaridades de conversión que el estudiante y futuro técnico debe conocer para superar evaluaciones técnicas y evitar errores en código:
+
+| Valor Original | Convertido a `Number(x)` | Convertido a `String(x)` | Convertido a `Boolean(x)` |
+|---|---|---|---|
+| `0` | `0` | `"0"` | `false` |
+| `1` | `1` | `"1"` | `true` |
+| `""` (cadena vacía) | `0` | `""` | `false` |
+| `"0"` (texto con cero) | `0` | `"0"` | `true` (¡es un texto no vacío!) |
+| `"false"` | `NaN` | `"false"` | `true` |
+| `true` | `1` | `"true"` | `true` |
+| `false` | `0` | `"false"` | `false` |
+| `null` | `0` | `"null"` | `false` |
+| `undefined` | `NaN` | `"undefined"` | `false` |
+| `NaN` | `NaN` | `"NaN"` | `false` |
+| `[]` (matriz vacía) | `0` | `""` | `true` |
+| `[25]` | `25` | `"25"` | `true` |
+| `{}` (objeto vacío) | `NaN` | `"[object Object]"` | `true` |
+
+## E. El Peligro de la Igualdad Abstracta (`==`) frente a la Igualdad Estricta (`===`)
+
+La causa más común de errores en JavaScript radica en el uso del operador `==`. Antes de comparar, `==` fuerza la conversión de ambos operandos hasta hacerlos compatibles, lo que produce resultados contradictorios:
+
+```javascript
+console.log(0 == false);         // true (false se convierte a 0)
+console.log("" == 0);            // true (cadena vacía se convierte a 0)
+console.log("" == false);        // true (ambos se convierten a 0)
+console.log(null == undefined);  // true (regla especial de ECMAScript)
+console.log([] == 0);            // true ([] se transforma en "" y luego en 0)
+
+// EN CAMBIO, CON IDENTIDAD ESTRICTA (===):
+// No hay conversión de tipos; exige mismo tipo y mismo valor:
+console.log(0 === false);         // false
+console.log("" === 0);            // false
+console.log(null === undefined);  // false
+console.log([] === 0);            // false
+```
+
+## F. Coerción Estricta y Excepciones: `Symbol` y `BigInt`
+
+Los tipos primitivos tradicionales (`number`, `string`, `boolean`, `null`, `undefined`) permiten conversiones implícitas silenciosas, asumiendo equivalencias matemáticas (como transformar `false` en `0` o `null` en `0`). Por el contrario, los tipos modernos `Symbol` (ES6) y `BigInt` (ES2020) fueron dotados deliberadamente de fuertes barreras sintácticas para impedir fallos de seguridad y pérdida de precisión matemática.
+
+### Restricciones de Coerción en `Symbol`
+
+El tipo `Symbol` se utiliza para crear identificadores de propiedades de objetos únicos e inmutables. Si el lenguaje permitiese que un `Symbol` se convirtiese implícitamente en texto, su clave podría quedar expuesta públicamente en logs, cadenas JSON o mensajes de error, destruyendo su propiedad de aislamiento:
+
+```javascript
+const idUsuario = Symbol("uid_8841");
+
+// 1. Prohibida la coerción implícita a String con el operador +:
+// console.log("Usuario: " + idUsuario);
+// ERROR: TypeError: Cannot convert a Symbol value to a string
+
+// 2. Prohibida la coerción matemática a Number:
+// console.log(idUsuario * 2);
+// console.log(+idUsuario);
+// console.log(Number(idUsuario));
+// ERROR: TypeError: Cannot convert a Symbol value to a number
+
+// 3. Conversión explícita autorizada:
+// Si el programador usa explícitamente String() o .toString(), sí está permitido:
+console.log(String(idUsuario));     // "Symbol(uid_8841)"
+console.log(idUsuario.toString());  // "Symbol(uid_8841)"
+
+// 4. Conversión a Booleano (permitida tanto implícita como explícitamente):
+// Cualquier Symbol se considera siempre un valor TRUTHY:
+console.log(Boolean(idUsuario));    // true
+if (idUsuario) {                    // Válido: entra al bloque
+  console.log("El símbolo existe en memoria.");
+}
+```
+
+### Restricciones de Coerción en `BigInt`
+
+El estándar IEEE 754 de los números estándar (`number`) utiliza 64 bits, limitando los enteros seguros al intervalo [−(2⁵³ − 1), 2⁵³ − 1] (`Number.MAX_SAFE_INTEGER` = 9.007.199.254.740.991). Superado ese rango, dos números enteros contiguos se redondean al mismo valor binario. `BigInt` se diseñó para representar enteros de precisión arbitraria sin desbordamientos. Sin embargo, mezclar implícitamente `BigInt` con `Number` ordinario destruiría esa garantía de exactitud, por lo que la coerción implícita entre ellos está vetada en operaciones matemáticas.
+
+```javascript
+const claveCriptografica = 90071992547409995n;  // BigInt (termina en 'n')
+const incremento = 5;                          // Number estándar
+
+// Intento de operación implícita:
+// const total = claveCriptografica + incremento;
+// ERROR: TypeError: Cannot mix BigInt and other types, use explicit conversions
+
+// Prohibición con el operador unario positivo (+):
+// console.log(+claveCriptografica);
+// ERROR: TypeError: Cannot convert a BigInt value to a number (usa Number() explícito)
+
+// Solución A: Convertir todo a BigInt (preserva precisión entera)
+const totalBigInt = claveCriptografica + BigInt(incremento);
+console.log(totalBigInt);  // 9007199254741000n
+
+// Solución B: Convertir a Number (asumiendo posible pérdida si es muy grande)
+const totalNumber = Number(claveCriptografica) + incremento;
+console.log(totalNumber);  // 9007199254741000 (como Number estándar)
+```
+
+### Coerción en Cadenas de Texto y Booleanos
+
+- **A texto:** tanto la conversión explícita como la concatenación con el operador `+` están permitidas; el sufijo `n` se elimina de la cadena resultante:
+
+```javascript
+console.log(500n + " bytes");  // "500 bytes" (coerción implícita por presencia de texto)
+console.log(String(123n));     // "123"
+```
+
+- **A booleano:** sigue la regla general de valores numéricos:
+  - `0n` es **Falsy**.
+  - Cualquier `BigInt` distinto de cero (`1n`, `-10n`) es **Truthy**.
+
+```javascript
+console.log(Boolean(0n));   // false
+console.log(Boolean(15n));  // true
+```
+
+---
+
+## 2.5. Mecanismos de decisión (Criterio 2.5)
+
+## A. ¿Qué es un Mecanismo de Decisión y qué es un Bloque?
+
+Hasta ahora, las instrucciones escritas se ejecutaban de forma lineal: una tras otra, de arriba hacia abajo. Los mecanismos de decisión permiten alterar el flujo secuencial de un programa: evalúan una condición booleana (`true` o `false`) y deciden qué camino de código ejecutar y cuál ignorar.
+
+Un **bloque** es un grupo de cero o más sentencias agrupadas dentro de un par de llaves `{ ... }`. En JavaScript moderno, los bloques no solo agrupan instrucciones, sino que establecen una barrera de ámbito (*block scope*) para las variables `let` y `const`:
+
+```javascript
+// Bloque delimitado por llaves
+{
+  let datoLocal = "Visible solo dentro de estas llaves";
+  console.log(datoLocal);
+}
+// console.log(datoLocal); // Lanza ReferenceError
+```
+
+## B. La Estructura Condicional if...else
+
+### 1. Estructura Simple y Doble
+
+Evalúa una expresión entre paréntesis. Si el resultado es verdadero (*truthy*), se ejecuta el bloque asociado al `if`; si es falso (*falsy*), se ejecuta el bloque `else` (si existe):
+
+```javascript
+let saldoCuenta = 50;
+let costeArticulo = 30;
+
+// Estructura if...else básica
+if (saldoCuenta >= costeArticulo)
+{
+  saldoCuenta -= costeArticulo;
+  console.log(`Compra completada. Saldo restante: ${saldoCuenta} €`);
+}
+else
+{
+  console.log("Error: Fondos insuficientes para realizar la compra.");
+}
+```
+
+### 2. Omisión Opcional de Llaves en Sentencias Únicas
+
+Si un bloque `if` o `else` contiene una única instrucción, el estándar permite omitir las llaves `{}`:
+
+```javascript
+let autenticado = true;
+
+// Válido sintácticamente en JavaScript:
+if (autenticado)
+  console.log("Acceso concedido");
+else
+  console.log("Acceso denegado");
+```
+
+Aunque la sintaxis lo autorice, **omitar las llaves se considera una mala práctica**. Si un programador añade posteriormente una segunda línea pensando que forma parte de la condición, esa segunda línea se ejecutará siempre de forma incondicional, introduciendo fallos críticos de seguridad.
+
+## C. Decisiones Múltiples: if...else if...else y Anidamiento
+
+### 1. Encadenamiento Secuencial
+
+Permite comprobar una cadena ordenada de condiciones. En el momento en que una de ellas se evalúa a `true`, se ejecuta su bloque y el motor salta directamente fuera de toda la estructura, ignorando las demás ramas:
+
+```javascript
+let notaExamen = 7.5;
+
+if (notaExamen > 0 && notaExamen < 5)
+{
+  console.log("Suspenso");
+}
+else if (notaExamen < 7)
+{
+  console.log("Aprobado");
+}
+else if (notaExamen < 9)
+{
+  console.log("Notable");
+}
+else if (notaExamen <= 10)
+{
+  console.log("Sobresaliente");
+}
+else
+{
+  console.log("Error: Calificación fuera del rango legal (0-10).");
+}
+```
+
+### 2. Estructuras Condicionales Anidadas
+
+Consiste en introducir un bloque `if` dentro de otro bloque `if` cuando una decisión secundaria depende obligatoriamente del éxito de una decisión previa:
+
+```javascript
+let tieneEntrada = true;
+let edad = 16;
+
+if (tieneEntrada)
+{
+  // Decisión secundaria dependiente
+  if (edad >= 18)
+  {
+    console.log("Pase general autorizado.");
+  }
+  else
+  {
+    console.log("Acceso autorizado con acreditación de tutor legal.");
+  }
+}
+else
+{
+  console.log("Acceso denegado: No posee entrada válida.");
+}
+```
+
+## D. La Sentencia de Selección Múltiple: switch...case...default
+
+La estructura `switch` es idónea cuando una misma variable o expresión se compara contra múltiples valores discretos conocidos:
+
+```javascript
+let metodoPago = "BIZUM";
+
+switch (metodoPago)
+{
+  case "TARJETA":
+    console.log("Pasarela bancaria seleccionada: Redsys");
+    break; // Impide continuar hacia abajo
+  case "PAYPAL":
+    console.log("Redirigiendo a la API segura de PayPal");
+    break;
+  case "BIZUM":
+    console.log("Solicitando número de teléfono móvil");
+    break;
+  default:
+    console.log("Método de pago no compatible.");
+    break;
+}
+```
+
+### 1. Regla Crítica: Igualdad Estricta (===) en switch
+
+El motor compara la expresión contra cada etiqueta `case` aplicando estrictamente `===`. Esto significa que no hay conversión automática de tipos (*coerción*):
+
+```javascript
+let nivelAcceso = "1"; // Tipo String
+
+switch (nivelAcceso)
+{
+  case 1: // Tipo Number
+    console.log("Nivel Administrador");
+    break;
+  default:
+    console.log("No coincide porque '1' !== 1 (Tipos diferentes)");
+    break;
+}
+// Salida: No coincide porque '1' !== 1 (Tipos diferentes)
+```
+
+### 2. El Efecto Fall-Through (Caída Libre Secuencial)
+
+Si se omite intencionadamente la instrucción `break`, el flujo de ejecución "cae" y ejecuta las instrucciones de los siguientes casos sin comprobar si coinciden o no, hasta toparse con un `break`. Se utiliza de forma productiva para agrupar casos que comparten la misma lógica:
+
+```javascript
+let mes = "ABRIL";
+
+switch (mes)
+{
+  // Casos agrupados aprovechando el Fall-Through:
+  case "DICIEMBRE":
+  case "ENERO":
+  case "FEBRERO":
+    console.log("Estación: Invierno");
+    break;
+  case "MARZO":
+  case "ABRIL":
+  case "MAYO":
+    console.log("Estación: Primavera");
+    break;
+  default:
+    console.log("Otra estación del año");
+    break;
+}
+```
+
+- **Posición libre de `default`:** La cláusula `default` no tiene por qué situarse obligatoriamente como el último bloque dentro de las llaves del `switch`. Puede ubicarse al principio o en una posición intermedia entre los distintos `case`.
+- **Obligatoriedad de `break` en `default` intermedio:** Cuando `default` se ubica al final de la estructura, la sentencia `break` es técnicamente prescindible (aunque recomendada por estilo) porque el flujo llega al cierre de la llave `}`. Sin embargo, si `default` se coloca al principio o en el medio, debe llevar obligatoriamente su propia sentencia `break`. De lo contrario, si la expresión no coincide con ningún `case` previo, el flujo entrará en `default` y continuará ejecutando en cascada (*fall-through*) todos los `case` que se encuentren por debajo:
+
+```javascript
+var valor = 99;
+
+// default situado al inicio de la estructura
+switch (valor)
+{
+  default:
+    console.log("Valor no reconocido");
+    break; // OBLIGATORIO: Si se omite, entra aquí y continúa ejecutando case 1 y case 2
+  case 1:
+    console.log("Uno");
+    break;
+  case 2:
+    console.log("Dos");
+    break;
+}
+```
+
+## E. Expresión Condicional Ternaria (? :)
+
+El operador ternario es el único operador en JavaScript que toma tres operandos. Permite condensar una decisión simple en una expresión que devuelve un valor:
+
+```
+condición ? valorSiVerdadero : valorSiFalso
+```
+
+```javascript
+let edad = 20;
+
+// Forma clásica con if...else (4 líneas):
+let estadoA;
+if (edad >= 18)
+{
+  estadoA = "Adulto";
+}
+else
+{
+  estadoA = "Menor";
+}
+
+// Forma compacta con operador ternario (1 línea):
+const estadoB = (edad >= 18) ? "Adulto" : "Menor";
+console.log(estadoB); // "Adulto"
+
+// Inserción directa dentro de plantillas literales:
+console.log(`El usuario es ${edad >= 18 ? "mayor" : "menor"} de edad.`);
+```
+
+## F. Decisiones Mediante Operadores de Cortocircuito
+
+Los operadores lógicos (`&&`, `||`, `??`) se usan frecuentemente en JavaScript como atajos para ejecutar funciones de manera condicional. Esto se conoce como **evaluación de circuito corto** (*short-circuit evaluation*).
+
+### 1. El operador && (Ejecución Condicional)
+
+El operador `&&` evalúa de izquierda a derecha. Ejecuta el lado derecho solo si el lado izquierdo es verdadero (`true` o *truthy*). Si el operando izquierdo es falso, el motor no evalúa la derecha. Si es verdadero, evalúa y retorna la expresión derecha:
+
+- **Cuándo usarlo:** Cuando quieres ejecutar una función solo si una variable existe o una condición se cumple (equivalente a un `if` corto).
+- **Regla:** `SI_ESTO_ES_VERDADERO && EJECUTA_ESTA_FUNCION()`
+
+```javascript
+const usuarioLogueado = true;
+const abrirPanel = () => console.log("Panel abierto");
+
+// Como es true, la función se ejecuta
+usuarioLogueado && abrirPanel();
+```
+
+### 2. El operador || (Ejecución de Respaldo / Fallback)
+
+El operador `||` se detiene en el primer valor verdadero. Ejecuta el lado derecho solo si el lado izquierdo es falso (`false` o *falsy*: `null`, `undefined`, `0`, `""`, `NaN`).
+
+- **Cuándo usarlo:** Cuando quieres ejecutar una función de respaldo si la primera opción no es válida o falló.
+- **Regla:** `SI_ESTO_FALLA || EJECUTA_ESTA_OTRA_FUNCION()`
+
+```javascript
+const obtenerConfiguracionLocal = () => null; // Simulamos que no hay datos
+const descargarConfiguracionNube = () => console.log("Descargando desde la nube...");
+
+// Como la primera devuelve null (falsy), se ejecuta la segunda
+obtenerConfiguracionLocal() || descargarConfiguracionNube();
+```
+
+### 3. El operador ?? (Operador Nullish Coalescing)
+
+El operador `??` es más estricto que `||`. Ejecuta el lado derecho solo si el lado izquierdo es estrictamente `null` o `undefined`. Si el lado izquierdo es `0` o una cadena vacía `""`, no ejecutará la función.
+
+- **Cuándo usarlo:** Cuando valores legítimos como el número `0` o un texto vacío `""` deben ser respetados, y solo quieres un respaldo ante la ausencia total de datos.
+- **Regla:** `SI_ESTO_ES_NULL_O_UNDEFINED ?? EJECUTA_ESTA_FUNCION()`
+
+```javascript
+const puntajeActual = 0; // El jugador tiene cero puntos (valor válido)
+const inicializarMarcador = () => console.log("Marcador reseteado a 10");
+
+// Con || se habría ejecutado porque 0 es falsy.
+// Con ?? NO se ejecuta porque 0 NO es null ni undefined.
+puntajeActual ?? inicializarMarcador();
+```
+
+## G. Reducción de Complejidad Ciclomática mediante Cláusulas de Guarda (Guard Clauses) y Retorno Temprano (Early Return)
+
+En consonancia con las exigencias de la industria del desarrollo de software actual y los análisis estáticos en entornos de integración continua (CI/CD mediante ESLint, reglas de SonarQube y complejidad ciclomática de McCabe), se exige evitar el anidamiento piramidal de estructuras condicionales (*Arrow Anti-Pattern* / código espagueti).
+
+La **complejidad ciclomática** (desarrollada por Thomas J. McCabe en 1976) es una métrica de software que mide la cantidad de caminos lógicos independientes que puede tomar el flujo de ejecución de un programa o función. En términos sencillos: mide cuántos caminos distintos existen dentro de una función y, por tanto, cuántas pruebas unitarias como mínimo se necesitan para cubrir todos los posibles escenarios.
+
+### ¿Por qué se penaliza una complejidad alta?
+
+1. **Mayor probabilidad de bugs:** Cuantas más bifurcaciones anidadas tiene una función, más difícil resulta para el programador prever todos los estados posibles.
+2. **Dificultad en pruebas unitarias:** Una función con complejidad 15 requiere al menos 15 *tests* unitarios bien diseñados solo para tocar cada rama una vez.
+3. **Mala legibilidad (deuda técnica):** Genera el antipatrón de la pirámide/flecha (*Arrow Anti-Pattern*), obligando a quien lee el código a retener mentalmente múltiples niveles de contexto condicional.
+
+La regla de cálculo directo es:
+
+```
+Complejidad ciclomática = 1 + Número de puntos de decisión
+```
+
+### Ejemplo práctico
+
+**Caso A: Función lineal (Complejidad = 1)**
+
+```javascript
+function duplicar(numero)
+{
+    return numero * 2;
+}
+```
+
+- Puntos de decisión: 0.
+- Complejidad: `1 + 0 = 1`. Solo existe un camino posible.
+
+**Caso B: Función con bifurcaciones (Complejidad = 4)**
+
+```javascript
+function clasificarEdad(edad, tienePermiso)
+{
+    if (edad >= 18)
+    {
+        // +1 (decisión 1)
+        return "Adulto";
+    }
+    else if (edad >= 16 && tienePermiso)
+    {
+        // +2 (decisión 2: else if, decisión 3: operador &&)
+        return "Joven con permiso";
+    }
+    return "Menor";
+}
+```
+
+- Base: 1
+- Puntos de decisión: `if` (+1), `else if` (+1), `&&` (+1).
+- Complejidad ciclomática: `1 + 3 = 4`. Se necesitan al menos 4 casos de prueba distintos para garantizar cobertura total.
+
+### 1. Principio Metodológico Aplicado
+
+- **Aislamiento de precondiciones y errores:** Toda función debe validar sus argumentos, estados inválidos y casos de excepción al inicio del bloque. Si una condición previa no se cumple, la función debe abortar su flujo inmediatamente devolviendo un valor por defecto o lanzando una excepción (`return;`, `return false;`, `throw new Error(...)`).
+- **Camino feliz despejado (*Happy Path*):** El flujo principal de ejecución de la función se mantendrá siempre con el nivel mínimo de indentación.
+
+### 2. Ejemplo Práctico
+
+```javascript
+// Mala práctica: anidamiento excesivo
+function procesarRegistroUsuario(datos)
+{
+    if (datos !== null && datos !== undefined)
+    {
+        if (datos.edad >= 18)
+        {
+            if (datos.email.includes("@"))
+            {
+                const usuario = { id: Date.now(), ...datos };
+                guardarEnBaseDatos(usuario);
+                return { exito: true, usuario };
+            }
+            else
+            {
+                return { exito: false, error: "Formato de email incorrecto" };
+            }
+        }
+        else
+        {
+            return { exito: false, error: "El usuario debe ser mayor de edad" };
+        }
+    }
+    else
+    {
+        return { exito: false, error: "Datos no proporcionados" };
+    }
+}
+
+
+// Buena práctica: complejidad ciclomática reducida:
+// Cláusulas de guarda y retorno temprano
+function procesarRegistroUsuario(datos)
+{
+    // 1. Cláusulas de guarda (validación de precondiciones al inicio)
+    if (!datos)
+    {
+        return { exito: false, error: "Datos no proporcionados" };
+    }
+    if (datos.edad < 18)
+    {
+        return { exito: false, error: "El usuario debe ser mayor de edad" };
+    }
+    if (!datos.email || !datos.email.includes("@"))
+    {
+        return { exito: false, error: "Formato de email incorrecto" };
+    }
+
+    // 2. Camino principal (Happy Path) con sangría base
+    const usuario = { id: Date.now(), ...datos };
+    guardarEnBaseDatos(usuario);
+    return { exito: true, usuario };
+}
+```
