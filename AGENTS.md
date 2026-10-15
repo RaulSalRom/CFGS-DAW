@@ -47,7 +47,7 @@ Toda tarea se resuelve en un **ciclo iterativo**, nunca de un tirón:
 2. **Planificar** — decide los pasos y dilo en una línea.
 3. **Implementar** — haz el cambio mínimo que toca.
 4. **Verificar** — comprueba de verdad: Java compila, SQL ejecuta, HTML/PHP se abre, JS corre con `node`.
-5. **Cerrar** — commit + rama + PR (ver §6).
+5. **Cerrar** — commit y `push` a `main` (ver §6).
 
 Repite **3→4** hasta que la verificación pase. Si tras **3 vueltas** sigues atascado, **PARA**,
 explica el bloqueo y pide ayuda en vez de seguir a ciegas.
@@ -66,14 +66,16 @@ paso. Nunca encadenes varias acciones dando por hecho el resultado.
 
 ## 6. Git y entrega
 
-- Trabaja siempre en una **rama**: `agente/<tema>`.
-- **Nunca** hagas commit ni push a `main`. Se entrega por **PR** (`gh pr create`) y el humano mergea.
+- Trabaja **directamente sobre `main`** (por ahora no se usan PRs).
+- **Antes de empezar y antes de empujar:** `git pull --ff-only` para no pisar cambios.
+- **Antes de cada commit:** revisa `git status` y `git diff` y comprueba que no entra nada
+  prohibido (lista de abajo).
 - **Nunca** versionar: `*.class`, `bin/`, `.idea/`, el estado de `.obsidian`
   (`workspace.json`, `app.json`, `graph.json`, `cache`, `plugins/*/data.json`) ni
   `2º-Curso/IPE II/Ipe II 2025.pdf`.
 - Mensajes de commit en **español coloquial** (el estilo de este repo, no Conventional Commits):
   `"ejercicio 3 corregido"`, `"actividades 1.4, 1.5, 1.6 y tarea 2"`, `"tareas de paco"`.
-- Revisa `git status` y `git diff` antes de cada commit.
+- Si algún día se autentica `gh`, se puede volver a ramas + PR; hasta entonces, `main` directo.
 
 ## 7. DWEC tiene dos capas (no las rompas)
 
