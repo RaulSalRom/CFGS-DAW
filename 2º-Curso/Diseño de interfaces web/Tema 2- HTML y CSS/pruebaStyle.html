@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reserva de pista</title>
+  <style>
+    legend{font-weight:bold; color: blue}
+    body{font-family:system-ui;margin:1rem;max-width:600px}
+    fieldset{border: 10px solid #b15454;padding:1rem}
+    label{display:block;margin-top:.7rem}
+    input[type=range]{width:100%}
+  </style>
+</head>
+<body>
+  <h1 style="color: pink;">Reserva tu pista deportiva</h1>
+
+  <form action="#" aria-describedby="ayuda-nivel">
+    <fieldset style="border: 5px solid green; padding: 1rem;">
+      <legend style="color: purple;">Datos de reserva</legend>
+
+      <label>Nombre
+        <input type="text" name="nombre" required />
+      </label>
+
+      <label>E‑mail
+        <input type="email" name="email" required />
+      </label>
+
+      <label>Fecha
+        <input type="date" name="fecha" required />
+      </label>
+
+      <p>Turno</p>
+      <label><input type="radio" name="turno" value="mañana" required /> Mañana</label>
+      <label><input type="radio" name="turno" value="tarde"  required /> Tarde</label>
+
+      <label>Nivel (1 bajo – 10 pro)
+        <input type="range" name="nivel" min="1" max="10" value="5" aria-describedby="ayuda-nivel" />
+      </label>
+      <small id="ayuda-nivel">Selecciona tu nivel aproximado.</small>
+
+      <label>
+        <input type="checkbox" name="seguro" /> Contratar seguro de lesiones
+      </label>
+    </fieldset>
+
+    <button type="submit">Reservar</button>
+    <fieldset>
+      <legend>Datos de reserva</legend>
+
+      <label>Nombre
+        <input type="text" name="nombre" required />
+      </label>
+
+      <label>E‑mail
+        <input type="email" name="email" required />
+      </label>
+
+      <label>Fecha
+        <input type="date" name="fecha" required />
+      </label>
+
+      <p>Turno</p>
+      <label><input type="radio" name="turno" value="mañana" required /> Mañana</label>
+      <label><input type="radio" name="turno" value="tarde"  required /> Tarde</label>
+
+      <label>Nivel (1 bajo – 10 pro)
+        <input type="range" name="nivel" min="1" max="10" value="5" aria-describedby="ayuda-nivel" />
+      </label>
+      <small id="ayuda-nivel">Selecciona tu nivel aproximado.</small>
+
+      <label>
+        <input type="checkbox" name="seguro" /> Contratar seguro de lesiones
+      </label>
+    </fieldset>
+
+  </form>
+</body>
+</html>
