@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 – Página no encontrada</title>
+  <!--
+    «Página 404 con animación (404.html)» de:
+      https://infogonzalez.com/%F0%9F%93%9A-post-de-ejercicios-resueltos-html-nivel-medio/
+    FUENTE DE LOS DATOS:
+      https://es.wikipedia.org/wiki/Historia_de_Algeciras
+  -->
+  <style>
+    @keyframes flotar {
+      0%   { transform: translateY(0); opacity: 0; }
+      50%  { opacity: 1; }
+      100% { transform: translateY(-8px); opacity: 0; }
+    }
+    body { display: flex; flex-direction: column; justify-content: center; align-items: center;
+           min-height: 100vh; font-family: system-ui; background: #fdfdfd; margin: 0; text-align: center; }
+    h1 { font-size: 4rem; margin: 0; animation: flotar 1.5s ease-out forwards; }
+    p  { max-width: 420px; color: #444; }
+    a  { margin-top: 1.5rem; font-size: 1.2rem; text-decoration: none; border: 1px solid #333;
+         padding: .6rem 1.2rem; border-radius: 4px; color: #333; transition: background .3s; }
+    a:hover, a:focus { background: #333; color: #fff; }
+    footer { position: fixed; bottom: 1rem; font-size: .8rem; color: #777; }
+  </style>
+</head>
+<body>
+  <h1>404</h1>
+  <p>
+    Página no encontrada. Se ha perdido igual que la Algeciras medieval que el rey
+    <strong>Pedro I</strong> ordenó arrasar en <time datetime="1369">1369</time>:
+    <em>desapareció casi sin dejar rastro</em>.
+  </p>
+  <a href="noticia.html">Volver al inicio</a>
+
+  <footer>
+    <small>
+      Dato histórico:
+      <a href="https://es.wikipedia.org/wiki/Historia_de_Algeciras" target="_blank" rel="noopener">Wikipedia — Historia de Algeciras</a>.
+    </small>
+  </footer>
+</body>
+</html>

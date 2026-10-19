@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulos de 2º de DAW — tarjetas</title>
+  <!--
+    «Tarjetas de producto con data» de:
+      https://infogonzalez.com/%F0%9F%93%9A-post-de-ejercicios-resueltos-html-nivel-medio/
+    FUENTE DE LOS DATOS:
+      https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-13221  (RD 405/2023)
+      https://todofp.es/que-estudiar/familias-profesionales/informatica-comunicaciones/des-aplicaciones-web.html
+  -->
+  <style>
+    body { font-family: system-ui; margin: 1rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card { border: 2px solid; padding: 1rem; border-radius: 6px; }
+    .card h2 { margin-top: 0; font-size: 1.1rem; }
+    .codigo { font-size: .8rem; color: #666; }
+    [data-category="cliente"]    { border-color: #4078f2; }
+    [data-category="servidor"]   { border-color: #d97706; }
+    [data-category="despliegue"] { border-color: #059669; }
+    [data-category="diseno"]     { border-color: #b3261e; }
+    [data-category="transversal"]{ border-color: #7c3aed; }
+    [data-category="proyecto"]   { border-color: #334155; }
+  </style>
+</head>
+<body>
+  <h1>Módulos de 2º curso — CFGS Desarrollo de Aplicaciones Web</h1>
+  <p>
+    Los ocho módulos que se cursan este año, con su código oficial cuando existe.
+    El color del borde de cada tarjeta lo decide el atributo
+    <code>data-category</code> mediante selectores de atributo en CSS.
+  </p>
+
+  <h2>Los ocho módulos del curso</h2>
+  <div class="grid">
+    <article class="card" data-category="cliente" data-modulo="0612">
+      <h2>DWEC — Desarrollo web en entorno cliente</h2>
+      <p class="codigo">Código 0612</p>
+      <p>JavaScript, el DOM, eventos y <code>fetch</code>.</p>
+    </article>
+
+    <article class="card" data-category="servidor" data-modulo="0613">
+      <h2>DWES — Desarrollo web en entorno servidor</h2>
+      <p class="codigo">Código 0613</p>
+      <p>PHP, formularios, sesiones y acceso a datos.</p>
+    </article>
+
+    <article class="card" data-category="despliegue" data-modulo="0614">
+      <h2>Despliegue de aplicaciones web</h2>
+      <p class="codigo">Código 0614</p>
+      <p>Servidores web, contenedores y CI/CD.</p>
+    </article>
+
+    <article class="card" data-category="diseno" data-modulo="0615">
+      <h2>DIWEB — Diseño de interfaces web</h2>
+      <p class="codigo">Código 0615</p>
+      <p>HTML, CSS, accesibilidad y usabilidad. <mark>El módulo de este ejercicio.</mark></p>
+    </article>
+
+    <article class="card" data-category="transversal" data-modulo="0179">
+      <h2>Inglés Profesional</h2>
+      <p class="codigo">Código 0179</p>
+      <p>Inglés técnico aplicado al desarrollo.</p>
+    </article>
+
+    <article class="card" data-category="transversal" data-modulo="1710">
+      <h2>IPE II — Itinerario personal para la empleabilidad II</h2>
+      <p class="codigo">Código 1710</p>
+      <p>Orientación laboral y búsqueda de empleo.</p>
+    </article>
+
+    <article class="card" data-category="transversal" data-modulo="optativa">
+      <h2>Optativa: Gestores de contenido</h2>
+      <p class="codigo">Módulo optativo de la comunidad autónoma</p>
+      <p>WordPress y alojamiento con CDMON.</p>
+    </article>
+
+    <article class="card" data-category="proyecto" data-modulo="proyecto">
+      <h2>Proyecto intermodular de DAW</h2>
+      <p class="codigo">Proyecto integrador de fin de ciclo</p>
+      <p>La asignatura que lo une todo.</p>
+    </article>
+  </div>
+
+  <footer>
+    <p>
+      <small>
+        Módulos y códigos oficiales:
+        <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-13221" target="_blank" rel="noopener">Real Decreto 405/2023 (BOE)</a> ·
+        <a href="https://todofp.es/que-estudiar/familias-profesionales/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank" rel="noopener">TodoFP — Ministerio de Educación</a>.
+        Consultados el 19/10/2026.
+      </small>
+    </p>
+  </footer>
+</body>
+</html>

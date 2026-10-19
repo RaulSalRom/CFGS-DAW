@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripción — Jornada de Puertas Abiertas de DAW</title>
+  <!--
+    «Formulario de reserva de pista (reserva.html)» de:
+      https://infogonzalez.com/%F0%9F%93%9A-post-de-ejercicios-resueltos-html-nivel-medio/
+    FUENTE DE LOS DATOS:
+      https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-13221  (RD 405/2023)
+      https://todofp.es/que-estudiar/familias-profesionales/informatica-comunicaciones/des-aplicaciones-web.html
+  -->
+  <style>
+    body { font-family: system-ui; margin: 1rem; max-width: 640px; }
+    fieldset { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 4px; }
+    legend { font-weight: 600; padding: 0 .4rem; }
+    label { display: block; margin-top: .7rem; }
+    input[type=text], input[type=email], input[type=tel], input[type=date],
+    select, textarea { width: 100%; padding: .3rem; }
+    input[type=range] { width: 100%; }
+    small { color: #666; }
+    button { margin-top: 1rem; margin-right: .5rem; padding: .5rem 1.2rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Inscripción a la Jornada de Puertas Abiertas de DAW</h1>
+  <p>
+    El ciclo <strong>Técnico Superior en Desarrollo de Aplicaciones Web</strong> abre sus
+    puertas con talleres de HTML, CSS y desarrollo web. <small>(La jornada es ficticia:
+    este formulario es un ejercicio académico.)</small>
+  </p>
+
+  <form action="#" method="post">
+    <fieldset>
+      <legend>Datos personales</legend>
+
+      <label for="nombre">Nombre y apellidos
+        <input type="text" id="nombre" name="nombre" required maxlength="60"
+               placeholder="Apellidos, Nombre" />
+      </label>
+
+      <label for="dni">DNI
+        <input type="text" id="dni" name="dni" required
+               pattern="[0-9]{8}[A-Za-z]" title="Ocho dígitos seguidos de una letra"
+               placeholder="12345678A" />
+        <small id="ayuda-dni">Ocho dígitos y una letra, sin espacios.</small>
+      </label>
+
+      <label for="email">Correo electrónico
+        <input type="email" id="email" name="email" required placeholder="nombre@correo.es" />
+      </label>
+
+      <label for="tel">Teléfono
+        <input type="tel" id="tel" name="tel" required pattern="[0-9]{9}"
+               title="Nueve dígitos" placeholder="600000000" />
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Datos académicos</legend>
+
+      <label for="estudios">Estudios de procedencia
+        <select id="estudios" name="estudios" required>
+          <option value="" selected disabled>-- Selecciona una opción --</option>
+          <optgroup label="Desde bachillerato">
+            <option value="bachiller">Bachiller</option>
+            <option value="prueba-acceso">Prueba de acceso a GS</option>
+          </optgroup>
+          <optgroup label="Desde formación profesional">
+            <option value="cfgm">Técnico Superior o Medio de FP</option>
+            <option value="otro-ciclo">Otro ciclo de grado superior</option>
+          </optgroup>
+          <optgroup label="Otras vías">
+            <option value="mayores-25">Mayores de 25 años</option>
+            <option value="otra">Otra titulación</option>
+          </optgroup>
+        </select>
+      </label>
+
+      <label for="modulo">Módulo que más te interesa
+        <input type="text" id="modulo" name="modulo" list="modulos-daw" />
+        <datalist id="modulos-daw">
+          <option value="Desarrollo web en entorno cliente"></option>
+          <option value="Desarrollo web en entorno servidor"></option>
+          <option value="Diseño de interfaces web"></option>
+          <option value="Despliegue de aplicaciones web"></option>
+          <option value="Bases de datos"></option>
+          <option value="Programación"></option>
+        </datalist>
+        <small>Escribe libremente o elige de la lista desplegable.</small>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Preferencias de la jornada</legend>
+
+      <p>Turno de asistencia:</p>
+      <label><input type="radio" name="turno" value="manana" required /> Mañana (10:00)</label>
+      <label><input type="radio" name="turno" value="tarde" required /> Tarde (17:00)</label>
+
+      <label for="nivel">Nivel de HTML (1 bajo – 10 pro)
+        <input type="range" id="nivel" name="nivel" min="1" max="10" value="5"
+               aria-describedby="ayuda-nivel" />
+      </label>
+      <small id="ayuda-nivel">Selecciona tu nivel aproximado de conocimientos.</small>
+
+      <label>
+        <input type="checkbox" name="privacidad" required />
+        Acepto el tratamiento de mis datos para la organización de la jornada
+        (ejercicio ficticio, no se envía nada).
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Comentarios</legend>
+      <label for="comentarios">¿Qué te gustaría ver en la jornada?
+        <textarea id="comentarios" name="comentarios" rows="4" maxlength="300"
+                  placeholder="Cuéntanoslo aquí..."></textarea>
+      </label>
+      <small>Máximo 300 caracteres.</small>
+    </fieldset>
+
+    <button type="submit">Confirmar inscripción</button>
+    <button type="reset">Restablecer</button>
+  </form>
+
+  <footer>
+    <p>
+      <small>
+        Denominación y módulos oficiales del ciclo:
+        <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-13221" target="_blank" rel="noopener">Real Decreto 405/2023 (BOE)</a> ·
+        <a href="https://todofp.es/que-estudiar/familias-profesionales/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank" rel="noopener">TodoFP — Ministerio de Educación</a>.
+        La jornada y el envío del formulario son ficticios.
+      </small>
+    </p>
+  </footer>
+</body>
+</html>

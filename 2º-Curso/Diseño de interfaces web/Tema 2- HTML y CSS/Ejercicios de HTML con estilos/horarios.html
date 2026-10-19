@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horarios de autobús — Línea M-150 Algeciras - Tarifa</title>
+  <!--
+    «Tabla de horarios de trenes» de:
+      https://infogonzalez.com/%F0%9F%93%9A-post-de-ejercicios-resueltos-html-nivel-medio/
+    FUENTE DE LOS DATOS:
+      Líneas:  https://siu.ctmcg.es/es/lineas.php
+      M-150:   https://siu.ctmcg.es/es/horarios_lineas_tabla.php?from=1&linea=7
+  -->
+  <style>
+    body { font-family: system-ui; margin: 1rem; }
+    table { border-collapse: collapse; width: 100%; max-width: 900px; margin-bottom: 2rem; }
+    caption { caption-side: top; text-align: left; font-weight: 600; padding: .4rem 0; }
+    th, td { border: 1px solid #555; padding: .4rem; text-align: center; }
+    thead th { background-color: #eee; }
+    tfoot td { background-color: #fafafa; font-weight: 600; text-align: left; }
+    tbody th { background-color: #f7f7f7; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Autobuses de la línea M-150: Algeciras ⇄ Tarifa</h1>
+  <p>
+    Muestra de salidas <strong>laborables (L-V)</strong> de la línea interurbana
+    <strong>M-150 Algeciras - Tarifa</strong>, operada por Transportes Generales Comes
+    para el Consorcio de Transportes del Campo de Gibraltar. La línea tiene parada
+    intermedia en <strong>Pelayo</strong>.
+  </p>
+
+  <!-- Tabla 1: horarios con rowspan (la línea ocupa dos filas) y colspan («Horario» agrupa tres columnas) -->
+  <table>
+    <caption>Salidas de la línea M-150 · muestra de días laborables (L-V) · vigencia del 07/09/2026 al 20/06/2027</caption>
+    <thead>
+      <tr>
+        <th rowspan="2" scope="col">Línea</th>
+        <th rowspan="2" scope="col">Trayecto</th>
+        <th colspan="3" scope="colgroup">Horario (L-V)</th>
+      </tr>
+      <tr>
+        <th scope="col">Mañana</th>
+        <th scope="col">Tarde</th>
+        <th scope="col">Noche</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" rowspan="2">M-150</th>
+        <td>Algeciras → Tarifa (ida)</td>
+        <td>09:00 · 12:00</td>
+        <td>13:15 · 14:45 · 16:30</td>
+        <td>18:45 · 21:15</td>
+      </tr>
+      <tr>
+        <td>Tarifa → Algeciras (vuelta)</td>
+        <td>06:30 · 09:45 · 12:45</td>
+        <td>14:00 · 15:30 · 17:15</td>
+        <td>19:30 · 22:00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          Horarios de muestra consultados el 19/10/2026. Están sujetos a cambios sin previo aviso:
+          consulta siempre el horario completo en la web del Consorcio.
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- Tabla 2: otras líneas con salida en Algeciras -->
+  <table>
+    <caption>Otras líneas interurbanas con salida en Algeciras</caption>
+    <thead>
+      <tr>
+        <th scope="col">Línea</th>
+        <th scope="col">Recorrido</th>
+        <th scope="col">Operador</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">M-110</th><td>Los Barrios - Algeciras (directo)</td><td>Autocares Hetepa</td></tr>
+      <tr><th scope="row">M-112</th><td>Los Barrios - Algeciras (por Puente Romano)</td><td>Autocares Hetepa</td></tr>
+      <tr><th scope="row">M-120</th><td>Algeciras - La Línea</td><td>Transportes Generales Comes</td></tr>
+      <tr><th scope="row">M-130</th><td>San Roque - Algeciras</td><td>Autocares Hetepa</td></tr>
+      <tr><th scope="row">M-170</th><td>San Pablo - Jimena - Castellar - Algeciras</td><td>Transportes Generales Comes</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    <p>
+      <small>
+        Datos de transporte:
+        <a href="https://siu.ctmcg.es/es/lineas.php" target="_blank" rel="noopener">Consorcio de Transportes de Andalucía — Campo de Gibraltar, líneas</a> ·
+        <a href="https://siu.ctmcg.es/es/horarios_lineas_tabla.php?from=1&amp;linea=7" target="_blank" rel="noopener">horario de la línea M-150</a>.
+      </small>
+    </p>
+  </footer>
+</body>
+</html>
