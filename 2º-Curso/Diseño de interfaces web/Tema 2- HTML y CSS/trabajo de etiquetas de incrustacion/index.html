@@ -5,38 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archivo 1 de trabajo etiquetas de incrustación</title>
     <style>
-        h1{color: pink; background-color: black; }
-        button{color: white; background-color: lightblue; border: radius 5px;}
-        aside{margin: right; background-color: lightgray; padding: 1rem; margin: 1rem;}
-        section{background-color: lightyellow; border-radius: 5px;}
+        /* ---------- Estilos base ---------- */
+        body{font-family: system-ui, sans-serif; margin: 0; padding: 0 1rem 2rem;}
+        h1{color: pink; background-color: black; padding: .5rem 1rem;}
+        h2, h3{margin-top: 0;}
+        aside{background-color: lightgray; padding: 1rem; margin: 1rem;}
+        section{background-color: lightyellow; border-radius: 5px; padding: 1rem; margin: 1rem 0;}
+        article{margin-bottom: 1rem;}
+        footer{border-top: 2px solid #333; padding-top: .5rem; font-size: .9rem;}
     </style>
 </head>
-<header>
-    <h1>Trabajo de Raúl Sal Romeo</h1>
-</header>
-<nav>
-    <a href="#nombre_marcador1">Pagina principal</a> | 
-    <button href="secundario.html">Página Secundaria</button>
-</nav>
-<a id="nombre_marcador1"></a>
-<section>
-    <h1>Trabajo de etiquetas de incrustación</h1>
-    <p>Este es un ejemplo de trabajo con etiquetas de incrustación en HTML. A continuación, se presentan algunos ejemplos de cómo utilizar estas etiquetas para mejorar la estructura y el diseño de una página web.</p>
-    <article>
-        <h2>Ejemplo de etiqueta de incrustación</h2>
-        <p>Las etiquetas de incrustación permiten incluir contenido externo dentro de una página web. Por ejemplo, se pueden utilizar para insertar videos, mapas o documentos PDF.</p>
-    </article>
-    <article>
-        <h2>Beneficios de las etiquetas de incrustación</h2>
-        <p>El uso de etiquetas de incrustación puede mejorar la experiencia del usuario al proporcionar contenido adicional sin necesidad de navegar a otra página. Además, facilita la integración de recursos multimedia y documentos en línea.</p>
-    </article>
-    <aside>
-        <h3>Recursos adicionales</h3>
-        <p>Para aprender más sobre las etiquetas de incrustación, se recomienda consultar la documentación oficial de HTML y explorar tutoriales en línea que ofrecen ejemplos prácticos.</p>
-    </aside>
-</section>
-<footer>
-    <p>© 2026 Trabajo de etiquetas de incrustación. Todos los derechos reservados.</p>
-</footer>
+<body>
+
+    <header>
+        <h1>Trabajo de Raúl Sal Romeo</h1>
+    </header>
+
+    <nav>
+        <a href="#nombre_marcador1">Pagina principal</a> |
+        <!-- Antes: <button href="secundario.html"> ... los botones no tienen href -->
+        <a class="btn" href="secundario.html">Página Secundaria</a>
+    </nav>
+
+    <main>
+        <span id="nombre_marcador1"></span>
+
+        <section>
+            <h2>Contenido incrustado — Tabla 6.1</h2>
+            <p>Ejemplos de las etiquetas vistas en el epígrafe de contenido incrustado.</p>
+
+            <!-- Etiqueta 1: iframe -->
+            <article>
+                <h3>iframe</h3>
+                <p>Documento HTML embebido. Ojo: hay que usar la URL <code>/embed/</code>, la de <code>/watch/</code> no deja incrustarse.</p>
+                <iframe src="https://www.youtube.com/embed/3CxtK7-XtE0"
+                        width="560" height="315"
+                        title="Vídeo de YouTube"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </article>
+
+            <!-- Etiqueta 2: video + source -->
+            <article>
+                <h3>video y source</h3>
+                <p>Vídeo local con dos formatos: <code>source</code> elige el primero que soporte el navegador.</p>
+                <video width="640" height="360" controls preload="metadata" style="max-width: 100%; height: auto;">
+                    <source src="media/video.mp4" type="video/mp4">
+                    <source src="media/video.webm" type="video/webm">
+                    Tu navegador no soporta la etiqueta <code>video</code>.
+                </video>
+            </article>
+
+            <!-- Etiqueta 3: audio + source -->
+            <article>
+                <h3>audio y source</h3>
+                <p>Sonido embebido, también con dos formatos alternativos.</p>
+                <audio controls preload="none">
+                    <source src="media/audio.mp3" type="audio/mpeg">
+                    <source src="media/audio.ogg" type="audio/ogg">
+                    Tu navegador no soporta la etiqueta <code>audio</code>.
+                </audio>
+            </article>
+
+            <!-- Etiqueta 4: svg embebido en línea -->
+            <article>
+                <h3>svg en línea</h3>
+                <p>Gráfico vectorial escrito directamente en el HTML (no es un fichero externo).</p>
+                <svg width="260" height="120" viewBox="0 0 260 120" role="img" aria-label="Dibujo vectorial de ejemplo con un rectángulo, un círculo y un triángulo">
+                    <rect x="10" y="20" width="240" height="80" rx="10" fill="pink" stroke="black" stroke-width="4"></rect>
+                    <circle cx="70" cy="60" r="22" fill="black"></circle>
+                    <polygon points="150,35 195,60 150,85" fill="black"></polygon>
+                </svg>
+            </article>
+
+            <!-- Etiqueta 5: img + picture + source -->
+            <article>
+                <h3>img y picture</h3>
+                <p>Imagen vectorial externa declarada con <code>picture</code> y su <code>source</code>.</p>
+                <picture>
+                    <source srcset="img/vecteezy_silhouette-of-a-man-playing-a-skateboard-learn-skateboard_21383185.svg" type="image/svg+xml">
+                    <img src="img/vecteezy_silhouette-of-a-man-playing-a-skateboard-learn-skateboard_21383185.svg"
+                         alt="Silueta de una persona aprendiendo a patinar"
+                         width="1200" height="500" style="max-width: 100%; height: auto;">
+                </picture>
+            </article>
+
+            <!-- Etiqueta 6: object -->
+            <article>
+                <h3>object</h3>
+                <p>Recurso externo con contenido de respaldo dentro de la etiqueta, por si el navegador no lo abre.</p>
+                <object data="documento.pdf" type="application/pdf" width="100%" height="500">
+                    <p>Tu navegador no puede ver el PDF. <a href="documento.pdf">Descárgalo aquí</a>.</p>
+                </object>
+            </article>
+
+            <!-- Etiqueta 7: canvas -->
+            <article>
+                <h3>canvas</h3>
+                <p>Lienzo de mapa de bits dibujado con JavaScript al final del documento.</p>
+                <canvas id="miCanvas" width="400" height="200">
+                    Tu navegador no soporta la etiqueta <code>canvas</code>.
+                </canvas>
+            </article>
+
+            <aside>
+                <h3>embed</h3>
+                <p>Ejemplo de PDF embebido.</p>
+                <embed src="documento.pdf" type="application/pdf" width="100%" height="500">
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <p>Raul Sal Romeo</p>
+    </footer>
+
+    <script>
+        // Dibujo del canvas: se ejecuta al final para que el elemento ya exista
+        const canvas = document.getElementById("miCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Fondo y rejilla
+        ctx.fillStyle = "#f7fafc";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = "lightgray";
+        for (let x = 0; x <= canvas.width; x += 40) {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+        }
+        for (let y = 0; y <= canvas.height; y += 40) {
+            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+        }
+
+        // Barras de la gráfica
+        const valores = [60, 110, 80, 150, 120];
+        valores.forEach((v, i) => {
+            ctx.fillStyle = "pink";
+            ctx.fillRect(30 + i * 70, canvas.height - v, 40, v);
+            ctx.strokeStyle = "black";
+            ctx.strokeRect(30 + i * 70, canvas.height - v, 40, v);
+        });
+
+        // Texto
+        ctx.fillStyle = "black";
+        ctx.font = "16px system-ui, sans-serif";
+        ctx.fillText("canvas + JavaScript", 30, 25);
+    </script>
+
 </body>
 </html>

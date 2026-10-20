@@ -2,10 +2,39 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta namep="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página secundaria — Trabajo de incrustación</title>
+    <style>
+        body{font-family: system-ui, sans-serif; background-color: #f7fafc; margin: 0; padding: 1rem;}
+        h1{color: pink; background-color: black; padding: .5rem 1rem; font-size: 1.4rem;}
+    </style>
 </head>
 <body>
-    
+
+    <header>
+        <h1>Página Secundaria</h1>
+    </header>
+
+    <nav>
+        <a class="btn" href="index.html">← Volver a la página principal</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Contenido de la segunda página</h2>
+            <p>Esta página está enlazada desde <code>index.html</code> mediante un enlace con clase <code>.btn</code> y a su vez enlaza de vuelta al archivo principal.</p>
+
+            <h3>iframe con un mapa de Google</h3>
+            <p>Otro uso de <code>iframe</code>: incrustar un servicio de terceros sin salir de la página.</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d154214.5103364689!2d-0.5427351669515812!3d38.35795447718404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6235da3b9dab4b%3A0x1d7da872ac0b81e3!2sAlicante+(Alacant)%2C+Alicante%2C+Espa%C3%B1a!5e1!3m2!1ses!2sus!4v1564299065614!5m2!1ses!2sus"
+                    width="600" height="400" style="border: 0;" allowfullscreen="" loading="lazy"
+                    title="Mapa de Google de Alicante"></iframe>
+        </section>
+    </main>
+
+    <footer>
+        <p>Raul Sal Romeo.</p>
+    </footer>
+
 </body>
 </html>
