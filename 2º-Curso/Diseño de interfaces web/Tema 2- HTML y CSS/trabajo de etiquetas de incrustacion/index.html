@@ -45,25 +45,21 @@
                         allowfullscreen></iframe>
             </article>
 
-            <!-- Etiqueta 2: video + source -->
+            <!-- Etiqueta 2: video -->
             <article>
                 <h3>video y source</h3>
-                <p>Vídeo local con dos formatos: <code>source</code> elige el primero que soporte el navegador.</p>
+                <p>Vídeo local.</p>
                 <video width="640" height="360" controls preload="metadata" style="max-width: 100%; height: auto;">
-                    <source src="media/video.mp4" type="video/mp4">
-                    <source src="media/video.webm" type="video/webm">
-                    Tu navegador no soporta la etiqueta <code>video</code>.
+                    <source src="media/360429_medium.mp4" type="video/mp4">
                 </video>
             </article>
 
-            <!-- Etiqueta 3: audio + source -->
+            <!-- Etiqueta 3: audio-->
             <article>
-                <h3>audio y source</h3>
-                <p>Sonido embebido, también con dos formatos alternativos.</p>
+                <h3>audio</h3>
+                <p>Sonido embebido.</p>
                 <audio controls preload="none">
-                    <source src="media/audio.mp3" type="audio/mpeg">
-                    <source src="media/audio.ogg" type="audio/ogg">
-                    Tu navegador no soporta la etiqueta <code>audio</code>.
+                    <source src="media/67_SQlv2Xv.mp3" type="audio/mpeg">
                 </audio>
             </article>
 
@@ -119,7 +115,7 @@
     <footer>
         <p>Raul Sal Romeo</p>
     </footer>
-
+    <!-- el script es obligatorio para el canva-->
     <script>
         // Dibujo del canvas: se ejecuta al final para que el elemento ya exista
         const canvas = document.getElementById("miCanvas");
