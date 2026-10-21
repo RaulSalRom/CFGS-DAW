@@ -9,7 +9,6 @@ Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado supe
 ```
 CFGS-DAW/
 ├── 1º-Curso(kursaal)/
-│   ├── 📚 Indice General.md     # Índice maestro del vault
 │   ├── Base de datos/           # SQL, MySQL, procedimientos, triggers, cursores, MongoDB
 │   ├── Digitalizacion/          # Ciberseguridad, transformación digital
 │   ├── Entorno de desarrollo/   # Caja negra, caja blanca, SCRUM...
@@ -38,6 +37,7 @@ CFGS-DAW/
 │   ├── Optativa/                            # Gestores de contenido (CDMON)
 │   └── Proyecto intermodular/               # Proyecto final del ciclo
 │
+├── 📚 Indice General.md         # Índice maestro del vault
 ├── .obsidian/                   # Configuración del vault de Obsidian
 ├── .opencode/                   # Config local de opencode (MEMORY.md, opencode.json, tui.json)
 ├── .vscode/                     # Ajustes de VS Code (puerto de Live Server)

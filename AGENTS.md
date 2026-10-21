@@ -32,11 +32,12 @@ Stack del ciclo: Java, SQL/MySQL, HTML, CSS, JavaScript, PHP, XML, Bash, Linux, 
 ## 3. Estructura
 
 ```
-1º-Curso(kursaal)/     # 8 asignaturas + "📚 Indice General.md"
+📚 Indice General.md   # Índice maestro (en la raíz)
+1º-Curso(kursaal)/     # 8 asignaturas
 2º-Curso/              # 8 asignaturas, en curso
 ```
 
-- `1º-Curso(kursaal)/📚 Indice General.md` es el **índice maestro** y cubre 1º y 2º.
+- `📚 Indice General.md` (en la raíz del repo) es el **índice maestro** y cubre 1º y 2º.
 - Los `README.md` de raíz documentan estructura, notas y horario.
 
 ## 4. Cómo tienes que trabajar (bucles)
@@ -60,7 +61,7 @@ paso. Nunca encadenes varias acciones dando por hecho el resultado.
 
 - Todo en **español**.
 - Nombres de carpeta y nota con el **prefijo de unidad** y sin espacios finales: `1.1.`, `UT2_`, `Tema 0:`.
-- Si añades una nota, **añádela también al índice maestro** `1º-Curso(kursaal)/📚 Indice General.md`.
+- Si añades una nota, **añádela también al índice maestro** `📚 Indice General.md` (raíz).
 - Un commit por bloque de trabajo, nunca uno gigante.
 - Renombrar con `git mv`, **nunca** `mv` (el historial depende de ello).
 
