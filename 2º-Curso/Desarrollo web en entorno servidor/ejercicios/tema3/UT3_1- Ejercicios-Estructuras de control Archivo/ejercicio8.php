@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Metadatos básicos requeridos para la validación W3C -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ejercicio 8 - Tablas</title>
-
-  <!-- CSS de Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
   <!-- Contenido principal de la página -->
   <main class="container my-5">
 
@@ -21,7 +17,6 @@
 
     <div class="card shadow-sm mb-4">
       <div class="card-body">
-
         <h2 class="mb-3">Apartado 1 - Números del 1 al 100</h2>
 
         <!-- Tabla con los números del 1 al 100, de 10 en 10 por fila -->
@@ -42,13 +37,10 @@
             ?>
           </tbody>
         </table>
-
       </div>
     </div>
-
     <div class="card shadow-sm">
       <div class="card-body">
-
         <h2 class="mb-3">Apartado 2 - Emoticonos aleatorios</h2>
 
         <?php
@@ -79,10 +71,7 @@
 
       </div>
     </div>
-
   </main>
-
-  <!-- JavaScript de Bootstrap (necesario para la interactividad) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

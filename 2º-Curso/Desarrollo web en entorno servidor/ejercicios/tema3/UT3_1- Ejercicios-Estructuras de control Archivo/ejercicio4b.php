@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Metadatos básicos requeridos para la validación W3C -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ejercicio 4 - Suma de pares (resultado)</title>
-
-  <!-- CSS de Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -40,19 +37,14 @@
           for ($i = 2; $i < $numero; $i += 2) {
             $suma += $i;
           }
-
           // Mostrar el resultado
           echo '<p class="fs-4">Número introducido: <span class="badge bg-primary fs-4">' . $numero . '</span></p>';
           echo '<p class="fs-5">La suma de todos los números pares anteriores a ' . $numero . ' es: <strong>' . $suma . '</strong></p>';
         }
         ?>
-
       </div>
     </div>
-
   </main>
-
-  <!-- JavaScript de Bootstrap (necesario para la interactividad) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
