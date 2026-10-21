@@ -1,4 +1,3 @@
-// Comprueba que el código tiene exactamente 4 caracteres y todos son dígitos
 function esCodigoValido(codigo) {
   if (codigo === null || codigo.length !== 4) {
     return false;
