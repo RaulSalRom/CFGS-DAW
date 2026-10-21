@@ -1,5 +1,13 @@
 # Teoría — 2.6. Utilización de bucles (Criterio 2.f)
 
+> **Teoría completa de este criterio:** [[DesarrolloWebEnEntornoCliente#2.6. Utilización de bucles (Criterio 2.f)|2.6]]
+> dentro de `DesarrolloWebEnEntornoCliente.md` (el TEMA 2 completo).
+> Esta nota es la capa de examen: actividades resueltas y errores detectados.
+
+**Resultado de Aprendizaje 2 (RA2):** Escribe sentencias simples, aplicando la sintaxis del lenguaje y verificando su ejecución sobre navegadores Web.
+**Criterio Curricular Oficial: CE 2.f** (Se han utilizado bucles y se ha verificado su funcionamiento).
+**Ponderación del Criterio:** (20% del RA2 | 1% sobre la calificación final del módulo).
+
 ## A. ¿Qué es un Bucle y por qué se necesita?
 
 En programación, un bucle o estructura repetitiva es un mecanismo que permite ejecutar un mismo bloque de sentencias varias veces de forma automática mientras se cumpla una condición determinada.
@@ -291,6 +299,225 @@ list: {
 }
 console.log(texto); // Muestra únicamente: "BMW Volvo "
 ```
+
+## G. Actividades Prácticas
+
+### Actividad 1: "El Bug Silencioso"
+
+Lee detenidamente el siguiente bloque de código. Tu objetivo es realizar una **traza de ejecución mental** (sin usar la consola del navegador) para predecir el resultado de salida y explicar qué ocurre. Haz lo mismo con un bucle decreciente.
+
+```javascript
+// Estado inicial del array
+const numeros = [2, 4, 6, 8, 9];
+
+for (let i = 0; i < numeros.length; i++) {
+  if (numeros[i] % 2 === 0) {
+    numeros.splice(i, 1);
+  }
+}
+
+console.log(numeros);
+```
+
+**Traza de ejecución (resultado real comprobado en consola: `[4, 8, 9]`):**
+
+| Vuelta | `i` | `numeros[i]` evaluado | ¿Es par? | Estado del array tras el `splice` | `i` tras el `i++` |
+|---|---|---|---|---|---|
+| 1 | 0 | 2 | Sí | `[4, 6, 8, 9]` (se borra el 2) | 1 |
+| 2 | 1 | 6 | Sí | `[4, 8, 9]` (se borra el **6**, no el 8) | 2 |
+| 3 | 2 | 9 | No | `[4, 8, 9]` (sin cambios) | 3 |
+| — | 3 | — | — | `3 < numeros.length` → `3 < 3` es `false`: el bucle termina | — |
+
+**¿Dónde está el "bug silencioso"?**
+
+El bucle **muta el array que está recorriendo**. Cuando `splice()` borra un elemento, todos los que estaban detrás se desplazan una posición a la izquierda, pero el índice `i` sigue avanzando hacia delante. Como consecuencia, el elemento que "aterrizó" en la posición recién liberada **nunca llega a ser examinado**: el 8 se salta sin comprobarse.
+
+Este es el motivo por el que el resultado real es `[4, 8, 9]` y no `[4, 6, 9]`: el 6 sí se borra (era el elemento en la posición 1), y el 8 se queda sin revisar.
+
+**Variante con bucle decreciente (`i--`):**
+
+```javascript
+const numeros = [2, 4, 6, 8, 9];
+
+for (let i = numeros.length - 1; i >= 0; i--) {
+  if (numeros[i] % 2 === 0) {
+    numeros.splice(i, 1);
+  }
+}
+
+console.log(numeros); // [9]
+```
+
+Al recorrer **de atrás hacia delante**, el borrado de un elemento no invalida los índices que ya se han revisado. En este caso el bucle sí elimina todos los pares y el resultado es `[9]`.
+
+**Solución idiomática (sin mutar el array):**
+
+```javascript
+const numeros = [2, 4, 6, 8, 9];
+
+// filter() devuelve un array NUEVO con los elementos que cumplen la condición
+const impares = numeros.filter((numero) => numero % 2 !== 0);
+
+console.log(impares); // [9]
+console.log(numeros); // [2, 4, 6, 8, 9] -> el original queda intacto
+```
+
+> [!warning]
+> **Regla práctica:** nunca borres elementos de un array mientras lo recorres con un índice ascendente. O recorres al revés, o te saltas los elementos, o usas `filter()` / `splice()` sobre una copia (`[...numeros]`).
+
+**Sintaxis del método `splice()`:**
+
+```
+array.splice(inicio, cuántosBorrar, elemento1, elemento2, ...)
+```
+
+`inicio` es el índice del primer elemento afectado, `cuántosBorrar` es el número de elementos a eliminar (si es `0` no borra nada) y a partir del tercer argumento se **insertan** los elementos nuevos.
+
+**Ejemplo A: Solo borrar elementos**
+
+```javascript
+const letras = ["A", "B", "C", "D"];
+
+// Desde el índice 1, borra 2 elementos
+letras.splice(1, 2);
+
+console.log(letras); // ["A", "D"] (El array original HA CAMBIADO)
+```
+
+**Ejemplo B: Insertar elementos sin borrar nada**
+
+```javascript
+const colores = ["Rojo", "Azul"];
+
+// En el índice 1, borra 0 elementos e inserta "Verde"
+colores.splice(1, 0, "Verde");
+
+console.log(colores); // ["Rojo", "Verde", "Azul"]
+```
+
+**Ejemplo C: Reemplazar elementos**
+
+```javascript
+const numeros = [10, 24, 30];
+
+// En el índice 1, borra 1 elemento (el 24) e inserta el 99
+numeros.splice(1, 1, 99);
+
+console.log(numeros); // [10, 99, 30]
+```
+
+> [!note]
+> Los tres ejemplos están ejecutados y verificados en `2.6. Utilización de bucles/` dentro del material de la unidad.
+
+### Actividad 2: "El Algoritmo del Rombo"
+
+Construye un script que dibuje en la consola una figura simétrica de rombo mediante bucles `for` anidados, controlando los espacios y los caracteres de asterisco (`*`).
+
+```javascript
+function dibujarRombo(filas) {
+  const n = Math.max(1, Math.floor(filas));
+
+  // Mitad superior: la fila i tiene (n - i) espacios y (2 * i - 1) asteriscos
+  for (let i = 1; i <= n; i++) {
+    let linea = "";
+
+    for (let j = 1; j <= n - i; j++) {
+      linea += " ";
+    }
+
+    for (let k = 1; k <= 2 * i - 1; k++) {
+      linea += "*";
+    }
+
+    console.log(linea);
+  }
+
+  // Mitad inferior: se repite el mismo cálculo desde la fila n - 1 hasta la 1
+  for (let i = n - 1; i >= 1; i--) {
+    let linea = "";
+
+    for (let j = 1; j <= n - i; j++) {
+      linea += " ";
+    }
+
+    for (let k = 1; k <= 2 * i - 1; k++) {
+      linea += "*";
+    }
+
+    console.log(linea);
+  }
+}
+
+dibujarRombo(5);
+```
+
+**Salida esperada en consola (verificada):**
+
+```
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+```
+
+La clave está en entender la relación entre las tres variables del bucle:
+
+- `i` → número de fila.
+- `j` → cantidad de espacios iniciales: siempre `n - i`.
+- `k` → cantidad de asteriscos: siempre `2 * i - 1` (número impar, para que el rombo quede simétrico).
+
+La mitad inferior reutiliza exactamente el mismo cálculo arrancando en `i = n - 1`, por eso el segundo bucle es decreciente.
+
+> [!note]
+> La solución completa está en el fichero `2.6. Utilización de bucles/rombo.js`.
+
+### Actividad 3: "Validación de Entrada con do...while"
+
+Implementa un mecanismo que solicite un código numérico de 4 dígitos mediante `prompt()`, repitiendo la petición con `do...while` mientras el dato introducido no sea numérico o tenga una longitud distinta de 4 caracteres.
+
+```javascript
+function esCodigoValido(codigo) {
+  if (codigo === null || codigo.length !== 4) {
+    return false;
+  }
+
+  for (let i = 0; i < codigo.length; i++) {
+    if (codigo[i] < "0" || codigo[i] > "9") {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+let codigo;
+
+do {
+  codigo = prompt("Introduce un código numérico de 4 dígitos:");
+} while (codigo !== null && !esCodigoValido(codigo));
+
+if (codigo === null) {
+  console.log("Operación cancelada por el usuario.");
+} else {
+  console.log("Código válido introducido: " + codigo);
+}
+```
+
+**Puntos clave de la solución:**
+
+1. **¿Por qué `do...while` y no `while`?** Porque con `while` la condición se evalúa *antes* de la primera petición: si el usuario escribe un código válido a la primera, funciona, pero el cuerpo nunca se ejecutaría en el caso de que la condición inicial fuera falsa. Con `do...while` el cuerpo se ejecuta **siempre al menos una vez**, que es justo lo que exige un formulario de entrada al usuario.
+2. **La salida por cancelación:** `prompt()` devuelve `null` si el usuario cancela el diálogo. La condición `codigo !== null && !esCodigoValido(codigo)` hace que el bucle termine también en ese caso, evitando un bucle infinito.
+3. **La validación se delega en una función** `esCodigoValido()` que devuelve un booleano. Esto sigue el principio de *Cláusulas de Guarda* y *Retorno Temprano* visto en el criterio 2.5, y permite reutilizar la validación en otros formularios.
+4. **La comparación de caracteres** (`codigo[i] < "0"` o `codigo[i] > "9"`) evita el uso de `isNaN()`, que consideraría válido un texto con espacios o símbolos.
+
+> [!note]
+> La solución completa está en el fichero `2.6. Utilización de bucles/comprobante.js`. Al usar `prompt()` debe ejecutarse en el navegador (no en Node.js).
+
 ## H. Tabla Comparativa: Tipos de Bucles
 
 | Tipo | Comprobación | Cuándo usarlo | Uso típico | Notas / Riesgos |

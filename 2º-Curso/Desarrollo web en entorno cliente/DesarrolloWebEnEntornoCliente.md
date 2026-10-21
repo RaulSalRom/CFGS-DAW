@@ -1,11 +1,11 @@
 # TEMA 1: Arquitecturas y Tecnologías de Programación sobre Clientes Web
 
 > **Este fichero es la TEORÍA completa de los TEMAS 1 y 2.** El TEMA 1 reúne los seis
-> criterios del 1.1 al 1.6; el TEMA 2, los criterios 2.1 y 2.2.
-> La **nota de examen** de cada criterio del TEMA 1 (actividades oficiales resueltas, errores
-> detectados, tabla de decisión y "para el examen") va en las notas `DWEC-1.x.md` de cada carpeta.
+> criterios del 1.1 al 1.6; el TEMA 2, los criterios 2.1 al 2.7.
+> La **nota de examen** de cada criterio (actividades oficiales resueltas, errores
+> detectados, tabla de decisión y "para el examen") va en las notas `DWEC-x.y.md` de cada carpeta.
 
-| Criterio | Nota de examen |
+| Criterio (TEMA 1) | Nota de examen |
 |---|---|
 | 1.1 | [[DWEC-1.1]] |
 | 1.2 | [[DWEC-1.2]] |
@@ -13,6 +13,16 @@
 | 1.4 | [[DWEC-1.4]] |
 | 1.5 | [[DWEC-1.5]] |
 | 1.6 | [[DWEC-1.6]] |
+
+| Criterio (TEMA 2) | Nota de examen |
+|---|---|
+| 2.1 | [[DWEC-2.1]] |
+| 2.2 | [[DWEC-2.2]] |
+| 2.3 | [[DWEC-2.3]] |
+| 2.4 | [[DWEC-2.4]] |
+| 2.5 | [[DWEC-2.5]] |
+| 2.6 | [[DWEC-2.6]] |
+| 2.7 | [[DWEC-2.7]] |
 
 ## Índice
 
@@ -103,6 +113,25 @@
   - [E. Expresión Condicional Ternaria (? :)](#e-expresión-condicional-ternaria--)
   - [F. Decisiones Mediante Operadores de Cortocircuito](#f-decisiones-mediante-operadores-de-cortocircuito)
   - [G. Reducción de Complejidad Ciclomática mediante Cláusulas de Guarda (Guard Clauses) y Retorno Temprano (Early Return)](#g-reducción-de-complejidad-ciclomática-mediante-cláusulas-de-guarda-guard-clauses-y-retorno-temprano-early-return)
+- [2.6. Utilización de bucles](#26-utilización-de-bucles-criterio-2f)
+  - [A. ¿Qué es un Bucle y por qué se necesita?](#a-qué-es-un-bucle-y-por-qué-se-necesita)
+  - [B. El Bucle while (Comprobación al Inicio)](#b-el-bucle-while-comprobación-al-inicio)
+  - [C. El Bucle do...while (Comprobación al Final)](#c-el-bucle-dowhile-comprobación-al-final)
+  - [D. El Bucle for (Determinado por Contador)](#d-el-bucle-for-determinado-por-contador)
+  - [E. Bucles Modernos de Colección: for...of y for...in](#e-bucles-modernos-de-colección-forof-y-forin)
+  - [F. Estructuras de Salto y Control del Bucle](#f-estructuras-de-salto-y-control-del-bucle)
+  - [G. Actividades Prácticas](#g-actividades-prácticas)
+  - [H. Tabla Comparativa: Tipos de Bucles](#h-tabla-comparativa-tipos-de-bucles)
+- [2.7. Inclusión de comentarios en el código](#27-inclusión-de-comentarios-en-el-código-criterio-2g)
+  - [A. ¿Qué es un Comentario y cuál es su Función?](#a-qué-es-un-comentario-y-cuál-es-su-función)
+  - [B. Tipos de Comentarios en JavaScript](#b-tipos-de-comentarios-en-javascript)
+  - [C. Documentación Formal con JSDoc](#c-documentación-formal-con-jsdoc)
+  - [D. Directivas de Control para Herramientas de Calidad (ESLint / TypeScript)](#d-directivas-de-control-para-herramientas-de-calidad-eslint--typescript)
+  - [E. El Impacto de los Comentarios en el Entorno Productivo: Proceso de Minificación](#e-el-impacto-de-los-comentarios-en-el-entorno-productivo-proceso-de-minificación)
+  - [F. Código autoexplicativo y ruido visual](#f-código-autoexplicativo-y-ruido-visual)
+  - [G. Estrategias de Comentarios Limpios (Clean Code) y Detección de Code Smells](#g-estrategias-de-comentarios-limpios-clean-code-y-detección-de-code-smells)
+  - [H. Documentación Automática de APIs Front-End](#h-documentación-automática-de-apis-front-end)
+  - [I. ACTIVIDADES](#i-actividades)
 
 ---
 
@@ -2890,3 +2919,1006 @@ function procesarRegistroUsuario(datos)
     return { exito: true, usuario };
 }
 ```
+
+---
+
+## 2.6. Utilización de bucles (Criterio 2.f)
+
+**Resultado de Aprendizaje 2 (RA2):** Escribe sentencias simples, aplicando la sintaxis del lenguaje y verificando su ejecución sobre navegadores Web.
+**Criterio Curricular Oficial: CE 2.f** (Se han utilizado bucles y se ha verificado su funcionamiento).
+**Ponderación del Criterio:** (20% del RA2 | 1% sobre la calificación final del módulo).
+
+> **Nota de examen del criterio 2.6:** [[DWEC-2.6]]
+
+## A. ¿Qué es un Bucle y por qué se necesita?
+
+En programación, un bucle o estructura repetitiva es un mecanismo que permite ejecutar un mismo bloque de sentencias varias veces de forma automática mientras se cumpla una condición determinada.
+
+Sin bucles, si quisiéramos procesar una lista de 50 facturas, tendríamos que repetir el mismo bloque de código 50 veces en el archivo, lo que generaría un código imposible de mantener. Los bucles resuelven este problema **parametrizando la repetición**.
+
+En el desarrollo cliente, los bucles resultan imprescindibles para recorrer colecciones de datos, generar dinámicamente nodos en el DOM de la página web y procesar respuestas estructuradas procedentes de servicios externos.
+
+## B. El Bucle while (Comprobación al Inicio)
+
+El bucle `while` comprueba su condición **antes** de ejecutar cualquier instrucción del bloque. Si la condición inicial se evalúa a `false`, el cuerpo del bucle no se ejecutará ninguna vez (0 iteraciones).
+
+**Sintaxis canónica:**
+
+```javascript
+while (condicion) {
+  // Instrucciones que se repiten mientras la condición sea true
+  // Instrucción de avance/actualización (OBLIGATORIA)
+}
+```
+
+**Ejemplo guiado:**
+
+```javascript
+let pase = 0; // 1. Inicialización de la variable de control
+// 2. Condición de entrada: mientras 'pase' sea menor que 5
+while (pase < 5) {
+  console.log(`Pase número ${pase + 1}`); // 3. Cuerpo del bucle
+  pase++; // 4. Modificación de la variable de control (+1)
+}
+console.log("Fin del bucle while.");
+```
+
+> [!WARNING] El peligro del bucle infinito
+> Si se olvida la línea `pase++;`, la variable siempre valdrá `0`. La condición `0 < 5` será siempre verdadera (`true`), y el bucle jamás alcanzará su condición de salida, **congelando por completo la pestaña del navegador**.
+
+## C. El Bucle do...while (Comprobación al Final)
+
+El bucle `do...while` es una variante donde la condición se evalúa **después** de ejecutar el bloque de instrucciones. Por este motivo, garantiza que el cuerpo del bucle se ejecuta siempre **al menos una vez** (1 o más iteraciones), incluso si la condición resulta ser falsa desde el primer instante.
+
+**Sintaxis canónica:**
+
+```javascript
+do {
+  // Instrucciones (se ejecutan al menos una primera vez)
+} while (condicion);
+```
+
+**Ejemplo guiado: Búsqueda de los primeros 5 números pares**
+
+```javascript
+let contadorPares = 0; // Controla cuántos pares hemos encontrado
+let numeroActual = 1; // Número que vamos examinando
+
+do {
+  // Comprobamos si el número actual es par con el operador módulo (%)
+  if (numeroActual % 2 === 0) {
+    console.log(`Número par detectado: ${numeroActual}`);
+    contadorPares++; // Incrementamos el contador de pares encontrados
+  }
+  numeroActual++; // Avanzamos al siguiente número entero
+} while (contadorPares < 5); // Condición evaluada al final
+
+console.log("Se han encontrado los 5 primeros números pares.");
+```
+
+**Comparativa: while vs. do...while**
+
+```javascript
+let llaveAcceso = false;
+
+// 1. Con bucle while (Pre-test):
+while (llaveAcceso === true) {
+  console.log("Esto NUNCA se imprimirá (0 vueltas)");
+}
+
+// 2. Con bucle do...while (Post-test):
+do {
+  console.log("Esto se imprime EXACTAMENTE 1 VEZ a pesar de ser false");
+} while (llaveAcceso === true);
+```
+
+## D. El Bucle for (Determinado por Contador)
+
+El bucle `for` se emplea cuando se conoce de antemano el número de iteraciones o cuando se trabaja con contadores numéricos estructurados. Compacta en una sola línea la inicialización, la condición y la actualización.
+
+**Estructura tripartita:**
+
+```javascript
+for (expresionInicial; expresionCondicional; expresionDeActualizacion) {
+  // Bloque de instrucciones a repetir
+}
+```
+
+1. **expresionInicial:** se ejecuta una sola vez al arrancar el bucle (generalmente declara la variable contadora usando `let` para aislar su ámbito, garantizando que desaparezca de la memoria una vez finalizado el bucle).
+2. **expresionCondicional:** se evalúa antes de cada vuelta; si devuelve `true`, entra al cuerpo; si devuelve `false`, termina el bucle.
+3. **expresionDeActualizacion:** se ejecuta automáticamente al terminar el cuerpo en cada iteración (generalmente un incremento `i++` o decremento `i--`).
+
+**Ejemplo guiado: Generador de tablas de multiplicar**
+
+```javascript
+const FACTOR = 9;
+
+// for (inicialización; condición; actualización)
+for (let i = 1; i <= 10; i++) {
+  let resultado = FACTOR * i;
+  console.log(`${FACTOR} x ${i} = ${resultado}`);
+}
+
+// bucle for decreciente
+for (let i = 10; i >= 0; i--) {
+  console.log(i); // Cuenta del 10 al 0
+}
+
+// Recorrer un Array al revés
+const herramientas = ["Martillo", "Destornillador", "Alicates"];
+// Iniciamos en el último índice y bajamos hasta el primero (0)
+for (let i = herramientas.length - 1; i >= 0; i--) {
+  console.log(`Índice ${i}: ${herramientas[i]}`);
+}
+
+// Ir de 5 en 5
+for (let i = 20; i >= 0; i -= 5) {
+  console.log(i); // 20, 15, 10, 5, 0
+}
+```
+
+### Variantes del bucle for (omisiones)
+
+**Omitir la inicialización:** si la variable ya ha sido inicializada antes del bucle:
+
+```javascript
+let coches = ["Toyota", "Kia", "Citroen", "Ford"];
+let i = 2;
+let len = coches.length;
+
+for (; i < len; i++) {
+  console.log(coches[i]);
+}
+```
+
+**Omitir la condición:** si se omite, el motor asume `true` indefinidamente, exigiendo un `break` interno para no generar un bucle infinito.
+
+```javascript
+for (let k = 0; ; k++) {
+  if (k > 10) break; // Salida controlada
+  console.log(k);
+}
+```
+
+**Omitir el incremento:** se puede desplazar el incremento al interior del cuerpo del bucle:
+
+```javascript
+let j = 0;
+for (; j < 5;) {
+  console.log("Valor:", j);
+  j++; // Incremento gestionado manualmente dentro del bloque
+}
+```
+
+## E. Bucles Modernos de Colección: for...of y for...in
+
+### 1. for...of (Recorrido de Valores en Iterables)
+
+Introducido en ES6, es la estructura **recomendada** para recorrer los valores de arrays o caracteres de una cadena sin necesidad de gestionar contadores manuales:
+
+```javascript
+const lenguajes = ["JavaScript", "TypeScript", "Python"];
+
+for (const elemento of lenguajes) {
+  console.log("Lenguaje en catálogo:", elemento);
+}
+// Salida: JavaScript, TypeScript, Python
+```
+
+### 2. for...in (Recorrido de Claves en Objetos)
+
+Recorre las propiedades o claves de un objeto literal:
+
+```javascript
+const configuracion = { servidor: "localhost", puerto: 8080, ssl: true };
+
+for (const propiedad in configuracion) {
+  console.log(`Clave: ${propiedad} | Valor: ${configuracion[propiedad]}`);
+}
+```
+
+> [!WARNING] No debe usarse para recorrer arrays
+> `for...in` itera sobre los índices como cadenas de texto (`"0"`, `"1"`, etc.) y puede recuperar propiedades adicionales o prototipos añadidos accidentalmente al objeto `Array`.
+
+**Los 3 problemas de `for...in` en Arrays:**
+
+1. **Tipado incorrecto:** los índices se devuelven como cadenas de texto (`"0"`, `"1"`), en lugar de números. Si haces una operación matemática (como `index + 1`), terminarás con una concatenación de texto (`"01"`).
+2. **Contaminación del prototipo:** si una librería externa o un script añade un método al prototipo global (`Array.prototype.miMetodo = ...`), `for...in` lo listará como si fuera un elemento más del array.
+3. **Falta de orden garantizado:** técnicamente, no garantiza mantener el orden cronológico o numérico de los elementos.
+
+```javascript
+// Añadimos una propiedad al prototipo
+Array.prototype.nuevoMetodo = "¡Soy un nuevo método!";
+
+const colores = ["rojo", "azul"];
+
+for (const indice in colores) {
+  console.log(`Índice: ${indice} (Tipo: ${typeof indice}) -> Valor: ${colores[indice]}`);
+}
+```
+
+### 3. forEach (Método funcional estándar)
+
+El método `.forEach()` es la alternativa funcional estándar en JavaScript para recorrer un array cuando necesitas realizar una acción por cada elemento, ofreciendo acceso nativo tanto al valor como al índice correcto.
+
+A diferencia de `for...in`, `.forEach()` garantiza que el índice sea un número, respeta el orden del array e ignora por completo las propiedades añadidas al prototipo.
+
+```javascript
+Array.prototype.nuevoMetodo = "¡Soy un nuevo método!";
+
+const colores = ["rojo", "azul", "verde"];
+
+colores.forEach((color, index) => {
+  console.log(`Índice: ${index} (Tipo: ${typeof index}) -> Valor: ${color}`);
+});
+```
+
+**Reglas estrictas antes de usarlo:**
+
+1. **No puedes usar `break` ni `continue`:** si necesitas detener el bucle a la mitad o saltarte una iteración basándote en una condición, `.forEach()` no lo permite. Tienes que usar `for...of` para ello.
+2. **Ignora los elementos vacíos (*Sparse Arrays*):** si un array tiene "huecos" (por ejemplo, `[1, , 3]`), `.forEach()` se saltará la posición vacía, mientras que un bucle clásico o un `for...of` devolverá `undefined`.
+
+## F. Estructuras de Salto y Control del Bucle
+
+Las sentencias de salto alteran el flujo iterativo normal ante situaciones imprevistas o criterios de corte.
+
+### 1. break (Interrupción Inmediata)
+
+Aborta el bucle por completo y transfiere el control a la línea de código situada inmediatamente después del cierre de llaves:
+
+```javascript
+for (let i = 1; i <= 10; i++) {
+  if (i === 6) {
+    console.log("Corte de emergencia: bucle interrumpido en i = 6");
+    break; // Sale definitivamente del for
+  }
+  console.log(`Vuelta actual: ${i}`);
+}
+// Solo imprime del 1 al 5
+```
+
+### 2. continue (Salto a la Siguiente Vuelta)
+
+Descarta las sentencias que queden por ejecutar en la iteración actual y salta de inmediato a la siguiente evaluación condicional (y actualización en `for`):
+
+```javascript
+// Imprimir solo números impares descartando los pares con continue:
+for (let n = 1; n <= 6; n++) {
+  if (n % 2 === 0) {
+    continue; // Descarta el resto del bloque para este número par
+  }
+  console.log(`Impar: ${n}`); // Imprime 1, 3, 5
+}
+```
+
+### 3. Declaraciones Etiquetadas (*Labeled Statements*)
+
+Asocian un identificador a un bucle externo para permitir que un `break` o `continue` situado en un bucle anidado rompa el ciclo principal exterior sin usar variables bandera intermedias:
+
+```javascript
+bucleMatriz: for (let fila = 1; fila <= 3; fila++) {
+  for (let columna = 1; columna <= 3; columna++) {
+    console.log(`Inspeccionando celda [${fila}, ${columna}]`);
+    if (fila === 2 && columna === 2) {
+      console.log("Coincidencia detectada. Abortando matriz al completo.");
+      break bucleMatriz; // Rompe el for exterior etiquetado
+    }
+  }
+}
+```
+
+**Uso de etiquetas con bloques:**
+
+`break` no solo interrumpe bucles y `switch`, sino que, en JavaScript, existe la sintaxis de etiquetas para romper un bloque de código arbitrario o escapar de bucles fuertemente anidados:
+
+```javascript
+miEtiqueta: {
+  console.log("Inicio");
+  break miEtiqueta; // Salta fuera del bloque etiquetado
+  console.log("Esto nunca se ejecutará");
+}
+
+let coches = ["BMW", "Volvo", "Saab", "Ford"];
+let texto = "";
+
+list: {
+  texto += coches[0] + " ";
+  texto += coches[1] + " ";
+  break list; // Rompe la ejecución del bloque 'list' aquí
+  texto += coches[2] + " ";
+  texto += coches[3] + " ";
+}
+
+console.log(texto); // Muestra únicamente: "BMW Volvo "
+```
+
+## G. Actividades Prácticas
+
+### Actividad 1: "El Bug Silencioso"
+
+Realiza una **traza de ejecución mental** del siguiente bloque y predice el resultado de salida:
+
+```javascript
+// Estado inicial del array
+const numeros = [2, 4, 6, 8, 9];
+
+for (let i = 0; i < numeros.length; i++) {
+  if (numeros[i] % 2 === 0) {
+    numeros.splice(i, 1);
+  }
+}
+
+console.log(numeros);
+```
+
+**Traza de ejecución (resultado real comprobado en consola: `[4, 8, 9]`):**
+
+| Vuelta | `i` | `numeros[i]` evaluado | ¿Es par? | Estado del array tras el `splice` | `i` tras el `i++` |
+|---|---|---|---|---|---|
+| 1 | 0 | 2 | Sí | `[4, 6, 8, 9]` (se borra el 2) | 1 |
+| 2 | 1 | 6 | Sí | `[4, 8, 9]` (se borra el **6**, no el 8) | 2 |
+| 3 | 2 | 9 | No | `[4, 8, 9]` (sin cambios) | 3 |
+| — | 3 | — | — | `3 < numeros.length` → `3 < 3` es `false`: el bucle termina | — |
+
+**¿Dónde está el "bug silencioso"?** El bucle **muta el array que está recorriendo**. Cuando `splice()` borra un elemento, todos los que estaban detrás se desplazan una posición a la izquierda, pero el índice `i` sigue avanzando hacia delante. Como consecuencia, el elemento que "aterrizó" en la posición recién liberada **nunca llega a ser examinado**: el 8 se salta sin comprobarse.
+
+Por eso el resultado real es `[4, 8, 9]` y no `[4, 6, 9]`: el 6 sí se borra (era el elemento en la posición 1) y el 8 se queda sin revisar.
+
+**Variante con bucle decreciente (`i--`):**
+
+```javascript
+const numeros = [2, 4, 6, 8, 9];
+
+for (let i = numeros.length - 1; i >= 0; i--) {
+  if (numeros[i] % 2 === 0) {
+    numeros.splice(i, 1);
+  }
+}
+
+console.log(numeros); // [9]
+```
+
+Al recorrer **de atrás hacia delante**, el borrado de un elemento no invalida los índices que ya se han revisado.
+
+**Solución idiomática (sin mutar el array):**
+
+```javascript
+const numeros = [2, 4, 6, 8, 9];
+
+// filter() devuelve un array NUEVO con los elementos que cumplen la condición
+const impares = numeros.filter((numero) => numero % 2 !== 0);
+
+console.log(impares); // [9]
+console.log(numeros); // [2, 4, 6, 8, 9] -> el original queda intacto
+```
+
+> [!WARNING] Regla práctica
+> Nunca borres elementos de un array mientras lo recorres con un índice ascendente. O recorres al revés, o te saltas los elementos, o usas `filter()` / `splice()` sobre una copia (`[...numeros]`).
+
+**Sintaxis del método `splice()`:**
+
+```
+array.splice(inicio, cuántosBorrar, elemento1, elemento2, ...)
+```
+
+**Ejemplo A: Solo borrar elementos**
+
+```javascript
+const letras = ["A", "B", "C", "D"];
+
+// Desde el índice 1, borra 2 elementos
+letras.splice(1, 2);
+
+console.log(letras); // ["A", "D"] (El array original HA CAMBIADO)
+```
+
+**Ejemplo B: Insertar elementos sin borrar nada**
+
+```javascript
+const colores = ["Rojo", "Azul"];
+
+// En el índice 1, borra 0 elementos e inserta "Verde"
+colores.splice(1, 0, "Verde");
+
+console.log(colores); // ["Rojo", "Verde", "Azul"]
+```
+
+**Ejemplo C: Reemplazar elementos**
+
+```javascript
+const numeros = [10, 24, 30];
+
+// En el índice 1, borra 1 elemento (el 24) e inserta el 99
+numeros.splice(1, 1, 99);
+
+console.log(numeros); // [10, 99, 30]
+```
+
+### Actividad 2: "El Algoritmo del Rombo"
+
+Dibuja en la consola una figura simétrica de rombo mediante bucles `for` anidados, controlando los espacios y los caracteres de asterisco (`*`):
+
+```javascript
+function dibujarRombo(filas) {
+  const n = Math.max(1, Math.floor(filas));
+
+  // Mitad superior: la fila i tiene (n - i) espacios y (2 * i - 1) asteriscos
+  for (let i = 1; i <= n; i++) {
+    let linea = "";
+
+    for (let j = 1; j <= n - i; j++) {
+      linea += " ";
+    }
+
+    for (let k = 1; k <= 2 * i - 1; k++) {
+      linea += "*";
+    }
+
+    console.log(linea);
+  }
+
+  // Mitad inferior: se repite el mismo cálculo desde la fila n - 1 hasta la 1
+  for (let i = n - 1; i >= 1; i--) {
+    let linea = "";
+
+    for (let j = 1; j <= n - i; j++) {
+      linea += " ";
+    }
+
+    for (let k = 1; k <= 2 * i - 1; k++) {
+      linea += "*";
+    }
+
+    console.log(linea);
+  }
+}
+
+dibujarRombo(5);
+```
+
+**Salida esperada en consola (verificada):**
+
+```
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+```
+
+La clave está en la relación entre las tres variables del bucle: `i` es el número de fila, `j` la cantidad de espacios iniciales (siempre `n - i`) y `k` la cantidad de asteriscos (siempre `2 * i - 1`, un número impar para que el rombo quede simétrico). La mitad inferior reutiliza el mismo cálculo arrancando en `i = n - 1`, por eso el segundo bucle es decreciente.
+
+### Actividad 3: "Validación de Entrada con do...while"
+
+Solicita un código numérico de 4 dígitos mediante `prompt()`, repitiendo la petición con `do...while` mientras el dato introducido no sea numérico o tenga una longitud distinta de 4 caracteres:
+
+```javascript
+function esCodigoValido(codigo) {
+  if (codigo === null || codigo.length !== 4) {
+    return false;
+  }
+
+  for (let i = 0; i < codigo.length; i++) {
+    if (codigo[i] < "0" || codigo[i] > "9") {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+let codigo;
+
+do {
+  codigo = prompt("Introduce un código numérico de 4 dígitos:");
+} while (codigo !== null && !esCodigoValido(codigo));
+
+if (codigo === null) {
+  console.log("Operación cancelada por el usuario.");
+} else {
+  console.log("Código válido introducido: " + codigo);
+}
+```
+
+**Puntos clave de la solución:**
+
+1. **¿Por qué `do...while` y no `while`?** Porque con `while` la condición se evalúa *antes* de la primera petición. Con `do...while` el cuerpo se ejecuta **siempre al menos una vez**, que es justo lo que exige un formulario de entrada al usuario.
+2. **La salida por cancelación:** `prompt()` devuelve `null` si el usuario cancela el diálogo. La condición `codigo !== null && !esCodigoValido(codigo)` hace que el bucle termine también en ese caso, evitando un bucle infinito.
+3. **La validación se delega en una función** `esCodigoValido()` que devuelve un booleano. Esto sigue el principio de *Cláusulas de Guarda* y *Retorno Temprano* visto en el criterio 2.5.
+4. **La comparación de caracteres** (`codigo[i] < "0"` o `codigo[i] > "9"`) evita el uso de `isNaN()`, que consideraría válido un texto con espacios o símbolos.
+
+## H. Tabla Comparativa: Tipos de Bucles
+
+| Tipo | Comprobación | Cuándo usarlo | Uso típico | Notas / Riesgos |
+|---|---|---|---|---|
+| `while` | Al inicio (pre-test) | Cuando no sabes cuántas iteraciones habrá | Validaciones, menús, lectura hasta EOF | Si olvidas actualizar, bucle infinito |
+| `do...while` | Al final (post-test) | Cuando debe ejecutarse **al menos una vez** | Captura/validación obligatoria de entrada | Ejecuta siempre mínimo 1 iteración |
+| `for` | Al inicio (pre-test) | Cuando conoces el número de iteraciones | Tablas, contar de N a M, índices | Compacta (init/cond/upd). Puede omitirse cualquiera de sus partes |
+| `for...of` | Al inicio (iterable) | Recorrer **valores** de iterables | Arrays, Strings, Maps/Sets | Recomendado para arrays. No usa índice manual |
+| `for...in` | Al inicio (propiedades) | Recorrer **claves/propiedades** de objeto | Objetos literales | **No usar en arrays** (índices string, orden no garantizado, prototipo) |
+| `.forEach()` | Iteración interna (método) | Acción por cada elemento | Arrays (cuando no necesitas `break/continue`) | No permite `break/continue`; ignora huecos (sparse) |
+
+---
+
+## 2.7. Inclusión de comentarios en el código (Criterio 2.g)
+
+**Resultado de Aprendizaje 2 (RA2):** Escribe sentencias simples, aplicando la sintaxis del lenguaje y verificando su ejecución sobre navegadores Web.
+**Criterio Curricular Oficial: CE 2.g** (Se han añadido comentarios al código).
+**Ponderación del Criterio:** (2% del RA2 | 0,1% sobre la calificación final del módulo).
+
+> **Nota de examen del criterio 2.7:** [[DWEC-2.7]]
+
+## A. ¿Qué es un Comentario y cuál es su Función?
+
+Un comentario es una porción de texto que el programador introduce en el archivo `.js` para documentar la arquitectura, advertir sobre restricciones o explicar algoritmos complejos.
+
+Durante la fase de análisis léxico (*Tokenization* / *Parsing*), el motor de JavaScript **descarta estas anotaciones por completo**:
+
+- **No generan código máquina:** no consumen memoria de ejecución en tiempo de ejecución.
+- **No alteran el flujo:** no modifican condiciones, bucles ni llamadas a funciones.
+
+En el desarrollo cliente, el comentario es una herramienta de coste cero y mayor rendimiento, porque mejora la mantenibilidad del código sin penalizar al navegador.
+
+## B. Tipos de Comentarios en JavaScript
+
+### 1. Comentarios de una Sola Línea (`//`)
+
+Se inician con dos barras inclinadas (`//`). El analizador ignora todo el texto que aparezca a la derecha de las barras hasta llegar al salto de línea:
+
+```javascript
+// Variable que controla el número de reintentos de conexión
+let reintentos = 0;
+
+let tasa = 0.21; // Comentario al final de una sentencia (inline)
+```
+
+### 2. Comentarios Multilínea o de Bloque (`/* ... */`)
+
+Se inician con los caracteres `/*` y finalizan con `*/`. Permiten escribir párrafos completos de texto descriptivo repartidos en varias líneas:
+
+```javascript
+/*
+Cálculo de la tarifa con recargo nocturno:
+Aplica un 15% sobre la base si la hora es superior a las 22:00.
+Cumple con la normativa de transporte metropolitano.
+*/
+function calcularTarifaNocturna(base, hora) {
+  return hora >= 22 ? base * 1.15 : base;
+}
+```
+
+> [!WARNING] Trampa Sintáctica Clásica: Prohibición de Anidamiento Multilínea
+> Un error frecuente en exámenes y prácticas de aula ocurre al intentar comentar temporalmente un bloque amplio de código que ya contiene otro comentario multilínea en su interior:
+>
+> ```javascript
+> /*
+> Inicio del bloque desactivado...
+> /* Este comentario interior causará un fallo */
+> let total = 100;
+> */
+> // ERROR: El motor cerró el comentario en el primer "*/" encontrado
+> ```
+>
+> El analizador léxico vincula el primer delimitador de apertura `/*` con el primer cierre `*/` que localice, dejando el texto posterior expuesto como código inválido y arrojando un `Uncaught SyntaxError: Unexpected token`.
+
+### 3. Comentarios Hashbang o Shebang (`#!`)
+
+Se introdujeron formalmente en **ECMAScript 2023** para armonizar JavaScript con los sistemas Unix/Linux, cuando los scripts se ejecutan directamente en la terminal sin invocar explícitamente el comando `node`:
+
+```javascript
+#!/usr/bin/env node
+// Obligatoriamente en la línea 1, columna 1 del archivo
+console.log("Script CLI ejecutado directamente en el entorno del sistema.");
+```
+
+### 4. Comentarios de Marcadores de Tareas (`TODO`, `FIXME`, `NOTE`)
+
+En los IDEs modernos (Visual Studio Code, WebStorm), los comentarios de una sola línea suelen emplear etiquetas estandarizadas que resaltan visualmente y son indexadas por extensiones de control de calidad:
+
+```javascript
+// TODO: Pendiente de implementar validación de email con expresión regular
+// FIXME: Error intermitente al parsear números decimales con coma
+// NOTE: Se mantiene esta función auxiliar por compatibilidad con navegadores antiguos
+```
+
+### 5. Comentarios de Licencia
+
+Cuando se inspeccionan librerías cliente distribuidas (como jQuery, Lodash o componentes empaquetados), el primer bloque multilínea empieza con un signo de exclamación (`/*! ... */`):
+
+```javascript
+/*!
+ * MiLibreria v1.0.0
+ * (c) 2026 Autor - Licencia MIT
+ */
+```
+
+> [!NOTE] Comportamiento en la minificación
+> Los minificadores y empaquetadores (esbuild, Vite, Terser) reconocen `/*!` como un **comentario legal protegido** y no lo eliminan durante la compresión del script para producción.
+
+## C. Documentación Formal con JSDoc
+
+En el desarrollo profesional en cliente, los comentarios libres sin estructura son insuficientes. Se emplea el estándar **JSDoc**, una sintaxis basada en bloques que arrancan con una barra y dos asteriscos (`/** ... */`).
+
+Visual Studio Code y los entornos modernos leen las etiquetas JSDoc para proporcionar autocompletado inteligente (*IntelliSense*), documentación flotante y comprobación estática de tipos en archivos JavaScript puros.
+
+**Principales Etiquetas del Estándar JSDoc:**
+
+| Etiqueta | Descripción |
+|---|---|
+| `@param {tipo} identificador - descripción` | Define el tipo de dato y el propósito de un parámetro. Si se encierra entre corchetes (`[param]`), indica que es **opcional**. |
+| `@returns {tipo} descripción` | Detalla qué dato y de qué tipo devuelve la función. |
+| `@throws {TipoExcepcion}` | Documenta los errores que la función puede disparar deliberadamente. |
+| `@type {tipo}` | Documenta el tipo exacto de una constante o variable compleja. |
+| `@deprecated` | Marca una función o variable como obsoleta, advirtiendo al equipo de que será eliminada. |
+
+```javascript
+/**
+ * Procesa la liquidación impositiva de una cesta de artículos.
+ *
+ * @description Aplica el descuento por cupón y calcula la cuota del IVA correspondiente.
+ *
+ * @param {number} baseImponible - Importe total antes de impuestos (en euros).
+ * @param {number} [tasaIVA=0.21] - Tipo de IVA aplicado en tanto por uno (opcional).
+ * @param {string} [codigoPromocional] - Cupón de descuento aplicable.
+ *
+ * @returns {number} Importe final liquidado con impuestos.
+ *
+ * @throws {TypeError} Si la base imponible no es un dato de tipo number.
+ * @throws {RangeError} Si la base imponible es inferior o igual a cero.
+ */
+function liquidarCesta(baseImponible, tasaIVA = 0.21, codigoPromocional = "") {
+  if (typeof baseImponible !== "number" || Number.isNaN(baseImponible)) {
+    throw new TypeError("La base imponible debe ser estrictamente numérica.");
+  }
+
+  if (baseImponible <= 0) {
+    throw new RangeError("El importe base debe ser estrictamente positivo.");
+  }
+
+  let baseFinal = baseImponible;
+
+  if (codigoPromocional === "DESCUENTO10") {
+    baseFinal *= 0.90;
+  }
+
+  return baseFinal * (1 + tasaIVA);
+}
+
+liquidarCesta(40);
+```
+
+## D. Directivas de Control para Herramientas de Calidad (ESLint / TypeScript)
+
+Existen comentarios funcionales con un formato especial que son **interpretados por compiladores y linters** para regular la severidad del análisis de código:
+
+```javascript
+// 1. Activar comprobación de tipos de TypeScript en un archivo .js nativo:
+// @ts-check
+
+// 2. Ignorar el análisis estático en la siguiente línea:
+// @ts-ignore
+let datoForzado = null;
+datoForzado = 42;
+
+// 3. Desactivar temporalmente una regla de ESLint sobre una línea crítica:
+// eslint-disable-next-line eqeqeq
+if (datoForzado == 42) { // Permite comparación abstracta sin advertencia del linter
+  console.log("Coincidencia");
+}
+```
+
+**TypeScript, pero en código JS nativo**
+
+Si estuvieras programando en TypeScript, escribirías la variable así:
+
+```typescript
+let edad: number = 25;
+```
+
+Con JSDoc, logras exactamente el mismo nivel de seguridad manteniendo tu archivo como JavaScript puro (`.js`):
+
+```javascript
+// @ts-check
+/** @type {number} */
+let edad = 25;
+```
+
+**¿Cómo funciona en la práctica?** Si habilitas la revisión en tu archivo (colocando `// @ts-check` en la primera línea) y agregas ese comentario, tu editor se comportará así:
+
+1. **Te dará autocompletado inteligente (*IntelliSense*).** Al saber que es un número, si escribes `miVariable.` el editor te sugerirá funciones exclusivas de números como `.toFixed()` o `.toString()`. No te mostrará funciones de texto como `.toUpperCase()`.
+2. **Te alertará de errores antes de subir a producción.** Si intentas asignarle un valor que no sea un número, el editor te lo marcará con una línea roja inmediatamente:
+
+```javascript
+// @ts-check
+/**
+ * @param {number} a
+ * @param {number} b
+ */
+function sumar(a, b) {
+  return a + b;
+}
+
+// El segundo argumento debe ser un número, no un texto.
+const resultado = sumar(5, "10");
+
+// JAVASCRIPT LO EJECUTA IGUAL:
+console.log(resultado);
+
+// Imprime: "510" (en lugar de 15, porque JS concatena los textos)
+```
+
+**Ejemplos de tipos más avanzados**
+
+**1. Variables con Tipos Básicos (Número, Texto, Booleano)**
+
+```javascript
+// @ts-check
+/** @type {number} */
+let calificacionMinima = 6;
+/** @type {string} */
+let nombreProfesor = "Prof. Martínez";
+/** @type {boolean} */
+let elAlumnoAprobo = true;
+
+// El editor marcará error aquí porque no es un número:
+// calificacionMinima = "seis";
+```
+
+**2. Una Función Matemática (Parámetros y Retorno)**
+
+```javascript
+// @ts-check
+/**
+ * Calcula el precio final sumándole el impuesto (IVA).
+ *
+ * @param {number} precioBase - El costo del producto sin impuestos.
+ * @param {number} porcentajeIva - El porcentaje a aplicar (ej. 21 o 16).
+ * @returns {number} El precio final con el impuesto incluido.
+ */
+function calcularPrecioFinal(precioBase, porcentajeIva) {
+  let impuesto = (precioBase * porcentajeIva) / 100;
+  return precioBase + impuesto;
+}
+
+// Al usar la función, el editor te recuerda qué poner:
+let total = calcularPrecioFinal(100, 16);
+
+// El editor te avisará que esto está mal porque le pasaste un texto:
+let totalConError = calcularPrecioFinal("cien", 16);
+```
+
+**3. Crear una Plantilla de Objeto (`@typedef`)**
+
+Si en tus ejercicios manejas estructuras de datos fijas (como un alumno, un coche o un producto), puedes inventar tu propio tipo de dato personalizado y usarlo en cualquier variable:
+
+```javascript
+// @ts-check
+/**
+ * @typedef {Object} Estudiante
+ * @property {string} nombre - Nombre completo.
+ * @property {number} edad - Edad en años.
+ * @property {boolean} estaInscrito - Estatus del alumno.
+ */
+
+/** @type {Estudiante} */
+const alumnoNuevo = {
+  nombre: "Ana Gómez",
+  edad: 20,
+  estaInscrito: true
+};
+
+// Al escribir "alumnoNuevo." el editor te autocompletará: nombre, edad, estaInscrito
+console.log(alumnoNuevo.nombre);
+```
+
+**4. Filtrar Listas (Arreglos de Objetos)**
+
+Puedes combinar tu tipo personalizado anterior para decirle al editor que una variable es una lista (`Array`) de esos objetos. Esto hace que ciclos como `forEach` o métodos como `.filter()` se vuelvan inteligentes:
+
+```javascript
+// @ts-check
+/**
+ * @typedef {Object} Tarea
+ * @property {string} titulo
+ * @property {boolean} completada
+ */
+
+/** @type {Tarea[]} */
+const misTareas = [
+  { titulo: "Hacer ejercicio de JSDoc", completada: true },
+  { titulo: "Estudiar para el examen", completada: false }
+];
+
+// Usamos el método .filter para separar las tareas pendientes
+const pendientes = misTareas.filter(function (elemento) {
+  // El editor sabe que 'elemento' es una Tarea, así que te sugiere .completada
+  return elemento.completada === false;
+});
+```
+
+## E. El Impacto de los Comentarios en el Entorno Productivo: Proceso de Minificación
+
+Durante la fase de desarrollo, el código debe estar ampliamente documentado con JSDoc y comentarios arquitecturales para facilitar el trabajo en equipo y la mantenibilidad.
+
+- **En desarrollo:** los comentarios aportan contexto indispensable para el equipo humano.
+- **En producción:** sin embargo, cada carácter de comentario ocupa *bytes* en el archivo. Enviar un archivo con miles de líneas de comentarios al navegador ralentizaría la descarga por red del cliente.
+
+Para resolver esto, en producción se usan empaquetadores modernos para lograr tres objetivos:
+
+1. **Minificación:** quitan espacios en blanco, comentarios convencionales (`//` y `/* ... */`), comentarios de JSDoc (ya que el navegador no los necesita) y acortan los nombres de las variables para que el archivo pese un 80% menos. Únicamente se conservan aquellos comentarios de bloque que comienzan con un signo de exclamación (`/*! ... */`), reservados legalmente para licencias de código abierto (MIT, Apache).
+2. **Transpilación:** traducen código moderno a una versión de JavaScript más antigua de forma automática, garantizando que tu aplicación funcione incluso en celulares de hace 10 años.
+3. **Inyección y optimización de CSS:** procesan todas las clases que escribiste en tu HTML y archivos JavaScript para generar un único archivo `.css` optimizado, eliminando todos los estilos, selectores y reglas de diseño que no se están usando en ninguna parte de la aplicación.
+
+El estándar de la industria ha cambiado radicalmente. Herramientas antiguas y pesadas como **Webpack** han sido desplazadas por una nueva generación de herramientas que corren sobre lenguajes ultrarrápidos como **Rust** o **Go**.
+
+**Comparativa de los Empaquetadores Modernos**
+
+| Herramienta | Desarrollado en | Mayor fortaleza | Ideal para... |
+|---|---|---|---|
+| **Vite** | JavaScript / Go | El más popular, configuración cero y velocidad en desarrollo. | El 90% de los proyectos actuales (React, Vue, Vanilla JS). |
+| **Turbopack** | Rust | Desarrollado por Vercel, optimizado para proyectos masivos. | Aplicaciones Full Stack gigantes con Next.js y React. |
+| **Rspack** | Rust | Reemplazo directo y ultra veloz para proyectos viejos de Webpack. | Empresas grandes que quieren migrar de Webpack sin reescribir código. |
+| **Bun** | Zig | Es un "todo en uno" (empaquetador, ejecutor y gestor de paquetes). | Proyectos modernos que buscan la máxima velocidad absoluta. |
+| **Esbuild** | Go | El motor de bajo nivel más rápido del planeta. | Compilar librerías y potenciar las entrañas de herramientas como Vite. |
+
+> [!WARNING] Sobre el uso de `@ts-ignore` y `eslint-disable`
+> Son una **deuda técnica**: silencia al analizador en lugar de corregir el problema. Solo deben usarse de forma puntual y siempre acompañados de un comentario que explique el motivo.
+
+## F. Código autoexplicativo y ruido visual
+
+En el desarrollo de software profesional (y en las revisiones de *code reviews*), el exceso de comentarios evidentes o redundantes se considera **ruido visual** (*code smell*).
+
+La filosofía del **Código Limpio** (*Clean Code*) dicta que el código debe ser *autoexplicativo*: la semántica, la lógica y la intención del programa deben quedar claras mediante una excelente elección de nombres de variables, funciones y clases (por ejemplo, usar `intentosFallidosDeLogin` en lugar de una variable genérica `let x`).
+
+```javascript
+// MAL: El código ya dice exactamente esto
+let totalUsuarios = 0;
+totalUsuarios++; // Incrementamos la variable en 1
+```
+
+Los comentarios deben reservarse exclusivamente para explicar el **¿por qué?** (decisiones, rendimiento, compatibilidad) y no el **¿qué?**:
+
+- **Los comentarios comunes (`//`) dentro de las funciones:** sí deben eliminarse casi por completo si la variable o la operación matemática es autoexplicativa.
+- **Los bloques JSDoc (`/** ... */`):** no se consideran ruido porque su propósito no es explicar el código línea por línea, sino **definir reglas de datos (tipado)** para que el editor de texto (VS Code) funcione de forma inteligente en proyectos de JavaScript puro, o para generar documentación técnica automatizada.
+
+## G. Estrategias de Comentarios Limpios (Clean Code) y Detección de Code Smells
+
+### Caso 1: Comentarios Redundantes vs. Código Expresivo
+
+```javascript
+// CASO INCORRECTO: El comentario no aporta nada que el lenguaje no diga
+// Comprueba si el empleado tiene más de 65 años
+if (e.edad > 65) {
+  // ...
+}
+
+// CASO CORRECTO: El código se documenta a sí mismo mediante nombres semánticos
+const esEdadJubilacion = empleado.edad >= 65;
+if (esEdadJubilacion) {
+  // ...
+}
+```
+
+### Caso 2: El Comentario "Disculpa" (*Apology Comment*)
+
+```javascript
+// CASO INCORRECTO:
+/*
+Esta función es larguísima y un lío, pero el descuento del cliente:
+básicamente calcula el tipo 1 y lleva más de 2 años con nombres legibles
+*/
+function p(c, t) {
+  // Multiplicamos por 0.85 si el cliente es tipo 1 y lleva más de 2 años
+  return c.t === 1 && c.antiguedad > 2 ? t * 0.85 : t;
+}
+
+// CASO CORRECTO: Extraer funciones atómicas
+function esClienteFidelizado(cliente) {
+  const ES_PREMIUM = cliente.tipo === "VIP";
+  const TIENE_ANTIGUEDAD = cliente.antiguedadEnAnios > 2;
+  return ES_PREMIUM && TIENE_ANTIGUEDAD;
+}
+
+function aplicarDescuentoFidelidad(cliente, importeBase) {
+  const FACTOR_DESCUENTO = 0.85;
+  return esClienteFidelizado(cliente) ? importeBase * FACTOR_DESCUENTO : importeBase;
+}
+```
+
+### Caso 3: Cuándo un Comentario esEstratégicamente Necesario
+
+Un comentario es legítimo y necesario cuando explica el **motivo de una anomalía** que un revisor podría interpretar como un error (justificación de decisiones, parches por *bugs* en librerías, advertencia de consecuencias críticas, enlaces a tickets o normativas legales):
+
+```javascript
+// ACEPTABLE Y NECESARIO: Explica una decisión técnica contraintuitiva
+function compararImportes(a, b) {
+  /* BUG-4102: No utilizamos Math.abs(a - b) < Number.EPSILON directamente debido a que
+     las cantidades provienen serializadas de una API bancaria externa con errores de
+     redondeo de 3 decimales fijos.
+     Ref: https://normativa.banco.es/norma-redondeo-2024 */
+  return Math.round(a * 100) === Math.round(b * 100);
+}
+```
+
+### Caso 4: Eliminación de Código Muerto Comentado (*Zombie Code*)
+
+Dejar fragmentos antiguos de código comentados "por si acaso se necesitan luego" ensucia el archivo y confunde al equipo. Para conservar versiones anteriores existe el sistema de **control de versiones (Git)**. La política estándar es borrar todo código no utilizado.
+
+## H. Documentación Automática de APIs Front-End
+
+En empresas de desarrollo web, el código se documenta sistemáticamente con JSDoc no solo para apoyo en el editor, sino para generar **portales de documentación web navegables** de forma automática mediante herramientas de integración continua como **TypeDoc** o **JSDoc**.
+
+En el desarrollo de software industrial, la documentación escrita en los comentarios no se queda aislada dentro de los archivos de código fuente. Se procesa a través de herramientas de integración continua para generar sitios web estáticos de consulta técnica, permitiendo que cualquier miembro del equipo de desarrollo, auditoría o soporte explore la arquitectura de la aplicación, sus métodos, parámetros y tipos de retorno sin necesidad de abrir el código fuente.
+
+**Generación Automatizada de Portales Web con JSDoc**
+
+Ejecuta el comando `jsdoc` seguido del nombre del archivo o la carpeta que quieres documentar:
+
+```bash
+npx jsdoc index.js
+```
+
+**Ver el resultado:** al ejecutar el comando, JSDoc creará automáticamente una carpeta llamada `out/` en tu directorio:
+
+1. Entra en la carpeta `out/`.
+2. Abre el archivo `index.html` en tu navegador.
+
+## I. ACTIVIDADES
+
+### Ejercicio 1: Creación de Bloque JSDoc Profesional
+
+**Enunciado:** Escribe la documentación formal completa en formato JSDoc para la siguiente función que valida el DNI español.
+
+```javascript
+function validarDNI(numeroDNI, letra) {
+  const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+  return letras[numeroDNI % 23] === letra.toUpperCase();
+}
+```
+
+**Solución:**
+
+```javascript
+/**
+ * Valida un número de DNI español contra su letra de control.
+ *
+ * @description Calcula la letra que corresponde al número de DNI mediante el
+ *              módulo 23 y la compara con la letra introducida por el usuario.
+ *              El DNI es válido cuando ambas coinciden.
+ *
+ * @param {number} numeroDNI - Parte numérica del DNI (sin la letra).
+ * @param {string} letra - Letra de control introducida por el usuario.
+ * @returns {boolean} `true` si el DNI es válido, `false` en caso contrario.
+ *
+ * @throws {TypeError} Si `numeroDNI` no es un número entero válido.
+ */
+function validarDNI(numeroDNI, letra) {
+  const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+  if (!Number.isInteger(numeroDNI)) {
+    throw new TypeError("El número del DNI debe ser un número entero.");
+  }
+
+  return letras[numeroDNI % 23] === letra.toUpperCase();
+}
+```
+
+**Verificación en consola (ejecutada y comprobada):**
+
+```javascript
+console.log(validarDNI(12345678, "Z")); // true  -> el DNI 12345678Z es válido
+console.log(validarDNI(12345678, "X")); // false -> la letra no corresponde
+console.log(validarDNI(0, "t"));        // true  -> el DNI 00000000T es válido
+```
+
+**Criterios de evaluación del ejercicio:**
+
+1. El bloque debe abrirse con `/**` (doble asterisco) para que el editor lo interprete como JSDoc y no como un comentario normal.
+2. Todas las etiquetas obligatorias (`@param`, `@returns`) deben estar presentes y con su tipo declarado entre llaves.
+3. Los parámetros opcionales se encierran en corchetes: `@param {number} [tasaIVA=0.21]`.
+4. Los errores que la función lanza de forma deliberada se documentan con `@throws`.
+5. `@description` explica el *qué* y el *por qué* de la función; los comentarios de una sola línea dentro del cuerpo se reservan para el *por qué* de una decisión concreta.

@@ -119,6 +119,7 @@
 - [[DWEC-2.4]]
 - [[DWEC-2.5]]
 - [[DWEC-2.6]]
+- [[DWEC-2.7]]
 - **Ejercicios**
     - [[cuestionario|Cuestionario · 1.1]]
     - [[ejercicioConsolidacion|Ejercicio de consolidación · 1.3]]
