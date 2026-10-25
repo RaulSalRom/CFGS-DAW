@@ -12,7 +12,7 @@ for (let i = 0; i < numeros.length; i++) {
   } 
 } 
 
-console.log(numeros)// Resultad: [4, 6, 9]
+console.log(numeros)// Resultad: [4, 8, 9]
 ```
 
 ## Solucion:

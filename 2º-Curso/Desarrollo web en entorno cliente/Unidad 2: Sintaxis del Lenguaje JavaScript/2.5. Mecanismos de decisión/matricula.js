@@ -1,4 +1,3 @@
-// REFACTORIZADO: cláusulas de guarda, sin anidamiento, sin ramas alternativas y happy path al final 
 function calcularMatricula(datos) { 
     // --- 1. Cláusulas de guarda (validación de precondiciones con retorno temprano) --- 
     if (datos === null || typeof datos !== "object") { 
