@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reserva de visita guiada</title>
+  <style>
+    body{font-family:system-ui;margin:1rem;max-width:600px;background:#f6efe1;color:#3f2f22}
+    h1{font-family:Georgia,serif;color:#5a3e2b}
+    fieldset{border:1px solid #c9b48c;padding:1rem;background:#fffdf7}
+    legend{font-weight:600;color:#5a3e2b}
+    label{display:block;margin-top:.7rem}
+    input[type=range]{width:100%}
+    small{color:#7a6553}
+    button{margin-top:1rem;padding:.6rem 1.2rem;border:none;border-radius:4px;
+           background:#5a3e2b;color:#fff;cursor:pointer}
+    button:hover,button:focus{background:#b8892b}
+  </style>
+</head>
+<body>
+  <h1>Reserva tu visita guiada</h1>
+
+  <form action="#" aria-describedby="ayuda-nivel">
+    <fieldset>
+      <legend>Murallas de Algeciras · Datos de la visita</legend>
+
+      <label>Nombre
+        <input type="text" name="nombre" required />
+      </label>
+
+      <label>E‑mail
+        <input type="email" name="email" required />
+      </label>
+
+      <label>Fecha
+        <input type="date" name="fecha" required />
+      </label>
+
+      <p>Turno</p>
+      <label><input type="radio" name="turno" value="mañana" required /> Mañana</label>
+      <label><input type="radio" name="turno" value="tarde"  required /> Tarde</label>
+
+      <label>Número de visitantes (1–10)
+        <input type="range" name="visitantes" min="1" max="10" value="2" aria-describedby="ayuda-nivel" />
+      </label>
+      <small id="ayuda-nivel">Indica cuántas personas venís en el grupo.</small>
+
+      <label>
+        <input type="checkbox" name="guia-ingles" /> Añadir guía en inglés
+      </label>
+    </fieldset>
+
+    <button type="submit">Reservar visita</button>
+  </form>
+</body>
+</html>
