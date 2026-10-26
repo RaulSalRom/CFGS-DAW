@@ -5,13 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página secundaria — Trabajo de incrustación</title>
     <style>
-        body{font-family: system-ui, sans-serif; background-color: #f7fafc; margin: 0; padding: 1rem;}
-        h1{color: pink; background-color: black; padding: .5rem 1rem; font-size: 1.4rem;}
-        h2, h3{margin-top: 0;}
-        nav{margin: .5rem 0 1rem;}
-        a.btn{display: inline-block; background-color: black; color: pink; padding: .35rem .85rem; border-radius: 5px; text-decoration: none; font-weight: bold;}
-        a.btn:hover{background-color: #333;}
-        section{background-color: lightyellow; border-radius: 5px; padding: 1rem; margin: 1rem 0;}
+        body{
+            font-family: system-ui, sans-serif; 
+            background-color: #f7fafc;
+             margin: 0;
+              padding: 1rem;
+            }
+        h1{
+        color: pink;
+         background-color: black;
+         padding: .5rem 1rem; 
+         font-size: 1.4rem;
+        }
+        h2, h3{
+            margin-top: 0;
+        }
+        nav{
+            margin: .5rem 0 1rem;
+        }
+        a.btn{
+            display: inline-block; 
+            background-color: black; color: pink; 
+            padding: .35rem .85rem; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: bold;
+        }
+        a.btn:hover{
+            background-color: #333;
+        }
+        section{
+            background-color: lightyellow; 
+            border-radius: 5px; 
+            padding: 1rem; 
+            margin: 1rem 0;
+        }
         article{margin-bottom: 1.5rem;}
         aside{background-color: lightgray; padding: 1rem; margin: 1rem 0; border-radius: 5px;}
         figure{margin: 0;}
@@ -30,18 +58,22 @@
 
     <main>
         <section>
+            <article>
+                <header>
+                    Header del article 
+                </header>
+                <hr>
             <h2>Contenido de la segunda página</h2>
             <p>Esta página está enlazada desde <code>index.html</code> mediante un enlace con clase <code>.btn</code> y a su vez enlaza de vuelta al archivo principal.</p>
-
             <h3>iframe con un mapa de Google</h3>
-            <p>Otro uso de <code>iframe</code>: incrustar un servicio de terceros sin salir de la página. Se usa la URL del diálogo <em>Insertar un mapa</em> (<code>/maps/embed</code>); la de <code>/maps/place/</code> no deja incrustarse.</p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12932.87!2d-5.499054!3d36.1310058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0c9496ba5d5751%3A0xa626ca859cd81ce9!2sAlgeciras!5e0!3m2!1ses!2ses!4v1"
                     width="600" height="400" style="border: 0; max-width: 100%;"
                     allowfullscreen="" loading="lazy"
                     title="Mapa de Google de Algeciras"></iframe>
 
             <!-- Etiqueta img -->
-            <article>
+            
+                
                 <h3>img y picture</h3>
                 <p>Imagen vectorial externa declarada con <code>picture</code> y su <code>source</code>.</p>
                 <figure>
@@ -53,25 +85,19 @@
                     </picture>
                     <figcaption>El <code>source</code> ofrece el formato vectorial y el <code>img</code> queda como respaldo.</figcaption>
                 </figure>
-            </article>
 
             <!-- Etiqueta object -->
-            <article>
                 <h3>object</h3>
                 <p>Recurso externo con contenido de respaldo dentro de la etiqueta, por si el navegador no lo abre.</p>
                 <object data="documento.pdf" type="application/pdf" width="100%" height="500">
                     <p>Tu navegador no puede ver el PDF. <a href="documento.pdf">Descárgalo aquí</a>.</p>
                 </object>
-            </article>
 
             <!-- Etiqueta canvas -->
-            <article>
                 <h3>canvas</h3>
                 <p>Lienzo de mapa de bits dibujado con JavaScript al final del documento.</p>
                 <canvas id="miCanvas" width="400" height="200">
-                    Tu navegador no soporta la etiqueta <code>canvas</code>.
                 </canvas>
-            </article>
         </section>
 
         <!-- Etiqueta embed -->
@@ -80,10 +106,15 @@
             <p>Ejemplo de PDF embebido.</p>
             <embed src="documento.pdf" type="application/pdf" width="100%" height="500">
         </aside>
+        
+        <footer>
+            Fin del article
+        </footer>
+     </article>
     </main>
 
     <footer>
-        <p>Raul Sal Romeo.</p>
+        <p>Raul Sal Romeo 2026</p>
     </footer>
 
     <!-- El canvas no dibuja nada por sí solo: el script va al final para que el elemento ya exista -->
