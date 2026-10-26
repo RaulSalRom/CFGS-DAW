@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<title>404 – Esta página se perdió en el Estrecho</title>
+<style>
+  :root{--mar:#0d3b66;--arena:#f3ece1;--tinta:#1c2b33}
+  @keyframes flotar{
+    0%{transform:translateY(0);opacity:0}
+    50%{opacity:1}
+    100%{transform:translateY(-8px);opacity:1}
+  }
+  body{display:flex;flex-direction:column;justify-content:center;align-items:center;
+       min-height:100vh;font-family:system-ui;background:linear-gradient(160deg,var(--arena),#d9ecf0);
+       margin:0;color:var(--tinta)}
+  h1{font-size:4rem;margin:0;color:var(--mar);animation:flotar 1.5s ease-out forwards}
+  a{margin-top:1.5rem;font-size:1.2rem;text-decoration:none;border:1px solid var(--mar);
+     padding:.6rem 1.2rem;border-radius:4px;color:var(--mar);transition:background .3s}
+  a:hover,a:focus{background:var(--mar);color:#fff}
+</style>
+</head>
+<body>
+  <h1>404</h1>
+  <p>Esta página se perdió en el Estrecho</p>
+  <a href="index.html">Volver al puerto</a>
+</body>
+</html>

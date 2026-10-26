@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<title>Productos de la comarca</title>
+<style>
+  body{font-family:system-ui;margin:1rem;display:grid;gap:1rem;
+       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+       background:#f3ece1;color:#1c2b33}
+  .card{border:2px solid;padding:1rem;border-radius:6px;background:#fff}
+  [data-category="mar"]    {border-color:#0d3b66}
+  [data-category="huerta"] {border-color:#1b8a9c}
+  [data-category="dulce"]  {border-color:#b8892b}
+  .precio{font-weight:700;color:#0d3b66}
+</style>
+</head>
+<body>
+  <article class="card" data-category="mar">
+    <h2>Atún de almadraba</h2>
+    <p class="precio">12 €/kg</p>
+    <p>Pescado en el Estrecho con el arte tradicional de almadraba.</p>
+  </article>
+
+  <article class="card" data-category="huerta">
+    <h2>Aceite de oliva virgen extra</h2>
+    <p class="precio">8 €/l</p>
+    <p>De olivos del Campo de Gibraltar, primera cosecha.</p>
+  </article>
+
+  <article class="card" data-category="dulce">
+    <h2>Torta de aceite</h2>
+    <p class="precio">4 €</p>
+    <p>Dulce tradicional, ideal para el desayuno.</p>
+  </article>
+</body>
+</html>
