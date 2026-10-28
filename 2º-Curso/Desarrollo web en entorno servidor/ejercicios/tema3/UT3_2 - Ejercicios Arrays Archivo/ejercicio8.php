@@ -32,12 +32,7 @@
         }
 
         // Mostrar ese array por pantalla
-        echo "<h2 class='mb-2'>Array $numeros</h2>";
-        echo "<p class='fs-5'>";
-        foreach ($numeros as $valor) {
-          echo "<span class='badge bg-secondary fs-6 me-1'>$valor</span>";
-        }
-        echo "</p>";
+        echo "<p class='fs-5'>Números generados aleatoriamente: " . implode(", ", $numeros) . "</p>";
 
         // Calcular la suma de los números pares y la suma de los impares
         $sumaPares = 0;
@@ -52,17 +47,21 @@
         ?>
 
         <!-- Mostrar el resultado en pantalla en formato tabla -->
-        <table class="table table-bordered text-center w-50 mx-auto mt-4">
-          <thead class="table-light">
+        <table class="table mt-4">
+          <thead>
             <tr>
-              <th scope="col">Suma de pares</th>
-              <th scope="col">Suma de impares</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Suma</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="fs-4 text-success"><?php echo $sumaPares; ?></td>
-              <td class="fs-4 text-danger"><?php echo $sumaImpares; ?></td>
+              <td>Pares</td>
+              <td><?php echo $sumaPares; ?></td>
+            </tr>
+            <tr>
+              <td>Impares</td>
+              <td><?php echo $sumaImpares; ?></td>
             </tr>
           </tbody>
         </table>

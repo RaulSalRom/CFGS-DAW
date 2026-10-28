@@ -25,14 +25,8 @@
         <a href="index.php" class="btn btn-outline-secondary btn-sm mb-3">&larr; Volver al indice</a>
 
         <?php
-        // Array asociativo de ejemplo: notas de los alumnos
-        $notas = array(
-          "Carlos" => 7.5,
-          "Ana"    => 9.0,
-          "Luis"   => 5.5,
-          "Marta"  => 8.0,
-          "Elena"  => 6.5
-        );
+        // Array asociativo del enunciado
+        $notas = array("Antonio"=>"31", "Maria"=>"28", "Juan"=>"29", "Pepe"=>"27");
 
         // Mostrar el array original
         echo "<h2 class='mb-2'>Array original</h2>";

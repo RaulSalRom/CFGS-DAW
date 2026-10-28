@@ -32,7 +32,7 @@
         }
 
         // 2) Imprimir todos los valores que almacena
-        echo "<h2 class='mb-2'>1) Contenido del array</h2>";
+        echo "<h2 class='mb-2'>1) y 2) Array inicial</h2>";
         echo "<p class='fs-4'>";
         foreach ($array as $valor) {
           echo "<span class='badge bg-primary fs-6 me-1'>$valor</span>";
@@ -47,14 +47,14 @@
         $media = $suma / count($array);
 
         // 4) Mostrar el valor medio que ha calculado
-        echo "<h2 class='mt-4 mb-2'>2) Valor medio</h2>";
+        echo "<h2 class='mt-4 mb-2'>3) y 4) Valor medio</h2>";
         echo "<p class='fs-5'>La media de los valores es: <strong>$media</strong></p>";
 
         // 5) Mostrar los 3 valores máximos del array
         //    (se copia y se ordena de mayor a menor para coger los 3 primeros)
         $copiaDesc = $array;
         rsort($copiaDesc);
-        echo "<h2 class='mt-4 mb-2'>3) Los 3 valores máximos</h2>";
+        echo "<h2 class='mt-4 mb-2'>5) Los 3 valores máximos</h2>";
         echo "<p class='fs-5'>";
         for ($i = 0; $i < 3; $i++) {
           echo "<span class='badge bg-success fs-6 me-1'>" . $copiaDesc[$i] . "</span>";
@@ -65,7 +65,7 @@
         //    (se copia y se ordena de menor a mayor para coger los 3 primeros)
         $copiaAsc = $array;
         sort($copiaAsc);
-        echo "<h2 class='mt-4 mb-2'>4) Los 3 valores mínimos</h2>";
+        echo "<h2 class='mt-4 mb-2'>6) Los 3 valores mínimos</h2>";
         echo "<p class='fs-5'>";
         for ($i = 0; $i < 3; $i++) {
           echo "<span class='badge bg-danger fs-6 me-1'>" . $copiaAsc[$i] . "</span>";
@@ -75,7 +75,7 @@
         // 7) Copiar el array (en $arrayCopiado) y utilizar una función que ordene el nuevo array
         $arrayCopiado = $array;
         sort($arrayCopiado);
-        echo "<h2 class='mt-4 mb-2'>5) Array copiado y ordenado</h2>";
+        echo "<h2 class='mt-4 mb-2'>7) Array copiado y ordenado</h2>";
         echo "<p class='fs-5'>";
         foreach ($arrayCopiado as $valor) {
           echo "<span class='badge bg-secondary fs-6 me-1'>$valor</span>";
@@ -83,11 +83,10 @@
         echo "</p>";
 
         // 8) Eliminar el segundo elemento del nuevo array ($arrayCopiado), ya ordenado
-        //    array_shift elimina el primer elemento; para eliminar el segundo
-        //    se elimina primero el primero y luego el que ha ocupado su lugar
-        array_shift($arrayCopiado);
-        array_shift($arrayCopiado);
-        echo "<h2 class='mt-4 mb-2'>6) Tras eliminar el segundo elemento</h2>";
+        //    el segundo elemento tiene índice 1; después se reindexa el array
+        unset($arrayCopiado[1]);
+        $arrayCopiado = array_values($arrayCopiado);
+        echo "<h2 class='mt-4 mb-2'>8) Tras eliminar el segundo elemento</h2>";
         echo "<p class='fs-5'>";
         foreach ($arrayCopiado as $valor) {
           echo "<span class='badge bg-warning text-dark fs-6 me-1'>$valor</span>";

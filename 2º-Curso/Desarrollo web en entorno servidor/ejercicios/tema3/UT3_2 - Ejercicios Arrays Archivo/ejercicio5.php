@@ -42,7 +42,7 @@
         // Recorrer el array mostrando cada clave y valor en mayúsculas (strtoupper)
         echo "<ul class='list-group'>";
         foreach ($capitales as $pais => $capital) {
-          echo "<li class='list-group-item'>" . strtoupper($pais) . " &rarr; " . strtoupper($capital) . "</li>";
+          echo "<li class='list-group-item'>La capital de " . strtoupper($pais) . " es " . strtoupper($capital) . "</li>";
         }
         echo "</ul>";
         ?>
