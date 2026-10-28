@@ -15,9 +15,32 @@
     aside {background:#e0f2fe; padding:.8rem; border-left:4px solid #06b6d4; border-radius:0 6px 6px 0;}
     aside h2 {font-size:1.05rem; margin:.2rem 0 .4rem; color:#0e7490;}
     footer {border-top:1px solid #e2e8f0; padding:.8rem 0; margin-top:1.5rem; color:#64748b; font-size:.85rem;}
-  </style>
+
+  /* ── Barra de navegación entre los ocho ejercicios ── */
+  body{box-sizing:border-box;padding-top:5rem}
+  .nav-ejercicios{position:fixed;top:0;left:0;right:0;z-index:999;
+    display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin:0;border:0;
+    padding:.6rem .8rem;font-family:system-ui,sans-serif;
+    background:rgba(13,59,102,.94);box-shadow:0 2px 12px rgba(0,0,0,.25)}
+  .nav-ejercicios a{margin:0;padding:.35rem .75rem;border:1px solid #f3ece1;border-radius:6px;
+    background:#f3ece1;color:#0d3b66;font-size:.82rem;font-weight:600;
+    text-decoration:none;transition:background .2s,color .2s,transform .2s}
+  .nav-ejercicios a:hover,.nav-ejercicios a:focus{
+    background:#0d3b66;color:#f3ece1;transform:translateY(-2px)}
+  .nav-ejercicios a[aria-current="page"]{background:#0d3b66;color:#f3ece1;cursor:default}
+</style>
 </head>
 <body>
+  <nav class="nav-ejercicios" aria-label="Ejercicios del tema 2">
+    <a href="landing.html">Landing</a>
+    <a href="noticia.html" aria-current="page">Noticia</a>
+    <a href="reserva.html">Reserva</a>
+    <a href="video.html">Vídeo</a>
+    <a href="cards.html">Cards</a>
+    <a href="galeria.html">Galería</a>
+    <a href="horario.html">Horario</a>
+    <a href="404.html">404</a>
+  </nav>
   <header>
     <h1>MareTech abre su sede en el Parque Tecnológico de Algeciras</h1>
     <time datetime="2026-05-02">2 de mayo de 2026</time>
