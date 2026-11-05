@@ -23,14 +23,14 @@
 
         <?php
         // Incluimos el archivo que contiene todas las funciones de los ejercicios.
-        require_once __DIR__ . '/functions.php';
+        require_once 'functions.php';
 
         // 1) Inicializamos un array de 10 elementos con valores aleatorios entre 1 y 30.
         $array = inicializar_array(10, 1, 30);
         ?>
 
         <h2 class="h4">1) y 2) Array generado y sus valores</h2>
-        <p>Array de <?= count($array) ?> elementos aleatorios entre 1 y 30:</p>
+        <p>Array de <?= contar_elementos($array) ?> elementos aleatorios entre 1 y 30:</p>
 
         <?php
         // 2) Imprimimos todos los valores que almacena.
@@ -45,7 +45,7 @@
         <h2 class="h4 mt-4">3) y 4) Valor medio</h2>
         <p>
           Valor medio del array:
-          <strong><?= number_format($media, 2, ',', '.') ?></strong>
+          <strong><?= str_replace('.', ',', strval(round($media, 2))) ?></strong>
         </p>
 
         <h2 class="h4 mt-4">5) y 6) Valores extremos</h2>
@@ -63,12 +63,12 @@
 
         <p>
           Tres valores máximos:
-          <strong><?= implode(', ', $tresMayores) ?></strong>
+          <strong><?= array_a_cadena($tresMayores) ?></strong>
         </p>
 
         <p>
           Tres valores mínimos:
-          <strong><?= implode(', ', $tresMenores) ?></strong>
+          <strong><?= array_a_cadena($tresMenores) ?></strong>
         </p>
 
       </div>

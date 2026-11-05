@@ -16,6 +16,14 @@ dentro de `htdocs` de XAMPP y entrar por el navegador.
 La página `index.php` reúne todos los ejercicios en pestañas (Bootstrap 5). Cada pestaña
 carga su ejercicio en un `iframe`, igual que en la relación UT3_2.
 
+> [!note]
+> El HTML, el CSS y las pestañas se mantienen porque los pide el enunciado. En cambio, el
+> código PHP utiliza únicamente recursos explicados en la teoría de
+> `DesarrolloWebEnEntornoServidor.md`: variables, operadores, estructuras de control,
+> arrays, funciones propias, `include`/`require`, excepciones (`try`/`catch`) y funciones
+> nativas de los anexos (`rand`, `round`, `is_numeric`, `htmlspecialchars`, `strval`,
+> `str_replace`, `filter_input`).
+
 ## Estructura
 
 ```text
@@ -44,7 +52,7 @@ UT3_3 - Soluciones Funciones y excepciones/
 │           ├── cabeceraTemaClaro.php
 │           ├── cabeceraTemaOscuro.php
 │           └── footer.php
-└── README.md
+└── DWES-UT3.3-Soluciones.md
 ```
 
 ## Qué hace cada ejercicio
@@ -52,7 +60,7 @@ UT3_3 - Soluciones Funciones y excepciones/
 - **Ejercicio 1**
   - `sumar_cinco_numeros()` recibe cinco enteros y muestra la suma (no devuelve nada).
   - `dividir_dos_de_cinco()` recibe cinco enteros aleatorios entre 0 y 9 y divide el
-    primero entre el segundo. Si el divisor es 0 lanza `DivisionByZeroError`, que se
+    primero entre el segundo. Si el divisor es 0 lanza una `Exception`, que se
     captura con `try/catch` y se guarda el resultado en `$tmp`.
   - `volumen_cilindro()` aplica `3.1416 * radio² * altura`.
 - **Ejercicios 2 a 6**: `inicializar_array()`, `calcular_media()`,
@@ -66,13 +74,12 @@ UT3_3 - Soluciones Funciones y excepciones/
 - **Ejercicio 8**: tema claro por defecto. Los enlaces
   `index.php?estilo=temaClaro` e `index.php?estilo=temaOscuro` incluyen la cabecera
   correspondiente desde `resources/templates`. El footer es común. El tema recibido se
-  valida contra una lista blanca; si no es válido se usa el tema claro. La carpeta de
-  plantillas se añade al `include_path`, tal como aparece en la organización del
-  enunciado.
+  valida con una función propia; si no es válido se usa el tema claro. Los archivos se
+  incluyen con `require_once`/`require` y rutas relativas, como explica el tema.
 - **Ejercicio 9**: `sumar()`, `dividir()` y `calcularAreaTriangulo()` validan sus
-  parámetros y lanzan `InvalidArgumentException` con el mensaje correspondiente. Cada
-  llamada va dentro de un `try/catch`, y se muestran tanto los casos correctos como los
-  incorrectos.
+  parámetros con `is_numeric()` y lanzan una `Exception` con el mensaje correspondiente.
+  Cada llamada va dentro de un `try/catch`, y se muestran tanto los casos correctos como
+  los incorrectos.
 
 ## Comprobaciones realizadas
 
@@ -86,6 +93,6 @@ UT3_3 - Soluciones Funciones y excepciones/
 
 ## Nota sobre la entrega
 
-El enunciado pide además una memoria en Word/PDF con capturas de la validación. Este
-`README.md` recoge la explicación y las comprobaciones; si hace falta, se puede pasar a
-PDF y añadir las capturas del validador.
+El enunciado pide además una memoria en Word/PDF con capturas de la validación. Esta nota
+recoge la explicación y las comprobaciones; si hace falta, se puede pasar a PDF y añadir
+las capturas del validador.

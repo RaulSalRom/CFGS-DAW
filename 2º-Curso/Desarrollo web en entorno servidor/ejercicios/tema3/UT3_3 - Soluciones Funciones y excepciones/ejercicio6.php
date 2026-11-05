@@ -23,7 +23,7 @@
 
         <?php
         // Cargamos las funciones comunes.
-        require_once __DIR__ . '/functions.php';
+        require_once 'functions.php';
 
         // Array de ejemplo: la posición y el valor se muestran en la tabla.
         $array = ['Madrid', 'París', 'Roma', 'Berlín', 'Lisboa'];

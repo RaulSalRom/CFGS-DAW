@@ -23,7 +23,7 @@
 
         <?php
         // Cargamos todas las funciones comunes.
-        require_once __DIR__ . '/functions.php';
+        require_once 'functions.php';
         ?>
 
         <h2 class="h4">Apartado a) Suma de cinco números</h2>
@@ -35,19 +35,19 @@
         <h2 class="h4 mt-4">Apartado b) División de dos números aleatorios</h2>
         <?php
         // Generamos cinco números enteros aleatorios entre 0 y 9.
-        $numeros = [];
+        $numeros = array();
         for ($i = 0; $i < 5; $i++) {
-            $numeros[] = random_int(0, 9);
+            $numeros[] = rand(0, 9);
         }
 
-        echo '<p>Números generados: <code>' . implode(', ', $numeros) . '</code></p>';
+        echo '<p>Números generados: <code>' . array_a_cadena($numeros) . '</code></p>';
 
-        // La función puede lanzar DivisionByZeroError si el divisor es 0.
+        // La función puede lanzar una excepción si el divisor es 0.
         try {
-            $tmp = dividir_dos_de_cinco(...$numeros);
+            $tmp = dividir_dos_de_cinco($numeros[0], $numeros[1], $numeros[2], $numeros[3], $numeros[4]);
             echo '<p>Resultado de dividir ' . $numeros[0] . ' entre ' . $numeros[1]
                 . ': <strong>' . $tmp . '</strong></p>';
-        } catch (DivisionByZeroError $e) {
+        } catch (Exception $e) {
             echo '<div class="alert alert-warning">' . htmlspecialchars($e->getMessage()) . '</div>';
         }
         ?>
@@ -61,7 +61,7 @@
 
         <p>
           Volumen de un cilindro de radio <?= $radio ?> y altura <?= $altura ?>:
-          <strong><?= number_format($volumen, 2, ',', '.') ?></strong>
+          <strong><?= round($volumen, 2) ?></strong>
         </p>
 
       </div>

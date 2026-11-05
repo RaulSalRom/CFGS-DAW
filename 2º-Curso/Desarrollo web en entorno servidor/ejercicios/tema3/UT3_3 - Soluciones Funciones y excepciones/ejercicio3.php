@@ -23,7 +23,7 @@
 
         <?php
         // Cargamos las funciones comunes.
-        require_once __DIR__ . '/functions.php';
+        require_once 'functions.php';
 
         // Array de ejemplo con valores conocidos.
         $array = [4, 8, 15, 16, 23, 42];
@@ -34,7 +34,7 @@
 
         <p class="mt-3">
           Media de los valores:
-          <strong><?= number_format(calcular_media($array), 2, ',', '.') ?></strong>
+          <strong><?= str_replace('.', ',', strval(round(calcular_media($array), 2))) ?></strong>
         </p>
 
       </div>

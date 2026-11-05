@@ -23,7 +23,7 @@
 
         <?php
         // Cargamos las funciones comunes: sumar(), dividir() y calcularAreaTriangulo().
-        require_once __DIR__ . '/functions.php';
+        require_once 'functions.php';
         ?>
 
         <h2 class="h4">Apartado A) Función sumar()</h2>
@@ -33,14 +33,14 @@
         try {
             $resultadoSuma = sumar(15, 5);
             echo '<p>Resultado de la suma: <strong>' . $resultadoSuma . '</strong></p>';
-        } catch (InvalidArgumentException $e) {
+        } catch (Exception $e) {
             echo '<div class="alert alert-danger">' . htmlspecialchars($e->getMessage()) . '</div>';
         }
 
         // Caso incorrecto: el segundo parámetro no es numérico.
         try {
             sumar(15, 'abc');
-        } catch (InvalidArgumentException $e) {
+        } catch (Exception $e) {
             echo '<div class="alert alert-warning">' . htmlspecialchars($e->getMessage()) . '</div>';
         }
         ?>
@@ -52,7 +52,7 @@
         try {
             $resultadoDivision = dividir(20, 4);
             echo '<p>Resultado de la división: <strong>' . $resultadoDivision . '</strong></p>';
-        } catch (InvalidArgumentException $e) {
+        } catch (Exception $e) {
             echo '<div class="alert alert-danger">' . htmlspecialchars($e->getMessage()) . '</div>';
         }
 
@@ -60,21 +60,21 @@
         try {
             $area = calcularAreaTriangulo(10, 5);
             echo '<p>Área del triángulo: <strong>' . $area . '</strong></p>';
-        } catch (InvalidArgumentException $e) {
+        } catch (Exception $e) {
             echo '<div class="alert alert-danger">' . htmlspecialchars($e->getMessage()) . '</div>';
         }
 
         // Caso incorrecto: el divisor es cero.
         try {
             dividir(10, 0);
-        } catch (InvalidArgumentException $e) {
+        } catch (Exception $e) {
             echo '<div class="alert alert-warning">' . htmlspecialchars($e->getMessage()) . '</div>';
         }
 
         // Caso incorrecto: la base no es positiva.
         try {
             calcularAreaTriangulo(-2, 5);
-        } catch (InvalidArgumentException $e) {
+        } catch (Exception $e) {
             echo '<div class="alert alert-warning">' . htmlspecialchars($e->getMessage()) . '</div>';
         }
         ?>

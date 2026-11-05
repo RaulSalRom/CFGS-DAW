@@ -5,27 +5,23 @@
  *
  * Carga la cabecera correspondiente al tema solicitado y el footer común.
  * Los temas se reciben por la URL: index.php?estilo=temaClaro|temaOscuro.
+ *
+ * Para recoger el parámetro se usa filter_input(), que es la opción
+ * recomendada en la teoría para no acceder directamente a las superglobales.
  */
 
 // Cargamos las utilidades que validan el tema recibido.
-require_once __DIR__ . '/../resources/library/temas.php';
+require_once '../resources/library/temas.php';
 
-// Recogemos el parámetro de la URL evitando que llegue un valor que no sea texto.
-$estiloSolicitado = $_GET['estilo'] ?? null;
-if (!is_string($estiloSolicitado)) {
-    $estiloSolicitado = null;
-}
+// Recogemos el parámetro de la URL.
+$estiloSolicitado = filter_input(INPUT_GET, 'estilo');
 
 // Si el tema no es válido, la función devuelve el tema claro por defecto.
 $estilo = obtener_estilo_actual($estiloSolicitado);
 $cabecera = obtener_cabecera($estilo);
 
-// Añadimos la carpeta de plantillas al include_path para poder incluir
-// "cabeceraTemaClaro.php" o "cabeceraTemaOscuro.php" sin la ruta completa.
-set_include_path(__DIR__ . '/../resources/templates' . PATH_SEPARATOR . get_include_path());
-
 // Incluimos la cabecera del tema seleccionado.
-include $cabecera;
+require '../resources/templates/' . $cabecera;
 ?>
 
   <main>
@@ -44,8 +40,8 @@ include $cabecera;
   </main>
 
 <?php
-// El footer se encuentra en la carpeta de plantillas incluida en el include_path.
-include 'footer.php';
+// El footer es común a los dos temas.
+require '../resources/templates/footer.php';
 ?>
 </body>
 </html>

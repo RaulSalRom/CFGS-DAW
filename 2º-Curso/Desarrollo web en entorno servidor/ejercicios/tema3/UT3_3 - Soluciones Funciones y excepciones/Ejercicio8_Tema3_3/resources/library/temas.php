@@ -4,6 +4,7 @@
  * Utilidades para gestionar los temas del ejercicio 8.
  *
  * Este archivo vive en resources/library y se incluye desde public_html/index.php.
+ * Solo se utilizan comparaciones y return, vistos en la teoría.
  */
 
 /**
@@ -12,12 +13,10 @@
  * @param string|null $estiloSolicitado Valor recibido por la URL (?estilo=...).
  * @return string Nombre del tema: "temaClaro" o "temaOscuro".
  */
-function obtener_estilo_actual(?string $estiloSolicitado): string
+function obtener_estilo_actual($estiloSolicitado)
 {
-    $estilosValidos = ['temaClaro', 'temaOscuro'];
-
-    if ($estiloSolicitado !== null && in_array($estiloSolicitado, $estilosValidos, true)) {
-        return $estiloSolicitado;
+    if ($estiloSolicitado === 'temaOscuro') {
+        return 'temaOscuro';
     }
 
     // Por defecto se carga el tema claro.
@@ -30,7 +29,11 @@ function obtener_estilo_actual(?string $estiloSolicitado): string
  * @param string $estilo Nombre del tema ("temaClaro" o "temaOscuro").
  * @return string Nombre del archivo de cabecera que hay que incluir.
  */
-function obtener_cabecera(string $estilo): string
+function obtener_cabecera($estilo)
 {
-    return 'cabecera' . ucfirst($estilo) . '.php';
+    if ($estilo === 'temaOscuro') {
+        return 'cabeceraTemaOscuro.php';
+    }
+
+    return 'cabeceraTemaClaro.php';
 }

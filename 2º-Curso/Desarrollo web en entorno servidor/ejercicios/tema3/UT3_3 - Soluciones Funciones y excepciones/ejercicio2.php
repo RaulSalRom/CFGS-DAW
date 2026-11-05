@@ -23,14 +23,14 @@
 
         <?php
         // Cargamos las funciones comunes.
-        require_once __DIR__ . '/functions.php';
+        require_once 'functions.php';
 
         // Generamos un array de 10 enteros aleatorios entre 1 y 30.
         $array = inicializar_array(10, 1, 30);
         ?>
 
         <h2 class="h4">Array generado</h2>
-        <p>Se han generado <?= count($array) ?> números aleatorios entre 1 y 30.</p>
+        <p>Se han generado <?= contar_elementos($array) ?> números aleatorios entre 1 y 30.</p>
 
         <?php
         // Mostramos el array con la función del ejercicio 6.
