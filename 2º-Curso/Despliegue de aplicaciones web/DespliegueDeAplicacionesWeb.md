@@ -3,6 +3,9 @@
 > Apuntes de la asignatura **Despliegue de Aplicaciones Web** (2º CFGS-DAW).
 > Índice de contenido al final del documento.
 
+> [!info] Unidad 1 — Implantación de arquitecturas web
+> [[Despliegue-U1-Teoria|Teoría]] · [[Despliegue-U1-Actividad1|Actividad 1]] · [[Despliegue-U1-Actividad2-Tomcat|Actividad 2 · Tomcat]] · [[Despliegue-U1-Tarea1|Tarea 1]] · [[Despliegue-U1-Tarea2|Tarea 2]]
+
 ---
 
 # Unidad 1 — Implantación de arquitecturas web

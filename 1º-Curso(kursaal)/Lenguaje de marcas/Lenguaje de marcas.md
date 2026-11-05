@@ -1,5 +1,7 @@
 # Lenguaje de Marcas - Apuntes
 
+> 🏠 [[📚 Indice General]] ▸ [[📁 Lenguaje de marcas|Lenguaje de Marcas (índice)]]
+
 ## Tema 1: Introducción a HTML
 
 ### Estructura Básica

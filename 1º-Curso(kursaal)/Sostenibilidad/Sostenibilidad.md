@@ -1,5 +1,7 @@
 # Sostenibilidad - Apuntes
 
+> 🏠 [[📚 Indice General]] ▸ [[📁 Sostenibilidad|Sostenibilidad (índice)]]
+
 ## Tema 1: Introducción
 
 El módulo de Sostenibilidad busca desarrollar conocimientos y competencias en:

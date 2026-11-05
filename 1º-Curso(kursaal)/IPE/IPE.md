@@ -1,5 +1,7 @@
 # IPE (Instalación y Planificación) - Apuntes
 
+> 🏠 [[📚 Indice General]] ▸ [[📁 IPE|IPE (índice)]]
+
 ## Tema 1: Familia Profesional y Sectores
 
 ### Sectores Económicos

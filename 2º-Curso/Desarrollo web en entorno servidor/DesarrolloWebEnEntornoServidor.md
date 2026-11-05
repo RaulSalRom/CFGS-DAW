@@ -1,4 +1,8 @@
 # UT1.- ARQUITECTURAS DE DESARROLLO WEB 
+
+> [!info] Índice de unidades
+> [[UT1|UT1 · Arquitecturas de desarrollo web]] · [[UT2|UT2 · Lenguaje PHP]] · [[UT3|UT3 · Estructuras de control, arrays y formularios]] · [[DWES-UT3.3-Soluciones|UT3.3 · Soluciones de funciones y excepciones]]
+
 ## 1.- Modelos de programación Cliente-Servidor 
 Las aplicaciones web se basan en el modelo cliente-servidor. Es un modelo 
 distribuido  en  el  que  hay  dos  tipos  de  elementos  con  funciones 

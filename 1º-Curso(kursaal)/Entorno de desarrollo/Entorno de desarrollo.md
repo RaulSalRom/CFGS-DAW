@@ -1,5 +1,7 @@
 # Entorno de Desarrollo - Apuntes
 
+> 🏠 [[📚 Indice General]] ▸ [[📁 Entorno de desarrollo|Entorno de Desarrollo (índice)]]
+
 ## Tema 1: Fases de Liberación de Software
 
 | Fase | Descripción |

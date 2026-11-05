@@ -1,5 +1,7 @@
 # Sistemas Informáticos - Apuntes
 
+> 🏠 [[📚 Indice General]] ▸ [[📁 Sistemas Informaticos|Sistemas Informáticos (índice)]]
+
 ## Tema 1: Comandos Terminal Linux
 
 ### Gestión de Archivos y Directorios

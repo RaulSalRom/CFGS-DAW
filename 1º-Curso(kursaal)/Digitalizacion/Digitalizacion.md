@@ -1,5 +1,7 @@
 # Digitalización - Apuntes
 
+> 🏠 [[📚 Indice General]] ▸ [[📁 Digitalizacion|Digitalización (índice)]]
+
 ## Tema 5: Ciberseguridad en el Sector Hotelero
 
 ### Caso 1: MGM Resorts (2023)

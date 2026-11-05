@@ -1,5 +1,8 @@
 # Unidad 1. Hito 1 — Proyecto Intermodular DAW
 
+> [!info] Material del proyecto
+> [[Proyecto-Hito1-Essential|Hito 1 · Essential]]
+
 > **Alumno:** Raúl Sal Romeo
 > **Ciclo:** Desarrollo de Aplicaciones Web (DAW) — I.E.S. Kursaal
 > **Curso:** 2026/27

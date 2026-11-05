@@ -1,5 +1,7 @@
 # Base de Datos - Apuntes
 
+> 🏠 [[📚 Indice General]] ▸ [[📁 Base de datos|Base de Datos (índice)]]
+
 ## Tema 4: Consultas en SQL
 
 ### 1. Sentencia SELECT Básica

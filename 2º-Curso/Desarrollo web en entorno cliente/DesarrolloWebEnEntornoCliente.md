@@ -1232,6 +1232,9 @@ Para seleccionar el software de desarrollo en un proyecto web, se aplican los si
 
 # TEMA 2: Sintaxis del Lenguaje JavaScript
 
+> [!note] Nota de examen
+> [[DWEC-2.1|Criterio 2.1 · Selección de un lenguaje de programación de clientes Web]]
+
 ## 2.1. Selección de un lenguaje de programación de clientes Web 
 
 ## EVOLUCIÓN Y SELECCIÓN DE TECNOLOGÍAS EN CLIENTE
@@ -1449,6 +1452,9 @@ console.log(TotalVentas);
 ```
 
 ---
+
+> [!note] Nota de examen y ejercicios
+> [[DWEC-2.2|Criterio 2.2 · Variables y operadores]] · [[DWEC-2.2-Ejercicios|Ejercicios resueltos]]
 
 ## 2.2. Utilización de los distintos tipos de variables y operadores disponibles en el lenguaje (Criterio 2.2)
 
@@ -2040,6 +2046,9 @@ Jerarquía de evaluación, **de mayor a menor prioridad**:
 
 ---
 
+> [!note] Nota de examen y ejercicios
+> [[DWEC-2.3|Criterio 2.3 · Ámbitos de las variables]] · [[DWEC-2.3-Ejercicios|Ejercicios resueltos]]
+
 ## 2.3. Identificación de los ámbitos de utilización de las variables (Criterio 2.3)
 
 ## A. ¿Qué es el Ámbito (Scope) de una Variable?
@@ -2252,6 +2261,9 @@ Una IIFE es una función que se declara y se ejecuta en el mismo instante en que
 ```
 
 ---
+
+> [!note] Nota de examen y ejercicios
+> [[DWEC-2.4|Criterio 2.4 · Conversiones entre tipos de datos]] · [[DWEC-2.4-Ejercicios|Ejercicios resueltos]]
 
 ## 2.4. Conversiones entre distintos tipos de datos (Criterio 2.4)
 
@@ -2519,6 +2531,9 @@ console.log(Boolean(15n));  // true
 ```
 
 ---
+
+> [!note] Nota de examen
+> [[DWEC-2.5|Criterio 2.5 · Mecanismos de decisión]]
 
 ## 2.5. Mecanismos de decisión (Criterio 2.5)
 
@@ -2921,6 +2936,9 @@ function procesarRegistroUsuario(datos)
 ```
 
 ---
+
+> [!note] Nota de examen y ejercicios
+> [[DWEC-2.6|Criterio 2.6 · Bucles]] · [[DWEC-2.6-Ejercicios|Ejercicios resueltos]]
 
 ## 2.6. Utilización de bucles (Criterio 2.f)
 
@@ -3443,6 +3461,9 @@ if (codigo === null) {
 | `.forEach()` | Iteración interna (método) | Acción por cada elemento | Arrays (cuando no necesitas `break/continue`) | No permite `break/continue`; ignora huecos (sparse) |
 
 ---
+
+> [!note] Nota de examen
+> [[DWEC-2.7|Criterio 2.7 · Comentarios en el código]]
 
 ## 2.7. Inclusión de comentarios en el código (Criterio 2.g)
 

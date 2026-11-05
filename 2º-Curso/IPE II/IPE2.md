@@ -1,5 +1,8 @@
 # Actividade página 7 — FICHA 1 · Busca en portales de empleo
 
+> [!info] Tareas de IPE II
+> [[IPE2-UD1-Tarea1|UD1 · Tarea 1: Búsqueda en portales de empleo]] · [[IPE2-UD3-Tarea1-Equipo-Emprendedor|UD3 · Tarea 1: El equipo emprendedor]] · [[IPE2-UD3-Tarea2-Cliente-Idea-Negocio|UD3 · Tarea 2: Cliente, idea de negocio y valores]]
+
 > **Perfil de búsqueda:** estudiante de CFGS **Desarrollo de Aplicaciones Web (DAW)**, a punto de terminar el ciclo, en busca de su primer empleo como **desarrollador/a web junior** en la **provincia de Cádiz**.
 
 ## 1) Analiza cada una de las ofertas y rellena la tabla
