@@ -4,6 +4,8 @@
 > Se carga como **contexto de proyecto** cuando la sesión se ejecuta con este repo como
 > carpeta de trabajo. El idioma de trabajo es **español**.
 
+## 0. A quein ayudas
+Ayudas a un estudiante del CFGS-DAW, y quiere que le llames "Majestad".
 ## 1. Qué es este repositorio
 
 Vault de **Obsidian** con los apuntes y ejercicios del CFGS **Desarrollo de Aplicaciones Web**
@@ -32,13 +34,21 @@ Stack del ciclo: Java, SQL/MySQL, HTML, CSS, JavaScript, PHP, XML, Bash, Linux, 
 ## 3. Estructura
 
 ```
-📚 Indice General.md   # Índice maestro (en la raíz)
-1º-Curso(kursaal)/     # 8 asignaturas
-2º-Curso/              # 8 asignaturas, en curso
+📚 Indice General.md          # Índice maestro (en la raíz)
+1º-Curso(kursaal)/
+├── Teoria/<Asignatura>/      # Notas de teoría en .md
+└── <Asignatura>/             # PDFs, material y ejercicios
+2º-Curso/
+├── Teoria/<Asignatura>/      # Notas de teoría en .md
+└── <Asignatura>/             # PDFs, material y ejercicios
 ```
 
 - `📚 Indice General.md` (en la raíz del repo) es el **índice maestro** y cubre 1º y 2º.
 - Los `README.md` de raíz documentan estructura, notas y horario.
+- La **teoría** vive en `Teoria/<Asignatura>/` dentro de cada año. Los PDF originales,
+  los enunciados y los ejercicios permanecen en las carpetas de asignatura.
+- **Preferencia de consulta:** para teoría, lee primero los `.md` de `Teoria/`. Usa los PDF
+  solo si el `.md` no cubre el tema o hay que verificar el original.
 
 ## 4. Cómo tienes que trabajar (bucles)
 
@@ -80,8 +90,8 @@ paso. Nunca encadenes varias acciones dando por hecho el resultado.
 
 ## 7. DWEC tiene dos capas (no las rompas)
 
-`Desarrollo web en entorno cliente` = monolito de teoría (`DesarrolloWebEnEntornoCliente.md`) +
-notas por criterio (`DWEC-1.1.md`…`DWEC-1.6.md`).
+`2º-Curso/Teoria/Desarrollo web en entorno cliente/` = monolito de teoría
+(`DesarrolloWebEnEntornoCliente.md`) + notas por criterio (`DWEC-1.1.md`…`DWEC-1.6.md`).
 
 - **No es duplicado, es material complementario. No borres el monolito.**
 - Solo el monolito tiene `## 1. Teoría`; solo las per-unit tienen `Para el examen`, `Vocabulario`

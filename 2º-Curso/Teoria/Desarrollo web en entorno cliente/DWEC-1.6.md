@@ -411,9 +411,9 @@ muestre en texto completo. El archivo actual está truncado (ver §4).
 ---
 
 > **Ver también:**
-> [`DWEC-1.2.md`](../1.2.%20Capacidades%20y%20mecanismos%20de%20ejecuci%C3%B3n%20de%20c%C3%B3digo%20de%20los%20navegadores%20Web/DWEC-1.2.md)
+> [`DWEC-1.2.md`](DWEC-1.2.md)
 > (los paneles **Elements**, **Performance** y **Application** que se mencionan en §1.6.D), y
-> [`DWEC-1.5.md`](../1.5.%20Verificaci%C3%B3n%20de%20los%20mecanismos%20de%20integraci%C3%B3n%20de%20los%20lenguajes%20de%20marcas%20con%20los%20lenguajes%20de%20programaci%C3%B3n%20de%20clientes%20Web/DWEC-1.5.md)
+> [`DWEC-1.5.md`](DWEC-1.5.md)
 > (la estructura de carpetas en la que trabaja Live Server).
 >
 > **Nota:** la actividad de los apartados 1.2 y 1.4 se puede comprobar con estas herramientas:

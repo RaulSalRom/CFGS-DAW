@@ -475,9 +475,9 @@ document.getElementById("btn").addEventListener("click", function () {
 ---
 
 > **Ver también:**
-> [`DWEC-1.2.md`](../1.2.%20Capacidades%20y%20mecanismos%20de%20ejecuci%C3%B3n%20de%20c%C3%B3digo%20de%20los%20navegadores%20Web/DWEC-1.2.md)
+> [`DWEC-1.2.md`](DWEC-1.2.md)
 > (apartado 1.2.C, el aviso de "cuidado con los scripts" que detiene la lectura del HTML) y
-> [`DWEC-1.6.md`](../1.6.%20Reconocimiento%20y%20evaluaci%C3%B3n%20de%20las%20herramientas%20de%20programaci%C3%B3n%20y%20prueba%20sobre%20clientes%20Web/DWEC-1.6.md)
+> [`DWEC-1.6.md`](DWEC-1.6.md)
 > (las extensiones Live Server y Quokka.js que se usan con esta estructura).
 >
 > **Continuidad:** este criterio es la bisagra de la asignatura: conecta la **estructura HTML**

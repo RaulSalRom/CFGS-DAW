@@ -451,7 +451,7 @@ costosas:
 
 ---
 
-> **Ver también:** [`ejercicioConsolidacion.md`](../1.3. Identificación y caracterización de los principales lenguajes relacionados con la programación de clientes Web/ejercicioConsolidacion.md)
+> **Ver también:** [[DWEC-1.3-Consolidacion|ejercicioConsolidacion.md]]
 > (el análisis comparativo de frameworks aplica el DOM Virtual descrito en el apartado de reflow).
 >
 > **Continuidad:** el criterio 1.1 (DWEC-1.1) explica **dónde** se ejecuta este código;

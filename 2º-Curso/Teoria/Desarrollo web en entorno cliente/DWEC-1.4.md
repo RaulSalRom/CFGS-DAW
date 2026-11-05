@@ -135,7 +135,7 @@ origen histórico, son lenguajes con filosofías opuestas:
   directamente en el navegador y **orientado a eventos**.
 
 Desarrollo completo de la comparación en
-[`ejercicio5-6.md`](./ejercicio5-6.md).
+[[DWEC-1.4-Ejercicios-5-6|ejercicio5-6.md]].
 
 ### 1.4.E El objeto `Date` en JavaScript
 
@@ -399,7 +399,7 @@ funcione tanto en Node como en el navegador).
 
 > *¿En qué se diferencia técnicamente JavaScript de Java?*
 
-→ Solución: [`ejercicio5-6.md`](./ejercicio5-6.md) (primer apartado del archivo).
+→ Solución: [[DWEC-1.4-Ejercicios-5-6|ejercicio5-6.md]] (primer apartado del archivo).
 
 Incluye una **tabla de 10 características** (paradigma, traducción, entorno, ejecución autónoma,
 detección de errores, conversión de tipos, encapsulación, concurrencia, curva de aprendizaje y
@@ -412,7 +412,7 @@ ejemplo mínimo), la **diferencia conceptual de fondo** y una **frase resumen**:
 
 > *Describe las ventajas más importantes de usar JavaScript en el desarrollo web moderno.*
 
-→ Solución: [`ejercicio5-6.md`](./ejercicio5-6.md) (segundo apartado).
+→ Solución: [[DWEC-1.4-Ejercicios-5-6|ejercicio5-6.md]] (segundo apartado).
 
 Diez ventajas desarrolladas: ser el único lenguaje que se ejecuta en el navegador, ejecutarse en
 el cliente (inmediatez y latencia mínima), posibilidad de SPA sin parpadeos, portabilidad
@@ -660,7 +660,7 @@ if (!(fecha instanceof Date) || Number.isNaN(fecha.getTime())) throw new TypeErr
 
 ---
 
-> **Ver también en esta carpeta:** [`ejercicio5-6.md`](./ejercicio5-6.md) (desarrollo completo de
+> **Ver también:** [[DWEC-1.4-Ejercicios-5-6|ejercicio5-6.md]] (desarrollo completo de
 > los ejercicios 5 y 6, que no se repiten aquí).
 >
 > **Continuidad:** el criterio 1.3 (DWEC-1.3) recorre la historia de JavaScript y sus frameworks;

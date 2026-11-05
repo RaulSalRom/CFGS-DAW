@@ -9,29 +9,38 @@ Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado supe
 ```
 CFGS-DAW/
 ├── 1º-Curso(kursaal)/
-│   ├── Base de datos/           # SQL, MySQL, MER, procedimientos y Docker
-│   │   └── Teoría/              # Temas 3 a 6 y resumen completo
-│   ├── Digitalizacion/          # Ciberseguridad, cloud, Big Data e IA
-│   ├── Entorno de desarrollo/   # Testing, calidad, SCRUM, DBML
-│   ├── IPE/                     # Familias profesionales, empleo, PRL
-│   ├── Lenguaje de marcas/      # HTML, CSS, pseudo-clases
-│   ├── Programacion/            # Java, POO, estructuras de datos
-│   │   ├── Teoria/Unit1…Unit6/  # Teoría por unidades
-│   │   └── Java/eclipse-workspace/  # Proyectos Eclipse
-│   ├── Sistemas Informaticos/   # Linux, redes, bash scripting
-│   └── Sostenibilidad/          # Economía circular, RAEE, IA ética
+│   ├── Teoria/                  # Notas de teoría .md, por asignatura
+│   │   ├── Base de datos/
+│   │   ├── Digitalizacion/
+│   │   ├── Entorno de desarrollo/
+│   │   ├── IPE/
+│   │   ├── Lenguaje de marcas/
+│   │   ├── Programacion/
+│   │   ├── Sistemas Informaticos/
+│   │   └── Sostenibilidad/
+│   ├── Base de datos/           # PDFs, material y ejercicios
+│   ├── Digitalizacion/
+│   ├── Entorno de desarrollo/
+│   ├── IPE/
+│   ├── Lenguaje de marcas/
+│   ├── Programacion/            # Incluye Java/eclipse-workspace
+│   ├── Sistemas Informaticos/
+│   └── Sostenibilidad/
 │
 ├── 2º-Curso/
-│   ├── Desarrollo web en entorno cliente/
-│   │   ├── DesarrolloWebEnEntornoCliente.md  # TEORÍA completa de los TEMAS 1 y 2
-│   │   ├── Unidad 1…/1.x. …/DWEC-1.x.md      # Nota de EXAMEN de cada criterio
-│   │   └── Unidad 2…/2.x. …/DWEC-2.x.md      #   + ejercicios resueltos en su carpeta
-│   ├── Desarrollo web en entorno servidor/  # PHP, formularios, sesiones, UT1–UT3
-│   ├── Despliegue de aplicaciones web/      # Servidores, contenedores, CI/CD
-│   ├── Diseño de interfaces web/            # Principios de diseño, color, HTML y CSS
+│   ├── Teoria/                  # Notas de teoría .md, por asignatura
+│   │   ├── Desarrollo web en entorno cliente/
+│   │   ├── Desarrollo web en entorno servidor/
+│   │   ├── Despliegue de aplicaciones web/
+│   │   ├── Diseño de interfaces web/
+│   │   └── Optativa/
+│   ├── Desarrollo web en entorno cliente/   # PDFs y ejercicios
+│   ├── Desarrollo web en entorno servidor/  # PDFs y ejercicios
+│   ├── Despliegue de aplicaciones web/      # PDFs y ejercicios
+│   ├── Diseño de interfaces web/            # PDFs y ejercicios
 │   ├── IPE II/                              # Orientación laboral, ofertas de empleo
 │   ├── Inglés profesional/                  # Inglés técnico
-│   ├── Optativa/                            # Gestores de contenido (CMS y CDMON)
+│   ├── Optativa/                            # PDFs y prácticas
 │   └── Proyecto intermodular/               # Proyecto final del ciclo
 │
 ├── 📚 Indice General.md         # Índice maestro del vault
@@ -43,8 +52,9 @@ CFGS-DAW/
 ```
 
 > **Cada asignatura tiene tres capas:** la carpeta-índice `📁 <Asignatura>.md`, los apuntes
-> completos `<Asignatura>.md` y las notas de teoría/prácticas extraídas de los PDF, que viven
-> junto a su PDF original. Todas se enlazan entre sí y con `📚 Indice General.md`.
+> completos y las notas de teoría extraídas de los PDF, que viven en `Teoria/<Asignatura>/`.
+> Los PDF originales, enunciados y ejercicios permanecen en la carpeta de la asignatura.
+> Todas se enlazan entre sí y con `📚 Indice General.md`.
 
 ---
 

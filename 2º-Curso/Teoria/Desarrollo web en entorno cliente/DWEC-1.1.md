@@ -171,7 +171,7 @@ dispositivo.
 
 ---
 
-> **Ver también en esta carpeta:** [`cuestionario.md`](cuestionario.md)
+> **Ver también:** [[DWEC-1.1-Cuestionario|cuestionario.md]]
 >
 > **Continuidad:** el criterio 1.2 (DWEC-1.2) explica **qué son** los navegadores y sus
 > motores, que es el escenario donde se ejecuta todo lo descrito aquí.

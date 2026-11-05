@@ -130,7 +130,7 @@ nativo (*Vanilla JS*), sino apoyándose en un framework o librería avanzada.
   de producto, una barra de navegación). Cada componente gestiona su propio **estado (*state*)**.
 - **El DOM Virtual (Virtual DOM):**
   - Manipular el DOM nativo es una **operación lenta** porque obliga al motor a recalcular
-    geometrías y repintar píxeles (ver el apartado 1.2.I de [DWEC-1.2](../1.2.%20Capacidades%20y%20mecanismos%20de%20ejecuci%C3%B3n%20de%20c%C3%B3digo%20de%20los%20navegadores%20Web/DWEC-1.2.md)).
+    geometrías y repintar píxeles (ver el apartado 1.2.I de [DWEC-1.2](DWEC-1.2.md)).
   - React mantiene en **memoria RAM una copia ligera del DOM**. Cuando los datos cambian,
     calcula las **diferencias mínimas** entre el DOM virtual y el real
     (**reconciliación**), actualizando **únicamente los nodos estrictamente necesarios**.
@@ -260,7 +260,7 @@ contexto, sino que lo hereda del ámbito superior. Esto es lo que hace que, en u
 > *Investiga cómo se comporta una hoja de cálculo cuando modificas una celda y las celdas
 > dependientes se recalculan de inmediato.*
 
-**Desarrollo completo en** [`ejercicioConsolidacion.md`](./ejercicioConsolidacion.md).
+**Desarrollo completo en** [[DWEC-1.3-Consolidacion|ejercicioConsolidacion.md]].
 
 **Idea clave:** la programación reactiva es un paradigma en el que **se declaran flujos de datos
 y sus dependencias**, y el propio sistema **propaga automáticamente los cambios** por toda esa
@@ -284,7 +284,7 @@ manualmente** cada elemento afectado.
 > 3. *Una aplicación interactiva que requiera renderizado ultra rápido de miles de productos con
 >    cambios constantes en pantalla.*
 
-**Tabla de decisión razonada completa en** [`ejercicioConsolidacion.md`](./ejercicioConsolidacion.md),
+**Tabla de decisión razonada completa en** [[DWEC-1.3-Consolidacion|ejercicioConsolidacion.md]],
 que cita literalmente los apartados A, C y D de este tema como justificación.
 
 ### Actividad adicional
@@ -372,7 +372,7 @@ afirmaciones del tema que las sostienen:
    El uso de `XMLHttpRequest` permite **actualizar páginas sin recargarlas por completo**. Eso
    convirtió a JavaScript de un simple adorno en una herramienta de aplicaciones completas
    (Google Maps, Gmail) y es el antecedente directo de las SPA descritas en
-   [DWEC-1.1](../1.1.%20Caracterizaci%C3%B3n%20y%20diferenciaci%C3%B3n%20de%20los%20modelos%20de%20ejecuci%C3%B3n%20de%20c%C3%B3digo%20en%20el%20servidor%20y%20en%20el%20cliente%20Web/DWEC-1.1.md#114-de-la-web-tradicional-a-la-web-moderna).
+   [DWEC-1.1](DWEC-1.1.md#114-de-la-web-tradicional-a-la-web-moderna).
 
 6. **¿Por qué se crearon jQuery, Prototype y MooTools?**
    Por la **fragmentación entre navegadores**: su propósito era **unificar las APIs del DOM** y
