@@ -1,6 +1,6 @@
 # Optativa · UD1 — Introducción al CMS y CDMON (Teoría Completa)
 
-> 🏠 [[📚 Indice General]] ▸ [[Optativa|Optativa · Gestores de Contenido]] │ 📄 Fuente: `UD1. Introducción al CMS y CDMON.pdf` (Daniel Ocaña Aguilera) │ ➡️ [[Optativa-UD1-Practica1]] · [[Optativa-UD2-Teoria]]
+> 🏠 [[📚 Indice General]] ▸ [[Optativa|Optativa · Gestores de Contenido]] │ 📄 Fuente: `UD1. Introducción al CMS y CDMON.pdf` (Daniel Ocaña Aguilera) │ ➡️ [[Optativa-UD2-Teoria]]
 
 ## Índice
 - [1.1. ¿Qué vamos a aprender?](#11-qué-vamos-a-aprender)
@@ -196,7 +196,6 @@ Los **Permalinks** (*enlaces permanentes*) definen la estructura de las URLs def
 
 ## 🔗 Relacionado
 - [[Optativa|Optativa · Gestores de Contenido (Resumen rápido)]]
-- [[Optativa-UD1-Practica1|UD1 · Práctica 1: Instalación de WordPress en CDMON con Astra y Elementor]]
 - [[Optativa-UD2-Teoria|UD2 · El Panel de Administración de WordPress]]
 - [[UT1|UT1 · Arquitecturas de desarrollo web (DWES)]]
 - [[Despliegue-U1-Teoria|Unidad 1 · Implantación de Arquitecturas Web y CMS (Despliegue)]]

@@ -44,9 +44,6 @@
 - [[ManualLibrerias-v2|Manual de librerías (v2)]]
 - [[Resumen_Programación_TEMA_4|Resumen · Tema 4]]
 - [[notas_programacion|Notas de teoría]]
-- [[explicacion_codigo|Explicación de código]]
-- [[PLAN_PROYECTO|Plan del proyecto]]
-- [[MEMORIA_PROYECTO_ACTUALIZADA|Memoria del proyecto]]
 
 ### [[📁 Lenguaje de marcas|Lenguaje de marcas]]
 - [[Lenguaje de marcas|Apuntes completos]]
@@ -90,32 +87,22 @@
 - [[SI-Tema2|Estructura Sistema]]
 - [[SI-Tema3|Redes]]
 - [[SI-Tema4|Scripts Bash]]
-- [[SI-Bloque1-Infraestructura-Medios-Transmision|Bloque 1 · Infraestructura y medios de transmisión]]
 - [[SI-Conexion-Gestion-Recursos-Red|Conexión y gestión de recursos en red]]
 - [[Comandos_de_Linux_muy_usados|Comandos de Linux más usados]]
 - [[Curso_desarrollado_script_1ª_Parte_V_1_4|Curso desarrollado · Script 1ª parte]]
 - [[RESUMEN_DE_L_TEMA__SISTEMAS_INFORMÁTICOS_EN_RED|Resumen · Sistemas informáticos en red]]
 - [[Tema_4_Adaptación-_V-02|Tema 4 · Adaptación (v02)]]
-- [[Soluciones_Relalcion2_ejercicios_FLSM|Soluciones · Relación 2 de ejercicios]]
 
 ### [[📁 Digitalizacion|Digitalización]]
 - [[Digitalizacion|Apuntes completos]]
 - [[Dig-Tema1|Ciberseguridad Hotelera]]
-- [[DIG-Reto-U4-Nube-EcoModa|Reto U4 · Sistemas basados en la nube]]
-- [[DIG-Reto-U5-Ciberseguridad-THD|Reto U5 · Aplicaciones de las THD y ciberseguridad]]
-- [[Tema5_Reto_Ciberseguridad_Hoteles|Solución · Ciberseguridad en el sector hotelero]]
-- [[DIG-Reto-U6-BigData-Turismo-Comercio|Reto U6 · Big Data en turismo y comercio]]
 - [[DIG-Transformacion-Digital-BigData-IA|Transformación Digital · Big Data e IA]]
-- [[DIG-Entrega-Tercer-Trimestre|Entrega 3.er trimestre]]
 
 ### [[📁 Sostenibilidad|Sostenibilidad]]
 - [[Sostenibilidad|Apuntes completos]]
 - [[Sos-Tema1|Introducción]]
 - [[Sos-Tema2|Transición Ecológica]]
-- [[ACTIVIDAD_IA_ETICA_COMPLETA|Actividad · IA ética]]
 - [[SOS-Impacto-Digital-Portatil|El lado B de tu código]]
-- [[SOS-Residuo-Cero-ReCode-ReCycle|Re-Code & Re-Cycle]]
-- [[SOS-Informe-Mineria-Urbana|Informe de sostenibilidad y minería urbana]]
 
 ---
 
@@ -135,20 +122,11 @@
 - [[DWEC-2.5]]
 - [[DWEC-2.6]]
 - [[DWEC-2.7]]
-- **Ejercicios**
-    - [[DWEC-1.1-Cuestionario|Cuestionario · 1.1]]
-    - [[DWEC-1.3-Consolidacion|Ejercicio de consolidación · 1.3]]
-    - [[DWEC-1.4-Ejercicios-5-6|Ejercicios 5-6 · 1.4]]
-    - [[DWEC-2.2-Ejercicios|Ejercicios resueltos · 2.2]]
-    - [[DWEC-2.3-Ejercicios|Ejercicios resueltos · 2.3]]
-    - [[DWEC-2.4-Ejercicios|Ejercicios resueltos · 2.4]]
-    - [[DWEC-2.6-Ejercicios|Ejercicios resueltos · 2.6]]
 
 ### [[DesarrolloWebEnEntornoServidor|DWES]]
 - [[UT1|UT1 · Arquitecturas de desarrollo web]]
 - [[UT2|UT2 · Lenguaje PHP. Inserción de código en páginas web]]
 - [[UT3|UT3 · Estructuras de control, arrays y formularios]]
-- [[DWES-UT3.3-Soluciones|UT3.3 · Soluciones de funciones y excepciones]]
 
 ### [[DiseñoDeInterfacesWeb|Diseño de interfaces web (DIWEB)]]
 - [[DIWEB-T0-Resumen-Introduccion|Tema 0 · Introducción]]
@@ -162,29 +140,16 @@
 
 ### [[DespliegueDeAplicacionesWeb|Despliegue de aplicaciones web]]
 - [[Despliegue-U1-Teoria|U1 · Teoría]]
-- [[Despliegue-U1-Actividad1|U1 · Actividad 1]]
-- [[Despliegue-U1-Actividad2-Tomcat|U1 · Actividad 2 (Tomcat)]]
-- [[Despliegue-U1-Tarea1|U1 · Tarea 1]]
-- [[Despliegue-U1-Tarea2|U1 · Tarea 2]]
 
 ### [[IPE2|IPE II]]
-- [[IPE2-UD1-Tarea1|UD1 · Tarea 1: Búsqueda en portales de empleo]]
-- [[IPE2-UD3-Tarea1-Equipo-Emprendedor|UD3 · Tarea 1: El equipo emprendedor]]
-- [[IPE2-UD3-Tarea2-Cliente-Idea-Negocio|UD3 · Tarea 2: Cliente, idea de negocio y valores]]
 
 ### [[InglesProfesional|Inglés profesional]]
-- [[Ingles-Prueba-Inicial|Prueba inicial]]
-- [[Ingles-U1-Review-Worksheet|Unit 1 · Review Worksheet]]
-- [[Ingles-U1-Writing-Project-Status|Unit 1 · Writing: Project Status]]
 
 ### [[Optativa|Optativa · Gestores de contenido]]
 - [[Optativa-UD1-Teoria|UD1 · Introducción al CMS y CDMON]]
-- [[Optativa-UD1-Practica1|UD1 · Práctica 1]]
 - [[Optativa-UD2-Teoria|UD2 · El panel de administración]]
-- [[Optativa-UD2-Practica2|UD2 · Práctica 2]]
 
 ### [[ProyectoIntermodular|Proyecto intermodular]]
-- [[Proyecto-Hito1-Essential|Hito 1 · Essential]]
 
 ---
 
@@ -195,7 +160,7 @@
 - **Sintaxis de programación:** [[DWEC-2.2]]–[[DWEC-2.6]] ↔ [[UT2]] · [[UT3]] ↔ [[📁 Programacion|Programación]]
 - **Docker:** [[Docker para Base de Datos]] ↔ [[DespliegueDeAplicacionesWeb]]
 - **Redes y servidores:** [[SI-Conexion-Gestion-Recursos-Red]] ↔ [[DespliegueDeAplicacionesWeb]]
-- **Datos y Big Data:** [[DIG-Reto-U6-BigData-Turismo-Comercio]] ↔ [[Base de datos]]
+- **Datos y Big Data:** [[DIG-Transformacion-Digital-BigData-IA]] ↔ [[Base de datos]]
 - **Integrador:** [[ProyectoIntermodular]]
 
 ---
@@ -204,13 +169,3 @@
 
 #asignatura #bd #programacion #html #css #java #entorno #ipe #sistemas #digitalizacion #sostenibilidad
 
-## 📊 Progreso
-
-- [x] Base de datos
-- [x] Programación
-- [x] Lenguaje de marcas
-- [x] Entorno de desarrollo
-- [x] IPE
-- [x] Sistemas Informáticos
-- [x] Digitalización
-- [x] Sostenibilidad

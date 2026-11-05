@@ -1,6 +1,6 @@
 # DIG · Transformación Digital: Big Data e IA (Next & +tech)
 
-> 🏠 [[📚 Indice General]] ▸ [[Digitalizacion|Digitalización]] │ 📄 Fuente: `Transformación Digital_ Big Data e IA.pdf` (13 diapositivas, OCR) │ ➡️ [[DIG-Reto-U6-BigData-Turismo-Comercio|Reto U6 · Big Data]] · [[DIG-Entrega-Tercer-Trimestre|Entrega 3.er trimestre]]
+> 🏠 [[📚 Indice General]] ▸ [[Digitalizacion|Digitalización]] │ 📄 Fuente: `Transformación Digital_ Big Data e IA.pdf` (13 diapositivas, OCR)
 
 ## 1. Idea general
 
@@ -74,8 +74,7 @@ La integración de la IA en el desarrollo de software tiene un impacto directo d
 
 ## 🔗 Relacionado
 - [[Digitalizacion|Digitalización (Índice)]]
-- [[DIG-Reto-U6-BigData-Turismo-Comercio|Reto U6 · Big Data aplicado al turismo y al comercio]]
-- [[DIG-Entrega-Tercer-Trimestre|Entrega 3.er trimestre · Estrategia conjunta]]
-- [[DIG-Reto-U5-Ciberseguridad-THD|Reto U5 · Ciberseguridad y THD]]
+- [[Dig-Tema1|Tema 1 · Ciberseguridad en el sector hotelero]]
+- [[Base de datos|Base de Datos]]
 
 🏷️ #digitalizacion #bigdata #ia #transformaciondigital #ciberseguridad #1daw

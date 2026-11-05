@@ -1,6 +1,6 @@
 # Optativa · UD2 — El Panel de Administración de WordPress (Teoría Completa)
 
-> 🏠 [[📚 Indice General]] ▸ [[Optativa|Optativa · Gestores de Contenido]] │ 📄 Fuente: `UD2. El panel de administración.pdf` (Daniel Ocaña Aguilera) │ ⬅️ [[Optativa-UD1-Teoria]] · [[Optativa-UD2-Practica2]] ➡️
+> 🏠 [[📚 Indice General]] ▸ [[Optativa|Optativa · Gestores de Contenido]] │ 📄 Fuente: `UD2. El panel de administración.pdf` (Daniel Ocaña Aguilera) │ ⬅️ [[Optativa-UD1-Teoria]]
 
 ## Índice
 - [2.1. ¿Qué vamos a aprender?](#21-qué-vamos-a-aprender)
@@ -173,7 +173,5 @@ WordPress incluye **6 roles predefinidos** ordenados de mayor a menor privilegio
 ## 🔗 Relacionado
 - [[Optativa|Optativa · Gestores de Contenido (Índice)]]
 - [[Optativa-UD1-Teoria|UD1 · Introducción al CMS y CDMON (Teoría)]]
-- [[Optativa-UD1-Practica1|UD1 · Práctica 1: Instalación en CDMON]]
-- [[Optativa-UD2-Practica2|UD2 · Práctica 2: Configuración del Panel y Roles en TechRevista]]
 
 🏷️ #optativa #ud2 #wordpress #usuarios #roles #seguridad #cms #2daw

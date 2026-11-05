@@ -46,10 +46,6 @@ CFGS-DAW/
 > completos `<Asignatura>.md` y las notas de teoría/prácticas extraídas de los PDF, que viven
 > junto a su PDF original. Todas se enlazan entre sí y con `📚 Indice General.md`.
 
-> **DWEC tiene dos capas.** `DesarrolloWebEnEntornoCliente.md` es la teoría completa de los
-> TEMAS 1 y 2. Las notas `DWEC-x.y.md` son la capa de examen de cada criterio, con sus
-> ejercicios en la misma carpeta. Cada nota enlaza a su apartado del monolito y viceversa.
-
 ---
 
 ## Asignaturas de primero

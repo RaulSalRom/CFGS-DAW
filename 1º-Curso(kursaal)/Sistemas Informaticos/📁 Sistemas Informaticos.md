@@ -15,7 +15,6 @@
 
 ### 2.º trimestre
 
-- [[SI-Bloque1-Infraestructura-Medios-Transmision|Bloque 1 · Infraestructura y medios de transmisión]] - Tarea «El esqueleto de la red»
 - [[Comandos_de_Linux_muy_usados|Comandos de Linux más usados]] - Chuleta de terminal
 - [[Curso_desarrollado_script_1ª_Parte_V_1_4|Curso de scripts Bash (1.ª parte)]] - Guion de shell
 - [[Tema_4_Adaptación-_V-02|Tema 4 · Adaptación]] - Material de clase

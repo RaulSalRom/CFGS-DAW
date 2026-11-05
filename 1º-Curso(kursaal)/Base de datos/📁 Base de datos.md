@@ -29,4 +29,4 @@
 
 ## 📌 Apuntes Relacionados
 - [[SI-Tema3|Redes]] - Para configuración de servidores de BD
-- [[DIG-Reto-U6-BigData-Turismo-Comercio|Big Data]] - Análisis de datos a gran escala
+- [[Digitalizacion|Digitalización]] - Análisis de datos a gran escala

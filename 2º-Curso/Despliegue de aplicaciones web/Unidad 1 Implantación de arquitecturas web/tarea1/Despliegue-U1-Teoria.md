@@ -1,6 +1,6 @@
 # Despliegue · Unidad 1 — Implantación de Arquitecturas Web (Teoría Completa)
 
-> 🏠 [[📚 Indice General]] ▸ [[DespliegueDeAplicacionesWeb|Despliegue de Aplicaciones Web]] │ 📄 Fuente: `Implantación_de_arquitecturas_web..pdf` │ ➡️ [[Despliegue-U1-Tarea1|Tarea 1 (Cuestionario 1)]] · [[Despliegue-U1-Tarea2|Tarea 2 (Cuestionario 2)]]
+> 🏠 [[📚 Indice General]] ▸ [[DespliegueDeAplicacionesWeb|Despliegue de Aplicaciones Web]] │ 📄 Fuente: `Implantación_de_arquitecturas_web..pdf`
 
 ## Índice
 - [1. Aspectos generales de arquitecturas web](#1-aspectos-generales-de-arquitecturas-web)
@@ -293,10 +293,6 @@ Es un documento **XML** declarativo que describe la configuración de despliegue
 
 ## 🔗 Relacionado
 - [[DespliegueDeAplicacionesWeb|Despliegue de Aplicaciones Web (Tomcat en Docker)]]
-- [[Despliegue-U1-Tarea1|Tarea 1 · Cuestionario de Investigación de Arquitecturas Web]]
-- [[Despliegue-U1-Tarea2|Tarea 2 · Cuestionario 2 de Arquitecturas, Apache y Tomcat]]
-- [[Despliegue-U1-Actividad1|Actividad 1 · Instalación de Apache con XAMPP]]
-- [[Despliegue-U1-Actividad2-Tomcat|Actividad 2 · Instalación y Comprobación de Tomcat]]
 - [[UT1|UT1 · Arquitecturas de desarrollo web (DWES)]]
 - [[DWEC-1.1|Modelos de ejecución Cliente/Servidor (DWEC)]]
 - [[DIWEB-T2-Arquitectura-Cliente-Servidor|Arquitectura Cliente-Servidor (DIWEB)]]

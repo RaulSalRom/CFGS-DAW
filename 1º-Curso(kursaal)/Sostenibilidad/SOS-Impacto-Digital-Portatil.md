@@ -1,6 +1,6 @@
 # SOS · El lado B de tu código: lo que pesa (literalmente) tu portátil
 
-> 🏠 [[📚 Indice General]] ▸ [[Sostenibilidad|Sostenibilidad]] │ 📄 Fuente: `Impacto_Digital_Portatil.pdf` (10 págs.) │ ➡️ [[SOS-Residuo-Cero-ReCode-ReCycle|Re-Code & Re-Cycle]] · [[SOS-Informe-Mineria-Urbana|Minería urbana]]
+> 🏠 [[📚 Indice General]] ▸ [[Sostenibilidad|Sostenibilidad]] │ 📄 Fuente: `Impacto_Digital_Portatil.pdf` (10 págs.)
 
 ## 1. Introducción
 
@@ -74,9 +74,8 @@ Informes sobre **Green Computing**, *e-waste* y consumo de hardware; vídeos y d
 
 ## 🔗 Relacionado
 - [[Sostenibilidad|Sostenibilidad (Índice)]]
-- [[SOS-Residuo-Cero-ReCode-ReCycle|Re-Code & Re-Cycle: del código eficiente al rescate del hardware]]
-- [[SOS-Informe-Mineria-Urbana|Informe de sostenibilidad y minería urbana]]
 - [[Sos-Tema1|Tema 1 · Introducción a la sostenibilidad]]
 - [[Sos-Tema2|Tema 2 · Transición Ecológica]]
+- [[SI-Conexion-Gestion-Recursos-Red|SI · Infraestructura y hardware de red]]
 
 🏷️ #sostenibilidad #hardware #huella #greencomputing #ewaste #1daw

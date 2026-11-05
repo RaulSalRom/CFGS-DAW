@@ -1,7 +1,7 @@
 # Unidad 1: Introduccion al CMS y CDMON
 
 > [!info] Índice de la optativa
-> [[Optativa-UD1-Teoria|UD1 · Teoría]] · [[Optativa-UD1-Practica1|UD1 · Práctica 1]] · [[Optativa-UD2-Teoria|UD2 · Teoría]] · [[Optativa-UD2-Practica2|UD2 · Práctica 2]]
+> [[Optativa-UD1-Teoria|UD1 · Teoría]] · [[Optativa-UD2-Teoria|UD2 · Teoría]]
 
 ## 1.1 ¿Que es un CMS?
 Un CMS es una aplicacion web que permite la creacion, la gestion y la modificacion de contenido digital sin necesidad de tener conocimientos tecnicos especializados en programacion.

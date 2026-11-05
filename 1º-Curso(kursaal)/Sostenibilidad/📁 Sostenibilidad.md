@@ -13,12 +13,10 @@
 
 - [[ACTIVIDAD_IA_ETICA_COMPLETA|Actividad · IA ética]] - Reflexión sobre inteligencia artificial
 - [[SOS-Impacto-Digital-Portatil|El lado B de tu código]] - Impacto físico del trabajo digital
-- [[SOS-Residuo-Cero-ReCode-ReCycle|Re-Code & Re-Cycle]] - Reto final de economía circular
-- [[SOS-Informe-Mineria-Urbana|Informe de sostenibilidad y minería urbana]] - Análisis técnico RAEE
 
 ## 🏷️ Tags
 #asignatura #sostenibilidad #medioambiente #raee
 
 ## 📌 Apuntes Relacionados
 - [[Sistemas Informaticos|Sistemas Informáticos]] - Para eficiencia energética
-- [[DIG-Reto-U6-BigData-Turismo-Comercio|Digitalización]] - Impacto del Big Data
+- [[Digitalizacion|Digitalización]] - Impacto del Big Data

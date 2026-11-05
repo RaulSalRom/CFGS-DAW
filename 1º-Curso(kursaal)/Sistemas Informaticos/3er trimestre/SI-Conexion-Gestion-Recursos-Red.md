@@ -1,6 +1,6 @@
 # SI · Conexión y Gestión de Recursos en Red
 
-> 🏠 [[📚 Indice General]] ▸ [[Sistemas Informaticos|Sistemas Informáticos]] │ 📄 Fuente: `Conexión y gestión de recursos en red.pdf` (31 págs.) │ ➡️ [[SI-Tema3|Tema 3 · Redes]] · [[SI-Bloque1-Infraestructura-Medios-Transmision|Bloque 1 · Infraestructura]]
+> 🏠 [[📚 Indice General]] ▸ [[Sistemas Informaticos|Sistemas Informáticos]] │ 📄 Fuente: `Conexión y gestión de recursos en red.pdf` (31 págs.) │ ➡️ [[SI-Tema3|Tema 3 · Redes]]
 
 ## Índice
 - [1. Seguridad en redes](#1-seguridad-en-redes)
@@ -469,7 +469,6 @@ docker run httpd
 ## 🔗 Relacionado
 - [[Sistemas Informaticos|Sistemas Informáticos (Índice)]]
 - [[SI-Tema3|Tema 3 · Redes]]
-- [[SI-Bloque1-Infraestructura-Medios-Transmision|Bloque 1 · Infraestructura y medios de transmisión]]
 - [[SI-Tema4|Tema 4 · Scripts Bash]]
 - [[DespliegueDeAplicacionesWeb|Despliegue de Aplicaciones Web]]
 - [[Docker para Base de Datos|Docker para Base de Datos]]
