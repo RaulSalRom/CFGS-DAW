@@ -9,32 +9,29 @@ Repositorio de apuntes, ejercicios y proyectos del ciclo formativo de grado supe
 ```
 CFGS-DAW/
 ├── 1º-Curso(kursaal)/
-│   ├── Base de datos/           # SQL, MySQL, procedimientos, triggers, cursores, MongoDB
-│   ├── Digitalizacion/          # Ciberseguridad, transformación digital
-│   ├── Entorno de desarrollo/   # Caja negra, caja blanca, SCRUM...
-│   ├── IPE/                     # Nominas, PRL...
-│   ├── Lenguaje de marcas/      # HTML, CSS, dbdiagram
+│   ├── Base de datos/           # SQL, MySQL, MER, procedimientos y Docker
+│   │   └── Teoría/              # Temas 3 a 6 y resumen completo
+│   ├── Digitalizacion/          # Ciberseguridad, cloud, Big Data e IA
+│   ├── Entorno de desarrollo/   # Testing, calidad, SCRUM, DBML
+│   ├── IPE/                     # Familias profesionales, empleo, PRL
+│   ├── Lenguaje de marcas/      # HTML, CSS, pseudo-clases
 │   ├── Programacion/            # Java, POO, estructuras de datos
-│   │   └── Java/eclipse-workspace/  # Proyectos Eclipse organizados por temas
+│   │   ├── Teoria/Unit1…Unit6/  # Teoría por unidades
+│   │   └── Java/eclipse-workspace/  # Proyectos Eclipse
 │   ├── Sistemas Informaticos/   # Linux, redes, bash scripting
-│   └── Sostenibilidad/          # Economía verde, medio ambiente, IA ética
+│   └── Sostenibilidad/          # Economía circular, RAEE, IA ética
 │
 ├── 2º-Curso/
 │   ├── Desarrollo web en entorno cliente/
-│   │   ├── DesarrolloWebEnEntornoCliente.md  # TEORÍA completa del TEMA 1 (criterios 1.1 a 1.6)
-│   │   ├── 1.1. .../DWEC-1.1.md              # Nota de EXAMEN de cada criterio
-│   │   ├── 1.2. .../DWEC-1.2.md              #   (actividades resueltas, errores,
-│   │   ├── 1.3. .../DWEC-1.3.md              #    "para el examen" y vocabulario)
-│   │   ├── 1.4. .../DWEC-1.4.md
-│   │   ├── 1.5. .../DWEC-1.5.md
-│   │   ├── 1.6. .../DWEC-1.6.md
-│   │   └── Prueba_inicial/
-│   ├── Desarrollo web en entorno servidor/  # PHP, formularios, sesiones, PDF del libro
+│   │   ├── DesarrolloWebEnEntornoCliente.md  # TEORÍA completa de los TEMAS 1 y 2
+│   │   ├── Unidad 1…/1.x. …/DWEC-1.x.md      # Nota de EXAMEN de cada criterio
+│   │   └── Unidad 2…/2.x. …/DWEC-2.x.md      #   + ejercicios resueltos en su carpeta
+│   ├── Desarrollo web en entorno servidor/  # PHP, formularios, sesiones, UT1–UT3
 │   ├── Despliegue de aplicaciones web/      # Servidores, contenedores, CI/CD
-│   ├── Diseño de interfaces web/            # Comunicaciones, ciclos de reloj, jerarquía de memoria
+│   ├── Diseño de interfaces web/            # Principios de diseño, color, HTML y CSS
 │   ├── IPE II/                              # Orientación laboral, ofertas de empleo
 │   ├── Inglés profesional/                  # Inglés técnico
-│   ├── Optativa/                            # Gestores de contenido (CDMON)
+│   ├── Optativa/                            # Gestores de contenido (CMS y CDMON)
 │   └── Proyecto intermodular/               # Proyecto final del ciclo
 │
 ├── 📚 Indice General.md         # Índice maestro del vault
@@ -45,9 +42,13 @@ CFGS-DAW/
 └── README.md                    # Este archivo
 ```
 
-> **DWEC tiene dos capas.** `DesarrolloWebEnEntornoCliente.md` es la teoría completa del
-> TEMA 1. Las notas `DWEC-1.x.md` son la capa de examen de cada criterio. Cada nota enlaza
-> a su apartado del monolito y viceversa.
+> **Cada asignatura tiene tres capas:** la carpeta-índice `📁 <Asignatura>.md`, los apuntes
+> completos `<Asignatura>.md` y las notas de teoría/prácticas extraídas de los PDF, que viven
+> junto a su PDF original. Todas se enlazan entre sí y con `📚 Indice General.md`.
+
+> **DWEC tiene dos capas.** `DesarrolloWebEnEntornoCliente.md` es la teoría completa de los
+> TEMAS 1 y 2. Las notas `DWEC-x.y.md` son la capa de examen de cada criterio, con sus
+> ejercicios en la misma carpeta. Cada nota enlaza a su apartado del monolito y viceversa.
 
 ---
 
@@ -88,7 +89,7 @@ CFGS-DAW/
 | Desarrollo web en entorno cliente | JavaScript, DOM, eventos, fetch, prueba inicial (HTML + JS) |
 | Desarrollo web en entorno servidor | PHP, formularios, sesiones, libro de servidor (PDF) |
 | Despliegue de aplicaciones web | Servidores web, contenedores, CI/CD |
-| Diseño de interfaces web | Comunicaciones, ciclos de reloj, jerarquía de memoria |
+| Diseño de interfaces web | Principios de diseño, teoría del color, accesibilidad, HTML y CSS |
 | IPE II | Orientación laboral, análisis de ofertas de empleo |
 | Inglés profesional | Inglés técnico aplicado al desarrollo |
 | Optativa | Gestores de contenido, UD 01 sobre CMS y CDMON |
