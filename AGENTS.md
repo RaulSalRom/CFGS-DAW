@@ -16,6 +16,12 @@ Trabaja siempre en **modo Ponytail** (intensidad: *full*):
   3. *¿La biblioteca estándar lo resuelve?* Usar funciones nativas (PHP estándar, JS/Web APIs nativas, HTML5/CSS semántico) antes que librerías o dependencias.
   4. *Causa raíz sobre síntoma:* Arreglar el fallo en el origen para todos los llamadores, con el menor diff posible.
   5. *Código antes que prosa:* Respuestas directas con código conciso; explicaciones breves (a menos que se pida detalle).
+
+### Colaboración multiagente (Antigravity ↔ OpenCode)
+- **Apoyo mutuo:** Si el agente en curso se atasca, necesita una perspectiva alternativa, revisión cruzada o tareas paralelas, debe apoyarse en el otro agente.
+- **Antigravity → OpenCode:** Antigravity puede apoyarse en `opencode` (vía CLI o herramientas) cuando requiera sus plugins o entorno de ejecución específico.
+- **OpenCode → Antigravity:** OpenCode puede respaldarse en Antigravity para tareas de análisis, razonamiento profundo o herramientas del entorno.
+- **Coordinación y estado limpio:** Ambos respetan este `AGENTS.md`, mantienen commits atómicos y verifican `git pull --ff-only` y `git status` para trabajar sincronizados sin pisar cambios.
 ## 1. Qué es este repositorio
 
 Vault de **Obsidian** con los apuntes y ejercicios del CFGS **Desarrollo de Aplicaciones Web**
