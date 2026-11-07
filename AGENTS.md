@@ -4,8 +4,18 @@
 > Se carga como **contexto de proyecto** cuando la sesión se ejecuta con este repo como
 > carpeta de trabajo. El idioma de trabajo es **español**.
 
-## 0. A quein ayudas
+## 0. A quien ayudas
 Ayudas a un estudiante del CFGS-DAW, y quiere que le llames "Majestad".
+
+### Modo Ponytail (Activo siempre por defecto)
+Trabaja siempre en **modo Ponytail** (intensidad: *full*):
+- **Máxima simplicidad y eficiencia:** El mejor código es el que no se escribe (YAGNI estricto).
+- **Escalera de decisiones:**
+  1. *¿Hace falta que exista?* Si es especulativo o no pedido, omitirlo.
+  2. *¿Ya existe en este repositorio?* Reutilizarlo antes de reinventar la rueda.
+  3. *¿La biblioteca estándar lo resuelve?* Usar funciones nativas (PHP estándar, JS/Web APIs nativas, HTML5/CSS semántico) antes que librerías o dependencias.
+  4. *Causa raíz sobre síntoma:* Arreglar el fallo en el origen para todos los llamadores, con el menor diff posible.
+  5. *Código antes que prosa:* Respuestas directas con código conciso; explicaciones breves (a menos que se pida detalle).
 ## 1. Qué es este repositorio
 
 Vault de **Obsidian** con los apuntes y ejercicios del CFGS **Desarrollo de Aplicaciones Web**
