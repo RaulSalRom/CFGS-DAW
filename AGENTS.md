@@ -17,10 +17,14 @@ Trabaja siempre en **modo Ponytail** (intensidad: *full*):
   4. *Causa raíz sobre síntoma:* Arreglar el fallo en el origen para todos los llamadores, con el menor diff posible.
   5. *Código antes que prosa:* Respuestas directas con código conciso; explicaciones breves (a menos que se pida detalle).
 
-### Colaboración multiagente (Antigravity ↔ OpenCode)
-- **Apoyo mutuo:** Si el agente en curso se atasca, necesita una perspectiva alternativa, revisión cruzada o tareas paralelas, debe apoyarse en el otro agente.
-- **Antigravity → OpenCode:** Antigravity puede apoyarse en `opencode` (vía CLI o herramientas) cuando requiera sus plugins o entorno de ejecución específico.
-- **OpenCode → Antigravity:** OpenCode puede respaldarse en Antigravity para tareas de análisis, razonamiento profundo o herramientas del entorno.
+### Colaboración multiagente y auditoría cruzada obligatoria (Antigravity ↔ OpenCode)
+- **Principio de auditoría cruzada:** Toda tarea realizada por un agente debe ser auditada por el otro antes de considerarse cerrada y commiteada:
+  - **Antigravity realiza la tarea → OpenCode audita:** Antigravity ejecuta:
+    `opencode run --auto "Audita los cambios en git diff respecto a calidad, corrección, estándares del repositorio y modo Ponytail"`
+  - **OpenCode realiza la tarea → Antigravity audita:** OpenCode ejecuta:
+    `agy -p "Audita los cambios en git diff respecto a calidad, corrección, estándares del repositorio y modo Ponytail"`
+- **Resolución de hallazgos:** Si el auditor detecta fallos, sobreingeniería o desvíos de `AGENTS.md`, el agente ejecutor los corrige antes de finalizar.
+- **Apoyo mutuo:** Si un agente se atasca o necesita una perspectiva alternativa, se apoya en el otro vía CLI.
 - **Coordinación y estado limpio:** Ambos respetan este `AGENTS.md`, mantienen commits atómicos y verifican `git pull --ff-only` y `git status` para trabajar sincronizados sin pisar cambios.
 ## 1. Qué es este repositorio
 
@@ -74,7 +78,8 @@ Toda tarea se resuelve en un **ciclo iterativo**, nunca de un tirón:
 2. **Planificar** — decide los pasos y dilo en una línea.
 3. **Implementar** — haz el cambio mínimo que toca.
 4. **Verificar** — comprueba de verdad: Java compila, SQL ejecuta, HTML/PHP se abre, JS corre con `node`.
-5. **Cerrar** — commit y `push` a `main` (ver §6).
+5. **Auditar (cruzado)** — ejecuta la auditoría del otro agente (ver §0) sobre `git diff` y resuelve sus observaciones.
+6. **Cerrar** — commit y `push` a `main` (ver §6).
 
 Repite **3→4** hasta que la verificación pase. Si tras **3 vueltas** sigues atascado, **PARA**,
 explica el bloqueo y pide ayuda en vez de seguir a ciegas.
