@@ -122,6 +122,7 @@
 - [[DWEC-2.5]]
 - [[DWEC-2.6]]
 - [[DWEC-2.7]]
+- [[DWEC-2.8]]
 
 ### [[DesarrolloWebEnEntornoServidor|DWES]]
 - [[UT1|UT1 · Arquitecturas de desarrollo web]]
