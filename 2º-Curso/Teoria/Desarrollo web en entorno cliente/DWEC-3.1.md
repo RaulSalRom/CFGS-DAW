@@ -489,6 +489,8 @@ console.log(globalThis.miConfiguracion.apiKey);
 
 ### Actividad 3.1.1. Descifra los rangos de Math.random()
 
+> **Resuelta en** [[resolucionEjercicios]] (carpeta de la Unidad 3).
+
 Analiza detalladamente el código de las siguientes funciones de JavaScript. Para cada una de ellas, responde a dos preguntas observando su lógica matemática y las operaciones de redondeo empleadas:
 
 1. ¿Cuál es el rango exacto de números que puede generar? (Especificar el intervalo cerrado `[min, max]`).
