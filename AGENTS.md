@@ -31,6 +31,10 @@ Trabaja siempre en **modo Ponytail** (intensidad: *full*):
   en `permissions.allow`. Con eso `agy -p "..."` audita sin pedir permisos. No hace falta
   `--dangerously-skip-permissions`. Si una auditoría falla por permisos, añadir ahí la regla
   concreta, nunca un comodín.
+- **La auditoría se enseña, no se resume:** al terminar una auditoría, pega en la respuesta
+  el veredicto y los hallazgos **tal como los devuelve el auditor** (en cita o bloque de
+  código). No vale un "aprobado" de cosecha propia ni un resumen que oculte matices. Si hay
+  hallazgos, Majestad los ve **antes** de que los corrijas, no después.
 
 ## 1. Qué es este repositorio
 
@@ -112,7 +116,8 @@ Toda tarea se resuelve en un **ciclo iterativo**, nunca de un tirón:
 4. **Verificar** — comprueba de verdad, no de palabra: HTML/CSS se abre en el navegador,
    PHP se ejecuta en el servidor, Java compila, SQL ejecuta. Aquí **no hay `node`, `npm` ni
    Python** instalados: el JS se prueba en la consola del navegador (DevTools).
-5. **Auditar (cruzado)** — ejecuta la auditoría del otro agente (ver §0) sobre `git diff` y resuelve sus observaciones.
+5. **Auditar (cruzado)** — ejecuta la auditoría del otro agente (ver §0) sobre `git diff`,
+   **muestra su salida completa** en la respuesta y resuelve sus observaciones.
 6. **Cerrar** — commit y `push` a `main` (ver §6).
 
 Repite **3→4** hasta que la verificación pase. Si tras **3 vueltas** sigues atascado, **PARA**,
