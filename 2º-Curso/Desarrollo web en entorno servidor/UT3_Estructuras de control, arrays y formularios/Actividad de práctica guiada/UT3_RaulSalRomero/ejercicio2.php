@@ -1,19 +1,15 @@
 <?php
-/**
- * Práctica guiada UT3 · Ejercicio 2: uso de la librería de funciones
- * Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero (práctica individual)
- */
+// Práctica guiada UT3 · Ejercicio 2 · Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero
 
-// Enlazamos la librería de funciones (require_once evita cargarla dos veces).
 require_once 'libreria.php';
 
-// Array indexado con 5 precios iniciales.
+// 5 precios iniciales.
 $precios = [100, 250, 50, 80, 120];
 
-// Se llama sin el segundo argumento para que actúe el descuento por defecto (10 %).
+// Sin segundo argumento se aplica el 10 % por defecto.
 aplicarDescuento($precios);
 
-// Importe base para probar los dos callbacks de IVA.
+// Importe base para los callbacks de IVA.
 $importeBase = 200;
 ?>
 <!DOCTYPE html>

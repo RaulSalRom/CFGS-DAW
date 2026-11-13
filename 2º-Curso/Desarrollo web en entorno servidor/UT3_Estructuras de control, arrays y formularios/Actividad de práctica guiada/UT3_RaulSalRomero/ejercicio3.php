@@ -1,25 +1,14 @@
 <?php
-/**
- * Práctica guiada UT3 · Ejercicio 3: control de excepciones (try / catch / finally)
- * Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero (práctica individual)
- */
+// Práctica guiada UT3 · Ejercicio 3 · Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero
 
-/**
- * Valida la edad para completar un registro.
- * Lanza una excepción si el dato no es numérico o si es menor de 18 años.
- *
- * @param mixed $edad Edad recibida.
- * @return bool       true si la edad es válida.
- * @throws Exception Si el dato no es válido.
- */
+// Valida la edad; lanza excepción si no es numérica o no llega a 18.
 function validarEdadRegistro($edad) {
-    // Vacío o no numérico: el dato no sirve.
-    // El empty() lo pide el enunciado; por eso el 0 también se rechaza aquí como no válido.
+    // Vacío o no numérico (el empty() lo pide el enunciado).
     if (empty($edad) || !is_numeric($edad)) {
         throw new Exception("Error: el dato introducido no es un valor numérico válido.");
     }
 
-    // Numérico pero menor de edad.
+    // Menor de edad.
     if ($edad < 18) {
         throw new Exception("Error: debes ser mayor de edad para completar el registro.");
     }
@@ -27,7 +16,7 @@ function validarEdadRegistro($edad) {
     return true;
 }
 
-// Escenarios de prueba: válido, menor de edad, texto, vacío y válido.
+// Casos de prueba: válido, menor, texto, vacío y válido.
 $casosPrueba = [25, 15, "abc", "", 40];
 ?>
 <!DOCTYPE html>
@@ -52,14 +41,13 @@ $casosPrueba = [25, 15, "abc", "", 40];
         <?php foreach ($casosPrueba as $caso): ?>
           <?php
           try {
-              // Si la validación falla, el throw salta directamente al catch.
               validarEdadRegistro($caso);
               echo '<p class="alert alert-success py-2 mb-1">Edad [' . htmlspecialchars((string) $caso) . '] válida: registro permitido.</p>';
           } catch (Exception $e) {
-              // Capturamos el error y mostramos su mensaje.
+              // Error capturado.
               echo '<p class="alert alert-danger py-2 mb-1">' . $e->getMessage() . '</p>';
           } finally {
-              // El bloque finally se ejecuta siempre, haya error o no.
+              // Siempre se ejecuta.
               echo '<p class="text-muted small border-bottom pb-2">Comprobación finalizada</p>';
           }
           ?>

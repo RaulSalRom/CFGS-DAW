@@ -1,21 +1,15 @@
 <?php
-/**
- * Práctica guiada UT3 · Ejercicio 1: condicionales, bucles y operadores de arrays
- * Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero (práctica individual)
- */
+// Práctica guiada UT3 · Ejercicio 1 · Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero
 
-// 1) Dos inventarios asociativos: código de producto => unidades disponibles.
-// Comparten P01 (distinta cantidad) y P02 (misma cantidad); el resto de códigos es distinto.
+// Inventarios: código => unidades (P01 y P02 se repiten).
 $almacen1 = ["P01" => 10, "P02" => 3, "P03" => 0, "P04" => 20];
 $almacen2 = ["P01" => 15, "P02" => 3, "P05" => 7, "P06" => 12];
 
-// 2) Comparaciones entre arrays:
-//    ==  exige los mismos pares clave/valor, sin importar el orden.
-//    === exige además el mismo orden y el mismo tipo en claves y valores.
+// == compara pares clave/valor; === exige además mismo orden y tipo.
 $sonIguales   = ($almacen1 == $almacen2);
 $sonIdenticos = ($almacen1 === $almacen2);
 
-// 3) Unión con el operador +: en las claves repetidas gana el valor del primer array.
+// Unión con +: en claves repetidas gana el primer array.
 $stockTotal = $almacen1 + $almacen2;
 ?>
 <!DOCTYPE html>
@@ -66,7 +60,7 @@ $stockTotal = $almacen1 + $almacen2;
         <ul class="list-group list-group-flush">
           <?php foreach ($stockTotal as $codigo => $unidades): ?>
             <?php
-            // Producto agotado: no se muestra su estado.
+            // Agotado: se salta.
             if ($unidades === 0) {
                 continue;
             }

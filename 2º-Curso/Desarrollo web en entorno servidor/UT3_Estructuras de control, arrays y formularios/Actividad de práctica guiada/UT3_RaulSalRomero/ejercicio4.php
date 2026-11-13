@@ -1,28 +1,22 @@
 <?php
-/**
- * Práctica guiada UT3 · Ejercicio 4: formulario y procesamiento seguro en un solo fichero
- * Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero (práctica individual)
- */
+// Práctica guiada UT3 · Ejercicio 4 · Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero
 
-// Valores que se pintarán en el formulario (persistencia de datos).
+// Datos que se repintan en el formulario y avisos de validación.
 $nombre = "";
 $nota1  = "";
 $nota2  = "";
-
-// Mensajes de error y resultado del cálculo.
 $errores   = [];
 $resultado = null;
 
-// 2) El formulario se ha enviado si la petición es POST.
-// El operador ?? evita el aviso de clave no definida cuando no hay petición HTTP.
+// Solo se procesa si llega por POST.
 if (($_SERVER["REQUEST_METHOD"] ?? "") === "POST") {
 
-    // 3) Recogida segura de datos: nunca se accede directamente a $_POST.
+    // Recogida segura, sin tocar $_POST.
     $nombre = trim((string) filter_input(INPUT_POST, 'nombre'));
     $nota1  = trim((string) filter_input(INPUT_POST, 'nota1'));
     $nota2  = trim((string) filter_input(INPUT_POST, 'nota2'));
 
-    // 4) Validaciones.
+    // Validaciones.
     if ($nombre === "") {
         $errores[] = "El nombre no puede estar vacío.";
     }
@@ -34,7 +28,7 @@ if (($_SERVER["REQUEST_METHOD"] ?? "") === "POST") {
         $errores[] = "Las notas deben estar comprendidas entre 0 y 10.";
     }
 
-    // Sin errores: se calcula la media y la calificación textual.
+    // Media y calificación textual si no hay errores.
     if (empty($errores)) {
         $media = ((float) $nota1 + (float) $nota2) / 2;
 
@@ -77,7 +71,7 @@ if (($_SERVER["REQUEST_METHOD"] ?? "") === "POST") {
       <div class="card-body">
 
         <?php if (!empty($errores)): ?>
-          <!-- Aviso en rojo con todos los errores detectados -->
+          <!-- Aviso en rojo -->
           <div class="alert alert-danger">
             <?php foreach ($errores as $error): ?>
               <div><?= htmlspecialchars($error) ?></div>
@@ -86,7 +80,7 @@ if (($_SERVER["REQUEST_METHOD"] ?? "") === "POST") {
         <?php endif; ?>
 
         <?php if ($resultado !== null): ?>
-          <!-- Resultado del cálculo -->
+          <!-- Resultado -->
           <div class="alert alert-success">
             <p class="mb-1">
               Alumno: <strong><?= htmlspecialchars($resultado["nombre"]) ?></strong>
@@ -100,7 +94,7 @@ if (($_SERVER["REQUEST_METHOD"] ?? "") === "POST") {
           </div>
         <?php endif; ?>
 
-        <!-- 1) Formulario que se envía a sí mismo -->
+        <!-- Formulario que se envía a sí mismo -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre del alumno</label>
