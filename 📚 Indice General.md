@@ -108,7 +108,7 @@
 
 ## 📗 Asignaturas de 2º Curso
 
-### [[DesarrolloWebEnEntornoCliente|DWEC · Temas 1 y 2 (teoría completa)]]
+### [[DesarrolloWebEnEntornoCliente|DWEC · Teoría y notas por criterio]]
 - [[DWEC-1.1]]
 - [[DWEC-1.2]]
 - [[DWEC-1.3]]
@@ -123,6 +123,8 @@
 - [[DWEC-2.6]]
 - [[DWEC-2.7]]
 - [[DWEC-2.8]]
+- [[DWEC-3.1]]
+- [[DWEC-3.1.1]]
 
 ### [[DesarrolloWebEnEntornoServidor|DWES]]
 - [[UT1|UT1 · Arquitecturas de desarrollo web]]
