@@ -1,6 +1,4 @@
 <?php
-// Práctica guiada UT3 · Ejercicio 1 · Conductor: Raúl Sal Romero · Navegante: Raúl Sal Romero
-
 // Inventarios: código => unidades (P01 y P02 se repiten).
 $almacen1 = ["P01" => 10, "P02" => 3, "P03" => 0, "P04" => 20];
 $almacen2 = ["P01" => 15, "P02" => 3, "P05" => 7, "P06" => 12];
