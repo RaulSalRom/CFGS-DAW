@@ -118,7 +118,7 @@ Toda tarea se resuelve en un **ciclo iterativo**, nunca de un tirón:
    Python** instalados: el JS se prueba en la consola del navegador (DevTools).
 5. **Auditar (cruzado)** — ejecuta la auditoría del otro agente (ver §0) sobre `git diff`,
    **muestra su salida completa** en la respuesta y resuelve sus observaciones.
-6. **Cerrar** — commit y `push` a `main` (ver §6).
+6. **Cerrar** — commit sin preguntar; **`push` solo si Majestad da permiso** (ver §6).
 
 Repite **3→4** hasta que la verificación pase. Si tras **3 vueltas** sigues atascado, **PARA**,
 explica el bloqueo y pide ayuda en vez de seguir a ciegas.
@@ -137,6 +137,10 @@ paso. Nunca encadenes varias acciones dando por hecho el resultado.
 
 ## 6. Git y entrega
 
+- **Autonomía en local, permiso para publicar:** puedes crear, modificar, `git add` y
+  **commitear sin preguntar**. Pero **antes de cada `git push` pide permiso explícito a
+  Majestad** y espera su "sí". Sin permiso, el commit se queda en local y se avisa de que
+  está pendiente de subir (`git status`, `git log origin/main..main`).
 - Trabaja **directamente sobre `main`** (por ahora no se usan PRs).
 - **Antes de empezar y antes de empujar:** `git pull --ff-only` para no pisar cambios.
 - **Antes de cada commit:** revisa `git status` y `git diff` y comprueba que no entra nada
