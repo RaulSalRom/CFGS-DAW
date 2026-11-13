@@ -26,6 +26,12 @@ Trabaja siempre en **modo Ponytail** (intensidad: *full*):
 - **Resolución de hallazgos:** Si el auditor detecta fallos, sobreingeniería o desvíos de `AGENTS.md`, el agente ejecutor los corrige antes de finalizar.
 - **Apoyo mutuo:** Si un agente se atasca o necesita una perspectiva alternativa, se apoya en el otro vía CLI.
 - **Coordinación y estado limpio:** Ambos respetan este `AGENTS.md`, mantienen commits atómicos y verifican `git pull --ff-only` y `git status` para trabajar sincronizados sin pisar cambios.
+- **`agy` en headless ya está configurado:** en `C:\Users\salro\.gemini\antigravity-cli\settings.json`
+  hay reglas `command(git status)`, `command(git diff)`, `command(git log)` y `command(git show)`
+  en `permissions.allow`. Con eso `agy -p "..."` audita sin pedir permisos. No hace falta
+  `--dangerously-skip-permissions`. Si una auditoría falla por permisos, añadir ahí la regla
+  concreta, nunca un comodín.
+
 ## 1. Qué es este repositorio
 
 Vault de **Obsidian** con los apuntes y ejercicios del CFGS **Desarrollo de Aplicaciones Web**
@@ -40,7 +46,7 @@ Vault de **Obsidian** con los apuntes y ejercicios del CFGS **Desarrollo de Apli
 
 | Abrev. | Asignatura | Profesor | Contenido |
 |---|---|---|---|
-| DWEC | Desarrollo Web Entorno Cliente | Carvajal | JavaScript, DOM, eventos, `fetch` (actividades 1.1–1.6) |
+| DWEC | Desarrollo Web Entorno Cliente | Carvajal | JavaScript, DOM, eventos, `fetch` (U1–U2) y objetos predefinidos + BOM (U3) |
 | DWES | Desarrollo Web Entorno Servidor | Amado | PHP, formularios, sesiones (UT1–UT3) |
 | DIWEB | Diseño de Interfaces Web | Navarro | HTML y CSS (temas 0–2) |
 | Despliegue | Despliegue de Aplicaciones Web | Vizuete | servidores web, contenedores, CI/CD |
@@ -67,8 +73,34 @@ Stack del ciclo: Java, SQL/MySQL, HTML, CSS, JavaScript, PHP, XML, Bash, Linux, 
 - Los `README.md` de raíz documentan estructura, notas y horario.
 - La **teoría** vive en `Teoria/<Asignatura>/` dentro de cada año. Los PDF originales,
   los enunciados y los ejercicios permanecen en las carpetas de asignatura.
-- **Preferencia de consulta:** para teoría, lee primero los `.md` de `Teoria/`. Usa los PDF
-  solo si el `.md` no cubre el tema o hay que verificar el original.
+
+### 3.1. Regla de oro: `.md` primero, PDF solo si Majestad lo pide
+
+- **Por defecto trabaja siempre con los `.md`**: `Teoria/<Asignatura>/` y las notas por
+  criterio. Son la fuente de verdad del repo.
+- **No abras un PDF ni un `.docx` salvo que Majestad lo pida expresamente.** Tampoco los
+  conviertas por iniciativa propia: convertir es una tarea aparte que se autoriza.
+- Excepción única: no existe `.md` de ese contenido y hace falta para responder. Aun así,
+  dilo antes de leerlo.
+- Dato real: en `Teoria/` hay **0 PDFs** y toda la teoría está en Markdown. Los PDF que
+  quedan en las carpetas de asignatura son enunciados, exámenes, rúbricas y material del
+  profesorado, no teoría.
+
+### 3.2. Convertir un PDF a `.md` (solo cuando se pida)
+
+En este equipo no hay Python, Node ni `pdftotext` en el PATH. Procedimiento probado:
+
+1. Usar el `pdftotext` portable ya descomprimido en
+   `C:\Users\salro\AppData\Local\Temp\opencode\xpdf\xpdf-tools-win-4.06\bin64\pdftotext.exe`
+   (si falta, descargar de `https://dl.xpdfreader.com/xpdf-tools-win-4.06.zip` y descomprimir
+   con `tar.exe -xf`; siempre **fuera del repo**).
+2. Extraer con `pdftotext.exe -enc UTF-8 -layout "<pdf>" "<salida>.txt"`. Sin `-enc UTF-8`
+   las tildes y los `●` salen rotos.
+3. Transcribir a `.md` **sin inventar**: los enunciados se copian tal cual y **no se
+   resuelven** salvo que se pida.
+4. Corregir solo erratas obvias que rompan el código y dejarlas anotadas con `> [!note]`.
+5. Al terminar: verificar que los bloques de código están balanceados, que no hay `U+FFFD`
+   y enlazar la nota nueva en `📚 Indice General.md`.
 
 ## 4. Cómo tienes que trabajar (bucles)
 
@@ -77,7 +109,9 @@ Toda tarea se resuelve en un **ciclo iterativo**, nunca de un tirón:
 1. **Entender** — lee el enunciado y el material ya existente antes de tocar nada.
 2. **Planificar** — decide los pasos y dilo en una línea.
 3. **Implementar** — haz el cambio mínimo que toca.
-4. **Verificar** — comprueba de verdad: Java compila, SQL ejecuta, HTML/PHP se abre, JS corre con `node`.
+4. **Verificar** — comprueba de verdad, no de palabra: HTML/CSS se abre en el navegador,
+   PHP se ejecuta en el servidor, Java compila, SQL ejecuta. Aquí **no hay `node`, `npm` ni
+   Python** instalados: el JS se prueba en la consola del navegador (DevTools).
 5. **Auditar (cruzado)** — ejecuta la auditoría del otro agente (ver §0) sobre `git diff` y resuelve sus observaciones.
 6. **Cerrar** — commit y `push` a `main` (ver §6).
 
@@ -109,14 +143,37 @@ paso. Nunca encadenes varias acciones dando por hecho el resultado.
   `"ejercicio 3 corregido"`, `"actividades 1.4, 1.5, 1.6 y tarea 2"`, `"tareas de paco"`.
 - Si algún día se autentica `gh`, se puede volver a ramas + PR; hasta entonces, `main` directo.
 
+### 6.1. Red de este equipo (importante)
+
+`github.com` por HTTPS y `ssh.github.com` están **bloqueados** en esta red. El remoto y el
+cliente SSH ya están configurados así:
+
+```bash
+git remote -v
+# origin ssh://git@ssh.github.com:443/RaulSalRom/CFGS-DAW.git
+git config core.sshCommand
+# ssh -p 443 -o HostKeyAlias=ssh.github.com -o HostName=140.82.112.35 -o StrictHostKeyChecking=accept-new
+```
+
+- Si `git push` da *Connection timed out*, cambiar `HostName` por otra IP de GitHub en el 443:
+  `140.82.112.35`, `140.82.112.36`, `140.82.113.35`, `140.82.114.35`, `140.82.116.35`,
+  `140.82.121.35`.
+- No intentes HTTPS, ni `ssh.github.com` resuelto por DNS, ni el puerto 22: no funcionan.
+- El commit es local hasta que el push funcione. No lo des por entregado sin `git ls-remote origin main`.
+
 ## 7. DWEC tiene dos capas (no las rompas)
 
 `2º-Curso/Teoria/Desarrollo web en entorno cliente/` = monolito de teoría
-(`DesarrolloWebEnEntornoCliente.md`) + notas por criterio (`DWEC-1.1.md`…`DWEC-1.6.md`).
+(`DesarrolloWebEnEntornoCliente.md`) + notas por criterio:
+`DWEC-1.1`…`1.6`, `DWEC-2.1`…`2.8`, `DWEC-3.1` y `DWEC-3.1.1`.
 
-- **No es duplicado, es material complementario. No borres el monolito.**
-- Solo el monolito tiene `## 1. Teoría`; solo las per-unit tienen `Para el examen`, `Vocabulario`
-  y las actividades resueltas.
+- **No es duplicado, es material complementario. No borres el monolito.** Haz el cambio
+  mínimo: no reescribas el monolito para "unificarlo" por iniciativa propia.
+- El monolito cubre **solo los temas 1 y 2**. La **Unidad 3** (objetos predefinidos, `Temporal`)
+  vive de momento únicamente en `DWEC-3.1.md` y `DWEC-3.1.1.md`.
+- Solo las notas por criterio llevan `Para el examen`, `Vocabulario` y las actividades
+  resueltas. Ojo: `DWEC-3.1` y `DWEC-3.1.1` todavía **no** tienen esos bloques ni las
+  actividades resueltas (3.1.1–3.1.4 y 3.1.8 están solo enunciadas).
 - Están enlazadas en ambos sentidos: si tocas una, mantén los enlaces.
 
 ## 8. Límites
