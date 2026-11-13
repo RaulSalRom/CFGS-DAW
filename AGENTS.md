@@ -18,11 +18,11 @@ Trabaja siempre en **modo Ponytail** (intensidad: *full*):
   5. *Código antes que prosa:* Respuestas directas con código conciso; explicaciones breves (a menos que se pida detalle).
 
 ### Colaboración multiagente y auditoría cruzada obligatoria (Antigravity ↔ OpenCode)
-- **Principio de auditoría cruzada:** Toda tarea realizada por un agente debe ser auditada por el otro antes de considerarse cerrada y commiteada:
+- **Principio de auditoría cruzada:** Toda tarea realizada por un agente debe ser auditada por el otro antes de considerarse cerrada y commiteada. **Ningún commit se crea sin auditoría previa**, ni siquiera los triviales de documentación:
   - **Antigravity realiza la tarea → OpenCode audita:** Antigravity ejecuta:
-    `opencode run --auto "Audita los cambios en git diff respecto a calidad, corrección, estándares del repositorio y modo Ponytail"`
+    `opencode run --auto "Audita los cambios en git diff --cached respecto a calidad, corrección, estándares del repositorio y modo Ponytail"`
   - **OpenCode realiza la tarea → Antigravity audita:** OpenCode ejecuta:
-    `agy -p "Audita los cambios en git diff respecto a calidad, corrección, estándares del repositorio y modo Ponytail"`
+    `agy -p "Audita los cambios en git diff --cached respecto a calidad, corrección, estándares del repositorio y modo Ponytail"`
 - **Resolución de hallazgos:** Si el auditor detecta fallos, sobreingeniería o desvíos de `AGENTS.md`, el agente ejecutor los corrige antes de finalizar.
 - **Apoyo mutuo:** Si un agente se atasca o necesita una perspectiva alternativa, se apoya en el otro vía CLI.
 - **Coordinación y estado limpio:** Ambos respetan este `AGENTS.md`, mantienen commits atómicos y verifican `git pull --ff-only` y `git status` para trabajar sincronizados sin pisar cambios.
@@ -116,8 +116,8 @@ Toda tarea se resuelve en un **ciclo iterativo**, nunca de un tirón:
 4. **Verificar** — comprueba de verdad, no de palabra: HTML/CSS se abre en el navegador,
    PHP se ejecuta en el servidor, Java compila, SQL ejecuta. Aquí **no hay `node`, `npm` ni
    Python** instalados: el JS se prueba en la consola del navegador (DevTools).
-5. **Auditar (cruzado)** — ejecuta la auditoría del otro agente (ver §0) sobre `git diff`,
-   **muestra su salida completa** en la respuesta y resuelve sus observaciones.
+5. **Auditar (cruzado)** — ejecuta la auditoría del otro agente (ver §0) sobre
+   `git diff --cached`, **muestra su salida completa** en la respuesta y resuelve sus observaciones.
 6. **Cerrar** — commit sin preguntar; **`push` solo si Majestad da permiso** (ver §6).
 
 Repite **3→4** hasta que la verificación pase. Si tras **3 vueltas** sigues atascado, **PARA**,
@@ -141,9 +141,13 @@ paso. Nunca encadenes varias acciones dando por hecho el resultado.
   **commitear sin preguntar**. Pero **antes de cada `git push` pide permiso explícito a
   Majestad** y espera su "sí". Sin permiso, el commit se queda en local y se avisa de que
   está pendiente de subir (`git status`, `git log origin/main..main`).
+- **Ningún commit sin auditoría:** **todos** los commits, también los de documentación o una
+  sola línea, se auditan **antes** con el otro agente sobre `git diff --cached`, se muestra
+  la salida (§0) y se resuelven los hallazgos. Orden fijo: `git add` → auditar → mostrar →
+  corregir → `git commit`. Sin excepciones por "es trivial".
 - Trabaja **directamente sobre `main`** (por ahora no se usan PRs).
 - **Antes de empezar y antes de empujar:** `git pull --ff-only` para no pisar cambios.
-- **Antes de cada commit:** revisa `git status` y `git diff` y comprueba que no entra nada
+- **Antes de cada commit:** revisa `git status` y `git diff --cached` y comprueba que no entra nada
   prohibido (lista de abajo).
 - **Nunca** versionar: `*.class`, `bin/`, `.idea/`, el estado de `.obsidian`
   (`workspace.json`, `app.json`, `graph.json`, `cache`, `plugins/*/data.json`) ni
