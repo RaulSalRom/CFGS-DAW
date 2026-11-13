@@ -4,7 +4,7 @@
 **Criterio Curricular Oficial: CE 3.a** (Se han identificado los objetos predefinidos del lenguaje).
 **Ponderación del Criterio:** 6,67% del RA3 | 1% sobre la calificación final del módulo.
 
-> **Nota:** el monolito `DesarrolloWebEnEntornoCliente.md` cubre por ahora los temas 1 y 2. Esta nota es la fuente de teoría del apartado 3.1 hasta que se integre en él.
+> **Nota:** el monolito [[DesarrolloWebEnEntornoCliente]] cubre por ahora los temas 1 y 2. Esta nota es la fuente de teoría del apartado 3.1 hasta que se integre en él.
 > **Ampliación:** el objeto `Temporal` se desarrolla en [[DWEC-3.1.1]].
 
 ## Índice
@@ -170,8 +170,8 @@ console.log(bufferBytes); // Ejemplo de salida: Uint8Array(16) [23, 142, 201, 8,
 
 ```javascript
 // Simular la tirada de un dado de 6 caras de forma segura (rango 1 a 6)
-const tiradaDado = crypto.randomInt(1, 7);
-console.log(tiradaDado); // Devuelve: 1, 2, 3, 4, 5 o 6
+const tiradaDadoSegura = crypto.randomInt(1, 7);
+console.log(tiradaDadoSegura); // Devuelve: 1, 2, 3, 4, 5 o 6
 ```
 
 > [!warning]
@@ -212,8 +212,8 @@ De esta forma se simula `Math.random()` obteniendo un número decimal continuo e
 > Un error clásico de los programadores junior es emplear `Math.random()` para generar contraseñas temporales, números de pedido o claves de recuperación. Al ser un algoritmo pseudoaleatorio determinista predecible, los estándares de auditoría de seguridad rechazan su uso. En producción se exige el empleo de identificadores universales seguros generados de forma nativa por el navegador mediante `window.crypto.randomUUID()`:
 
 ```javascript
-const idPedido = window.crypto.randomUUID();
-console.log(idPedido); // "7b3b4f62-63b1-4f8e-94df-60e0a5160893"
+const idPedidoSeguro = window.crypto.randomUUID();
+console.log(idPedidoSeguro); // "7b3b4f62-63b1-4f8e-94df-60e0a5160893"
 ```
 
 ## 3. Fechas y horas con Date

@@ -1,6 +1,6 @@
 # Teoría — 3.1.1. El objeto global Temporal
 
-> **Nota:** ampliación del apartado 3.1.3 (`Date`) de [[DWEC-3.1]]. El monolito `DesarrolloWebEnEntornoCliente.md` todavía no incluye la Unidad 3.
+> **Nota:** ampliación del apartado 3.1.3 (`Date`) de [[DWEC-3.1]]. El monolito [[DesarrolloWebEnEntornoCliente]] todavía no incluye la Unidad 3.
 
 El objeto `Temporal` es la API moderna de JavaScript diseñada para reemplazar por completo al antiguo y problemático objeto `Date`. Forma parte de las especificaciones de **ES2026**.
 
@@ -179,7 +179,7 @@ console.log(eventoParis.offset);     // "+01:00"
 
 // Método .withTimeZone() (saber qué hora es en otro lugar del mundo en ese mismo instante)
 const horaEnTokyo = eventoParis.withTimeZone("Asia/Tokyo");
-console.log(horaEnTokyo.toString()); // "2026-11-09T23:00:00+09:00[Asia/Tokyo]"
+console.log(horaEnTokyo.toString()); // "2026-11-08T23:00:00+09:00[Asia/Tokyo]"
 ```
 
 ### 2.4. Temporal.Duration
@@ -187,11 +187,11 @@ console.log(horaEnTokyo.toString()); // "2026-11-09T23:00:00+09:00[Asia/Tokyo]"
 El tipo de dato que `Date` nunca tuvo. Representa una cantidad de tiempo transcurrido (por ejemplo, "2 horas y 15 minutos").
 
 ```javascript
-const fecha1 = Temporal.PlainDate.from('2026-01-01');
+const fechaInicio = Temporal.PlainDate.from('2026-01-01');
 const fecha2 = Temporal.PlainDate.from('2026-03-15');
 
 // Calcular la distancia exacta entre dos fechas sin hacer matemáticas de milisegundos
-const diferencia = fecha1.until(fecha2);
+const diferencia = fechaInicio.until(fecha2);
 console.log(diferencia.toString()); // "P73D" (periodo de 73 días)
 
 const miViaje = Temporal.Duration.from({ months: 2, days: 5, hours: 12 });
