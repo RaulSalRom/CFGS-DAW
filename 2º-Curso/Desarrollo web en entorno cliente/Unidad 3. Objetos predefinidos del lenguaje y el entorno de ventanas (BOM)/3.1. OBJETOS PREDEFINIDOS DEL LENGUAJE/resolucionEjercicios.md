@@ -36,14 +36,16 @@ calcula sobre una rejilla de `decimales` cifras y usa `cryptoRandomFloat()` cuan
 
 ## Actividad 3.1.3
 
-Resuelta en `actividad3.1.3.html` + `actividad3.1.3.js`: formulario que normaliza el
-importe con `trim()` y `replace(/,/g, ".")`, extrae la cifra, la valida con `Number.isNaN()`
-y `Number.isFinite()`, y muestra base, cuota y PVP con `toFixed(2)`.
+Resuelta en `3.1.3. Validador de facturación y conversión numérica/` (`actividad3.1.3.html`
++ `actividad3.1.3.js`): formulario que normaliza el importe con `trim()` y
+`replace(/,/g, ".")`, extrae la cifra, la valida con `Number.isNaN()` y
+`Number.isFinite()`, y muestra base, cuota y PVP con `toFixed(2)`.
 
 ## Actividad 3.1.4
 
-Resuelta en `actividad3.1.4.html` + `actividad3.1.4.js`: un botón genera matrículas de
-4 cifras (con `padStart(4, "0")`) y 3 consonantes válidas para la DGT; el otro genera un
+Resuelta en `3.1.4. Generador de matrículas y cripto-identificadores/`
+(`actividad3.1.4.html` + `actividad3.1.4.js`): un botón genera matrículas de 4 cifras
+(con `padStart(4, "0")`) y 3 consonantes válidas para la DGT; el otro genera un
 cripto-identificador de 128 bits con `crypto.getRandomValues()`.
 
 > [!note]
