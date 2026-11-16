@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 3.1.3 - Validador de facturación</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main class="panel">
+    <h1>Validador de facturación y conversión numérica</h1>
+
+    <form id="formFactura" novalidate>
+      <div class="campo">
+        <label for="precio">Precio sin IVA (admite coma, punto y símbolos como €):</label>
+        <input type="text" id="precio" inputmode="decimal" placeholder="Ej.: 12,34 €" required>
+      </div>
+
+      <div class="campo">
+        <label for="iva">Porcentaje de IVA (%):</label>
+        <input type="text" id="iva" inputmode="decimal" value="21" required>
+      </div>
+
+      <button type="submit">Calcular PVP</button>
+    </form>
+
+    <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+
+    <dl id="resultado" class="resultados" hidden>
+      <dt>Precio sin IVA</dt>
+      <dd id="resBase"></dd>
+      <dt>Cuota de IVA</dt>
+      <dd id="resCuota"></dd>
+      <dt>PVP</dt>
+      <dd id="resPvp"></dd>
+    </dl>
+  </main>
+
+  <script src="actividad3.1.3.js"></script>
+</body>
+</html>
