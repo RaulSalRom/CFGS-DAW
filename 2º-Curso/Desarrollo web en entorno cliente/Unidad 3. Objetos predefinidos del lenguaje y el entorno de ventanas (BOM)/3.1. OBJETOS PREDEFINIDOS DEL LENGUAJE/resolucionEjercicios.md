@@ -28,8 +28,9 @@ F	: entero / 9 007 199 254 740 991
 
 ## Actividad 3.1.2
 
-Resuelta en `generarAleatorio.js`: una única función
-`generarAleatorio(min = 0, max = 1, decimales = 0, seguro = false)` que valida el rango,
+Resuelta en `ejercicios.js`: incluye `cryptoRandomFloat()`, las ocho funciones
+`...Crypto` y la función genérica
+`generarAleatorio(min = 0, max = 1, decimales = 0, seguro = false)`, que valida el rango,
 calcula sobre una rejilla de `decimales` cifras y usa `cryptoRandomFloat()` cuando
 `seguro` es verdadero.
 
