@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200">
+  <rect width="320" height="200" fill="#e0f2f1"/>
+  <rect y="145" width="320" height="55" fill="#b2dfdb"/>
+  <rect x="20" y="95" width="160" height="50" rx="15" fill="#ffffff" stroke="#90a4ae" stroke-width="4"/>
+  <rect x="28" y="88" width="144" height="10" rx="5" fill="#b0bec5"/>
+  <rect x="210" y="80" width="70" height="35" rx="6" fill="#ffffff" stroke="#90a4ae" stroke-width="4"/>
+  <rect x="225" y="86" width="40" height="6" rx="3" fill="#b0bec5"/>
+  <rect x="215" y="115" width="10" height="30" fill="#90a4ae"/>
+  <rect x="265" y="115" width="10" height="30" fill="#90a4ae"/>
+  <rect x="30" y="50" width="55" height="35" rx="4" fill="#80deea" stroke="#4dd0e1" stroke-width="3"/>
+  <text x="160" y="188" font-family="Arial, sans-serif" font-size="14" fill="#00695c" text-anchor="middle">Baño</text>
+</svg>

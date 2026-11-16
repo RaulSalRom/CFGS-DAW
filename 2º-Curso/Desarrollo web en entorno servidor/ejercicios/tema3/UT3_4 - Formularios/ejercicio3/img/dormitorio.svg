@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200">
+  <rect width="320" height="200" fill="#e8eaf6"/>
+  <rect y="145" width="320" height="55" fill="#9fa8da"/>
+  <rect x="30" y="110" width="190" height="45" rx="6" fill="#7986cb"/>
+  <rect x="30" y="100" width="190" height="15" rx="5" fill="#5c6bc0"/>
+  <rect x="42" y="88" width="60" height="18" rx="6" fill="#fafafa"/>
+  <rect x="120" y="88" width="60" height="18" rx="6" fill="#fafafa"/>
+  <rect x="34" y="155" width="8" height="12" fill="#3f51b5"/>
+  <rect x="208" y="155" width="8" height="12" fill="#3f51b5"/>
+  <rect x="245" y="110" width="45" height="45" fill="#8d6e63"/>
+  <rect x="250" y="100" width="14" height="10" fill="#ffe082"/>
+  <text x="160" y="188" font-family="Arial, sans-serif" font-size="14" fill="#303f9f" text-anchor="middle">Dormitorio</text>
+</svg>
