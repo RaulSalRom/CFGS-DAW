@@ -1,0 +1,32 @@
+body{
+    font-size: clamp(15px, 2vw, 20px);
+    color: #000;
+    background-color: #b84f4f;
+}
+
+nav{
+    background-color: #ffffff;
+    color: #fff;
+    padding: 10px;
+}
+img{
+    height: 50vh;
+    width: 75vw;
+}
+*{
+    margin: 3vh;
+    padding: 3vh;
+}
+.container{
+    height: 100vh;
+    background-color: #791dba;
+}
+h1{
+    text-align: center;
+    line-height: 10vh;
+    color: #000;
+    background-color: #b84f4f;
+}
+main{
+    flex-grow: 1;
+}
