@@ -1,0 +1,37 @@
+			aside {
+					width: 30%;
+					padding-left: 15px; 
+					margin-left: 15px; 
+					float: right; 
+					font-style: italic;
+					background-color: lightgray;
+					display: inline-block;
+					vertical-align: top; 
+					border: 1px dotted blue;
+					word-wrap: break-word; 
+					position: sticky;
+					top: 0;
+					}
+			footer {
+					text-align: center;
+					padding: 3px;
+					background-color: DarkSalmon;
+					color: white;
+					}
+			nav {
+					padding: 1rem; 
+					background-color: grey;
+					border: 3px solid red;
+					position: sticky;
+				}
+
+			article > p { color: red; }
+			.clase1 { color: pink;}	
+
+			header + p { color: blue; } 
+			* { font-style: italic; }
+			aside p { color: green; }
+			header h3 { color: purple; }
+			#id1 { color: orange; }
+			section > article > p { color: yellow; }
+			article > header > h3 { color: brown; }
