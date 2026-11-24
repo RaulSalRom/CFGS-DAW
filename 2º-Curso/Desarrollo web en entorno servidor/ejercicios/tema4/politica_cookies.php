@@ -7,7 +7,7 @@ if (isset($_GET['revocar'])) {
 }
 
 // Aceptación: se guarda el consentimiento durante 30 días y se recarga la página limpia
-if (isset($_POST['aceptar'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     setcookie('cookies_aceptadas', 'si', time() + 60 * 60 * 24 * 30, '/');
     header('Location: politica_cookies.php');
     exit;

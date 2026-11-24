@@ -130,6 +130,7 @@
 - [[UT1|UT1 · Arquitecturas de desarrollo web]]
 - [[UT2|UT2 · Lenguaje PHP. Inserción de código en páginas web]]
 - [[UT3|UT3 · Estructuras de control, arrays y formularios]]
+- [[UT4|UT4 · Cookies y sesiones]]
 
 ### [[DiseñoDeInterfacesWeb|Diseño de interfaces web (DIWEB)]]
 - [[DIWEB-T0-Resumen-Introduccion|Tema 0 · Introducción]]
