@@ -1,12 +1,19 @@
 <?php
-// TODO 1: Comprobar si llega ?revocar=1 por GET -> eliminar cookie (time() - 3600) y redirigir
+// Revocación: se fuerza la caducidad de la cookie con la misma ruta con que se creó
+if (isset($_GET['revocar'])) {
+    setcookie('cookies_aceptadas', '', time() - 3600, '/');
+    header('Location: politica_cookies.php');
+    exit;
+}
 
+// Aceptación: se guarda el consentimiento durante 30 días y se recarga la página limpia
+if (isset($_POST['aceptar'])) {
+    setcookie('cookies_aceptadas', 'si', time() + 60 * 60 * 24 * 30, '/');
+    header('Location: politica_cookies.php');
+    exit;
+}
 
-// TODO 2: Comprobar si se envía el formulario por POST -> crear cookie 'cookies_aceptadas' (30 días) y redirigir
-
-
-// TODO 3: Comprobar si existe $_COOKIE['cookies_aceptadas'] en una variable booleana (ej. $aceptadas)
-$aceptadas = false;
+$aceptadas = isset($_COOKIE['cookies_aceptadas']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
